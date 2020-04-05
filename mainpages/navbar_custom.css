@@ -1,0 +1,29 @@
+/*navbar custom*/
+body{
+    padding:1rem;
+}
+a{
+    color:#333;
+}
+.topbar-custom{
+    list-style-type: none;
+    float:right;
+    margin-right: 20px;
+    font-size: small;
+}
+.navbar{
+    border-bottom: 0.1px solid rgb(219, 222, 224);
+    margin-bottom:3em;
+}
+.navbar-custom{
+    background-color: #fff;
+}
+/*main*/
+.jumbotron{
+    background-color:#fff;
+}
+.fixed-top{
+    left:60rem;
+}
+
+ 
