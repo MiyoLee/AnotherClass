@@ -1,0 +1,200 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="navbar-top-fixed.css">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="navbar_custom.css">
+<link rel="stylesheet" href="album.css">
+<link rel="stylesheet" href="catelist.css">
+<link rel="stylesheet" href="selectbox.css">
+
+<div class="inner">
+    <nav class="nav nav-masthead justify-content-end">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="#">Notice</a>
+    </nav>
+</div>
+
+
+<nav class="navbar navbar-expand-lg  navbar-light navbar-custom">
+    <a class="navbar-brand" href="index.html"><img src="image\logo_1.png" alt="Logo" style="width:230px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item nav-item-custom">
+                <a class="nav-link" href="#">Class</a>
+            </li>
+            <li class="nav-item nav-item-custom">
+                <a class="nav-link" href="#">Mentor</a>
+            </li>
+            <li class="nav-item nav-item-custom">
+                <a class="nav-link" href="#">Community</a>
+            </li>
+            <li class="nav-item nav-item-custom">
+                <a class="nav-link" href="#">Store</a>
+            </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="검색어를 입력하세요." aria-label="Search">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit"><img src="image\search.png"
+                    style="width:30px;"></button>
+        </form>
+    </div>
+</nav>
+
+<main role="main">
+    <form action="#">
+    <div class="container bg-light select-box">
+            <div class="filter-item">
+                <span class="filter-name">카테고리</span>
+                <select name="category">
+                    <option value="all">전체</option>
+                    <option value="best">Best</option>
+                    <option value="art">미술,공예</option>
+                    <option value="music">음악</option>
+                </select>
+                <span class="filter-name"></span>
+                <span class="filter-name">상세 카테고리</span>
+                <select name="category2">
+                    <option value="all">전체</option>
+                    <option value="best">Best</option>
+                    <option value="art">미술,공예</option>
+                    <option value="music">음악</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <span class="filter-name">지역</span>
+                <select name="region">
+                    <option value="all">전체</option>
+                    <option value="seoul">서울</option>
+                    <option value="kk">경기</option>
+                    <option value="bs">부산</option>
+                </select>
+                <span class="filter-name"></span>
+                <select name="region2">
+                    <option value="all">전체</option>
+                    <option value="seoul">서울</option>
+                    <option value="kk">경기</option>
+                    <option value="bs">부산</option>
+                </select>
+            </div>
+            <div class="filter-item">
+                <span class="filter-name">요일 / 시간</span>
+                <label><input type="checkbox" name="day" value="mon"> Mon </label>
+                <label><input type="checkbox" name="day" value="tue"> Tue </label>
+                <label><input type="checkbox" name="day" value="tue"> Wed </label>
+                <label><input type="checkbox" name="day" value="tue"> Thu </label>
+                <label><input type="checkbox" name="day" value="tue"> Fri </label>
+                <label><input type="checkbox" name="day" value="tue"> Sat </label>
+                <label><input type="checkbox" name="day" value="tue"> Sun </label>
+                <span class="filter-name"></span>
+                <label><input type="checkbox" name="time" value="morning"> Morning </label>
+                <label><input type="checkbox" name="time" value="afternoon"> afternoon </label>
+                <label><input type="checkbox" name="time" value="evening"> evening </label>
+            </div>
+            <div class="filter-item">
+                <span class="filter-name">가격대</span>
+                <input type="number"> ~ <input type="number"> 원
+            </div>
+    </div>
+    <div class="apply">
+    <input type="submit" value="적용하기">
+    </div>
+    </form>
+
+    <h5>result</h5>
+
+    <div class="album py-5 bg-light">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image\class_cake.JPG" width="338px" height="250px">
+                        <div class="card-body">
+                            <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <small class="text-muted">1회 20000 원</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image\class_cake.JPG" width="338px" height="250px">
+                        <div class="card-body">
+                            <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <small class="text-muted">1회 20000 원</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image\class_cake.JPG" width="338px" height="250px">
+                        <div class="card-body">
+                            <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <small class="text-muted">1회 20000 원</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image\class_cake.JPG" width="338px" height="250px">
+                        <div class="card-body">
+                            <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <small class="text-muted">1회 20000 원</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image\class_cake.JPG" width="338px" height="250px">
+                        <div class="card-body">
+                            <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <small class="text-muted">1회 20000 원</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="image\class_cake.JPG" width="338px" height="250px">
+                        <div class="card-body">
+                            <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <small class="text-muted">1회 20000 원</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<footer class="mastfoot mt-auto text-center">
+    <div class="inner">
+        <p>tel: 012-345-789 /
+            email: lee@gmail.com</p>
+
+    </div>
+</footer>
