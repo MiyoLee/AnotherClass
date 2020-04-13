@@ -16,7 +16,6 @@ a{
     margin-bottom:3em;
 }
 .navbar-custom{
-<<<<<<< HEAD
     font-size: x-large;
     font-weight: bold;
     background-color: #fff;
@@ -25,10 +24,6 @@ a{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
 }
-=======
-    background-color: #fff;
-}
->>>>>>> bc8347acc4136aa23878ec96bb9e9a80b504beaa
 /*main*/
 .jumbotron{
     background-color:#fff;
