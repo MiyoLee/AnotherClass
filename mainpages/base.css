@@ -25,11 +25,7 @@
  }
 
  .btn-secondary {
-<<<<<<< HEAD
     background-color: rgb(77, 86, 214);
-=======
-    background-color: rgb(10, 111, 194);
->>>>>>> bc8347acc4136aa23878ec96bb9e9a80b504beaa
     border-color: #fff;
     color: #FFF; }
 .btn-secondary:hover,
@@ -42,7 +38,6 @@
 .btn-secondary:visited,
 .btn-secondary:active:focus,
 .btn-secondary:active:hover {
-<<<<<<< HEAD
     border-color: rgb(77, 86, 214);
     background-color: rgb(77, 86, 214);
     color: #FFF;
@@ -59,9 +54,3 @@
     color:black;
 }
  
-=======
-    border-color: rgb(10, 111, 194);
-    background-color: rgb(10, 111, 194);
-    color: #FFF;
- }
->>>>>>> bc8347acc4136aa23878ec96bb9e9a80b504beaa
