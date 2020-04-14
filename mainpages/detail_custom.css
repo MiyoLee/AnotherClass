@@ -204,7 +204,7 @@ text-decoration:none;
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 11px 100px;
+    padding: 11px 106px;
  color: #428bca;
     text-decoration: none;
  background: transparent;
@@ -215,6 +215,43 @@ text-decoration:none;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.container{
+.more-container{
 padding-top:100px;
+font-size:100px;
+}
+.tab-content>.active {
+    display: block;
+}
+
+.shop-details-tab .col-sm-12 {
+    padding-left: 0;
+    padding-right: 0;
+}
+@media (min-width: 768px)
+.col-sm-12 {
+    width: 100%;
+}
+@media (min-width: 768px)
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+    float: left;
+}
+.col-sm-12{
+position: relative;
+    min-height: 1px;}
+
+ #reviews ul {
+    background: #FFFFFF;
+    border: 0 none;
+    list-style: none outside none;
+    margin: 0 0 20px;
+    padding: 0;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
 }
