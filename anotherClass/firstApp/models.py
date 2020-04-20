@@ -4,7 +4,11 @@ from django.utils import timezone
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
-
+class Classes(models.Model):
+    mentor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    price = models.PositiveIntegerField()
+    introduction = models.TextField()
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)

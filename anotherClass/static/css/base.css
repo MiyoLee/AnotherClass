@@ -4,6 +4,10 @@
 .inner{
     font-size:10pt;
 }
+.productpic:hover{
+color:#333333;
+text-decoration:none;
+}
 /*buttons*/
 .btn-primary {
     background-color: #fff;
