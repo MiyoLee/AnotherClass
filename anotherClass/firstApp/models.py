@@ -4,12 +4,8 @@ from django.utils import timezone
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
-class Classes(models.Model):
-    cateId = models.ForeignKey(Category, default=1, on_delete=models.CASCADE)
-    tutor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    price = models.PositiveIntegerField()
-    introduction = models.TextField()
+class Area(models.Model):
+    name = models.CharField(max_length=20)
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
