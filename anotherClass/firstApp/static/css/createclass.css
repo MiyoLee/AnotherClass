@@ -1,0 +1,44 @@
+.createclasscont .blog-post-area li{
+  float:left;
+  list-style:none;
+
+}
+
+.createclasscont .blog-post-area .state{
+  float:left;
+  margin-top:50px;  margin-left:50px;
+  margin-bottom:20px;
+  width:700px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.createclasscont .left-sidebar div{
+padding-top:20px;
+}
+
+.createclasscont .left-sidebar li{
+padding-bottom:5px;
+}
+
+.stepbutton{
+margin:0px 70px;
+width:100px;height:40px;
+background-color:#F685A2;
+text-align:center;
+color:#fff;
+border-radius : 30px;
+padding-top:8px;
+}
+
+.blog-post-area{
+text-align:center;
+}
+
+.blog-post-area textarea{
+margin-bottom:70px;
+resize:none;
+}
+
+.blog-post-area h2{
+font-size:25px;}

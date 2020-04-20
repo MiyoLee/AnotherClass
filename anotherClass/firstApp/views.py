@@ -19,4 +19,7 @@ def apply(request):
 def createpost(request):
     return render(request, 'firstApp/createpost.html')
 
+def createclass(request):
+    return render(request, 'firstApp/createclass.html')
+
 

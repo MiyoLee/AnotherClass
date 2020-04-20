@@ -25,4 +25,5 @@ urlpatterns = [
     path('product/', firstApp.views.product, name='product'),
     path('apply/', firstApp.views.apply, name='apply'),
     path('createpost/', firstApp.views.createpost, name='createpost'),
+    path('createclass/', firstApp.views.createclass, name='createclass'),
 ]

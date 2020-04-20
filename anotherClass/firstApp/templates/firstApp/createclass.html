@@ -1,0 +1,49 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+	<section>
+		<div class="contents">
+            <div class="createclasscont">
+                <div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						<div>1단계 > 클래스 기본정보</div>
+                        <ul>
+                            <li>클래스 정보</li>
+                            <li>커버이미지</li>
+                        </ul>
+                        <div>2단계 > 클래스 소개</div>
+                        <ul>
+                            <li>클래스 소개하기</li>
+                            <li>클래스 부가정보</li>
+                        </ul>
+                        <div>3단계 > 크리에이터 소개</div>
+                        <ul>
+                            <li>크리에이터 정보</li>
+                        </ul>
+					</div>
+				</div>
+				<div class="col-sm-9">
+					<div class="blog-post-area">
+                        <ul>
+                            <li>
+                                <div class="stepbutton">이전 단계</div>
+                            </li>
+                            <li>
+                                <h2>1단계　|　클래스기본정보</h2>
+                            </li>
+                            <li>
+                                 <div class="stepbutton">다음 단계</div>
+                            </li>
+                        </ul>
+                        <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
+					    <textarea cols="100" rows="15"></textarea>
+
+                    </div>
+				</div>
+			</div>
+            </div>
+		</div>
+	</section>
+{% endblock content%}
