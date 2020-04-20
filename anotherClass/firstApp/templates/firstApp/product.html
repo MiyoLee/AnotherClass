@@ -1,0 +1,104 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="product">
+        <div class="product-pic">
+            <img src="{% static 'image\class_cake.jpg' %}">
+        </div>
+        <div class="product-info">
+          <h2>나만의 커스텀 케이크를 만들어보자!</h2>
+          <div class="center">
+            <div class="perprice">10,000원</div>
+            <div class="hour">/시간</div>
+            <div class="onetime">20,000원 / 총 1회 2시간</div>
+          <img src="{% static 'image\stars.png' %}">
+          </div>
+
+          <ul>
+          <li>
+            <b>카테고리 :</b>
+             <a>요리/베이킹</a>
+          </li>
+          <li>
+            <b>지역 :</b>
+             <a>신촌홍대</a>
+          </li>
+          <li>
+            <b>난이도 :</b>
+            <a>초급</a>
+          </li>
+           <li>
+            <b>수업방식 :</b>
+             <a>그룹 수업</a>
+          </li>
+          </ul>
+          <a href="/apply" class="button">
+            클래스 신청하기
+          </a>
+        </div>
+</div>
+    <div class="category-tab shop-details-tab">
+    <div class="col-sm-12">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#details" data-toggle="tab">클래스 소개</a></li>
+			<li><a href="#tutor" data-toggle="tab">강사 정보</a></li>
+			<li><a href="#tag" data-toggle="tab">REVIEW</a></li>
+			<li><a href="#reviews" data-toggle="tab">Q & A</a></li>
+		</ul>
+	</div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="details">
+        <div class="more-container">
+          <div class="con-desc">*한번만 배워도 수업 퀄리티가 다릅니다!
+
+K-POP 대세그룹 방탄소년단의 서울 파이널콘 댄서이자
+아이돌 활동을 했던 강사님과
+유명 엔터테이먼트 트레이너 강사에게 배우는 수업의
+퀄리티는 일반 학원 수업과 비교불가입니다.
+
+탄탄한 기본기 수업부터 아이돌 안무 마스터 수업까지
+다양한 형태의 프로그램 진행이 가능하며
+개인/그룹 여러가지로 수업이 가능합니다.</div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tutor">
+        <div class="more-container">
+          <div class="con-desc">
+            - 서울종합예술학교 실용무용과
+- 빅히트엔터테인먼트 및 각종 엔터 연습생, 연예인 다수 트레이닝
+- 울림엔터테인먼트 소속 안무팀
+
+<레슨 활동>
+난타 공연팀 ‘퍼포먼스 안무’
+라인 댄스 아카데미 ‘방송댄스 강사 , 개인 레슨 전담’
+여의도 MBC 아카데미 ‘방송댄스 특강’
+송파 구청 ‘방송댄스 강사’
+한체대 부속 태권도 ‘방송댄스 강사’
+범계초등학교 ‘방송댄스 특강 강사’
+도봉 초등학교 ‘방송댄스 강사’
+B5S 뮤직&댄스 아카데미 ‘Urban 강사’
+스포짐 ‘방송댄스 강사’
+한국산업기술 대학교 ‘댄스특강’
+경찰 성무 태권도 ‘방송댄스 강사’
+댄싱킹 ‘Girls Hiphop & Urban , 방송댄스’
+상명대학교 ‘k-pop 학과 특강’
+온 뮤직 아카데미 ‘방송댄스 & Girls Hiphop’
+본스타 연예트레이닝센터 ‘방송댄스 & 퍼포먼스& Girls Hiphop& Urban’ ’오디션&입시반’
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tag">
+        <div class="more-container">크리에이터 창입니다.</div>
+      </div>
+     <div class="tab-pane" id="reviews" >
+		<div class="more-container">크리에이터 창입니다.</div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content%}
+
+
