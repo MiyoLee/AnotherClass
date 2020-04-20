@@ -1,12 +1,16 @@
 .createclasscont .blog-post-area li{
   float:left;
   list-style:none;
-
 }
-
+.createclasscont{
+padding-bottom:50px;
+}
+.steptabs{
+  list-style:none;
+}
 .createclasscont .blog-post-area .state{
   float:left;
-  margin-top:50px;  margin-left:50px;
+  margin-left:50px;
   margin-bottom:20px;
   width:700px;
   font-size:13px;
@@ -17,8 +21,9 @@
 padding-top:20px;
 }
 
-.createclasscont .left-sidebar li{
-padding-bottom:5px;
+.steptabs ul{
+padding-top:5px;
+padding-bottom:40px;
 }
 
 .stepbutton{
@@ -41,4 +46,17 @@ resize:none;
 }
 
 .blog-post-area h2{
-font-size:25px;}
+width:290px;
+font-size:23px;
+}
+
+.upperbar{
+margin-bottom:20px;
+height:90px;
+}
+
+.choose{
+float:left;
+clear:left;
+height:50px;
+margin-left:50px;}

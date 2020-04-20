@@ -8,37 +8,154 @@
                 <div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<div>1단계 > 클래스 기본정보</div>
+                        <ul class="steptabs">
+                            <li class="active"><a href="#one" data-toggle="tab">1단계 > 클래스 기본정보</a></li>
                         <ul>
                             <li>클래스 정보</li>
                             <li>커버이미지</li>
                         </ul>
-                        <div>2단계 > 클래스 소개</div>
+                            <li><a href="#two" data-toggle="tab">2단계 > 클래스 소개</a></li>
                         <ul>
                             <li>클래스 소개하기</li>
                             <li>클래스 부가정보</li>
                         </ul>
-                        <div>3단계 > 크리에이터 소개</div>
+                            <li><a href="#three" data-toggle="tab">3단계 > 크리에이터 소개</a></li>
                         <ul>
                             <li>크리에이터 정보</li>
                         </ul>
+                        </ul>
+
 					</div>
 				</div>
 				<div class="col-sm-9">
 					<div class="blog-post-area">
-                        <ul>
+                        <div class="tab-content">
+                        <div class="tab-pane active" id="one">
+                            <div class="upperbar">
+                                <ul>
                             <li>
                                 <div class="stepbutton">이전 단계</div>
                             </li>
                             <li>
-                                <h2>1단계　|　클래스기본정보</h2>
+                                <h2>1단계　|　클래스 기본정보</h2>
+                            </li>
+                            <li>
+                                 <div class="stepbutton">다음 단계</div>
+                            </li>
+                                </ul>
+                            </div>
+
+                            <div class="createcont">
+                                <div class="choose">
+                                     <b>카테고리분류</b>
+                                 <select name="catechoice" size="1">
+            <option>--대분류--</option>
+            <option value="level1">미술/공예</option>
+            <option value="level2">음악/댄스</option>
+            <option value="level3">요리/베이킹</option>
+        </select>
+                                <select name="catechoice" size="1">
+            <option>--소분류--</option>
+            <option value="level1">미술/공예</option>
+            <option value="level2">음악/댄스</option>
+            <option value="level3">요리/베이킹</option>
+        </select>
+                                </div>
+                               <div class="choose">
+                                   <b>지역</b>
+                                <select name="catechoice" size="1">
+            <option selected disabled>--대분류--</option>
+            <option value="level1">경기도</option>
+            <option value="level2">서울</option>
+            <option value="level3">부산</option>
+        </select>
+                                <select name="catechoice" size="1">
+            <option selected disabled>--소분류--</option>
+            <option value="level1">고양시</option>
+            <option value="level2">김포시</option>
+            <option value="level3">부천시</option>
+                                            </select>
+                               </div>
+                                <div class="choose">
+                                     <b>클래스 제목</b>
+                                    <input type="text" name="name" size="70" maxlength="70">
+
+                                </div>
+                                <div class="choose">
+                                    <b>난이도</b>
+                                    <select name="catechoice" size="1">
+            <option selected disabled>--level--</option>
+            <option value="level1">입문자</option>
+            <option value="level2">초/중급자</option>
+            <option value="level3">상급자</option>
+
+        </select>
+                                </div>
+
+                                <div class="choose">
+                                    <b>수업방식</b>
+                                    <select name="catechoice" size="1">
+            <option selected disabled>--선택--</option>
+            <option value="level1">1:1 수업</option>
+            <option value="level2">그룹 수업</option>
+        </select>
+                                </div>
+                                <div class="choose">
+                                    <b>가격</b>
+                                    <input type="text" name="name" size="6" maxlength="6">원 / 1회당
+
+                                </div>
+                                <div class="choose">
+                                    <b>수업시간</b>
+                                    <input type="text" name="name" size="6" maxlength="6">시간 / 1회당
+                                </div>
+                                <div class="choose">
+                                    <b></b>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="two">
+                            <div class="upperbar">
+                                <ul>
+                            <li>
+                                <div class="stepbutton">이전 단계</div>
+                            </li>
+                            <li>
+                                <h2>2단계　|　클래스 소개</h2>
                             </li>
                             <li>
                                  <div class="stepbutton">다음 단계</div>
                             </li>
                         </ul>
+                            </div>
+
                         <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
 					    <textarea cols="100" rows="15"></textarea>
+                        </div>
+
+                        <div class="tab-pane" id="three">
+                            <div class="upperbar">
+                                 <ul>
+                            <li>
+                                <div class="stepbutton">이전 단계</div>
+                            </li>
+                            <li>
+                                <h2>3단계　|　크리에이터 소개</h2>
+                            </li>
+                            <li>
+                                 <div class="stepbutton">다음 단계</div>
+                            </li>
+                        </ul>
+                            </div>
+                        <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
+					    <textarea cols="100" rows="15"></textarea>
+                        </div>
+                        </div>
+
+
 
                     </div>
 				</div>
