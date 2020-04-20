@@ -5,6 +5,11 @@
 .createclasscont{
 padding-bottom:50px;
 }
+
+.createclasscont .left-sidebar{
+color:#888;
+}
+
 .steptabs{
   list-style:none;
 }
@@ -60,3 +65,27 @@ float:left;
 clear:left;
 height:50px;
 margin-left:50px;}
+
+.steptabs li.active a, .steptabs li.active a:hover, .steptabs li.active a:focus {
+    border: 0px;
+    color: #333333;
+    cursor: default;
+    block:none;
+    font-weight:bold;
+}
+.steptabs a:hover{
+color:#333333;
+text-decoration:none;
+}
+
+.bottombutton{
+clear:left;
+background-color:#F685A2;
+color:#fff;
+width:240px;height:40px;
+text-align:center;
+position: relative;
+left:34%;
+padding-top:9px;
+border-radius : 3px;
+}
