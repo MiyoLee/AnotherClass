@@ -16,4 +16,7 @@ def product(request):
 def apply(request):
     return render(request, 'firstApp/apply.html')
 
+def boardpost(request):
+    return render(request, 'firstApp/boardpost.html')
+
 
