@@ -10,3 +10,10 @@ def blogMain(request):
 def categoryselect(request):
     return render(request, 'firstApp/categoryselect.html')
 
+def product(request):
+    return render(request, 'firstApp/product.html')
+
+def apply(request):
+    return render(request, 'firstApp/apply.html')
+
+

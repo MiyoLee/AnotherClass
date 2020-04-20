@@ -22,4 +22,6 @@ urlpatterns = [
     path('', firstApp.views.index, name='index'),
     path('main/', firstApp.views.blogMain, name='main'),
     path('class/', firstApp.views.categoryselect, name='class'),
+    path('product/', firstApp.views.product, name='product'),
+    path('apply/', firstApp.views.apply, name='apply'),
 ]
