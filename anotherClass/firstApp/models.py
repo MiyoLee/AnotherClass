@@ -6,6 +6,9 @@ class Category(models.Model):
     name = models.CharField(max_length=20)
 class Area(models.Model):
     name = models.CharField(max_length=20)
+class detailArea(models.Model):
+    name = models.CharField(max_length=20)
+    parentArea = models.ForeignKey(Area, on_delete=models.CASCADE)
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
