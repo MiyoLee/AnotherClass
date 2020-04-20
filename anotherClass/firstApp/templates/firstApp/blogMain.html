@@ -1,0 +1,114 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+{% block upper_content %}
+
+<div class="catebar">
+  <ul class="catelist">
+    <li class="cateitem"><a class="nounderline" href="/class/"><div class="cateicon">
+      <img class="icon" src="{% static 'image\icons8-trophy-64.png' %}"></div><div>Best</div></a></li>
+    <li class="cateitem"><a class="nounderline" href="class?cateName=art"><div class="cateicon">
+      <img class="icon" src="{% static 'image\icons8-art-book-100.png' %}"></div><div>미술,공예</div></a></li>
+    <li class="cateitem"><a class="nounderline" href="class?cateName=music"><div class="cateicon">
+      <img class="icon" src="{% static 'image\icons8-electronic-music-52.png' %}"></div><div>음악,댄스</div></a></li>
+    <li class="cateitem"><a class="nounderline" href="class?cateName=design"><div class="cateicon">
+      <img class="icon" src="{% static 'image\design.png' %}"></div><div>개발,디자인</div></a></li>
+    <li class="cateitem"><a class="nounderline" href="class?cateName=career"><div class="cateicon">
+      <img class="icon" src="{% static 'image\career.png' %}"></div><div>커리어</div></a></li>
+    <li class="cateitem"><a class="nounderline" href="class?cateName=language"><div class="cateicon">
+      <img class="icon" src="{% static 'image\icons8-translation-52.png' %}"></div><div>언어</div></a></li>
+    <li class="cateitem"><a class="nounderline" href="class?cateName=beuty"><div class="cateicon">
+      <img class="icon" src="{% static 'image\fashion.png' %}"></div><div>뷰티</div></a></li>
+    <li class="cateitem"><a class="nounderline" href="class?cateName=cooking"><div class="cateicon">
+      <img class="icon" src="{% static 'image\cooking.png' %}"></div><div>요리</div></a></li>
+    <li class="cateitem"><a class="nounderline" href="class?cateName=etc"><div class="cateicon">
+      <img class="icon" src="{% static 'image\channel.png' %}"></div><div>기타</div></a></li>
+
+  </ul>
+</div>
+
+{% endblock upper_content%}
+{% block content %}
+<h5>OOO님의 맞춤 추천 클래스</h5>
+<div class="album py-5 bg-light">
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img src="{% static 'image\class_cake.JPG' %}" width="338px" height="250px">
+              <div class="card-body">
+                <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <small class="text-muted">1회 20000 원</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img src="{% static 'image\class_cake.JPG' %}" width="338px" height="250px">
+              <div class="card-body">
+                <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <small class="text-muted">1회 20000 원</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img src="{% static 'image\class_cake.JPG' %}" width="338px" height="250px">
+              <div class="card-body">
+                <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <small class="text-muted">1회 20000 원</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img src="{% static 'image\class_cake.JPG' %}" width="338px" height="250px">
+              <div class="card-body">
+                <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <small class="text-muted">1회 20000 원</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img src="{% static 'image\class_cake.JPG' %}" width="338px" height="250px">
+              <div class="card-body">
+                <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <small class="text-muted">1회 20000 원</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <img src="{% static 'image\class_cake.JPG' %}" width="338px" height="250px">
+              <div class="card-body">
+                <p class="card-text">나만의 커스텀 케이크를 만들어보자!</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <small class="text-muted">1회 20000 원</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock content%}

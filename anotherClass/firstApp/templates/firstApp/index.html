@@ -1,0 +1,34 @@
+{% load static %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/cover.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/index_custom.css' %}">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand"><a href="/"><img src="{% static 'image/logo_3.png'%}" style="width:250px;"></a></h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="#">로그인</a>
+        <a class="nav-link" href="#">고객센터</a>
+      </nav>
+    </div>
+  </header>
+  <body class="index-custom text-center">
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Welcome!</h1>
+    <p class="lead">어나더클래스는 회원들간의 자유로운 클래스 개설과 참여를 목적으로하는 취미 공유 사이트 입니다. </p>
+    <p class="lead">
+      <a href="/main" class="btn btn-lg btn-secondary">Go!</a>
+    </p>
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+      <p>tel: 012-345-789 /
+        email: lee@gmail.com</p>
+
+    </div>
+  </footer>
+  </body>
+</div>

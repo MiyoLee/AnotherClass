@@ -1,0 +1,27 @@
+.catelist{
+    display: inline-block;
+    text-align: center;
+    list-style:none;
+    height: 12rem;
+    margin:0;
+    padding:0;
+}
+.cateitem{
+    text-align: center;
+    margin:0rem;
+    margin-top:2rem;
+    float:left;
+}
+.catebar{
+    text-align: center;
+    height: 15rem;
+    margin:2rem;
+    padding:2rem;
+    text-align: center;
+}
+.cateicon{
+    padding:1.2rem;
+}
+.icon{
+    width:64px;
+}
