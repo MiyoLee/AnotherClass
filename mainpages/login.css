@@ -15,14 +15,13 @@
     height: 480px;
     position: relative;
     margin: 6% auto;
-    padding: 5px;
+    padding: 15px;
     overflow: hidden;
 }
 .button-wrap {
     width: 240px;
     margin: 50px auto;
     position: relative;
-    border-radius: 100px;
 }
 .togglebtn {
     padding: 10px 30px;
@@ -38,8 +37,7 @@
     position: absolute;
     width: 110px;
     height: 100%;
-    background: linear-gradient(to right, #e99cd2, #6bb7e2);
-    border-radius: 30px;
+    background: linear-gradient(to right, #fc91c6, #65cff0);
     transition: .5s;
 }
 
@@ -59,15 +57,14 @@
     background: transparent;
 }
 .submit {
-    width: 75%;
+    width: 100%;
     padding: 10px 20px;
     cursor: pointer;
     display: block;
     margin: auto;
-    background: linear-gradient(to right, #e99cd2, #6bb7e2);
+    background: linear-gradient(to right, #fc91c6, #65cff0);
     border: 0;
     outline: none;
-    border-radius: 30px;
 }
 
 span {
