@@ -26,4 +26,5 @@ urlpatterns = [
     path('apply/', firstApp.views.apply, name='apply'),
     path('createpost/', firstApp.views.createpost, name='createpost'),
     path('createclass/', firstApp.views.createclass, name='createclass'),
+    path('community/', firstApp.views.community, name='community'),
 ]
