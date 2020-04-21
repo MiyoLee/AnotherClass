@@ -22,4 +22,5 @@ def createpost(request):
 def createclass(request):
     return render(request, 'firstApp/createclass.html')
 
-
+def community(request):
+    return render(request, 'firstApp/community.html')
