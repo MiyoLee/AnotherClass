@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Post
 # Create your views here.
 def index(request):
     return render(request, 'firstApp/index.html')
@@ -23,4 +23,5 @@ def createclass(request):
     return render(request, 'firstApp/createclass.html')
 
 def community(request):
-    return render(request, 'firstApp/community.html')
+    post_list = Post.objects.all()
+    return render(request, 'firstApp/community.html', {'post_list': post_list, })

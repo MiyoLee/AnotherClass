@@ -20,73 +20,21 @@
 				<div class="col-sm-9">
 					<div class="blog-post-area">
 							<table class="table">
-							<tr>
-								<th>제목</th>
-								<th>작성일</th>
-								<th>작성자</th>
-								<th>조회수</th>
-							</tr>
-							<tr>
-								<td>어나더 클래스 수강 후기!! (3)</td>
-								<td>2020-04-12</td>
-								<td>홍지영</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>덕분에 많은 도움이 되었어요~ (2)</td>
-								<td>2020-04-01</td>
-								<td>이미요</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>또 이용하고 싶습니다!</td>
-								<td>2020-03-29</td>
-								<td>노희원</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>케이크 클래스 수강 후기!</td>
-								<td>2020-03-20</td>
-								<td>홍지영</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>케이크 클래스 수강 후기!</td>
-								<td>2020-02-23</td>
-								<td>노희원</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>케이크 클래스 수강 후기!</td>
-								<td>2020-02-23</td>
-								<td>이미요</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>케이크 클래스 수강 후기!</td>
-								<td>2020-02-23</td>
-								<td>노희원</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>케이크 클래스 수강 후기!</td>
-								<td>2020-02-23</td>
-								<td>이미요</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>케이크 클래스 수강 후기!</td>
-								<td>2020-02-18</td>
-								<td>이미요</td>
-								<td>25</td>
-							</tr>
-							<tr>
-								<td>케이크 클래스 수강 후기!</td>
-								<td>2020-02-01</td>
-								<td>홍지영</td>
-								<td>25</td>
-							</tr>
-						</table>
+								<tr>
+									<th>제목</th>
+									<th>작성일</th>
+									<th>작성자</th>
+									<th>조회수</th>
+								</tr>
+								{% for post in post_list %}
+								<tr>
+									<td>{{post.title}}</td>
+									<td>{{post.created_date}}</td>
+									<td>{{post.author}}</td>
+									<td>{{post.views}}</td>
+								</tr>
+								{% endfor %}
+							</table>
 						
 						<div align="right">
 							<div id="btn"> 
