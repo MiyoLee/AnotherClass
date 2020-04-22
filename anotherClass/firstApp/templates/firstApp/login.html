@@ -1,0 +1,50 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+
+<body>
+    <div class="wrap">
+        <div class="form-wrap">
+            <div class="button-wrap">
+                <div id="btn"></div>
+                <button type="button" class="togglebtn" onclick="login()">로그인</button>
+                <button type="button" class="togglebtn" onclick="register()">회원가입</button>
+            </div>
+            
+            <form id="login" action="" class="input-group">
+                <input type="text" class="input-field" placeholder="아이디" required>
+                <input type="password" class="input-field" placeholder="비밀번호" required>
+                <button class="submit">로그인</button>
+            </form>
+            <form id="register" action="" class="input-group">
+                <input type="text" class="input-field" placeholder="이름" required>
+                <input type="text" class="input-field" placeholder="아이디" required>
+                <input type="password" class="input-field" placeholder="비밀번호" required>
+                <input type="password" class="input-field" placeholder="비밀번호 확인" required>
+                <button class="submit">회원가입</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        var x = document.getElementById("login");       
+        var y = document.getElementById("register");
+        var z = document.getElementById("btn");
+        
+        
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0";
+        }
+
+        function register(){
+            x.style.left = "-400px";
+            y.style.left = "50px";
+            z.style.left = "120px";
+        }
+      
+    </script>
+</body>
+
+{% endblock content%}
