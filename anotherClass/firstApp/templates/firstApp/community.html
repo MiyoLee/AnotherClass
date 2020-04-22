@@ -29,7 +29,7 @@
 								</tr>
 								{% for post in post_list %}
 								<tr>
-									<td>{{post.title}}</td>
+									<td><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></td>
 									<td>{{post.created_date}}</td>
 									<td>{{post.author}}</td>
 									<td>{{post.views}}</td>
@@ -39,7 +39,9 @@
 						
 						<div align="right">
 							<div id="btn"> 
-							 <button>작성하기</button> 
+								<a class="nounderline" href="/createpost">
+									<input class="btn btn-secondary" type="button" value="글쓰기">
+								</a>
 							</div>
 						</div>
 
