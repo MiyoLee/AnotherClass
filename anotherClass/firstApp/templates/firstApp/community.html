@@ -1,0 +1,138 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+<html>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+							<h4>Community</h4>
+                            <li class="active"><a href="전체글" data-toggle="tab">전체 글</a></li>
+							<li class="active"><a href="카테고리별" data-toggle="tab">카테고리별</a></li>
+							<li class="active"><a href="내가쓴글" data-toggle="tab">내가 쓴 글</a></li>
+							<li class="active"><a href="댓글단글" data-toggle="tab">댓글 단 글</a></li>
+					</div>	
+				</div>
+
+				<div class="col-sm-9">
+					<div class="blog-post-area">
+							<table class="table">
+							<tr>
+								<th>제목</th>
+								<th>작성일</th>
+								<th>작성자</th>
+								<th>조회수</th>
+							</tr>
+							<tr>
+								<td>어나더 클래스 수강 후기!! (3)</td>
+								<td>2020-04-12</td>
+								<td>홍지영</td>
+								<td>25</td>
+							</tr>
+							<tr>
+								<td>덕분에 많은 도움이 되었어요~ (2)</td>
+								<td>2020-04-01</td>
+								<td>이미요</td>
+								<td>25</td>
+							</tr>
+							<tr>
+								<td>또 이용하고 싶습니다!</td>
+								<td>2020-03-29</td>
+								<td>노희원</td>
+								<td>25</td>
+							</tr>
+							<tr>
+								<td>케이크 클래스 수강 후기!</td>
+								<td>2020-03-20</td>
+								<td>홍지영</td>
+								<td>25</td>
+							</tr>
+							<tr>
+								<td>케이크 클래스 수강 후기!</td>
+								<td>2020-02-23</td>
+								<td>노희원</td>
+								<td>25</td>
+							</tr>
+							<tr>
+								<td>케이크 클래스 수강 후기!</td>
+								<td>2020-02-23</td>
+								<td>이미요</td>
+								<td>25</td>
+							</tr>
+							<tr>
+								<td>케이크 클래스 수강 후기!</td>
+								<td>2020-02-23</td>
+								<td>노희원</td>
+								<td>25</td>
+							</tr>
+							<tr>
+								<td>케이크 클래스 수강 후기!</td>
+								<td>2020-02-23</td>
+								<td>이미요</td>
+								<td>25</td>
+							</tr>
+							<tr>
+								<td>케이크 클래스 수강 후기!</td>
+								<td>2020-02-18</td>
+								<td>이미요</td>
+								<td>25</td>
+							</tr>
+							<tr>
+								<td>케이크 클래스 수강 후기!</td>
+								<td>2020-02-01</td>
+								<td>홍지영</td>
+								<td>25</td>
+							</tr>
+						</table>
+						
+						<div align="right">
+							<div id="btn"> 
+							 <button>작성하기</button> 
+							</div>
+						</div>
+
+						<div class="page_wrap">
+							<div class="page_nation">
+							   <a class="arrow pprev" href="#"></a>
+							   <a class="arrow prev" href="#"></a>
+							   <a href="#" class="active">1</a>
+							   <a href="#">2</a>
+							   <a href="#">3</a>
+							   <a href="#">4</a>
+							   <a href="#">5</a>
+							   <a class="arrow next" href="#"></a>
+							   <a class="arrow nnext" href="#"></a>
+							</div>
+						 </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<style>
+		table {
+		  border-top: 1px solid #F685A2;
+		}
+		th, td {
+		  border-bottom: 1px solid #F685A2;
+		}
+		th {
+		  background-color: #F685A2;
+		}
+		#btn button{
+			border: 0; 
+			background-color: #F685A2;
+			color: rgb(0, 0, 0); 
+			padding: 5px;
+		}
+		#btn button:hover{
+			color:white;
+			background-color:#F685A2;
+		}
+	  </style>
+</body>
+</html>
+{% endblock content%}
