@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.contrib import admin
+
 class Category(models.Model):
     name = models.CharField(max_length=20)
     def __str__(self):
@@ -24,6 +25,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(
             blank=True, null=True)
     views = models.PositiveIntegerField(default = 0)
+
     def publish(self):
         self.published_date = timezone.now()
         self.save()

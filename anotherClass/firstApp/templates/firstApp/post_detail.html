@@ -1,0 +1,26 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+<div class="container">
+    <div class="post_info">
+        <h3 class="post_title">{{post.title}}</h3>
+        <p style="margin:0; padding:0.8rem color:gray;; padding-left:0;">{{post.author}}</p>
+        <span class="post_t">{{post.created_date}}</span>
+        <span class="post_v">조회수 {{post.views}}</span>
+    </div>
+    <div class="post_contents">
+        {{post.text}}
+    </div>
+    <div class="text-center">
+        <a class="nounderline" href="{% url 'update' post.pk %}">
+            <input class="btn btn-secondary" type="button" value="수정">
+        </a>
+
+        <a href="{% url 'delete' post.pk %}">
+            <input class="btn btn-secondary" type="button" value="삭제">
+        </a>
+    </div>
+</div>
+{% endblock content%}
