@@ -9,4 +9,5 @@ urlpatterns = [
     path('createpost/', views.createpost, name='createpost'),
     path('createclass/', views.createclass, name='createclass'),
     path('community/', views.community, name='community'),
+    path('login/', views.login, name='login'),
 ]

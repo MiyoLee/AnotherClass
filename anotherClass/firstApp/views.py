@@ -25,3 +25,6 @@ def createclass(request):
 def community(request):
     post_list = Post.objects.all()
     return render(request, 'firstApp/community.html', {'post_list': post_list, })
+
+def login(request):
+    return render(request, 'firstApp/login.html')

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/login.css' %}">
+
 <body>
     <div class="wrap">
         <div class="form-wrap">
@@ -11,7 +11,7 @@
                 <button type="button" class="togglebtn" onclick="login()">로그인</button>
                 <button type="button" class="togglebtn" onclick="register()">회원가입</button>
             </div>
-            
+
             <form id="login" action="" class="input-group">
                 <input type="text" class="input-field" placeholder="아이디" required>
                 <input type="password" class="input-field" placeholder="비밀번호" required>
@@ -27,11 +27,11 @@
         </div>
     </div>
     <script>
-        var x = document.getElementById("login");       
+        var x = document.getElementById("login");
         var y = document.getElementById("register");
         var z = document.getElementById("btn");
-        
-        
+
+
         function login(){
             x.style.left = "50px";
             y.style.left = "450px";
@@ -43,7 +43,7 @@
             y.style.left = "50px";
             z.style.left = "120px";
         }
-      
+
     </script>
 </body>
 

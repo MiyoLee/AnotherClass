@@ -1,0 +1,91 @@
+.createclasscont .blog-post-area li{
+  float:left;
+  list-style:none;
+}
+.createclasscont{
+padding-bottom:50px;
+}
+
+.createclasscont .left-sidebar{
+color:#888;
+}
+
+.steptabs{
+  list-style:none;
+}
+.createclasscont .blog-post-area .state{
+  float:left;
+  margin-left:50px;
+  margin-bottom:20px;
+  width:700px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.createclasscont .left-sidebar div{
+padding-top:20px;
+}
+
+.steptabs ul{
+padding-top:5px;
+padding-bottom:40px;
+}
+
+.stepbutton{
+margin:0px 70px;
+width:100px;height:40px;
+background-color:#F685A2;
+text-align:center;
+color:#fff;
+border-radius : 30px;
+padding-top:8px;
+}
+
+.blog-post-area{
+text-align:center;
+}
+
+.blog-post-area textarea{
+margin-bottom:70px;
+resize:none;
+}
+
+.blog-post-area h2{
+width:290px;
+font-size:23px;
+}
+
+.upperbar{
+margin-bottom:20px;
+height:90px;
+}
+
+.choose{
+float:left;
+clear:left;
+height:50px;
+margin-left:50px;}
+
+.steptabs li.active a, .steptabs li.active a:hover, .steptabs li.active a:focus {
+    border: 0px;
+    color: #333333;
+    cursor: default;
+    block:none;
+    font-weight:bold;
+}
+.steptabs a:hover{
+color:#333333;
+text-decoration:none;
+}
+
+.bottombutton{
+clear:left;
+background-color:#F685A2;
+color:#fff;
+width:240px;height:40px;
+text-align:center;
+position: relative;
+left:34%;
+padding-top:9px;
+border-radius : 3px;
+}
