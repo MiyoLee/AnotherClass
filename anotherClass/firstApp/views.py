@@ -24,3 +24,6 @@ def createclass(request):
 
 def community(request):
     return render(request, 'firstApp/community.html')
+
+def login(request):
+    return render(request, 'firstApp/login.html')
