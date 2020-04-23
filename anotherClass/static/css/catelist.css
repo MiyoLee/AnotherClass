@@ -8,7 +8,7 @@
 }
 .cateitem{
     text-align: center;
-    margin:0rem;
+    margin:1rem;
     margin-top:2rem;
     float:left;
 }
@@ -20,8 +20,8 @@
     text-align: center;
 }
 .cateicon{
-    padding:1.2rem;
+    padding:0.3rem;
 }
 .icon{
-    width:64px;
+    width:50px;
 }
