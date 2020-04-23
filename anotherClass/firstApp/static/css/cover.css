@@ -10,14 +10,6 @@ a:hover {
 }
 
 /* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: rgb(64, 62, 78);
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: rgb(173, 227, 252);
-  border: .05rem solid rgb(173, 227, 252);
-}
 
 
 /*
