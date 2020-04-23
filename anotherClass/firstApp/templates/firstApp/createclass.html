@@ -2,6 +2,19 @@
 {% load static %}
 
 {% block content %}
+<br>
+    <div class="container">
+        <h1>클래스 생성하기</h1>
+        <hr>
+        <br><br>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-dark" value="저장"/>
+        </form>
+    </div>
+
 <link rel="stylesheet" href="{% static 'css/createclass.css' %}">
 	<section>
 		<div class="contents">

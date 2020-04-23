@@ -2,6 +2,7 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.contrib import admin
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
@@ -33,3 +34,8 @@ class Post(models.Model):
         return self.title
 class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'title')
+
+class Class(models.Model):
+    title = models.CharField(max_length=20)
+    tutor = models.CharField(max_length=10)
+    body = RichTextUploadingField()

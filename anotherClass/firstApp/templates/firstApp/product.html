@@ -9,7 +9,7 @@
             <img src="{% static 'image\class_cake.jpg' %}">
         </div>
         <div class="product-info">
-          <h2>나만의 커스텀 케이크를 만들어보자!</h2>
+          <h2>{{ class_detail.title }}</h2>
           <div class="center">
             <div class="perprice">20,000원</div>
             <div class="hour">/1회</div>
@@ -20,7 +20,7 @@
           <ul>
           <li>
             <b>카테고리 :</b>
-             <a>요리/베이킹</a>
+             <a>{{ class_detail.tutor }}</a>
           </li>
           <li>
             <b>지역 :</b>
@@ -52,16 +52,7 @@
     <div class="tab-content">
       <div class="tab-pane active" id="details">
         <div class="more-container">
-          <div class="con-desc">*한번만 배워도 수업 퀄리티가 다릅니다!
-
-K-POP 대세그룹 방탄소년단의 서울 파이널콘 댄서이자
-아이돌 활동을 했던 강사님과
-유명 엔터테이먼트 트레이너 강사에게 배우는 수업의
-퀄리티는 일반 학원 수업과 비교불가입니다.
-
-탄탄한 기본기 수업부터 아이돌 안무 마스터 수업까지
-다양한 형태의 프로그램 진행이 가능하며
-개인/그룹 여러가지로 수업이 가능합니다.</div>
+          <div class="con-desc">{{ class_detail.body | safe }}</div>
         </div>
       </div>
       <div class="tab-pane" id="tutor">

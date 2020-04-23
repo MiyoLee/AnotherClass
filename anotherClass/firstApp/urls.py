@@ -1,10 +1,14 @@
-from django.urls import path
+from django.urls import path, include
 from .import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.conf.urls import include
+
 urlpatterns = [
     path('', views.index, name='index'),
     path('main/', views.blogMain, name='main'),
     path('class/', views.categoryselect, name='class'),
-    path('product/', views.product, name='product'),
+    path('product/<int:class_id>/', views.product, name='product'),
     path('apply/', views.apply, name='apply'),
     path('createpost/', views.createpost, name='createpost'),
     path('createclass/', views.createclass, name='createclass'),
@@ -13,4 +17,8 @@ urlpatterns = [
     path('community/<int:pk>/', views.post_detail, name='post_detail'),
     path('community/<int:pk>/update', views.update_post, name='update_post'),
     path('community/<int:pk>/delete', views.delete_post, name='delete_post'),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

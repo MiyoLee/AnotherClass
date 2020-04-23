@@ -1,25 +1,42 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
+from .models import Class
 from .forms import PostForm
+from .forms import CreateClass
 from django.views import generic
+
 # Create your views here.
 def index(request):
     return render(request, 'firstApp/index.html')
 
 def blogMain(request):
-    return render(request, 'firstApp/blogMain.html')
+    classs = Class.objects.all()
+    return render(request, 'firstApp/blogMain.html', {'classs':classs})
 
 def categoryselect(request):
     return render(request, 'firstApp/categoryselect.html')
 
-def product(request):
-    return render(request, 'firstApp/product.html')
+def product(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+
+    return render(request, 'firstApp/product.html', {'class_detail': class_detail})
 
 def apply(request):
     return render(request, 'firstApp/apply.html')
 
 def createclass(request):
-    return render(request, 'firstApp/createclass.html')
+    if request.method == 'POST':
+        form = CreateClass(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('main')
+        else:
+            return redirect('index')
+    else:
+        form = CreateClass()
+        return render(request, 'firstApp/createclass.html', {'form': form})
+
 
 def community(request):
     post_list = Post.objects.all()
@@ -63,4 +80,7 @@ def delete_post(request,pk):
 
 def login(request):
     return render(request, 'firstApp/login.html')
+
+def createClass(request):
+    return render(request, 'firstApp/createclass.html')
 
