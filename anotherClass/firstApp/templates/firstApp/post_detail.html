@@ -3,7 +3,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
-<div class="container">
+<div class="container bg-light">
     <div class="post_info">
         <h3 class="post_title">{{post.title}}</h3>
         <p style="margin:0; padding:0.8rem color:gray;; padding-left:0;">{{post.author}}</p>
@@ -14,12 +14,16 @@
         {{post.text}}
     </div>
     <div class="text-center">
-        <a class="nounderline" href="{% url 'update' post.pk %}">
+        <a class="nounderline" href="{% url 'update_post' post.pk %}">
             <input class="btn btn-secondary" type="button" value="수정">
         </a>
 
-        <a href="{% url 'delete' post.pk %}">
+        <a href="{% url 'delete_post' post.pk %}">
             <input class="btn btn-secondary" type="button" value="삭제">
+        </a>
+
+        <a class="nounderline" href="/community/">
+            <input class="btn btn-secondary" type="button" value="목록">
         </a>
     </div>
 </div>

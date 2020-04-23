@@ -10,7 +10,7 @@ urlpatterns = [
     path('createclass/', views.createclass, name='createclass'),
     path('community/', views.community, name='community'),
     path('login/', views.login, name='login'),
-    path('community/<int:pk>/',views.post_detail,name='post_detail'),
-    path('community/<int:pk>/update',views.post_detail,name='update'),
-    path('community/<int:pk>/delete',views.post_detail,name='delete'),
+    path('community/<int:pk>/', views.post_detail, name='post_detail'),
+    path('community/<int:pk>/update', views.update_post, name='update_post'),
+    path('community/<int:pk>/delete', views.delete_post, name='delete_post'),
 ]

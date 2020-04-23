@@ -30,7 +30,7 @@
 								{% for post in post_list %}
 								<tr>
 									<td>
-										<a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+										<a class="a_underline" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
 									</td>
 									<td>{{post.created_date}}</td>
 									<td>{{post.author}}</td>
