@@ -11,7 +11,7 @@
         <span class="post_v">조회수 {{post.views}}</span>
     </div>
     <div class="post_contents">
-        {{post.text}}
+        {{post.text | safe}}
     </div>
     <div class="text-center">
         <a class="nounderline" href="{% url 'update_post' post.pk %}">
