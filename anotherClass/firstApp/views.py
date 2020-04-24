@@ -26,7 +26,7 @@ def apply(request):
 
 def createclass(request):
     if request.method == 'POST':
-        form = CreateClass(request.POST)
+        form = CreateClass(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()

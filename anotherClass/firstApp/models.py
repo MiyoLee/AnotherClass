@@ -39,3 +39,5 @@ class Class(models.Model):
     title = models.CharField(max_length=20)
     tutor = models.CharField(max_length=10)
     body = RichTextUploadingField()
+    photo = models.ImageField(blank=True, upload_to="class")
+

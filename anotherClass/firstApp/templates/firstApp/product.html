@@ -6,7 +6,9 @@
 <div class="container">
     <div class="product">
         <div class="product-pic">
-            <img src="{% static 'image\class_cake.jpg' %}">
+            {% if class_detail.photo %}
+            <img src="{{ class_detail.photo.url }}" alt="">
+            {% endif %}
         </div>
         <div class="product-info">
           <h2>{{ class_detail.title }}</h2>
