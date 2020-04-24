@@ -1,27 +1,18 @@
-
 {% extends 'firstApp/base.html'%}
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/createpost.css' %}">
-    <div class="text-center">
-         <h4 style="margin-bottom:6rem;">글쓰기</h4>
-    </div>
+<div class="text-center"><h4 style="margin-bottom:6rem;">글쓰기</h4></div>
     <div class="container bg-light">
-        <div class="boardcont">
-            <form method="POST" class="post-form">
-                {% csrf_token %}
-                <table>
-                    {{ form.as_table }}
-                </table>
-                <input class="btn btn-secondary" type="submit" value="등록">
-            </form>
-        </div>
-        <div class="applybut">
-
-        </div>
-        </div>
-
-
-        </div>
+        <br><br>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <br><br>
+            <div class="text-right">
+            <input class="btn btn-secondary" type="submit" value="등록">
+            </div>
+        </form>
+    </div>
 {% endblock content%}
