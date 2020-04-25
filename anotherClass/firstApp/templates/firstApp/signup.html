@@ -1,0 +1,23 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<div class="container">
+    <h4>회원가입</h4>
+
+    <form method="POST" action="{% url 'signup'%}">
+        {% csrf_token %}
+        <br>
+        <input name="username" type="text" class="input-field" placeholder="아이디" required>
+        <br>
+        <br>
+        <input name="password1" type="password" class="input-field" placeholder="비밀번호" required>
+        <br>
+        <br>
+        <input name="password2" type="password" class="input-field" placeholder="비밀번호 확인" required>
+        <br><br>
+        <input type="submit" button class="submit" value="회원가입">
+    </form>
+</div>
+{% endblock content%}
