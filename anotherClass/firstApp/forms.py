@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post,Comment
 from .models import Class
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
@@ -15,6 +15,17 @@ class PostForm(forms.ModelForm):
                     ),
                     'text': forms.CharField(widget=CKEditorUploadingWidget()),
                 }
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['author', 'text']
+
+        widgets = {
+            'author': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 20%'}),
+            'text': forms.Textarea(attrs={'class': 'form-control', 'style': 'width: 100%; height:10%;'})
+        }
 
 class CreateClass(forms.ModelForm):
     class Meta:

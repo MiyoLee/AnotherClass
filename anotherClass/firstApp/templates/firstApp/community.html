@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/paginate.css' %}">
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
 		<div class="container">
-			<h3>Community</h3>
+			<h3><a href="" class="nounderline">Community</a></h3>
         	<br><br><br>
 			<div class="row">
 				<div class="col-sm-3">
@@ -44,7 +44,7 @@
 									</li>
 								</ul>
 							</li>
-							<br><br>
+							<hr>
 							<li><a class="a_underline lighter" href="#" >내가 쓴 글</a></li>
 							<li><a class="a_underline lighter" href="#">댓글 단 글</a></li>
 						</ul>
@@ -63,7 +63,10 @@
 								{% for post in post_list %}
 								<tr>
 									<td>
-										<a class="a_underline" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+										<a class="a_underline" href="{% url 'post_detail' post.pk %}">
+											{{ post.title }}
+										</a>
+										<span class="views">[{{ post.comments.count }}]</span>
 									</td>
 									<td class="lighter">{{post.created_date}}</td>
 									<td class="lighter">{{post.author}}</td>

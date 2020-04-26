@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
-from .models import Class
-from .forms import PostForm
+from .models import Post, Comment, Class
+from .forms import PostForm, CommentForm
 from .forms import CreateClass
 from django.views import generic
 from django.contrib.auth.models import User
@@ -47,10 +46,19 @@ def community(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    post.views += 1
-    post.save()
-    return render(request, 'firstApp/post_detail.html', {
-        'post': post, })
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = CommentForm()
+        post.views += 1
+        post.save()
+        return render(request, 'firstApp/post_detail.html', {
+            'post': post, 'form':form })
 
 def createpost(request):
 
@@ -79,6 +87,12 @@ def delete_post(request,pk):
     post=get_object_or_404(Post,pk=pk)
     post.delete()
     return redirect('community')
+
+
+def comment_remove(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.delete()
+    return redirect('post_detail', pk=comment.post.pk)
 
 def login(request):
     if request.method == "POST":

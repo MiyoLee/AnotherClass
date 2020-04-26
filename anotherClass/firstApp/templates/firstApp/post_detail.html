@@ -3,6 +3,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
 <div class="container">
     <div class="blog-post-area bg-light">
         <div class="post_info">
@@ -15,8 +16,7 @@
         <div class="post_contents">
             {{post.text | safe}}
         </div>
-    </div>
-    <div class="text-center">
+        <div class="text-right" style="padding:1rem;">
         <a class="nounderline" href="{% url 'update_post' post.pk %}">
             <input class="btn btn-secondary" type="button" value="수정">
         </a>
@@ -28,7 +28,29 @@
         <a class="nounderline" href="/community/">
             <input class="btn btn-secondary" type="button" value="목록">
         </a>
-
     </div>
+    </div>
+    <br><br>
+    <h4 style="color:gray;">Comments</h4>
+    <hr>
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">등록</button>
+    </form>
+    {% for comment in post.comments.all %}
+        <div class="comment">
+            <div class="date lighter">
+                {{ comment.created_date }}
+                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
+            </div>
+            <strong><i class="fas fa-user-circle"></i> {{ comment.author }}</strong>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+
+        <hr>
+    {% empty %}
+        <p></p>
+    {% endfor %}
 </div>
 {% endblock content%}

@@ -19,19 +19,43 @@ class detailArea(models.Model):
         return self.name
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+    category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=200)
     text = RichTextUploadingField()
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
-    views = models.PositiveIntegerField(default = 0)
+    views = models.PositiveIntegerField(default=0)
+
+
+    class Meta:
+        ordering = ['-id']
 
     def publish(self):
         self.published_date = timezone.now()
         self.save()
+
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    post = models.ForeignKey('firstApp.Post', on_delete=models.CASCADE, related_name='comments')
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['id']
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text
+
 class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'title')
 
