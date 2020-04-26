@@ -3,15 +3,18 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
-<div class="container bg-light">
-    <div class="post_info">
-        <h3 class="post_title">{{post.title}}</h3>
-        <p style="margin:0; padding:0.8rem color:gray;; padding-left:0;">{{post.author}}</p>
-        <span class="post_t">{{post.created_date}}</span>
-        <span class="post_v">조회수 {{post.views}}</span>
-    </div>
-    <div class="post_contents">
-        {{post.text | safe}}
+<div class="container">
+    <div class="blog-post-area bg-light">
+        <div class="post_info">
+            <h3 class="post_title">{{post.title}}</h3>
+            <p style="margin:0; padding:0.8rem color:gray;; padding-left:0;"><i class="fas fa-user-circle"></i> {{post.author}}</p>
+            <span class="post_t">{{post.created_date}}</span>
+            <span class="post_v">조회수 {{post.views}}</span>
+        </div>
+        <hr>
+        <div class="post_contents">
+            {{post.text | safe}}
+        </div>
     </div>
     <div class="text-center">
         <a class="nounderline" href="{% url 'update_post' post.pk %}">
@@ -25,6 +28,7 @@
         <a class="nounderline" href="/community/">
             <input class="btn btn-secondary" type="button" value="목록">
         </a>
+
     </div>
 </div>
 {% endblock content%}

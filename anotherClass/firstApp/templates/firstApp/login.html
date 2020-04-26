@@ -14,7 +14,7 @@
 
 <form method="POST" action="{% url 'login'%}">
     {% csrf_token %}
-<div class="container">
+    <div class="container">
     <h4>로그인</h4>
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
         <br>
@@ -35,7 +35,7 @@
             a:link { color: red; text-decoration: none;}
             a:visited { color: black; text-decoration: none;}
         </style>
-    </form>
-</div>
+    </div>
+</form>
 {% endif %}
 {% endblock content%}

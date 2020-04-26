@@ -1,0 +1,11 @@
+ul{
+ list-style:none;
+ padding-left:0
+}
+th{
+color:gray;
+}
+.lighter{
+font-weight:lighter;
+font-size:10pt;
+}

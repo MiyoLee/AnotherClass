@@ -1,7 +1,6 @@
 .post_info{
-    padding:1.5rem;
-    margin:1.5rem;
-    border-bottom:solid 0.1px #418AFC
+    padding:1.2rem;
+    margin:1.2rem;
 }
 .post_title{
     margin:0;
@@ -16,6 +15,7 @@ color:gray; font-weight:lighter; font-size:0.9rem;
 margin-left:1.5rem;
 }
 .post_contents{
-    padding:3rem;
-    margin:1.5rem;
+    padding-top:3rem;
+    padding-bottom:5rem;
+    margin:2rem;
 }
