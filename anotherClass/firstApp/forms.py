@@ -11,7 +11,8 @@ class PostForm(forms.ModelForm):
 
         widgets = {
                     'title': forms.TextInput(
-                        attrs={'class': 'form-control', 'style': 'width: 75%', 'placeholder': '제목을 입력하세요.'}
+                        attrs={'class': 'form-control', 'style': 'width:835px; position:relative; left:8.9%; margin:0;',
+                               'placeholder': '제목을 입력하세요.'}
                     ),
                     'text': forms.CharField(widget=CKEditorUploadingWidget()),
                 }
