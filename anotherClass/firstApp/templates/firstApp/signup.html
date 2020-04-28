@@ -3,7 +3,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
-<div class="container">
+<div class="text-center">
     <h4>회원가입</h4>
 
     <form method="POST" action="{% url 'signup'%}">
@@ -17,7 +17,7 @@
         <br>
         <input name="password2" type="password" class="input-field" placeholder="비밀번호 확인" required>
         <br><br>
-        <input type="submit" button class="submit" value="회원가입">
+        <input type="submit" button class="submit" value="회원가입" style="display:inline-block; margin:0;">
     </form>
 </div>
 {% endblock content%}
