@@ -1,0 +1,6 @@
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.text }}
+    <br>
+    <button type="submit" class="save btn btn-secondary">등록</button>
+</form>

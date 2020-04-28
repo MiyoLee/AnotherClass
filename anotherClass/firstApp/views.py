@@ -5,7 +5,7 @@ from .forms import CreateClass
 from django.views import generic
 from django.contrib.auth.models import User
 from django.contrib import auth
-from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -55,10 +55,14 @@ def createclass(request):
 
 
 def community(request):
-    post_list = Post.objects.all()
-    return render(request, 'firstApp/community.html', {
-        'post_list': post_list, })
+    if request.user is None:
+        redirect('login')
+    else:
+        post_list = Post.objects.all()
+        return render(request, 'firstApp/community.html', {
+            'post_list': post_list, })
 
+@login_required(login_url='/login/')
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -76,6 +80,7 @@ def post_detail(request, pk):
         return render(request, 'firstApp/post_detail.html', {
             'post': post, 'form': form})
 
+@login_required(login_url='/login/')
 def createpost(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
@@ -110,6 +115,17 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
+
+def comment_update(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+        return redirect('post_detail', pk=comment.post.pk)
+    else:
+        form = CommentForm(instance=comment)
+    return render(request, 'firstApp/update_comment.html', {'form': form})
 
 def login(request):
     if request.method == "POST":

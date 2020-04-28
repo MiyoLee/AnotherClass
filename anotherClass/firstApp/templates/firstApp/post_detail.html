@@ -7,16 +7,6 @@
 
 <div class="container">
 
-{% if messages %}
-    <div class="messages">
-        {% for message in messages %}
-        <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %}>
-            {{ message.message }}
-        </div>
-        {% endfor %}
-    </div>
-{% endif %}
-
     <div class="blog-post-area bg-light">
         <div class="post_info">
             <h3 class="post_title">{{post.title}}</h3>
@@ -61,7 +51,7 @@
                 {% if comment.author == request.user %}
                     <div class="text-right">
                     <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
-                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-default" href="{% url 'comment_update' pk=comment.pk %}"><i class="fas fa-edit"></i></a>
                     </div>
                 {% endif %}
             </div>
