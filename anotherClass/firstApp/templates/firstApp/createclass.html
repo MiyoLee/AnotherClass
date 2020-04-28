@@ -49,15 +49,33 @@
 
                             <div class="createcont">
                                 <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
+                                    {% csrf_token %}
+                                    {{ form.media }}
+                                    <p>
+                                        <b>클래스 제목 : </b>
+                                        {{ form.title }}
+                                    </p>
+                                    <p>
+                                        <b>강사 이름 : </b>
+                                        {{ form.tutor }}
+                                    </p>
+                                    <p>
+                                        <b>카테고리 : </b>
+                                        {{ form.category }}
+                                    </p>
+                                    <p>
+                                        <b>지역 : </b>
+                                        {{ form.area }}
+                                    </p>
+                                    <p>
+                                        <b>썸네일 : </b>
+                                        {{ form.photo }}
+                                    </p>
 
-                    {{ form.media }}
-                    {{ form.title }}
-                    <br><br>
-                    {{ form.body }}
 
-                                    <input type="submit" class="bottombutton" value="저장"/>
-                                </form>
+
+
+
                             </div>
 
                         </div>
@@ -78,7 +96,7 @@
                             </div>
 
                         <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
-					    <textarea cols="100" rows="15"></textarea>
+					    {{ form.body }}
                         </div>
 
                         <div class="tab-pane" id="three">
@@ -96,10 +114,12 @@
                         </ul>
                             </div>
                         <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
-					    <textarea cols="100" rows="15"></textarea>
+					   {{form.tutor_body}}
                         </div>
                         </div>
-                        <div class="bottombutton">등록하기</div>
+                         <input class="bottombutton" type="submit"  value="등록하기"/>
+                        </form>
+
 
 
                     </div>

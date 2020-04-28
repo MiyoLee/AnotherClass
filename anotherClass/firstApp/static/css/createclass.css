@@ -22,7 +22,7 @@ color:#888;
   font-weight:bold;
 }
 
-.input{
+input{
 clear:left;
 width:240px;height:40px;
 text-align:center;
@@ -31,6 +31,7 @@ left:34%;
 padding-top:9px;
 border-radius : 3px;
 }
+
 .createclasscont .left-sidebar div{
 padding-top:20px;
 }
