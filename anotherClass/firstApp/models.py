@@ -8,15 +8,18 @@ class Category(models.Model):
     name = models.CharField(max_length=20)
     def __str__(self):
         return self.name
+
 class Area(models.Model):
     name = models.CharField(max_length=20)
     def __str__(self):
         return self.name
+
 class detailArea(models.Model):
     name = models.CharField(max_length=20)
     parentArea = models.ForeignKey(Area, on_delete=models.CASCADE)
     def __str__(self):
         return self.name
+
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=1)
@@ -62,6 +65,12 @@ class PostAdmin(admin.ModelAdmin):
 class Class(models.Model):
     title = models.CharField(max_length=20)
     tutor = models.CharField(max_length=10)
-    body = RichTextUploadingField()
+    category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=1, related_name='category')
+    area = models.ForeignKey('firstApp.Area', on_delete=models.CASCADE, default=1)
     photo = models.ImageField(blank=True, upload_to="class")
+    body = RichTextUploadingField()
+
+
+
+
 

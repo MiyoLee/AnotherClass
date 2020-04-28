@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, Class
+from .models import Post, Comment, Class, Area
 from .forms import PostForm, CommentForm
 from .forms import CreateClass
 from django.views import generic
@@ -15,7 +15,20 @@ def blogMain(request):
     return render(request, 'firstApp/blogMain.html', {'classs':classs})
 
 def categoryselect(request):
-    return render(request, 'firstApp/categoryselect.html')
+    sort = request.GET.get('sort', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
+
+    if sort == 'best':
+        classs = Class.objects.filter(category__name='best')  # 복수를 가져올수 있음
+        return render(request, 'firstApp/categoryselect.html', {'classs':classs})
+
+    elif sort == 'art':
+        classs = Class.objects.filter(category__name='art')  # 복수를 가져올수 있음
+        return render(request, 'firstApp/categoryselect.html', {'classs':classs})
+
+    else:
+        classs = Class.objects.all()
+        return render(request, 'firstApp/categoryselect.html', {'classs':classs})
+
 
 def product(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)

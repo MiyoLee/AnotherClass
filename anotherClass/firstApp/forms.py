@@ -30,12 +30,11 @@ class CommentForm(forms.ModelForm):
 class CreateClass(forms.ModelForm):
     class Meta:
         model = Class
-
-        fields = ['title', 'tutor', 'body', 'photo']
+        fields = ['title', 'tutor', 'category', 'area', 'photo', 'body']
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'width: 75%', 'placeholder': '제목을 입력하세요.'}
             ),
             'tutor': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': '이름을 입력하세요.'},
