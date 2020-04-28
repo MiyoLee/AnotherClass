@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% if user.is_active %}
 <h2>로그인 중입니다. 로그아웃 하세요</h2>
 <a href="/logout">Logout</a>
@@ -14,17 +14,15 @@
 
 <form method="POST" action="{% url 'login'%}">
     {% csrf_token %}
-    <div class="container">
+    <div class="container text-center">
     <h4>로그인</h4>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
         <br>
         <input name="username" type="text" class="input-field" placeholder="아이디" required>
         <br>
         <br>
         <input name="password" type="password" class="input-field" placeholder="비밀번호" required>
         <br><br>
-        <input type="submit" button class="submit" value="로그인">
-        &nbsp;
+        <input type="submit" button class="submit" value="로그인">&nbsp;
         <p class="text-center">
         <a href="/signup" button class="submit nounderline">회원가입</a>
         </p>

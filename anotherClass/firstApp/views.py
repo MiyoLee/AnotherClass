@@ -5,6 +5,8 @@ from .forms import CreateClass
 from django.views import generic
 from django.contrib.auth.models import User
 from django.contrib import auth
+from django.contrib import messages
+
 
 # Create your views here.
 def index(request):
@@ -64,6 +66,7 @@ def post_detail(request, pk):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
+            comment.author = User.objects.get(username=request.user.get_username())
             comment.save()
             return redirect('post_detail', pk=post.pk)
     else:
@@ -71,14 +74,15 @@ def post_detail(request, pk):
         post.views += 1
         post.save()
         return render(request, 'firstApp/post_detail.html', {
-            'post': post, 'form':form })
+            'post': post, 'form': form})
 
 def createpost(request):
-
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = User.objects.get(username = request.user.get_username())
+            post.save()
         return redirect('community')
     else:
         form = PostForm()
@@ -97,7 +101,7 @@ def update_post(request, pk):
     return render(request, 'firstApp/update_post.html', {'form': form})
 
 def delete_post(request,pk):
-    post=get_object_or_404(Post,pk=pk)
+    post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('community')
 
