@@ -26,10 +26,14 @@ class CommentForm(forms.ModelForm):
             'text': forms.Textarea(attrs={'class': 'form-control', 'style': 'width: 100%; height:10%;'})
         }
 
+
+
+
 class CreateClass(forms.ModelForm):
     class Meta:
         model = Class
-        fields = ['title', 'tutor', 'category', 'area', 'photo', 'body', 'tutor_body']
+        fields = ['title', 'tutor', 'category', 'area', 'photo', 'body', 'tutor_body', 'price', 'time',
+                  'level', 'mode', 'review', 'qna']
 
         widgets = {
             'title': forms.TextInput(

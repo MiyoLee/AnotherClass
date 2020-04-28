@@ -62,14 +62,44 @@ class Comment(models.Model):
 class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'title')
 
-class Class(models.Model):
+class Level(models.Model):
+    name = models.CharField(max_length=20)
+    def __str__(self):
+        return self.name
+
+class Mode(models.Model):
+    name = models.CharField(max_length=20)
+    def __str__(self):
+        return self.name
+
+class ClassReview(models.Model):
     title = models.CharField(max_length=20)
+    body = models.TextField()
+    def __str__(self):
+        return self.title
+
+class ClassQna(models.Model):
+    question = models.TextField()
+    answer = models.TextField(null=True, blank=True)
+    def __str__(self):
+        return self.question
+
+class Class(models.Model):
+    title = models.CharField(max_length=40)
     tutor = models.CharField(max_length=10)
     category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=1, related_name='category')
     area = models.ForeignKey('firstApp.Area', on_delete=models.CASCADE, default=1)
     photo = models.ImageField(blank=True, upload_to="class")
     body = RichTextUploadingField(default='')
     tutor_body = RichTextUploadingField(default='')
+    price = models.PositiveIntegerField(null=True)
+    time = models.PositiveIntegerField(null=True)
+    level = models.ForeignKey('firstApp.Level', on_delete=models.CASCADE, default=1, related_name='level')
+    mode = models.ForeignKey('firstApp.Mode', on_delete=models.CASCADE, default=1, related_name='mode')
+    review = models.ForeignKey('firstApp.ClassReview', on_delete=models.CASCADE, null=True, blank=True)
+    qna = models.ForeignKey('firstApp.ClassQna', on_delete=models.CASCADE, null=True, blank=True)
+
+
 
 
 
