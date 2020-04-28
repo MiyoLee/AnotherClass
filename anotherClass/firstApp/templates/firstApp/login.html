@@ -14,7 +14,11 @@
 
 <form method="POST" action="{% url 'login'%}">
     {% csrf_token %}
+<<<<<<< HEAD
     <div class="container text-center">
+=======
+    <div class="text-center">
+>>>>>>> a7ea4a9c4f0e543fe7f0e55049e5602da18352b4
     <h4>로그인</h4>
         <br>
         <input name="username" type="text" class="input-field" placeholder="아이디" required>
@@ -22,9 +26,14 @@
         <br>
         <input name="password" type="password" class="input-field" placeholder="비밀번호" required>
         <br><br>
+<<<<<<< HEAD
         <input type="submit" button class="submit" value="로그인">&nbsp;
+=======
+        <input type="submit" button class="submit" value="로그인" style="display:inline-block; margin:0;">
+        <br>&nbsp;
+>>>>>>> a7ea4a9c4f0e543fe7f0e55049e5602da18352b4
         <p class="text-center">
-        <a href="/signup" button class="submit nounderline">회원가입</a>
+        <a href="/signup" button class="submit nounderline" style="display:inline-block; margin:0;">회원가입</a>
         </p>
     </div>
 </form>
