@@ -68,7 +68,7 @@ class Class(models.Model):
     category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=1, related_name='category')
     area = models.ForeignKey('firstApp.Area', on_delete=models.CASCADE, default=1)
     photo = models.ImageField(blank=True, upload_to="class")
-    body = RichTextUploadingField()
+    body = RichTextUploadingField('내용')
 
 
 

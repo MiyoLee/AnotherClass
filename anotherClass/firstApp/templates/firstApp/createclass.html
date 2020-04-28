@@ -49,9 +49,13 @@
 
                             <div class="createcont">
                                 <form method="POST" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    {{ form.media }}
-                                    {{ form.as_p }}
+            {% csrf_token %}
+
+                    {{ form.media }}
+                    {{ form.title }}
+                    <br><br>
+                    {{ form.body }}
+
                                     <input type="submit" class="bottombutton" value="저장"/>
                                 </form>
                             </div>
