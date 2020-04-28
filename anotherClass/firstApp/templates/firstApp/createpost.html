@@ -10,8 +10,12 @@
         <form method="POST" enctype="multipart/form-data">
             <div class="blog-post-area bg-light">
             {% csrf_token %}
-            {{ form.media }}
-            {{ form.as_p }}
+                <div class="text-center" style="padding:3rem;">
+                    {{ form.media }}
+                    {{ form.title }}
+                    <br><br>
+                    {{ form.text }}
+                </div>
             </div>
             <br><br>
             <div class="text-right">
