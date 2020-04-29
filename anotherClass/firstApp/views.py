@@ -21,16 +21,27 @@ def categoryselect(request):
     sort = request.GET.get('sort', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
 
     if sort == 'best':
-        classs = Class.objects.filter(category__name='best')  # 복수를 가져올수 있음
-        return render(request, 'firstApp/categoryselect.html', {'classs':classs})
+        classs = Class.objects.filter(category__name='베스트')  # 복수를 가져올수 있음
+        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
 
     elif sort == 'art':
-        classs = Class.objects.filter(category__name='art')  # 복수를 가져올수 있음
-        return render(request, 'firstApp/categoryselect.html', {'classs':classs})
+        classs = Class.objects.filter(category__name='미술, 공예')  # 복수를 가져올수 있음
+        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
 
+    elif sort == 'music':
+        classs = Class.objects.filter(category__name='음악, 댄스')  # 복수를 가져올수 있음
+        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
+
+    elif sort == 'career':
+        classs = Class.objects.filter(category__name='커리어')  # 복수를 가져올수 있음
+        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
+
+    elif sort == 'language':
+        classs = Class.objects.filter(category__name='언어')  # 복수를 가져올수 있음
+        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
     else:
         classs = Class.objects.all()
-        return render(request, 'firstApp/categoryselect.html', {'classs':classs})
+        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
 
 
 def product(request, class_id):
