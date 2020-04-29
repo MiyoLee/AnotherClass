@@ -22,14 +22,21 @@ color:#888;
   font-weight:bold;
 }
 
-input{
+.bottombutton{
 clear:left;
 width:240px;height:40px;
 text-align:center;
 position: relative;
-left:34%;
+left:24%;
+margin-top:50px;
 padding-top:9px;
 border-radius : 3px;
+background-color:#F685A2;
+color:#fff;
+}
+
+.createcont p{
+padding-bottom:20px;
 }
 
 .createclasscont .left-sidebar div{
@@ -44,8 +51,8 @@ padding-bottom:40px;
 .stepbutton{
 margin:0px 70px;
 width:100px;height:40px;
-background-color:#F685A2;
 text-align:center;
+background-color:#F685A2;
 color:#fff;
 border-radius : 30px;
 padding-top:8px;

@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
 <br>
 <div class="text-center"><h4>글쓰기</h4></div>
     <br>
@@ -10,7 +11,8 @@
         <form method="POST" enctype="multipart/form-data">
             <div class="blog-post-area bg-light">
             {% csrf_token %}
-                <div class="text-center" style="padding:3rem;">
+                <div class="cate-select">게시판 {{ form.category }}</div>
+                <div class="text-center post-body">
                     {{ form.media }}
                     {{ form.title }}
                     <br><br>

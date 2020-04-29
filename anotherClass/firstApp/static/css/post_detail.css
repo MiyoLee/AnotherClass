@@ -2,17 +2,32 @@
     padding:1.2rem;
     margin:1.2rem;
 }
+.post_category{
+    margin:0;
+    padding-top:1rem;
+    color:#0080FF;
+    font-size:9pt;
+}
 .post_title{
     margin:0;
     padding:1.5rem;
     padding-left:0;
 }
+.post_author{
+    margin:0;
+    padding:0.8rem
+    padding-left:0;
+}
 .post_t{
-color:gray; font-weight:lighter; font-size:0.9rem;
+    color:gray;
+    font-weight:lighter;
+    font-size:0.9rem;
 }
 .post_v{
-color:gray; font-weight:lighter; font-size:0.9rem;
-margin-left:1.5rem;
+    color:gray;
+    font-weight:lighter;
+    font-size:0.9rem;
+    margin-left:1.5rem;
 }
 .post_contents{
     padding-top:3rem;
