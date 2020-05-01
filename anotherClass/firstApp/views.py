@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, Class, Area
+from .models import Post, Comment, Class, Category
 from .forms import PostForm, CommentForm
 from .forms import CreateClass
-from django.views import generic
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.views.generic import ListView
 
 # Create your views here.
 def index(request):
@@ -65,14 +65,52 @@ def createclass(request):
         form = CreateClass()
         return render(request, 'firstApp/createclass.html', {'form': form})
 
-
 def community(request):
     if request.user is None:
         redirect('login')
     else:
+        cate_list = Category.objects.all()
         post_list = Post.objects.all()
+        page = request.GET.get('page', 1)
+        paginator = Paginator(post_list, 10)
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
         return render(request, 'firstApp/community.html', {
-            'post_list': post_list, })
+            'posts': posts, 'cate_list': cate_list })
+
+
+def post_category(request, pk):
+    cate_list = Category.objects.all()
+    post_list = Post.objects.filter(category=pk)
+    page = request.GET.get('page', 1)
+    paginator = Paginator(post_list, 10)
+    try:
+           posts = paginator.page(page)
+    except PageNotAnInteger:
+           posts = paginator.page(1)
+    except EmptyPage:
+           posts = paginator.page(paginator.num_pages)
+    return render(request, 'firstApp/community.html', {
+        'posts': posts, 'cate_list': cate_list})
+
+@login_required(login_url='/login/')
+def myPost(request):
+    cate_list = Category.objects.all()
+    post_list = Post.objects.filter(author=request.user)
+    page = request.GET.get('page', 1)
+    paginator = Paginator(post_list, 10)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+    return render(request, 'firstApp/community.html', {
+       'posts': posts, 'cate_list': cate_list})
 
 @login_required(login_url='/login/')
 def post_detail(request, pk):
@@ -138,6 +176,7 @@ def comment_update(request, pk):
     else:
         form = CommentForm(instance=comment)
     return render(request, 'firstApp/update_comment.html', {'form': form})
+
 
 def login(request):
     if request.method == "POST":
