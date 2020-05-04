@@ -18,6 +18,14 @@ width:32px;
 height:32px;
 margin:0px 10px;
 }
+.review-button{
+position:relative;
+left:92%;
+width:90px;
+height:40px
+}
+#reviews form{
+padding-bottom:50px;}
 .product-question{
 color:#ff005a;
 padding-left:10px;

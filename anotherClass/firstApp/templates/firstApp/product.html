@@ -80,6 +80,12 @@
       </div>
      <div class="tab-pane" id="reviews" >
 		<div class="more-container">
+            <form method="POST" class="post-form">
+                {% csrf_token %}
+                {{ form.question }}
+            <br>
+            <button type="submit" class="review-button">등록</button>
+            </form>
              {% for qna in class_detail.qna_class.all %}
         <div class="comment">
             <div class="product-review-date">

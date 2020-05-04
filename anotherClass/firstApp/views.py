@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, Class, Category
-from .forms import PostForm, CommentForm
+from .models import Post, Comment, Class, Category, ClassQna
+from .forms import PostForm, CommentForm, QuestionForm
 from .forms import CreateClass
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.generic import ListView
+
 
 # Create your views here.
 def index(request):
@@ -44,10 +46,7 @@ def categoryselect(request):
         return render(request, 'firstApp/categoryselect.html', {'classs': classs})
 
 
-def product(request, class_id):
-    class_detail = get_object_or_404(Class, pk=class_id)
 
-    return render(request, 'firstApp/product.html', {'class_detail': class_detail})
 
 def apply(request):
     return render(request, 'firstApp/apply.html')
@@ -64,6 +63,9 @@ def createclass(request):
     else:
         form = CreateClass()
         return render(request, 'firstApp/createclass.html', {'form': form})
+
+
+
 
 def community(request):
     if request.user is None:
@@ -129,6 +131,23 @@ def post_detail(request, pk):
         post.save()
         return render(request, 'firstApp/post_detail.html', {
             'post': post, 'form': form})
+
+
+def product(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.inClass = class_detail
+            question.save()
+            return HttpResponseRedirect("/product/{}".format(class_id))
+    else:
+        form = QuestionForm()
+        class_detail.save()
+        return render(request, 'firstApp/product.html', {
+            'class_detail': class_detail, 'form': form})
+
 
 @login_required(login_url='/login/')
 def createpost(request):

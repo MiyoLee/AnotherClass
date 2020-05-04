@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post,Comment
+from .models import Post,Comment, ClassQna
 from .models import Class
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
@@ -24,6 +24,16 @@ class CommentForm(forms.ModelForm):
         fields = ['text']
         widgets = {
             'text': forms.Textarea(attrs={'class': 'form-control', 'style': 'width: 100%; height:10%;'})
+        }
+
+
+class QuestionForm(forms.ModelForm):
+
+    class Meta:
+        model = ClassQna
+        fields = ['question']
+        widgets = {
+            'question': forms.Textarea(attrs={'class': 'form-control', 'style': 'width: 100%; height:10%; resize:none;'})
         }
 
 
