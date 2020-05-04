@@ -15,6 +15,9 @@ from django.contrib.auth.hashers import check_password
 def index(request):
     return render(request, 'firstApp/index.html')
 
+def mypage(request):
+    return render(request, 'firstApp/mypage.html')
+
 def blogMain(request):
     classs = Class.objects.all()
     return render(request, 'firstApp/blogMain.html', {'classs':classs})
