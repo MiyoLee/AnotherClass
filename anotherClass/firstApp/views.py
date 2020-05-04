@@ -214,6 +214,7 @@ def login(request):
         return render(request, 'firstApp/login.html')
 
 def signup(request):
+    context= {}
     if request.method == "POST":
         if request.POST["password1"] == request.POST["password2"]:
             user = User.objects.create_user(
@@ -221,8 +222,8 @@ def signup(request):
             auth.login(request, user)
             return redirect('/main')
         else:
-            return HttpResponse("비밀번호가 다릅니다.")
-    return render(request, 'firstApp/signup.html')
+            context.update({'error':"비밀번호가 일치하지 않습니다."})
+    return render(request, 'firstApp/signup.html',context)
 
 def logout(request):
     auth.logout(request)

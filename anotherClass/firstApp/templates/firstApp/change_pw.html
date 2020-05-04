@@ -6,10 +6,10 @@
 {% if user.is_active %}
 
 <div class="text-center">
-	<div class="login_container">
-				<div class="error_message">
+		<div class="error_message">
 			{{error}}
 		</div>
+		
 		<h4>비밀번호 변경</h4>
 		<form method="POST" action="{% url 'change_pw' %}" class="login_form">
 			{% csrf_token %}
@@ -26,7 +26,9 @@
 		</form>
 </div>
 {% else %}
+<div class="text-center">
 <h2>로그아웃 상태입니다. 로그인하세요.</h2>
 <a href="/login">Login</a>
+</div>
 {% endif %}
 {% endblock content%}
