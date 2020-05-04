@@ -7,12 +7,14 @@
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
 		<div class="container">
 			<h3><a href="" class="nounderline">My page</a></h3>
-        	<br><br>
+        	<br>
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
 						<ul>
 							<li data-toggle="tab">
+									<a class="nav-link">{{user.username}}님</a>
+									<br>
 									<li class="nav-item">
 									  <a class="nav-link" href="#">나의 수강클래스</a>
 									</li>
