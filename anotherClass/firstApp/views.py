@@ -201,6 +201,7 @@ def comment_update(request, pk):
 
 
 def login(request):
+    context= {}
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -209,7 +210,8 @@ def login(request):
             auth.login(request, user)
             return redirect('/main')
         else:
-            return render(request, 'firstApp/login.html', {'errer': 'username or password is incorrect'})
+            context.update({'error':"아이디나 비밀번호를 확인하세요."})
+            return render(request, 'firstApp/login.html', context)
     else:
         return render(request, 'firstApp/login.html')
 
