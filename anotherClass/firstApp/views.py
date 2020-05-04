@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.generic import ListView
-
+from django.contrib.auth.hashers import check_password
 
 # Create your views here.
 def index(request):
@@ -225,4 +225,22 @@ def logout(request):
     auth.logout(request)
     return redirect('/main')
 
+def change_pw(request):
+    context= {}
+    if request.method == "POST":
+        current_password = request.POST.get("origin_password")
+        user = request.user
+        if check_password(current_password,user.password):
+            new_password = request.POST.get("password1")
+            password_confirm = request.POST.get("password2")
+            if new_password == password_confirm:
+                user.set_password(new_password)
+                user.save()
+                auth.login(request,user)
+                return redirect('/main')
+            else:
+                context.update({'error':"새 비밀번호를 다시 확인해주세요."})
+        else:
+            context.update({'error':"현재 비밀번호가 일치하지 않습니다."})
 
+    return render(request, "firstApp/change_pw.html",context)
