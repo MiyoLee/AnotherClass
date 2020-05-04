@@ -33,7 +33,7 @@ class CreateClass(forms.ModelForm):
     class Meta:
         model = Class
         fields = ['title', 'tutor', 'category', 'area', 'photo', 'body', 'tutor_body', 'price', 'time',
-                  'level', 'mode', 'review', 'qna']
+                  'level', 'mode']
 
         widgets = {
             'title': forms.TextInput(

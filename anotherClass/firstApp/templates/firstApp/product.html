@@ -63,10 +63,39 @@
         </div>
       </div>
       <div class="tab-pane" id="tag">
-        <div class="more-container">리뷰</div>
+        <div class="more-container">
+              {% for review in class_detail.review_class.all %}
+        <div class="comment">
+            <div class="product-review-date">
+                {{ review.created_date }}
+            </div>
+            <strong><img class="product-review-img" src="{% static 'image\review.png' %}"><span class="product-review-title">{{ review.title }}</span></strong>
+            <p>{{ review.body|linebreaks }}</p>
+        </div>
+        <div class="product-review-hr"><hr></div>
+    {% empty %}
+        <p></p>
+    {% endfor %}
+        </div>
       </div>
      <div class="tab-pane" id="reviews" >
-		<div class="more-container">큐앤에이</div>
+		<div class="more-container">
+             {% for qna in class_detail.qna_class.all %}
+        <div class="comment">
+            <div class="product-review-date">
+                {{ qna.created_date }}
+            </div>
+            <strong><img class="product-q-img" src="{% static 'image\q.png' %}"><span class="product-question">{{ qna.question }}</span></strong>
+            <div class="product-answer"><img class="product-q-img" src="{% static 'image\a.png' %}">
+                <span>{{ qna.answer }}</span></div>
+
+        </div>
+
+        <div class="product-review-hr"><hr></div>
+    {% empty %}
+        <p></p>
+    {% endfor %}
+        </div>
     </div>
   </div>
 </div>

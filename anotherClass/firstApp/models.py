@@ -72,18 +72,6 @@ class Mode(models.Model):
     def __str__(self):
         return self.name
 
-class ClassReview(models.Model):
-    title = models.CharField(max_length=20)
-    body = models.TextField()
-    def __str__(self):
-        return self.title
-
-class ClassQna(models.Model):
-    question = models.TextField()
-    answer = models.TextField(null=True, blank=True)
-    def __str__(self):
-        return self.question
-
 class Class(models.Model):
     title = models.CharField(max_length=40)
     tutor = models.CharField(max_length=10)
@@ -96,8 +84,23 @@ class Class(models.Model):
     time = models.PositiveIntegerField(null=True)
     level = models.ForeignKey('firstApp.Level', on_delete=models.CASCADE, default=1, related_name='level')
     mode = models.ForeignKey('firstApp.Mode', on_delete=models.CASCADE, default=1, related_name='mode')
-    review = models.ForeignKey('firstApp.ClassReview', on_delete=models.CASCADE, null=True, blank=True)
-    qna = models.ForeignKey('firstApp.ClassQna', on_delete=models.CASCADE, null=True, blank=True)
+
+class ClassReview(models.Model):
+    title = models.CharField(max_length=20)
+    body = models.TextField()
+    inClass = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, default=1, related_name='review_class')
+    created_date = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return self.title
+
+class ClassQna(models.Model):
+    question = models.TextField()
+    answer = models.TextField(null=True, blank=True)
+    inClass = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, default=1, related_name='qna_class')
+    created_date = models.DateTimeField(default=timezone.now)
+    answer_date = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return self.question
 
 class User(models.Model):
     username = models.CharField(max_length=64, verbose_name='사용자명')

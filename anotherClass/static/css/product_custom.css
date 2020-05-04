@@ -1,3 +1,13 @@
+.product-review-title{
+color:#ff005a;
+font-size:20px;
+}
+.product-review-date{
+float:right;
+}
+.product-review-hr hr{
+margin:50px 0px;
+}
 .contents{
 width:1100px;
 position:relative;

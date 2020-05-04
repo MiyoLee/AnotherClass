@@ -206,6 +206,4 @@ def logout(request):
     auth.logout(request)
     return redirect('/main')
 
-def createClass(request):
-    return render(request, 'firstApp/createclass.html')
 
