@@ -1,5 +1,5 @@
 .product-review-title{
-color:#ff005a;
+color:#4ECAC6;
 font-size:20px;
 }
 .product-review-date{
@@ -27,7 +27,7 @@ height:40px
 #reviews form{
 padding-bottom:50px;}
 .product-question{
-color:#ff005a;
+color:#4ECAC6;
 padding-left:10px;
 }
 
@@ -55,7 +55,7 @@ width:600px;height:450px;
 
 .product-info{
 width:1000px;height:400px;
- padding-top: 40px;
+ padding-top: 20px;
  position: relative;
  left: 5%;
 }
@@ -73,7 +73,7 @@ left:-3%;
 }
 
 .perprice{
-color: rgb(255, 0, 90);
+color: rgb(58, 192, 189);
 font-size: 25px;
 font-weight:bold;
 float:left;
@@ -87,10 +87,11 @@ position:relative;
 }
 
 .onetime{
-font-size:13px;
-color: rgb(255, 0, 90);
+font-size:15px;
+color: #4ECAC6;
 position: relative;
-left:-14%;
+text-align:center;
+left:-19%;
 font-weight:bold;
 }
 
@@ -101,7 +102,7 @@ padding-left:5px;
 }
 
 .product-info ul{
-font-size:13px;
+font-size:15px;
 list-style:none;
 }
 .product-info li{
@@ -109,11 +110,13 @@ padding-top:8px;
 }
 
 .button{
+font-weight:bold;
+font-size:19px;
 float:left;
-background-color:rgb(255, 0, 90);
+background-color:rgb(58, 192, 189);
 color:#fff;
-width:240px;height:40px;
-padding-top:8px;
+width:240px;height:60px;
+padding-top:16px;
   margin-right:20px;
   margin-bottom:15px;
   text-align:center;
@@ -133,7 +136,7 @@ overflow:auto;
 
 .category-tab ul {
     background: #fff;
-    border-bottom: 1px solid #F685A2;
+    border-bottom: 1px solid #4ECAC6;
     list-style: none outside none;
     position: relative;
     left:-1.4%;
@@ -167,7 +170,7 @@ overflow:auto;
 .category-tab ul li a {
     border: 0 none;
     border-radius: 0;
-    color: #B3AFA8;
+    color: #B6B3E5;
     display: block;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -203,10 +206,10 @@ a:focus {
 }
 
 .nav-tabs a:hover{
-    background-color: #FBC0CF;
+    background-color: rgb(170,230,228);
 }
 .nav-tabs a:active{
-    background-color: #F685A2;
+    background-color: #B6B3E5;
 }
 
 .button:hover{
@@ -215,7 +218,7 @@ text-decoration:none;
 }
 
 .nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus {
-    background-color: #F685A2;
+    background-color: #4ECAC6;
     border: 0px;
     color: #FFFFFF;
     cursor: default;
@@ -231,7 +234,7 @@ text-decoration:none;
     color: rgb(99,99,99);
     display: block;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     text-transform: uppercase;
 }
 
@@ -245,7 +248,7 @@ text-decoration:none;
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 11px 109px;
+    padding: 11px 102px;
  color: #428bca;
     text-decoration: none;
  background: transparent;
