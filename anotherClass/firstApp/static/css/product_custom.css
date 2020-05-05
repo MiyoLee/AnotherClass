@@ -55,7 +55,7 @@ width:600px;height:450px;
 
 .product-info{
 width:1000px;height:400px;
- padding-top: 40px;
+ padding-top: 20px;
  position: relative;
  left: 5%;
 }
@@ -87,10 +87,11 @@ position:relative;
 }
 
 .onetime{
-font-size:13px;
+font-size:15px;
 color: #4ECAC6;
 position: relative;
-left:-14%;
+text-align:center;
+left:-19%;
 font-weight:bold;
 }
 
@@ -101,7 +102,7 @@ padding-left:5px;
 }
 
 .product-info ul{
-font-size:13px;
+font-size:15px;
 list-style:none;
 }
 .product-info li{
@@ -109,11 +110,13 @@ padding-top:8px;
 }
 
 .button{
+font-weight:bold;
+font-size:19px;
 float:left;
 background-color:rgb(58, 192, 189);
 color:#fff;
-width:240px;height:40px;
-padding-top:8px;
+width:240px;height:60px;
+padding-top:16px;
   margin-right:20px;
   margin-bottom:15px;
   text-align:center;
@@ -231,7 +234,7 @@ text-decoration:none;
     color: rgb(99,99,99);
     display: block;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     text-transform: uppercase;
 }
 
@@ -245,7 +248,7 @@ text-decoration:none;
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 11px 109px;
+    padding: 11px 102px;
  color: #428bca;
     text-decoration: none;
  background: transparent;

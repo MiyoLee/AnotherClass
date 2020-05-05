@@ -95,7 +95,7 @@ class ClassReview(models.Model):
 
 class ClassQna(models.Model):
     question = models.TextField()
-    answer = models.TextField(null=True, blank=True)
+    answer = models.TextField(null=True, blank=True, default='등록된 답변이 없습니다.')
     inClass = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, default=1, related_name='qna_class')
     created_date = models.DateTimeField(default=timezone.now)
     answer_date = models.DateTimeField(default=timezone.now)
