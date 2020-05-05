@@ -21,10 +21,6 @@
 
           <ul>
           <li>
-            <b>카테고리 :</b>
-             <a>{{ class_detail.category }}</a>
-          </li>
-          <li>
             <b>지역 :</b>
              <a>{{ class_detail.area }}</a>
           </li>
@@ -36,6 +32,16 @@
             <b>수업방식 :</b>
              <a>{{ class_detail.mode }}</a>
           </li>
+              <li>
+                   <div>
+                   {% if class_detail.in_min != 1 %}
+                   {% if class_detail.in_max != 1 %}
+                   <b>최대 인원:</b>
+                   {{class_detail.in_min}}명 ~ {{class_detail.in_max}}명
+                   {% endif %}
+                   {% endif %}
+               </div>
+              </li>
           </ul>
           <a href="/apply" class="button">
             클래스 신청하기
@@ -59,7 +65,40 @@
       </div>
       <div class="tab-pane" id="tutor">
         <div class="more-container">
-          <div class="con-desc">{{ class_detail.tutor_body | safe }}</div>
+          <div class="con-desc">
+              <div class="tutor_top">
+                  {% if class_detail.tutor_photo %}
+                <img class="tutor_photo" src="{{ class_detail.tutor_photo.url }}" alt="">
+                {% endif %}
+                  <div class="tutor_name">{{class_detail.tutor}}</div>
+              <div class="tutor_detail">
+                    {% for certificate in class_detail.certi_class.all %}
+                      <div><img class="product-q-img" src="{% static 'image\certificate.png' %}">{{ certificate.name}}</div>
+                {% empty %}
+                <p></p>
+                {% endfor %}
+                {% for education in class_detail.edu_class.all %}
+                      <div><img class="product-q-img" src="{% static 'image\graduated.png' %}"> {{ education.university}}
+                      {{ education.department}}
+                      {{ education.state}} </div>
+                {% empty %}
+                <p></p>
+                {% endfor %}
+                  {% if class_detail.tutor_insta %}
+              <div><img class="product-q-img" src="{% static 'image\insta.png' %}">{{class_detail.tutor_insta}}</div>
+                   {% endif %}
+                  {% if class_detail.tutor_blog %}
+              <div><img class="product-q-img" src="{% static 'image\blog.png' %}">{{class_detail.tutor_blog}}</div>
+                   {% endif %}
+                  {% if class_detail.tutor_youtube %}
+                    <div><img class="product-q-img" src="{% static 'image\youtube.png' %}">{{class_detail.tutor_youtube}}</div>
+                   {% endif %}
+              </div>
+              </div>
+
+
+              <div class="tutor_body">{{ class_detail.tutor_body | safe }}</div>
+          </div>
         </div>
       </div>
       <div class="tab-pane" id="tag">

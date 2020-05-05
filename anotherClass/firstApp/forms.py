@@ -44,8 +44,8 @@ class QuestionForm(forms.ModelForm):
 class CreateClass(forms.ModelForm):
     class Meta:
         model = Class
-        fields = ['title', 'tutor', 'category', 'area', 'photo', 'body', 'tutor_body', 'price', 'time',
-                  'level', 'mode']
+        fields = ['title', 'tutor', 'tutor_photo', 'tutor_insta', 'tutor_blog', 'tutor_youtube', 'category', 'area',
+                  'photo', 'body', 'tutor_body', 'price', 'time', 'in_min', 'in_max', 'level', 'mode']
 
         widgets = {
             'title': forms.TextInput(
@@ -56,6 +56,7 @@ class CreateClass(forms.ModelForm):
             ),
             'body': forms.CharField(widget=CKEditorUploadingWidget()),
             'tutor_body': forms.CharField(widget=CKEditorUploadingWidget()),
+
         }
 
 class SignupForm(ModelForm):

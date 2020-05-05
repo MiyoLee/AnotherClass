@@ -108,6 +108,42 @@ list-style:none;
 .product-info li{
 padding-top:8px;
 }
+.tutor_photo{
+
+width:200px;
+border-radius : 100px;
+}
+.tutor_body{
+padding-top:50px;
+}
+.certification{
+}
+.tutor_detail{
+line-height:3em;
+margin-left:150px;
+padding-top:20px;
+padding-bottom:20px;
+background-color:rgb(242, 242, 251);
+border-radius : 15px;
+position: relative;
+top:-200px;
+left:100px;
+width:800px;
+padding-left:10px;
+min-height:200px;
+}
+.tutor_name{
+font-size:18px;
+color: #4ECAC6;
+    font-weight:bold;
+    padding-top:20px;
+    width:200px;
+  text-align:center;
+}
+.tutor_body{
+position: relative;
+top:-200px;
+}
 
 .button{
 font-weight:bold;

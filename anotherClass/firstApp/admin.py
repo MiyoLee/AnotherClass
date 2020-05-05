@@ -16,6 +16,10 @@ from .models import Level
 from .models import Mode
 from .models import ClassReview
 from .models import ClassQna
+from .models import State
+from .models import Education
+from .models import Certificate
+from .models import ClassDate
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment)
@@ -27,3 +31,8 @@ admin.site.register(Level)
 admin.site.register(Mode)
 admin.site.register(ClassReview)
 admin.site.register(ClassQna)
+admin.site.register(State)
+admin.site.register(Education)
+admin.site.register(Certificate)
+admin.site.register(ClassDate)
+
