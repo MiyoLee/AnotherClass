@@ -6,10 +6,11 @@
 <link rel="stylesheet" href="{% static 'css/paginate.css' %}">
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
 		<div class="container">
-			<h3><a href="{% url 'community' %}" class="nounderline">Community</a></h3>
-        	<br><br><br>
+
+
 			<div class="row">
 				<div class="col-sm-3">
+					<br><br><br>
 					<div class="left-sidebar">
 						<ul>
                             <li><i class="fas fa-clipboard"></i>
@@ -33,6 +34,8 @@
 				</div>
 
 				<div class="col-sm-9">
+					<h4><a href="{% url 'community' %}" class="nounderline">{{cate_name}}</a></h4>
+					<br><br><br>
 					<div class="blog-post-area">
 							<table class="table">
 								<tr>
