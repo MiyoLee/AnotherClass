@@ -1,50 +1,28 @@
-﻿.page_wrap {
-	text-align:center;
- }
-.page_nation {
-	display:inline-block;
-}
-.page_nation .none {
-	display:none;
-}
-.page_nation a {
-	display:block;
-	margin:0 5px;
-	float:left;
-	border:0;
-	width:35px;
-	height:35px;
-	line-height:35px;
-	text-align:center;
-	background-color:#fff;
-	font-size:13px;
-	color:#000000;
-	text-decoration:none;
+﻿.pagination > li > a
+{
+    background-color: white;
+    color: #918FB7;
 }
 
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: white;
+    background-color: #E1E0F4;
+    border-color: #E1E0F4;
+}
 
-.page_nation .pprev {
-	background:#f8f8f8 url("./image/page_pprev.png") no-repeat center center;
-	margin-left:0;
-	border: 0;
+.pagination > .active > a
+{
+    color: white;
+    background-color: #918FB7 !important;
+    border: solid 1px #918FB7 !important
 }
-.page_nation .prev {
-	background:#f8f8f8 url("{% static 'image/page_prev.png' %}") no-repeat center center;
-	margin-right:7px;
-	border: 0;
-}
-.page_nation .next {
-	background:#f8f8f8 url("{% static 'image/page_next.png' %}") no-repeat center center;
-	margin-left:7px;
-	border: 0;
-}
-.page_nation .nnext {
-	background:#f8f8f8 url("{% static 'image/page_nnext.png' %}") no-repeat center center;
-	margin-right:0;
-	border: 0;
-}
-.page_nation a.active {
-	background-color:powderBlue;
-	color:#fff;
-	border: 0;
+
+.pagination > .active > a:hover
+{
+    background-color: #918FB7;
+    border: solid 1px #918FB7;
 }

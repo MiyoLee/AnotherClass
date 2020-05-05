@@ -9,6 +9,31 @@ color:#333333;
 text-decoration:none;
 }
 /*buttons*/
+.btn-primary,  .btn-primary:active, .btn-primary:visited {
+    background-color: #b6b3e5 !important;
+    border:none !important;
+    color:white !important;
+
+}
+.btn-primary:hover{
+    background-color: #9895c7 !important;
+    border:none !important;
+    color:white !important;
+
+}
+
+.btn-secondary,  .btn-secondary:active, .btn-secondary:visited {
+    background-color: white !important;
+    border:none !important;
+    color:#918FB7 !important;
+
+}
+.btn-secondary:hover{
+    background-color: none !important;
+    border:none !important;
+    color:#6d6b89  !important;
+}
+
 .btn-circle.btn-xl {
     width: 105px;
     height: 105px;

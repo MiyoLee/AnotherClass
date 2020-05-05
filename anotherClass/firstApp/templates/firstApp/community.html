@@ -20,7 +20,7 @@
 							<ul class="nav flex-column">
 								{% for category in cate_list %}
 								<li>
-									<a class="nav-link" href="{% url 'post_category' category.pk %}">
+									<a class="nav-link community-nav-link" href="{% url 'post_category' category.pk %}">
 										{{category.name}}
 									</a>
 								</li>
@@ -49,7 +49,7 @@
 										</a>
 										<span class="lighter" style="color:gray;">[{{ post.comments.count }}]</span>
 									</td>
-									<td class="lighter">{{post.created_date}}</td>
+									<td class="lighter">{{post.created_date|date:"y-m-d h:m"}}</td>
 									<td class="lighter">{{post.author}}</td>
 									<td class="lighter">{{post.views}}</td>
 								</tr>
@@ -59,7 +59,7 @@
 						<div align="right">
 							<div id="btn"> 
 								<a href="/createpost">
-									<input class="btn btn-secondary" type="button" value="글쓰기">
+									<input class="btn btn-primary" type="button" value="글쓰기">
 								</a>
 							</div>
 						</div>

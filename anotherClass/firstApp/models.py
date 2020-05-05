@@ -23,10 +23,9 @@ class detailArea(models.Model):
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=2)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=60)
     text = RichTextUploadingField()
-    created_date = models.DateTimeField(
-            default=timezone.now)
+    created_date = models.DateTimeField(default=timezone.localtime())
     published_date = models.DateTimeField(
             blank=True, null=True)
     views = models.PositiveIntegerField(default=0)
@@ -45,8 +44,8 @@ class Post(models.Model):
 class Comment(models.Model):
     post = models.ForeignKey('firstApp.Post', on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
-    text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
+    text = models.TextField(max_length=300)
+    created_date = models.DateTimeField(default=timezone.localtime())
     approved_comment = models.BooleanField(default=False)
 
     class Meta:
