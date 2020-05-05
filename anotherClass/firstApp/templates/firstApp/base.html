@@ -17,7 +17,7 @@
 <div class="inner">
   <nav class="nav nav-masthead justify-content-end">
     {% if user.is_active %}
-    <a class="nav-link">{{user.username}}님 안녕하세요</a>
+    <a class="nav-link"><strong>{{user.username}}님 안녕하세요</strong></a>
     <a class="nav-link active" href="/">Home</a>
     <a class="nav-link" href="/logout">Logout</a>
     <a class="nav-link" href="#">Notice</a>
