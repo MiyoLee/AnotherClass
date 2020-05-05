@@ -21,6 +21,8 @@ from .models import Education
 from .models import Certificate
 from .models import ClassDate
 
+
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment)
 admin.site.register(Category)
@@ -35,4 +37,5 @@ admin.site.register(State)
 admin.site.register(Education)
 admin.site.register(Certificate)
 admin.site.register(ClassDate)
+
 

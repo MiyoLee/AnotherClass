@@ -89,6 +89,8 @@ class Class(models.Model):
     mode = models.ForeignKey('firstApp.Mode', on_delete=models.CASCADE, default=1, related_name='mode')
     in_min = models.PositiveIntegerField(null=True, blank=True, default='1')
     in_max = models.PositiveIntegerField(null=True, blank=True, default='1')
+    def __str__(self):
+        return self.title
 
 class ClassReview(models.Model):
     title = models.CharField(max_length=20)
