@@ -2,6 +2,8 @@ from django import forms
 from .models import Post,Comment, ClassQna
 from .models import Class
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django.forms import ModelForm
+from django.contrib.auth.models import User
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -55,3 +57,13 @@ class CreateClass(forms.ModelForm):
             'body': forms.CharField(widget=CKEditorUploadingWidget()),
             'tutor_body': forms.CharField(widget=CKEditorUploadingWidget()),
         }
+
+class SignupForm(ModelForm):
+    password_check = forms.CharField(max_length=200, widget=forms.PasswordInput())
+
+    field_order=['username','password','password_check','last_name','first_name','email']
+
+    class Meta:
+        model=User
+        widgets = {'password':forms.PasswordInput}
+        fields = ['username','password','last_name','first_name','email']

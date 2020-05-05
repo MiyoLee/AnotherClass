@@ -3,31 +3,30 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
 {% if user.is_active %}
 <div class="text-center">
 <h2>로그인 중입니다. 로그아웃 하세요</h2>
 <a href="/logout">Logout</a>
 </div>
-{% else %}
-<div class="text-center">
-    <div class="error_message">
-        {{error}}
-    </div>
-    <h4>회원가입</h4>
 
-    <form method="POST" action="{% url 'signup'%}">
-        {% csrf_token %}
-        <br>
-        <input name="username" type="text" class="input-field" placeholder="아이디" required>
-        <br>
-        <br>
-        <input name="password1" type="password" class="input-field" placeholder="비밀번호" required>
-        <br>
-        <br>
-        <input name="password2" type="password" class="input-field" placeholder="비밀번호 확인" required>
-        <br><br>
-        <input type="submit" button class="submit" value="회원가입" style="display:inline-block; margin:0;">
-    </form>
-</div>
+{% else %}
+{% if error %}
+<h3 style="color:red">{{error}}</h3>
+
+{% endif %}
+
+<form action="" method="POST">
+{% csrf_token %}
+<h4>회원가입</h4>
+<br>
+<table>
+{{ f.as_table }}
+</table>
+
+<br>
+<input type="submit" button class="submit" value="회원가입" style="display:inline-block; margin:0;">
+</form>
+
 {% endif %}
 {% endblock content%}

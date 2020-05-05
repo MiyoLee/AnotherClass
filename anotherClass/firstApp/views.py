@@ -1,15 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment, Class, Category, ClassQna
-from .forms import PostForm, CommentForm, QuestionForm
+from .forms import PostForm, CommentForm, QuestionForm, SignupForm
 from .forms import CreateClass
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.http.response import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.generic import ListView
 from django.contrib.auth.hashers import check_password
+from django.urls.base import reverse
 
 # Create your views here.
 def index(request):
@@ -216,16 +217,23 @@ def login(request):
         return render(request, 'firstApp/login.html')
 
 def signup(request):
-    context= {}
-    if request.method == "POST":
-        if request.POST["password1"] == request.POST["password2"]:
-            user = User.objects.create_user(
-                username=request.POST["username"], password=request.POST["password1"])
-            auth.login(request, user)
-            return redirect('/main')
+    if request.method == "GET":
+        return render(request, 'firstApp/signup.html', {'f':SignupForm()} )
+    
+    elif request.method == "POST":
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['password']  == form.cleaned_data['password_check']:
+                new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'])
+                new_user.last_name = form.cleaned_data['last_name']
+                new_user.first_name = form.cleaned_data['first_name']
+                new_user.save()
+                return redirect('/main')      
+            else:
+                return render(request, 'firstApp/signup.html',{'f':form, 'error':'비밀번호와 비밀번호 확인이 다릅니다.'})
+
         else:
-            context.update({'error':"비밀번호가 일치하지 않습니다."})
-    return render(request, 'firstApp/signup.html',context)
+            return render(request, 'firstApp/signup.html',{'f':form})
 
 def logout(request):
     auth.logout(request)
