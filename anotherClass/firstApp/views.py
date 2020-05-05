@@ -86,11 +86,12 @@ def community(request):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
         return render(request, 'firstApp/community.html', {
-            'posts': posts, 'cate_list': cate_list })
+            'posts': posts, 'cate_list': cate_list, 'cate_name': '전체글'})
 
 
 def post_category(request, pk):
     cate_list = Category.objects.all()
+    cate_name = get_object_or_404(Category, pk=pk).name
     post_list = Post.objects.filter(category=pk)
     page = request.GET.get('page', 1)
     paginator = Paginator(post_list, 10)
@@ -101,7 +102,7 @@ def post_category(request, pk):
     except EmptyPage:
            posts = paginator.page(paginator.num_pages)
     return render(request, 'firstApp/community.html', {
-        'posts': posts, 'cate_list': cate_list})
+        'posts': posts, 'cate_list': cate_list, 'cate_name': cate_name})
 
 @login_required(login_url='/login/')
 def myPost(request):
