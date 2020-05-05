@@ -1,5 +1,5 @@
 .product-review-title{
-color:#ff005a;
+color:#4ECAC6;
 font-size:20px;
 }
 .product-review-date{
@@ -27,7 +27,7 @@ height:40px
 #reviews form{
 padding-bottom:50px;}
 .product-question{
-color:#ff005a;
+color:#4ECAC6;
 padding-left:10px;
 }
 
@@ -73,7 +73,7 @@ left:-3%;
 }
 
 .perprice{
-color: rgb(255, 0, 90);
+color: rgb(58, 192, 189);
 font-size: 25px;
 font-weight:bold;
 float:left;
@@ -88,7 +88,7 @@ position:relative;
 
 .onetime{
 font-size:13px;
-color: rgb(255, 0, 90);
+color: #4ECAC6;
 position: relative;
 left:-14%;
 font-weight:bold;
@@ -110,7 +110,7 @@ padding-top:8px;
 
 .button{
 float:left;
-background-color:rgb(255, 0, 90);
+background-color:rgb(58, 192, 189);
 color:#fff;
 width:240px;height:40px;
 padding-top:8px;
@@ -133,7 +133,7 @@ overflow:auto;
 
 .category-tab ul {
     background: #fff;
-    border-bottom: 1px solid #F685A2;
+    border-bottom: 1px solid #4ECAC6;
     list-style: none outside none;
     position: relative;
     left:-1.4%;
@@ -167,7 +167,7 @@ overflow:auto;
 .category-tab ul li a {
     border: 0 none;
     border-radius: 0;
-    color: #B3AFA8;
+    color: #B6B3E5;
     display: block;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
@@ -203,10 +203,10 @@ a:focus {
 }
 
 .nav-tabs a:hover{
-    background-color: #FBC0CF;
+    background-color: rgb(170,230,228);
 }
 .nav-tabs a:active{
-    background-color: #F685A2;
+    background-color: #B6B3E5;
 }
 
 .button:hover{
@@ -215,7 +215,7 @@ text-decoration:none;
 }
 
 .nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus {
-    background-color: #F685A2;
+    background-color: #4ECAC6;
     border: 0px;
     color: #FFFFFF;
     cursor: default;
