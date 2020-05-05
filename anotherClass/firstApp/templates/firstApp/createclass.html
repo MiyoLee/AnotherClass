@@ -56,10 +56,6 @@
                                         {{ form.title }}
                                     </p>
                                     <p>
-                                        <b>강사 이름 : </b>
-                                        {{ form.tutor }}
-                                    </p>
-                                    <p>
                                         <b>카테고리 : </b>
                                         {{ form.category }}
                                     </p>
@@ -84,6 +80,10 @@
                                     <p>
                                         <b>수업방식 : </b>
                                         {{ form.mode }}
+                                    </p>
+                                     <p>
+                                        <b>인원 : </b>
+                                        {{ form.in_min }} 명 ~ {{ form.in_max }} 명
                                     </p>
                                     <p>
                                         <b>커버 이미지 : </b>
@@ -126,8 +126,27 @@
                             </li>
                         </ul>
                             </div>
-                        <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
-					   {{form.tutor_body}}
+                              <p>
+                                  <b>강사 이름 : </b>
+                                  {{ form.tutor }}
+                              </p>
+                            <p>
+                                <b>강사 이미지 : </b>
+                                {{form.tutor_photo}}
+                            </p>
+                            <p>
+                                <b>강사 인스타그램 : </b>
+                                {{form.tutor_insta}}
+                            </p>
+                            <p>
+                                <b>강사 블로그 : </b>
+                                {{form.tutor_blog}}
+                            </p>
+                            <p>
+                                <b>강사 이미지 : </b>
+                                {{form.tutor_youtube}}
+                            </p>
+                            {{form.tutor_body}}
                         </div>
                         </div>
                          <input class="bottombutton" type="submit"  value="등록하기"/>
