@@ -34,7 +34,7 @@
 				</div>
 
 				<div class="col-sm-9">
-					<h4><a href="{% url 'community' %}" class="nounderline">{{cate_name}}</a></h4>
+					<h4>{{cate_name}}</h4>
 					<br><br><br>
 					<div class="blog-post-area">
 							<table class="table">
@@ -66,8 +66,15 @@
 								</a>
 							</div>
 						</div>
-
-
+					</div>
+					<div class="community_search_bar text-center">
+						<form class="form-inline" >
+						  <input class="form-control mr-sm-2" type="text" placeholder="검색어를 입력하세요." aria-label="Search">
+						  <button class="btn btn-primary my-2 my-sm-0" type="submit" style="height:38px">
+							<i class="fas fa-search"></i>
+						  </button>
+						</form>
+					</div>
 						{% if posts.has_other_pages %}
 						<nav aria-label="Page navigation example">
 						  <ul class="pagination justify-content-center">
@@ -108,7 +115,7 @@
 						  </ul>
 						</nav>
 						{% endif %}
-					</div>
+
 				</div>
 			</div>
 		</div>

@@ -22,3 +22,6 @@ th{
 .community-nav-link:hover,.community_nav-link:active{
     color:#918FB7 !important;
 }
+.community_search_bar{
+    padding-bottom:5%
+}
