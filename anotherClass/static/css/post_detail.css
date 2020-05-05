@@ -5,7 +5,7 @@
 .post_category{
     margin:0;
     padding-top:1rem;
-    color:#0080FF;
+    color:#4ecac6;
     font-size:9pt;
 }
 .post_title{
@@ -36,6 +36,23 @@
 }
 
 
-.comment {
-    margin: 20px 0px 20px 20px;
+.comment_contents{
+    padding: 20px;
+}
+.new_comment{
+    margin-bottom:50px;
+}
+.comment{
+    margin: 20px;
+}
+.comment_h{
+    height:30px;
+}
+.comment_submit{
+    float:right;
+    height:95px;
+    width:90px;
+}
+.comment_edit{
+    float:right;
 }

@@ -7,66 +7,78 @@
 
 <div class="container">
 
-    <div class="blog-post-area bg-light">
+    <div class="blog-post-area">
         <div class="post_info">
             <div class="post_category">
                 <i class="fas fa-clipboard"></i>
                 <span>{{post.category}}</span>
+                <table style="float:right">
+                <tr>
+                    {% if post.author == request.user %}
+                    <td>
+                    <a class="a_underline" href="{% url 'update_post' post.pk %}">
+                        수정
+                    </a>
+                    </td>
+                    <td class="post_v">|</td>
+                    <td>
+                    <a class="a_underline" href="{% url 'delete_post' post.pk %}">
+                        삭제
+                    </a>
+                    </td>
+                    <td class="post_v">|</td>
+                    {% endif %}
+                    <td>
+                    <a href="{{request.META.HTTP_REFERER|escape}}">목록</a>
+                    </td>
+                </tr>
+                </table>
             </div>
             <h3 class="post_title">{{post.title}}</h3>
             <p class="post_author"><i class="fas fa-user-circle"></i> {{post.author}}</p>
-            <span class="post_t">{{post.created_date}}</span>
-            <span class="post_v">조회수 {{post.views}}</span>
+            <span class="post_t">{{post.created_date|date:"y-m-d h:m"}}</span>
+            <span class="post_v">조회 {{post.views}}</span>
+
         </div>
         <hr>
         <div class="post_contents">
             {{post.text | safe}}
         </div>
-        <div class="text-right" style="padding:1rem;">
+        <div class="post_content_f">
+        댓글 {{ post.comments.count }}
 
-            {% if post.author == request.user %}
-        <a class="nounderline" href="{% url 'update_post' post.pk %}">
-            <input class="btn btn-secondary" type="button" value="수정">
-        </a>
-
-        <a class="nounderline" href="{% url 'delete_post' post.pk %}">
-            <input class="btn btn-secondary" type="button" value="삭제">
-        </a>
-            {% endif %}
-
-        <a class="nounderline" href="/community/">
-            <input class="btn btn-secondary" type="button" value="목록">
-        </a>
-    </div>
-    </div>
-    <br><br>
-    <h4 style="color:gray;">Comments</h4>
-    <hr>
-    <form method="POST" class="post-form">
-        {% csrf_token %}
-        {{ form.text }}
-        <br>
-        <button type="submit" class="save btn btn-secondary">등록</button>
-    </form>
-    {% for comment in post.comments.all %}
-        <div class="comment">
-            <div class="date lighter">
-                {{ comment.created_date }}
-                {% if comment.author == request.user %}
-                    <div class="text-right">
-                    <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
-                    <a class="btn btn-default" href="{% url 'comment_update' pk=comment.pk %}"><i class="fas fa-edit"></i></a>
-                    </div>
-                {% endif %}
-            </div>
-            <strong><i class="fas fa-user-circle"></i> {{ comment.author }}</strong>
-            <p>{{ comment.text|linebreaks }}</p>
         </div>
+    </div>
 
-        <hr>
-    {% empty %}
-        <p></p>
-    {% endfor %}
+    <div class="blog-comment-area bg-light">
+        <div class="comment_contents">
+            <div class="new_comment">
+            <form method="POST" class="post-form" style="margin:0; height:100px;">
+                {% csrf_token %}
+                {{ form.text }}
+                <button type="submit" class="btn btn-primary comment_submit">등록</button>
+            </form>
+            </div>
+            {% for comment in post.comments.all %}
+                <div class="comment">
+                    <div class="comment_h">
+                    <strong><i class="fas fa-user-circle"></i> {{ comment.author }}</strong>
+                    <span class="date lighter">
+                        {{comment.created_date|date:"y-m-d h:m"}}</span>
+                        {% if comment.author == request.user %}
+                            <span class="comment_edit">
+                            <a class="btn btn-secondary" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
+                            <a class="btn btn-secondary" href="{% url 'comment_update' pk=comment.pk %}"><i class="fas fa-edit"></i></a>
+                            </span>
+                        {% endif %}
+                    </div>
+                    <p>{{ comment.text|linebreaks }}</p>
+                </div>
+            <hr>
+            {% empty %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
 
 

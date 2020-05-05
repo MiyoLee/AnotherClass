@@ -22,6 +22,18 @@ text-decoration:none;
 
 }
 
+.btn-secondary,  .btn-secondary:active, .btn-secondary:visited {
+    background-color: white !important;
+    border:none !important;
+    color:#918FB7 !important;
+
+}
+.btn-secondary:hover{
+    background-color: none !important;
+    border:none !important;
+    color:#6d6b89  !important;
+}
+
 .btn-circle.btn-xl {
     width: 105px;
     height: 105px;
