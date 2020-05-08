@@ -61,9 +61,9 @@ class CreateClass(forms.ModelForm):
         }
 
 class SignupForm(ModelForm):
-    password_check = forms.CharField(max_length=200, widget=forms.PasswordInput())
+    비밀번호_확인 = forms.CharField(max_length=200, widget=forms.PasswordInput())
 
-    field_order=['username','password','password_check','last_name','first_name','email']
+    field_order=['username','password','비밀번호_확인','last_name','first_name','email']
 
     class Meta:
         model=User

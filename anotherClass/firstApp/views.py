@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment, Class, Category, ClassQna
-from .forms import PostForm, CommentForm, QuestionForm, SignupForm
-from .forms import CreateClass
+from .forms import PostForm, CommentForm, QuestionForm, SignupForm, CreateClass
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -203,7 +202,6 @@ def comment_update(request, pk):
 
 
 def login(request):
-    context= {}
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -212,36 +210,32 @@ def login(request):
             auth.login(request, user)
             return redirect('/main')
         else:
-            context.update({'error':"아이디나 비밀번호를 확인하세요."})
-            return render(request, 'firstApp/login.html', context)
+            return render(request, 'firstApp/login.html', {'alert_flag': True})
     else:
         return render(request, 'firstApp/login.html')
 
 def signup(request):
     if request.method == "GET":
         return render(request, 'firstApp/signup.html', {'f':SignupForm()} )
-    
     elif request.method == "POST":
         form = SignupForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['password']  == form.cleaned_data['password_check']:
+            if form.cleaned_data['password']  == form.cleaned_data['비밀번호_확인']:
                 new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'])
                 new_user.last_name = form.cleaned_data['last_name']
                 new_user.first_name = form.cleaned_data['first_name']
                 new_user.save()
-                return redirect('/main')      
+                return redirect('/main')
             else:
-                return render(request, 'firstApp/signup.html',{'f':form, 'error':'비밀번호와 비밀번호 확인이 다릅니다.'})
-
+                return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag1': True})
         else:
-            return render(request, 'firstApp/signup.html',{'f':form})
+            return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag2': True})
 
 def logout(request):
     auth.logout(request)
     return redirect('/main')
 
 def change_pw(request):
-    context= {}
     if request.method == "POST":
         current_password = request.POST.get("origin_password")
         user = request.user
@@ -254,8 +248,8 @@ def change_pw(request):
                 auth.login(request,user)
                 return redirect('/main')
             else:
-                context.update({'error':"새 비밀번호를 다시 확인해주세요."})
+                return render(request, 'firstApp/change_pw.html', {'alert_flag1': True})
         else:
-            context.update({'error':"현재 비밀번호가 일치하지 않습니다."})
+            return render(request, 'firstApp/change_pw.html', {'alert_flag2': True})
 
-    return render(request, "firstApp/change_pw.html",context)
+    return render(request, "firstApp/change_pw.html")
