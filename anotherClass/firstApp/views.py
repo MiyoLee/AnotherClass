@@ -10,6 +10,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.generic import ListView
 from django.contrib.auth.hashers import check_password
 from django.urls.base import reverse
+from django.http.response import HttpResponseNotAllowed
 
 # Create your views here.
 def index(request):
@@ -62,8 +63,6 @@ def apply(request):
     return render(request, 'firstApp/apply.html')
 
 
-
-
 @login_required(login_url='/login/')
 def createclass(request):
     if request.method == 'POST':
@@ -72,6 +71,8 @@ def createclass(request):
         if form.is_valid():
             form.save()
             return redirect('main')
+        else:
+            return render(request, 'firstApp/createclass.html',{'form': form, 'alert_flag': True})
     else:
         form = CreateClass()
         return render(request, 'firstApp/createclass.html', {'form': form})

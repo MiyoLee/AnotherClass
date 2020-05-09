@@ -2,7 +2,10 @@
 {% load static %}
 
 {% block content %}
-
+{% if alert_flag %}
+<script>alert("유효한 폼이 아닙니다.")</script>
+{% endif %}
+{% if user.is_active %}
 <link rel="stylesheet" href="{% static 'css/createclass.css' %}">
 	<section>
 		<div class="contents">
@@ -42,7 +45,7 @@
                                 <h2>1단계　|　클래스 기본정보</h2>
                             </li>
                             <li>
-                                 <div class="stepbutton">다음 단계</div>
+                                <div class="stepbutton">다음 단계</div>
                             </li>
                                 </ul>
                             </div>
@@ -58,6 +61,10 @@
                                     <p>
                                         <b>강사 이름 : </b>
                                         {{ form.tutor }}
+                                    </p>
+                                    <p>
+                                        <b>강사 사진 : </b>
+                                        {{ form.tutor_photo }}
                                     </p>
                                     <p>
                                         <b>카테고리 : </b>
@@ -90,7 +97,6 @@
                                         {{ form.photo }}
                                     </p>
                             </div>
-
                         </div>
 
                         <div class="tab-pane" id="two">
@@ -127,10 +133,12 @@
                         </ul>
                             </div>
                         <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
-					   {{form.tutor_body}}
+                       {{form.tutor_body}}
+                       <br>
+                            <button type="submit" class="btn btn-primary bottombutton" >등록하기</button>
+                        </div> 
                         </div>
-                        </div>
-                         <button type="submit" class="btn btn-primary bottombutton">등록하기</button>
+                        
                         </form>
 
 
@@ -140,5 +148,11 @@
 			</div>
             </div>
 		</div>
-	</section>
+    </section>
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다. \n클래스를 개설하려면 로그인을 해주세요.')
+    window.location.href = '/login';
+  </script>
+{% endif %}
 {% endblock content%}
