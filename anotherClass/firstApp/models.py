@@ -72,6 +72,7 @@ class Mode(models.Model):
         return self.name
 
 class Class(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=50)
     tutor = models.CharField(max_length=10)
     tutor_photo = models.ImageField(upload_to="tutor", default='')

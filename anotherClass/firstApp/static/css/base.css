@@ -1,3 +1,28 @@
+.class_price{
+float:right;
+color:#4ECAC6;
+font-weight:bold;
+font-size:25px;
+}
+.tutor_name{
+font-weight:bold;
+font-size:14px;
+}
+.class-update-button{
+float:left;
+text-align:center;
+list-style:none;
+}
+
+.class-update-button div{
+display: inline-block;
+width:99px;
+margin-top:10px;
+padding-top:13px;
+border:1px solid #4ECAC6;
+height:50px;
+}
+
 .mastfoot {
     color: #333;
 }

@@ -1,0 +1,38 @@
+{% extends 'firstApp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h5>내가 개설한 클래스</h5>
+
+    <div class="album py-5 bg-light">
+
+        <div class="container">
+
+            <div class="row">
+                {% for class in classs %}
+          <div class="col-md-4">
+            <a class="productdetail"
+               href="{% url 'product' class.id %}">
+              <div class="card mb-4 shadow-sm">
+              <img src="{{class.photo.url}}" width="338px" height="250px">
+              <div class="card-body">
+                <p class="class_title">{{class.title}}</p>
+
+                  <small class="tutor_name">{{class.tutor}}</small>
+                    <span class="class_price">{{class.price}} 원</span>
+                    <div class="class-update-button">
+                        <div>정보수정</div>
+                        <div>시간추가</div>
+                        <div>삭제</div>
+                    </div>
+
+                </div>
+
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

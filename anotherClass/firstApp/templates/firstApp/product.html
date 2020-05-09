@@ -43,9 +43,18 @@
                </div>
               </li>
           </ul>
-          <a href="/apply" class="button">
+
+              {% if user != class_detail.author %}
+            <a href="/apply" class="button">
             클래스 신청하기
-          </a>
+            </a>
+            {% else %}
+            <a href="{% url 'update_class' class_detail.id %}" class="button">
+            클래스 정보 수정하기
+            </a>
+
+            {% endif %}
+
         </div>
 </div>
     <div class="category-tab shop-details-tab">

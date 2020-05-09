@@ -22,6 +22,13 @@ def blogMain(request):
     classs = Class.objects.all()
     return render(request, 'firstApp/blogMain.html', {'classs':classs})
 
+
+@login_required(login_url='/login/')
+def myClass(request):
+    classs = Class.objects.filter(author=request.user)
+    return render(request, 'firstApp/classlist.html', {'classs':classs})
+
+
 def categoryselect(request):
     sort = request.GET.get('sort', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
 
@@ -54,6 +61,10 @@ def categoryselect(request):
 def apply(request):
     return render(request, 'firstApp/apply.html')
 
+
+
+
+@login_required(login_url='/login/')
 def createclass(request):
     if request.method == 'POST':
         form = CreateClass(request.POST, request.FILES)
@@ -61,14 +72,21 @@ def createclass(request):
         if form.is_valid():
             form.save()
             return redirect('main')
-        else:
-            return redirect('index')
     else:
         form = CreateClass()
         return render(request, 'firstApp/createclass.html', {'form': form})
 
+def update_class(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == 'POST':
+        form = CreateClass(request.POST, request.FILES, instance=class_detail)
 
-
+        if form.is_valid():
+            form.save()
+            return redirect('product', pk=class_id)
+    else:
+        form = CreateClass(instance=class_detail)
+        return render(request, 'firstApp/update_class.html', {'form': form})
 
 def community(request):
     if request.user is None:

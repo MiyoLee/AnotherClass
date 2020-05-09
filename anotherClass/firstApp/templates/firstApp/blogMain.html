@@ -86,13 +86,14 @@
                href="{% url 'product' class.id %}">
               <div class="card mb-4 shadow-sm">
               <img src="{{class.photo.url}}" width="338px" height="250px">
-              <div class="card-body">
-                <p class="card-text">{{class.title}}</p>
-                <div class="d-flex justify-content-between align-items-center">
+<div class="card-body">
+                <p class="class_title">{{class.title}}</p>
 
-                  <small class="text-muted">{{class.tutor}}</small>
+                  <small class="tutor_name">{{class.tutor}}</small>
+                    <span class="class_price">{{class.price}} 원</span>
+
+
                 </div>
-              </div>
               </div>
             </a>
           </div>

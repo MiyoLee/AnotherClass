@@ -1,0 +1,144 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/createclass.css' %}">
+	<section>
+		<div class="contents">
+            <div class="createclasscont">
+                <div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+                        <ul class="steptabs">
+                            <li class="active"><a href="#one" data-toggle="tab">1단계 > 클래스 기본정보</a></li>
+                        <ul>
+                            <li>클래스 정보</li>
+                            <li>커버이미지</li>
+                        </ul>
+                            <li><a href="#two" data-toggle="tab">2단계 > 클래스 소개</a></li>
+                        <ul>
+                            <li>클래스 소개하기</li>
+                            <li>클래스 부가정보</li>
+                        </ul>
+                            <li><a href="#three" data-toggle="tab">3단계 > 크리에이터 소개</a></li>
+                        <ul>
+                            <li>크리에이터 정보</li>
+                        </ul>
+                        </ul>
+
+					</div>
+				</div>
+				<div class="col-sm-9">
+					<div class="blog-post-area">
+                        <div class="tab-content">
+                        <div class="tab-pane active" id="one">
+                            <div class="upperbar">
+                                <ul>
+                            <li>
+                                <div class="stepbutton">이전 단계</div>
+                            </li>
+                            <li>
+                                <h2>1단계　|　클래스 기본정보</h2>
+                            </li>
+                            <li>
+                                 <div class="stepbutton">다음 단계</div>
+                            </li>
+                                </ul>
+                            </div>
+
+                            <div class="createcont">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form.media }}
+                                    <p>
+                                        <b>클래스 제목 : </b>
+                                        {{ form.title }}
+                                    </p>
+                                    <p>
+                                        <b>강사 이름 : </b>
+                                        {{ form.tutor }}
+                                    </p>
+                                    <p>
+                                        <b>카테고리 : </b>
+                                        {{ form.category }}
+                                    </p>
+                                    <p>
+                                        <b>지역 : </b>
+                                        {{ form.area }}
+                                    </p>
+                                    <p>
+                                        <b>1회당 가격 : </b>
+                                        {{ form.price }}
+                                        <b>원</b>
+                                    </p>
+                                    <p>
+                                        <b>1회당 시간 :</b>
+                                        {{ form.time }}
+                                        <b>시간</b>
+                                    </p>
+                                    <p>
+                                        <b>레벨 : </b>
+                                        {{ form.level }}
+                                    </p>
+                                    <p>
+                                        <b>수업방식 : </b>
+                                        {{ form.mode }}
+                                    </p>
+                                    <p>
+                                        <b>커버 이미지 : </b>
+                                        {{ form.photo }}
+                                    </p>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="two">
+                            <div class="upperbar">
+                                <ul>
+                            <li>
+                                <div class="stepbutton">이전 단계</div>
+                            </li>
+                            <li>
+                                <h2>2단계　|　클래스 소개</h2>
+                            </li>
+                            <li>
+                                 <div class="stepbutton">다음 단계</div>
+                            </li>
+                        </ul>
+                            </div>
+
+                        <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
+					    {{ form.body }}
+                        </div>
+
+                        <div class="tab-pane" id="three">
+                            <div class="upperbar">
+                                 <ul>
+                            <li>
+                                <div class="stepbutton">이전 단계</div>
+                            </li>
+                            <li>
+                                <h2>3단계　|　크리에이터 소개</h2>
+                            </li>
+                            <li>
+                                 <div class="stepbutton">다음 단계</div>
+                            </li>
+                        </ul>
+                            </div>
+                        <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
+					   {{form.tutor_body}}
+                        </div>
+                        </div>
+                         <input class="bottombutton" type="submit"  value="등록하기"/>
+                        </form>
+
+
+
+                    </div>
+				</div>
+			</div>
+            </div>
+		</div>
+	</section>
+{% endblock content%}
