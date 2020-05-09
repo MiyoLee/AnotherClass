@@ -69,7 +69,9 @@ def createclass(request):
         form = CreateClass(request.POST, request.FILES)
 
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = User.objects.get(username = request.user.get_username())
+            post.save()
             return redirect('main')
         else:
             return render(request, 'firstApp/createclass.html',{'form': form, 'alert_flag': True})
