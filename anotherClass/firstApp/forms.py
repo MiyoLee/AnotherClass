@@ -44,8 +44,7 @@ class QuestionForm(forms.ModelForm):
 class CreateClass(forms.ModelForm):
     class Meta:
         model = Class
-        fields = ['title', 'tutor', 'tutor_photo', 'category', 'area',
-                  'photo', 'body', 'tutor_body', 'price', 'time', 'level', 'mode']
+        fields = ['title', 'tutor', 'tutor_photo', 'category', 'area', 'date', 'photo', 'body', 'tutor_body', 'price', 'time', 'level', 'mode']
 
         widgets = {
             'title': forms.TextInput(

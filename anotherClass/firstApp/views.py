@@ -85,8 +85,12 @@ def update_class(request, class_id):
         form = CreateClass(request.POST, request.FILES, instance=class_detail)
 
         if form.is_valid():
-            form.save()
-            return redirect('product', pk=class_id)
+            post = form.save(commit=False)
+            post.author = User.objects.get(username = request.user.get_username())
+            post.save()
+            return redirect("/product/{}".format(class_id))
+        else:
+            return render(request, 'firstApp/update_class.html',{'form': form, 'alert_flag': True})
     else:
         form = CreateClass(instance=class_detail)
         return render(request, 'firstApp/update_class.html', {'form': form})
