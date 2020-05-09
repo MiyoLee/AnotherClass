@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment, Class, Category, ClassQna
-from .forms import PostForm, CommentForm, QuestionForm, SignupForm, CreateClass
+from .forms import PostForm, CommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -29,7 +29,11 @@ def myClass(request):
     classs = Class.objects.filter(author=request.user)
     return render(request, 'firstApp/classlist.html', {'classs':classs})
 
-
+@login_required(login_url='/login/')
+def myApply(request):
+    classs = Class.objects.filter(author=request.user)
+    return render(request, 'firstApp/applylist.html', {'classs':classs})
+       
 def categoryselect(request):
     sort = request.GET.get('sort', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
 
@@ -58,10 +62,21 @@ def categoryselect(request):
 
 
 
-
-def apply(request):
-    return render(request, 'firstApp/apply.html')
-
+@login_required(login_url='/login/')
+def apply(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == 'POST':
+        form = ApplyForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = User.objects.get(username = request.user.get_username())
+            post.save()
+            return redirect("/product/{}".format(class_id))
+        else:
+            return render(request, 'firstApp/apply.html',{'form': form, 'alert_flag': True})
+    else:
+        form = ApplyForm()
+        return render(request, 'firstApp/apply.html', {'form': form})
 
 @login_required(login_url='/login/')
 def createclass(request):

@@ -2,56 +2,97 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/apply.css' %}">
-<div class="contents">
-    <div class="top">
-         <h1>클래스신청</h1>
-    <div class="applystep">
-        <ul>
-            <li>01 일정/장소</li>
-            <li>02 신청서 작성</li>
-            <li>03 결제</li>
-        </ul>
-    </div>
-    </div>
-    <div class="classtitle">누구나 쉽게 하루만에 방송댄스 1절 마스터!</div>
+{% if alert_flag %}
+<script>alert("폼을 모두 작성해주세요.")</script>
+{% endif %}
+{% if user.is_active %}
 
-    <div class="block">
-        <div class="datelist">
-        <img src="{% static 'image\calendar.png' %}">
-        <b>원하시는 수업일정을 선택해주세요.</b>
-        <ul class="datecheck">
-            <form>
-            <li><input type="radio" name="rad1" value="버튼">04.14(화) 14:00~16:00 > 마포</li>
-            <li><input type="radio" name="rad1" value="버튼">04.14(화) 14:00~16:00 > 마포</li>
-            <li><input type="radio" name="rad1" value="버튼">04.14(화) 14:00~16:00 > 마포</li>
-            <li><input type="radio" name="rad1" value="버튼">04.14(화) 14:00~16:00 > 마포</li>
-            <li><input type="radio" name="rad1" value="버튼">04.14(화) 14:00~16:00 > 마포</li>
-            <li><input type="radio" name="rad1" value="버튼">04.14(화) 14:00~16:00 > 마포</li>
-        </form>
-        </ul>
-    </div>
+<link rel="stylesheet" href="{% static 'css/createclass.css' %}">
+	<section>
+		<div class="contents">
+            <div class="createclasscont">
+                <div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+                        <ul class="steptabs">
+                            <li class="active"><a href="#one" data-toggle="tab">1단계 > 일정 선택</a></li>
+                            <br>
+                            <li><a href="#two" data-toggle="tab">2단계 > 신청서 작성</a></li>
+                        </ul>
 
-    <div class="block">
-        <div class="datelist">
-        <img src="{% static 'image\note.png' %}">
-        <b>다음 신청서를 기입해주세요.</b>
-        <ul class="datecheck">
-            <form>
-            <li>이름&nbsp : <input type="text" name="name" size="10" maxlength="10"></li>
-            <li>전화번호 : <input type="text" name="name" size="3" maxlength="3">-<input type="text" name="name" size="3" maxlength="3">-<input type="text" name="name" size="3" maxlength="3"></li>
-            <li>레벨 : <select name="level" size="1">
-                <option selected disabled>--level--</option>
-                <option value="level1">입문자</option>
-                <option value="level2">초/중급자</option>
-                <option value="level3">상급자</option>
-            </select>
-                <li><a>전하는말 </a>
-                <textarea cols="60" rows="5"></textarea></li>
+					</div>
+				</div>
+				<div class="col-sm-9">
+					<div class="blog-post-area">
+                        <div class="tab-content">
+                        <div class="tab-pane active" id="one">
+                            <div class="upperbar">
+                                <ul>
+                            <li>
+                                <div class="stepbutton">이전 단계</div>
+                            </li>
+                            <li>
+                                <h2>1단계　|　일정 선택</h2>
+                            </li>
+                            <li>
+                                <div class="stepbutton">다음 단계</div>
+                            </li>
+                                </ul>
+                            </div>
 
-        </form>
-        </ul>
-        </div>
-    </div>
-</div>
+                            <div class="createcont">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form.media }}
+                                	<p>
+                                        <b>클래스 : </b>
+                                        {{ form.classtitle }}
+                                    </p>
+                                    <br>
+                                    <li><input type="radio" name="rad1" value="버튼">일정 선택 : {{ form.date }}</li>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane" id="two">
+                            <div class="upperbar">
+                                <ul>
+                            <li>
+                                <div class="stepbutton">이전 단계</div>
+                            </li>
+                            <li>
+                                <h2>2단계　|　신청서 작성</h2>
+                            </li>
+                            <li>
+                                 <div class="stepbutton">다음 단계</div>
+                            </li>
+                        </ul>
+                            </div>
+                            <p>
+                                <b>이름 : </b>
+                                {{ form.name }}
+                            </p>
+                            <p>
+                                <b>전화번호 : </b>
+                                {{ form.number }}
+                            </p>
+                            <p>
+                                <b>튜터에게 전하는 말 : </b>
+                                {{ form.text }}
+                            </p>
+                            <button type="submit" class="btn btn-primary bottombutton" >등록하기</button>
+
+                        </form>
+                    </div>
+				</div>
+			</div>
+            </div>
+		</div>
+    </section>
+
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다. \n클래스를 신청하려면 로그인을 해주세요.')
+    window.location.href = '/login';
+  </script>
+{% endif %}
 {% endblock content%}

@@ -94,6 +94,16 @@ class Class(models.Model):
     def __str__(self):
         return self.title
 
+class Apply(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+    classtitle = models.ForeignKey(Class, on_delete=models.CASCADE, default=1)
+    date = models.DateTimeField(default=timezone.now)
+    name = models.CharField(max_length=10)
+    number = models.CharField(max_length=13)
+    text = RichTextUploadingField(default='')
+    def __str__(self):
+        return self.name
+
 class ClassReview(models.Model):
     title = models.CharField(max_length=20)
     body = models.TextField()

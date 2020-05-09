@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post,Comment, ClassQna, Class
+from .models import Post,Comment, ClassQna, Class, Apply
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -56,6 +56,21 @@ class CreateClass(forms.ModelForm):
             'body': forms.CharField(widget=CKEditorUploadingWidget()),
             'tutor_body': forms.CharField(widget=CKEditorUploadingWidget()),
 
+        }
+
+class ApplyForm(forms.ModelForm):
+    class Meta:
+        model = Apply
+        fields = ['classtitle', 'date', 'name', 'number', 'text']
+
+        widgets = {
+            'name': forms.TextInput(
+                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex)홍길동'},
+            ),
+            'number': forms.TextInput(
+                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex)010-1234-5678'},
+            ),
+            'text': forms.CharField(widget=CKEditorUploadingWidget()),
         }
 
 class SignupForm(ModelForm):

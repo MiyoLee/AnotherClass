@@ -49,7 +49,7 @@
           </ul>
 
               {% if user != class_detail.author %}
-            <a href="/apply" class="btn btn-primary button">
+            <a href="{% url 'apply' class_detail.id %}" class="btn btn-primary button">
             클래스 신청하기
             </a>
             {% else %}
