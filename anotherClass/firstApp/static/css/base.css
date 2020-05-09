@@ -4,6 +4,15 @@ color:#4ECAC6;
 font-weight:bold;
 font-size:25px;
 }
+
+.col-md-4 a:hover{
+text-decoration:none;
+color:#000;
+}
+
+.class_price:hover{
+color:#9895c7;
+}
 .tutor_name{
 font-weight:bold;
 font-size:14px;
@@ -14,7 +23,7 @@ text-align:center;
 list-style:none;
 }
 
-.class-update-button div{
+.class-update-button .abc{
 display: inline-block;
 width:99px;
 margin-top:10px;

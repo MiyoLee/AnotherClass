@@ -45,11 +45,11 @@
           </ul>
 
               {% if user != class_detail.author %}
-            <a href="/apply" class="button">
+            <a href="/apply" class="btn btn-primary button">
             클래스 신청하기
             </a>
             {% else %}
-            <a href="{% url 'update_class' class_detail.id %}" class="button">
+            <a href="{% url 'update_class' class_detail.id %}" class="btn btn-primary button">
             클래스 정보 수정하기
             </a>
 
