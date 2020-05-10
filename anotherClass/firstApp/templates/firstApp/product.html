@@ -48,28 +48,27 @@
               </li>
           </ul>
 
-              {% if user != class_detail.author %}
-            <a href="{% url 'apply' class_detail.id %}" class="btn btn-primary button">
-            클래스 신청하기
-            </a>
-            {% else %}
-            <a href="{% url 'update_class' class_detail.id %}" class="btn btn-primary button">
-            클래스 정보 수정하기
-            </a>
-
+            {% if user != class_detail.author %}
+                <a href="{% url 'apply' class_detail.id %}" class="btn btn-primary button" >
+                클래스 신청하기
+                </a>
+                {% else %}
+                <a href="{% url 'update_class' class_detail.id %}" class="btn btn-primary button">
+                클래스 정보 수정하기
+                </a>
             {% endif %}
 
         </div>
 </div>
     <div class="category-tab shop-details-tab">
-    <div class="col-sm-12">
+
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#details" data-toggle="tab">클래스 소개</a></li>
 			<li><a href="#tutor" data-toggle="tab">강사 정보</a></li>
 			<li><a href="#tag" data-toggle="tab">REVIEW</a></li>
 			<li><a href="#reviews" data-toggle="tab">Q & A</a></li>
 		</ul>
-	</div>
+	
     <div class="tab-content">
       <div class="tab-pane active" id="details">
         <div class="more-container">
