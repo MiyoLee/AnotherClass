@@ -35,30 +35,16 @@ def myApply(request):
     return render(request, 'firstApp/applylist.html', {'classs':classs})
        
 def categoryselect(request):
-    sort = request.GET.get('sort', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
-
-    if sort == 'best':
-        classs = Class.objects.filter(category__name='베스트')  # 복수를 가져올수 있음
-        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
-
-    elif sort == 'art':
-        classs = Class.objects.filter(category__name='미술, 공예')  # 복수를 가져올수 있음
-        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
-
-    elif sort == 'music':
-        classs = Class.objects.filter(category__name='음악, 댄스')  # 복수를 가져올수 있음
-        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
-
-    elif sort == 'career':
-        classs = Class.objects.filter(category__name='커리어')  # 복수를 가져올수 있음
-        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
-
-    elif sort == 'language':
-        classs = Class.objects.filter(category__name='언어')  # 복수를 가져올수 있음
-        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
+    cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
+    if cateId == '':
+        classes = Class.objects.all()
     else:
-        classs = Class.objects.all()
-        return render(request, 'firstApp/categoryselect.html', {'classs': classs})
+        classes = Class.objects.filter(category=cateId)
+    cate_list = Category.objects.all()
+    return render(request, 'firstApp/categoryselect.html',
+                  {'classes': classes, 'cate_list': cate_list, 'cateId': cateId})
+
+
 
 
 
@@ -150,7 +136,7 @@ def myPost(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     return render(request, 'firstApp/community.html', {
-       'posts': posts, 'cate_list': cate_list})
+       'posts': posts, 'cate_list': cate_list, 'page': page})
 
 @login_required(login_url='/login/')
 def post_detail(request, pk):

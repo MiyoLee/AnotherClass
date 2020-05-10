@@ -8,16 +8,15 @@
             <div class="filter-item">
                 <span class="filter-name">카테고리</span>
                 <select id="sort-select" onchange="location = this.value;">
-                    <option class="sort-all" value="/">전체보기</option>
-                    <option class="sort-best" value="?sort=best">베스트</option>
-                    <option class="sort-art" value="?sort=art">미술</option>
-                    <option class="sort-music" value="?sort=music">음악/댄스</option>
-                    <option class="sort-design" value="?sort=design">디자인</option>
-                    <option class="sort-career" value="?sort=career">커리어</option>
-                    <option class="sort-language" value="?sort=language">언어</option>
-                    <option class="sort-beauty" value="?sort=beauty">뷰티</option>
-                    <option class="sort-cooking" value="?sort=cooking">요리/베이킹</option>
-                    <option class="sort-etc" value="?sort=etc">기타</option>
+                    <option value="/class">전체보기</option>
+                    <option value="/class">베스트</option>
+                    {% for category in cate_list%}
+                        {% if category.pk == cateId %}
+                            <option value="?cateId={{category.pk}}" selected>{{category.name}}</option>
+                        {% else %}
+                            <option value="?cateId={{category.pk}}" >{{category.name}}</option>
+                        {% endif %}
+                    {% endfor %}
                 </select>
                 <span class="filter-name">상세 카테고리</span>
                 <select>
@@ -75,7 +74,7 @@
         <div class="container">
 
             <div class="row">
-                {% for class in classs %}
+                {% for class in classes %}
           <div class="col-md-4">
             <a class="productdetail"
                href="{% url 'product' class.id %}">

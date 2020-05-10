@@ -11,7 +11,7 @@
         <div class="post_info">
             <div class="post_category">
                 <i class="fas fa-clipboard"></i>
-                <span>{{post.category}}</span>
+                <a class="a_underline" href="/community?cateId={{post.category.pk}}"><span>{{post.category}}</span></a>
                 <table style="float:right">
                 <tr>
                     {% if post.author == request.user %}
@@ -29,13 +29,13 @@
                     <td class="post_v">|</td>
                     {% endif %}
                     <td>
-                    <a class="a_underline" href="/community/?cateId={{cateId}}&page={{page}}">목록</a>
+                    <a class="a_underline" href="/community?cateId={{cateId}}&page={{page}}">목록</a>
                     </td>
                 </tr>
                 </table>
             </div>
             <h3 class="post_title">{{post.title}}</h3>
-            <p class="post_author"><i class="fas fa-user-circle"></i> {{post.author}}</p>
+            <p class="post_author"><i class="fas fa-user-circle" style="color:gray"></i> {{post.author}}</p>
             <span class="post_t">{{post.created_date|date:"y-m-d h:m"}}</span>
             <span class="post_v">조회 {{post.views}}</span>
 
@@ -62,7 +62,7 @@
             {% for comment in post.comments.all %}
                 <div class="comment">
                     <div class="comment_h">
-                    <strong><i class="fas fa-user-circle"></i> {{ comment.author }}</strong>
+                    <strong><i class="fas fa-user-circle" style="color:gray"></i> {{ comment.author }}</strong>
                     <span class="date lighter">
                         {{comment.created_date|date:"y-m-d h:m"}}</span>
                         {% if comment.author == request.user %}
