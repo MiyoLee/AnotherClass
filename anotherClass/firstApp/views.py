@@ -206,13 +206,15 @@ def createpost(request):
 
 def update_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    cateId = request.GET.get('cateId', '')
     page = request.GET.get('page', 1)
 
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-        return redirect('post_detail', pk=pk)
+        return render(request, 'firstApp/post_detail.html', {
+            'post': post, 'form': CommentForm(), 'page': page, 'cateId': cateId})
     else:
         form = PostForm(instance=post)
     return render(request, 'firstApp/update_post.html', {'form': form})
@@ -230,16 +232,19 @@ def comment_remove(request, pk):
 
 def comment_update(request, pk):
     my_comment = get_object_or_404(Comment, pk=pk)
+    cateId = request.GET.get('cateId', '')
     page = request.GET.get('page', 1)
     if request.method == 'POST':
         form = CommentForm(request.POST, instance=my_comment)
         if form.is_valid():
             form.save()
         return render(request, 'firstApp/post_detail.html', {
-                'post': my_comment.post, 'form': CommentForm(), 'page': page})
+                'post': my_comment.post, 'form': CommentForm(), 'page': page, 'cateId': cateId })
     else:
         form = CommentForm(instance=my_comment)
-    return render(request, 'firstApp/update_comment.html', {'my_comment': my_comment, 'post': my_comment.post, 'form': form, 'page': page})
+    return render(request, 'firstApp/update_comment.html',
+                  {'my_comment': my_comment, 'post': my_comment.post, 'form': form, 'page': page, 'cateId': cateId}
+                  )
 
 
 def login(request):

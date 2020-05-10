@@ -56,16 +56,6 @@
                 <div class="comment">
                     <div class="comment_h">
                     <strong><i class="fas fa-user-circle"></i> {{ comment.author }}</strong>
-                    <span class="date lighter">
-                        {{comment.created_date|date:"y-m-d h:m"}}</span>
-                        {% if comment.author == request.user %}
-                            <span class="comment_edit">
-                                <a class="btn btn-secondary" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
-                                <a class="btn btn-secondary" href="{% url 'comment_update' pk=comment.pk %}?page={{page}}">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            </span>
-                        {% endif %}
                     </div>
                     {% if comment.pk == my_comment.pk %}
                         <form method="POST" class="post-form" style="margin:0; height:100px;">
@@ -74,7 +64,7 @@
                             <button type="submit" class="btn btn-primary comment_submit">수정</button>
                         </form>
                     {% else %}
-                     <p>{{ comment.text|linebreaks }}</p>
+                        <p>{{ comment.text|linebreaks }}</p>
                     {% endif %}
                 </div>
             <hr>

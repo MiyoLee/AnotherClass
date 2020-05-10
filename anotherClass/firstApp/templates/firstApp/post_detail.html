@@ -16,7 +16,7 @@
                 <tr>
                     {% if post.author == request.user %}
                     <td>
-                    <a class="a_underline" href="{% url 'update_post' post.pk %}">
+                    <a class="a_underline" href="{% url 'update_post' post.pk %}?cateId={{cateId}}&page={{page}}">
                         수정
                     </a>
                     </td>
@@ -68,7 +68,8 @@
                         {% if comment.author == request.user %}
                             <span class="comment_edit">
                                 <a class="btn btn-secondary" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
-                                <a class="btn btn-secondary" href="{% url 'comment_update' pk=comment.pk %}?page={{page}}">
+                                <a class="btn btn-secondary"
+                                   href="{% url 'comment_update' pk=comment.pk %}?cateId={{cateId}}&page={{page}}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </span>
