@@ -122,6 +122,7 @@ def community(request):
         else:
             post_list = Post.objects.filter(category=cateId)
             cateName = get_object_or_404(Category, pk=cateId).name
+
         page = request.GET.get('page', 1)
         paginator = Paginator(post_list, 10)
         try:
@@ -131,7 +132,7 @@ def community(request):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
         return render(request, 'firstApp/community.html', {
-            'posts': posts, 'cate_list': cate_list, 'cateName': cateName, 'cateId':cateId})
+            'posts': posts, 'cate_list': cate_list, 'cateName': cateName, 'cateId':cateId, 'page': page})
 
 
 
@@ -154,6 +155,7 @@ def myPost(request):
 @login_required(login_url='/login/')
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    cateId = request.GET.get('cateId', '')
     page = request.GET.get('page', 1)
 
     if request.method == "POST":
@@ -164,13 +166,13 @@ def post_detail(request, pk):
             comment.author = User.objects.get(username=request.user.get_username())
             comment.save()
             return render(request, 'firstApp/post_detail.html', {
-                'post': post, 'form': CommentForm(), 'page': page})
+                'post': post, 'form': CommentForm(), 'page': page, 'cateId': cateId})
     else:
         form = CommentForm()
         post.views += 1
         post.save()
         return render(request, 'firstApp/post_detail.html', {
-            'post': post, 'form': form, 'page': page})
+            'post': post, 'form': form, 'page': page, 'cateId': cateId})
 
 
 def product(request, class_id):

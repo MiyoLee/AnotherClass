@@ -22,7 +22,7 @@ urlpatterns = [
     path('mypage/myApply/', views.myApply, name='myApply'),
     path('change_pw/', views.change_pw, name='change_pw'),
     path('community/myPost/', views.myPost, name='myPost'),
-    path('community/<int:pk>/', views.post_detail, name='post_detail'),
+    path('community/post/<int:pk>/', views.post_detail, name='post_detail'),
     path('community/<int:pk>/update', views.update_post, name='update_post'),
     path('community/<int:pk>/delete', views.delete_post, name='delete_post'),
     path('ckeditor/', include('ckeditor_uploader.urls')),

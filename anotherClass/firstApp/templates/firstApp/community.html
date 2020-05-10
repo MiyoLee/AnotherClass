@@ -49,7 +49,7 @@
 								{% for post in posts %}
 								<tr>
 									<td>
-										<a class="a_underline" href="{% url 'post_detail' post.pk %}">
+										<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
 											{{ post.title }}
 										</a>
 										<span class="lighter" style="color:gray;">[{{ post.comments.count }}]</span>
