@@ -114,8 +114,14 @@ def community(request):
     if request.user is None:
         redirect('login')
     else:
+        cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
         cate_list = Category.objects.all()
-        post_list = Post.objects.all()
+        if cateId == '':
+            post_list = Post.objects.all()
+            cateName = '전체 글'
+        else:
+            post_list = Post.objects.filter(category=cateId)
+            cateName = get_object_or_404(Category, pk=cateId).name
         page = request.GET.get('page', 1)
         paginator = Paginator(post_list, 10)
         try:
@@ -125,23 +131,10 @@ def community(request):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
         return render(request, 'firstApp/community.html', {
-            'posts': posts, 'cate_list': cate_list, 'cate_name': '전체글'})
+            'posts': posts, 'cate_list': cate_list, 'cateName': cateName, 'cateId':cateId})
 
 
-def post_category(request, pk):
-    cate_list = Category.objects.all()
-    cate_name = get_object_or_404(Category, pk=pk).name
-    post_list = Post.objects.filter(category=pk)
-    page = request.GET.get('page', 1)
-    paginator = Paginator(post_list, 10)
-    try:
-           posts = paginator.page(page)
-    except PageNotAnInteger:
-           posts = paginator.page(1)
-    except EmptyPage:
-           posts = paginator.page(paginator.num_pages)
-    return render(request, 'firstApp/community.html', {
-        'posts': posts, 'cate_list': cate_list, 'cate_name': cate_name})
+
 
 @login_required(login_url='/login/')
 def myPost(request):
@@ -161,6 +154,8 @@ def myPost(request):
 @login_required(login_url='/login/')
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    page = request.GET.get('page', 1)
+
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -168,13 +163,14 @@ def post_detail(request, pk):
             comment.post = post
             comment.author = User.objects.get(username=request.user.get_username())
             comment.save()
-            return redirect('post_detail', pk=post.pk)
+            return render(request, 'firstApp/post_detail.html', {
+                'post': post, 'form': CommentForm(), 'page': page})
     else:
         form = CommentForm()
         post.views += 1
         post.save()
         return render(request, 'firstApp/post_detail.html', {
-            'post': post, 'form': form})
+            'post': post, 'form': form, 'page': page})
 
 
 def product(request, class_id):
@@ -208,6 +204,7 @@ def createpost(request):
 
 def update_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    page = request.GET.get('page', 1)
 
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
@@ -218,7 +215,7 @@ def update_post(request, pk):
         form = PostForm(instance=post)
     return render(request, 'firstApp/update_post.html', {'form': form})
 
-def delete_post(request,pk):
+def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('community')
@@ -230,15 +227,17 @@ def comment_remove(request, pk):
     return redirect('post_detail', pk=comment.post.pk)
 
 def comment_update(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
+    my_comment = get_object_or_404(Comment, pk=pk)
+    page = request.GET.get('page', 1)
     if request.method == 'POST':
-        form = CommentForm(request.POST, instance=comment)
+        form = CommentForm(request.POST, instance=my_comment)
         if form.is_valid():
             form.save()
-        return redirect('post_detail', pk=comment.post.pk)
+        return render(request, 'firstApp/post_detail.html', {
+                'post': my_comment.post, 'form': CommentForm(), 'page': page})
     else:
-        form = CommentForm(instance=comment)
-    return render(request, 'firstApp/update_comment.html', {'form': form})
+        form = CommentForm(instance=my_comment)
+    return render(request, 'firstApp/update_comment.html', {'my_comment': my_comment, 'post': my_comment.post, 'form': form, 'page': page})
 
 
 def login(request):

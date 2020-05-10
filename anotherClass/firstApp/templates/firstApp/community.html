@@ -21,7 +21,7 @@
 							<ul class="nav flex-column">
 								{% for category in cate_list %}
 								<li>
-									<a class="nav-link community-nav-link" href="{% url 'post_category' category.pk %}">
+									<a class="nav-link community-nav-link" href="?cateId={{category.pk}}">
 										{{category.name}}
 									</a>
 								</li>
@@ -34,7 +34,9 @@
 				</div>
 
 				<div class="col-sm-9">
-					<h4>{{cate_name}}</h4>
+
+					<h4>{{cateName}}</h4>
+
 					<br><br><br>
 					<div class="blog-post-area">
 							<table class="table">
@@ -95,7 +97,9 @@
 								  <a class="page-link" href="#">{{ i }}</a><span class="sr-only">(current)</span></span>
 							  </li>
 							  {% else %}
-								<li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+
+							  	<li class="page-item"><a class="page-link" href="?cateId={{cateId}}&page={{ i }}">{{ i }}</a></li>
+
 							  {% endif %}
 							{% endfor %}
 							{% if posts.has_next %}

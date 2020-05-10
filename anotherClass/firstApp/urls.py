@@ -21,7 +21,6 @@ urlpatterns = [
     path('mypage/myClass/', views.myClass, name='myClass'),
     path('mypage/myApply/', views.myApply, name='myApply'),
     path('change_pw/', views.change_pw, name='change_pw'),
-    path('community/category/<int:pk>/', views.post_category, name='post_category'),
     path('community/myPost/', views.myPost, name='myPost'),
     path('community/<int:pk>/', views.post_detail, name='post_detail'),
     path('community/<int:pk>/update', views.update_post, name='update_post'),
