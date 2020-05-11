@@ -47,7 +47,6 @@ def categoryselect(request):
 
 
 
-
 @login_required(login_url='/login/')
 def apply(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
@@ -59,10 +58,10 @@ def apply(request, class_id):
             post.save()
             return redirect("/product/{}".format(class_id))
         else:
-            return render(request, 'firstApp/apply.html',{'form': form, 'alert_flag': True})
+            return render(request, 'firstApp/apply.html',{'class_detail': class_detail, 'form': form, 'alert_flag': True})
     else:
         form = ApplyForm()
-        return render(request, 'firstApp/apply.html', {'form': form})
+        return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form})
 
 @login_required(login_url='/login/')
 def createclass(request):
