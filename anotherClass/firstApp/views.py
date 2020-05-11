@@ -252,7 +252,7 @@ def signup(request):
     elif request.method == "POST":
         form = SignupForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['password']  == form.cleaned_data['비밀번호_확인']:
+            if form.cleaned_data['password']  == form.cleaned_data['password_확인']:
                 new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'])
                 new_user.last_name = form.cleaned_data['last_name']
                 new_user.first_name = form.cleaned_data['first_name']
