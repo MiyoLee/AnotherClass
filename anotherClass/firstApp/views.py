@@ -285,3 +285,10 @@ def change_pw(request):
             return render(request, 'firstApp/change_pw.html', {'alert_flag2': True})
 
     return render(request, "firstApp/change_pw.html")
+
+@login_required
+def delete(request):
+    if request.method == 'POST':
+        request.user.delete()
+        return redirect('/main')
+    return render(request, 'firstApp/delete.html')
