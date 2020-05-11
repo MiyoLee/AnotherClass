@@ -50,17 +50,18 @@ def categoryselect(request):
 @login_required(login_url='/login/')
 def apply(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ApplyForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = User.objects.get(username = request.user.get_username())
-            post.save()
-            return redirect("/product/{}".format(class_id))
+            apply = form.save(commit=False)
+            apply.inClass = class_detail
+            apply.save()
+            return HttpResponseRedirect("/product/{}".format(class_id))
         else:
-            return render(request, 'firstApp/apply.html',{'class_detail': class_detail, 'form': form, 'alert_flag': True})
+            return render(request, 'firstApp/apply.html', {'alert_flag': True, 'class_detail': class_detail, 'form': form})
     else:
         form = ApplyForm()
+        class_detail.save()
         return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form})
 
 @login_required(login_url='/login/')

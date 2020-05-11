@@ -61,7 +61,7 @@ class CreateClass(forms.ModelForm):
 class ApplyForm(forms.ModelForm):
     class Meta:
         model = Apply
-        fields = ['classtitle', 'date', 'name', 'number', 'text']
+        fields = ['name', 'number', 'text']
 
         widgets = {
             'name': forms.TextInput(

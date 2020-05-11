@@ -48,8 +48,13 @@
                                         <b>클래스 : </b>
                                         {{ class_detail.title }}
                                     </p>
-                                    <br>
-                                    <li><input type="radio" name="rad1" value="버튼">일정 선택 : {{ form.date }}</li>
+                                    {% for date in class_detail.date_class.all %}
+                                    <li>
+                                        <input type="radio" name="rad1" value="버튼">  
+                                        <option>{{ date.date }}</option>
+                                    </li>
+                                    {% endfor %}
+                                   
                             </div>
                         </div>
 
