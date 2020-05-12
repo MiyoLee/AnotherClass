@@ -224,8 +224,7 @@ def comment_update(request, pk):
         form = CommentForm(request.POST, instance=my_comment)
         if form.is_valid():
             form.save()
-        return render(request, 'firstApp/post_detail.html', {
-                'post': my_comment.post, 'form': CommentForm(), 'page': page, 'cateId': cateId })
+        return redirect('post_detail', pk=my_comment.post.pk)
     else:
         form = CommentForm(instance=my_comment)
     return render(request, 'firstApp/update_comment.html',
