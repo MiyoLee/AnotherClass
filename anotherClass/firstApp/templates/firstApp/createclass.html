@@ -55,51 +55,65 @@
                                     {% csrf_token %}
                                     {{ form.media }}
                                     <p>
-                                        <b>클래스 제목 : </b>
-                                        {{ form.title }}
+                                        <div class="form_title class_form">클래스 제목  </div>
+                                        <div class="class_form">{{ form.title }}</div>
                                     </p>
+                                    <hr class="hr_width">
                                     <p>
-                                        <b>강사 이름 : </b>
-                                        {{ form.tutor }}
+                                        <div class="form_title class_form">강사 이름  </div>
+                                    <div class="class_form">{{ form.tutor }}</div>
                                     </p>
+                                    <hr class="hr_width">
                                     <p>
-                                        <b>강사 사진 : </b>
-                                        {{ form.tutor_photo }}
+                                       <div class="form_title class_form">강사 사진  </div>
+                                    <div class="class_form">{{ form.tutor_photo }}</div>
                                     </p>
+                                    <hr class="hr_width">
                                     <p>
-                                        <b>카테고리 : </b>
-                                        {{ form.category }}
+                                        <div class="form_title class_form">카테고리  </div>
+                                    <div class="class_form">{{ form.category }}</div>
                                     </p>
+                                    <hr class="hr_width">
                                     <p>
-                                        <b>지역 : </b>
-                                        {{ form.area }}
+                                        <div class="form_title class_form">지역  </div>
+                                    <div class="class_form">{{ form.area }}</div>
                                     </p>
+                                    <hr class="hr_width">
                                     <p>
-                                        <b>날짜 : </b>
-                                        {{ form.date }}
-                                    </p>
-                                    <p>
-                                        <b>1회당 가격 : </b>
-                                        {{ form.price }}
+                                        <div class="form_title class_form">1회당 가격  </div>
+                                    <div class="class_form">{{ form.price }}</div>
                                         <b>원</b>
                                     </p>
+                                    <hr class="hr_width">
                                     <p>
-                                        <b>1회당 시간 :</b>
-                                        {{ form.time }}
+                                        <div class="form_title class_form">1회당 시간 </div>
+                                    <div class="class_form">{{ form.time }}</div>
                                         <b>시간</b>
                                     </p>
+                                   <hr class="hr_width">
                                     <p>
-                                        <b>레벨 : </b>
-                                        {{ form.level }}
+                                        <div class="form_title class_form">레벨  </div>
+                                    <div class="class_form">{{ form.level }}</div>
                                     </p>
+                                    <hr class="hr_width">
                                     <p>
-                                        <b>수업방식 : </b>
-                                        {{ form.mode }}
+                                        <div class="form_title class_form">수업방식  </div>
+                                    <div class="class_form">{{ form.mode }}</div>
                                     </p>
+                                    <hr class="hr_width">
                                     <p>
-                                        <b>커버 이미지 : </b>
-                                        {{ form.photo }}
+                                        <div class="form_title class_form">인원  </div>
+                                    <div class="class_form">{{form.in_min}}<b> ~ </b>
+                                        {{form.in_max}}<b> 명 </b></div>
                                     </p>
+
+                                    <hr class="hr_width">
+                                    <p>
+
+                                        <div class="form_title class_form">커버 이미지  </div>
+                                    <div class="class_form">{{ form.photo }}</div>
+                                    </p>
+                                    <hr class="hr_width">
                             </div>
                         </div>
 

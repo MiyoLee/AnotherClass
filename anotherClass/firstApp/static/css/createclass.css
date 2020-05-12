@@ -6,6 +6,23 @@
 padding-bottom:50px;
 }
 
+
+.form_title{
+font-size:18px;
+font-weight:bold;
+width:180px;
+}
+
+.hr_width{
+width:1200px;
+position: relative;
+left:-5%;
+}
+
+.class_form {
+display:inline-block;
+}
+
 .createclasscont .left-sidebar{
 color:#888;
 }

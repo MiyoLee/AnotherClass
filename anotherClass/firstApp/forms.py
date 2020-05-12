@@ -44,14 +44,27 @@ class QuestionForm(forms.ModelForm):
 class CreateClass(forms.ModelForm):
     class Meta:
         model = Class
-        fields = ['title', 'tutor', 'tutor_photo', 'category', 'area', 'date', 'photo', 'body', 'tutor_body', 'price', 'time', 'level', 'mode']
+        fields = ['title', 'tutor', 'tutor_photo', 'category', 'area', 'date', 'photo', 'body',
+                  'in_min', 'in_max', 'tutor_body', 'price', 'time', 'level', 'mode']
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 75%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'style': 'width: 500%', 'placeholder': '제목을 입력하세요.'}
             ),
             'tutor': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': '이름을 입력하세요.'},
+                attrs={'style': 'width: 170%', 'placeholder': '이름을 입력하세요.'},
+            ),
+            'price': forms.NumberInput(
+                attrs={'style': 'width: 100px'},
+            ),
+            'time': forms.NumberInput(
+                attrs={'style': 'width: 100px'},
+            ),
+            'in_min': forms.NumberInput(
+                attrs={'style': 'width: 70px'},
+            ),
+            'in_max': forms.NumberInput(
+                attrs={'style': 'width: 70px'},
             ),
             'body': forms.CharField(widget=CKEditorUploadingWidget()),
             'tutor_body': forms.CharField(widget=CKEditorUploadingWidget()),
