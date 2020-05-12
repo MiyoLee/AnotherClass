@@ -81,7 +81,6 @@ class Class(models.Model):
     tutor_youtube = models.CharField(null=True, blank=True, max_length=50, default='')
     category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=1, related_name='category')
     area = models.ForeignKey('firstApp.Area', on_delete=models.CASCADE, default=1)
-    date = models.DateTimeField(default=timezone.now)
     photo = models.ImageField(upload_to="class")
     body = RichTextUploadingField(default='')
     tutor_body = RichTextUploadingField(default='')

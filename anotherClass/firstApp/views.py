@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, Class, Category, ClassQna, Apply
-from .forms import PostForm, CommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm
+from .models import Post, Comment, Class, Category, ClassQna, Apply, ClassDate
+from .forms import PostForm, CommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -65,6 +65,9 @@ def apply(request, class_id):
         class_detail.save()
         return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form})
 
+
+
+
 @login_required(login_url='/login/')
 def createclass(request):
     if request.method == 'POST':
@@ -74,12 +77,73 @@ def createclass(request):
             post = form.save(commit=False)
             post.author = User.objects.get(username = request.user.get_username())
             post.save()
-            return redirect('main')
+            return redirect('/createclass/'+str(post.id)+'/addTime/')
         else:
             return render(request, 'firstApp/createclass.html',{'form': form, 'alert_flag': True})
     else:
         form = CreateClass()
         return render(request, 'firstApp/createclass.html', {'form': form})
+
+
+
+def time_remove(request, pk):
+    time = get_object_or_404(ClassDate, pk=pk)
+    time.delete()
+    return redirect('addTime', class_id=time.inClass.pk)
+
+def comment_remove(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    comment.delete()
+    return redirect('post_detail', pk=comment.post.pk)
+
+
+def product(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.inClass = class_detail
+            question.save()
+            return HttpResponseRedirect("/product/{}".format(class_id))
+    else:
+        form = QuestionForm()
+        class_detail.save()
+        return render(request, 'firstApp/product.html', {
+            'class_detail': class_detail, 'form': form})
+
+def addTime(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == "POST":
+        form = AddTime(request.POST)
+        if form.is_valid():
+            time = form.save(commit=False)
+            time.inClass = class_detail
+            time.save()
+            return HttpResponseRedirect("/createclass/{}/addTime".format(class_id))
+    else:
+        form = AddTime()
+        class_detail.save()
+        return render(request, 'firstApp/addTime.html', {
+            'class_detail': class_detail, 'form': form})
+
+
+
+def update_time(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == 'POST':
+        form = AddTime(request.POST, instance=class_detail)
+        if form.is_valid():
+            post = form.save(commit=False)
+            time.inClass = class_detail
+            post.save()
+            return HttpResponseRedirect("/createclass/{}/addTime".format(class_id))
+    else:
+        form = AddTime()
+        class_detail.save()
+        return render(request, 'firstApp/addTime.html', {
+            'class_detail': class_detail, 'form': form})
+
 
 def update_class(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
@@ -162,20 +226,7 @@ def post_detail(request, pk):
             'post': post, 'form': form, 'page': page, 'cateId': cateId})
 
 
-def product(request, class_id):
-    class_detail = get_object_or_404(Class, pk=class_id)
-    if request.method == "POST":
-        form = QuestionForm(request.POST)
-        if form.is_valid():
-            question = form.save(commit=False)
-            question.inClass = class_detail
-            question.save()
-            return HttpResponseRedirect("/product/{}".format(class_id))
-    else:
-        form = QuestionForm()
-        class_detail.save()
-        return render(request, 'firstApp/product.html', {
-            'class_detail': class_detail, 'form': form})
+
 
 
 @login_required(login_url='/login/')
@@ -216,6 +267,11 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
+
+
+
+
+
 
 def comment_update(request, pk):
     my_comment = get_object_or_404(Comment, pk=pk)
