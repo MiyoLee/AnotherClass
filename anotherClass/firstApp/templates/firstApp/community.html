@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block content %}
-
+{% if alert_flag %}
+<script>alert("삭제되었습니다.")</script>
+{% endif %}
 <link rel="stylesheet" href="{% static 'css/paginate.css' %}">
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
 		<div class="container">
@@ -21,7 +23,7 @@
 							<ul class="nav flex-column">
 								{% for category in cate_list %}
 								<li>
-									<a class="nav-link community-nav-link" href="?cateId={{category.pk}}">
+									<a class="nav-link community-nav-link" href="/community/?cateId={{category.pk}}">
 										{{category.name}}
 									</a>
 								</li>

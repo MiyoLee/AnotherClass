@@ -79,7 +79,7 @@ def createclass(request):
             post.save()
             return redirect('/createclass/'+str(post.id)+'/addTime/')
         else:
-            return render(request, 'firstApp/createclass.html',{'form': form, 'alert_flag': True})
+            return render(request, 'firstApp/createclass.html', {'form': form, 'alert_flag': True})
     else:
         form = CreateClass()
         return render(request, 'firstApp/createclass.html', {'form': form})
@@ -226,9 +226,6 @@ def post_detail(request, pk):
             'post': post, 'form': form, 'page': page, 'cateId': cateId})
 
 
-
-
-
 @login_required(login_url='/login/')
 def createpost(request):
     if request.method == 'POST':
@@ -251,8 +248,7 @@ def update_post(request, pk):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             form.save()
-        return render(request, 'firstApp/post_detail.html', {
-            'post': post, 'form': CommentForm(), 'page': page, 'cateId': cateId})
+        return redirect('/community/post/'+str(pk)+'/?cateId='+str(cateId)+'&page='+str(page), pk=pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'firstApp/update_post.html', {'form': form})
@@ -265,11 +261,10 @@ def delete_post(request, pk):
 
 def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
+    cateId = request.GET.get('cateId', '')
+    page = request.GET.get('page', 1)
     comment.delete()
-    return redirect('post_detail', pk=comment.post.pk)
-
-
-
+    return redirect('/community/post/'+str(comment.post.pk)+'/?cateId='+str(cateId)+'&page='+str(page), pk=comment.post.pk)
 
 
 
@@ -281,7 +276,7 @@ def comment_update(request, pk):
         form = CommentForm(request.POST, instance=my_comment)
         if form.is_valid():
             form.save()
-        return redirect('post_detail', pk=my_comment.post.pk)
+        return redirect('/community/post/'+str(my_comment.post.pk)+'/?cateId='+str(cateId)+'&page='+str(page), pk=my_comment.post.pk)
     else:
         form = CommentForm(instance=my_comment)
     return render(request, 'firstApp/update_comment.html',
