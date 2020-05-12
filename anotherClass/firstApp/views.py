@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, Class, Category, ClassQna
+from .models import Post, Comment, Class, Category, ClassQna, Apply
 from .forms import PostForm, CommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -31,7 +31,7 @@ def myClass(request):
 
 @login_required(login_url='/login/')
 def myApply(request):
-    classs = Class.objects.filter(author=request.user)
+    classs = Apply.objects.filter(author=request.user)
     return render(request, 'firstApp/applylist.html', {'classs':classs})
        
 def categoryselect(request):
@@ -54,6 +54,7 @@ def apply(request, class_id):
         form = ApplyForm(request.POST)
         if form.is_valid():
             apply = form.save(commit=False)
+            apply.author = User.objects.get(username = request.user.get_username())
             apply.inClass = class_detail
             apply.save()
             return HttpResponseRedirect("/product/{}".format(class_id))
