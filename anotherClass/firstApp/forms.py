@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post,Comment, ClassQna, Class, Apply
+from .models import Post,Comment, ClassQna, Class, Apply, ClassDate
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -38,13 +38,19 @@ class QuestionForm(forms.ModelForm):
             'question': forms.Textarea(attrs={'class': 'form-control', 'style': 'width: 100%; height:10%; resize:none;'})
         }
 
+class AddTime(forms.ModelForm):
+    class Meta:
+        model = ClassDate
+        fields = ['date']
+        widgets = {
 
+        }
 
 
 class CreateClass(forms.ModelForm):
     class Meta:
         model = Class
-        fields = ['title', 'tutor', 'tutor_photo', 'category', 'area', 'date', 'photo', 'body',
+        fields = ['title', 'tutor', 'tutor_photo', 'category', 'area', 'photo', 'body',
                   'in_min', 'in_max', 'tutor_body', 'price', 'time', 'level', 'mode']
 
         widgets = {

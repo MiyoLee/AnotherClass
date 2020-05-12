@@ -188,6 +188,22 @@ left:5%;
 margin-top:25px;
 }
 
+.twobutton{
+font-weight:bold;
+font-size:19px;
+float:left;
+background-color:rgb(58, 192, 189);
+color:#fff;
+width:150px;height:60px;
+padding-top:16px;
+  margin-right:20px;
+  margin-bottom:15px;
+  text-align:center;
+  position: relative;
+left:3%;
+margin-top:25px;
+}
+
 .more-info{
 background-color:rgb(200, 200, 200);
 width:1100px;

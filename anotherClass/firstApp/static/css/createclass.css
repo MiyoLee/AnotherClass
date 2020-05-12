@@ -5,8 +5,14 @@
 .createclasscont{
 padding-bottom:50px;
 }
-
-
+.hr_width2{
+width:800px;
+position: relative;
+left:-20%;
+}
+.date-button{
+margin-left:50px
+}
 .form_title{
 font-size:18px;
 font-weight:bold;
@@ -98,7 +104,7 @@ margin-left:50px;}
 
 .steptabs li.active a, .steptabs li.active a:hover, .steptabs li.active a:focus {
     border: 0px;
-    color: #333333;
+    color: #B6B3E5;
     cursor: default;
     block:none;
     font-weight:bold;

@@ -22,7 +22,7 @@
                     <span class="class_price">{{class.price}} 원</span>
                     <div class="class-update-button">
                         <a class="abc" href="{% url 'update_class' class.id %}">정보수정</a>
-                        <a class="abc" href="#">시간추가</a>
+                        <a class="abc" href="{% url 'update_time' class.id %}">시간추가</a>
                         <a class="abc" href="#">삭제</a>
                     </div>
 

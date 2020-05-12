@@ -58,8 +58,11 @@
                 클래스 신청하기
                 </a>
                 {% else %}
-                <a href="{% url 'update_class' class_detail.id %}" class="btn btn-primary button">
-                클래스 정보 수정하기
+                <a href="{% url 'update_class' class_detail.id %}" class="btn btn-primary twobutton">
+                    정보 수정
+                </a>
+                <a href="{% url 'update_time' class_detail.id %}" class="btn btn-primary twobutton">
+                    시간 추가
                 </a>
             {% endif %}
 
