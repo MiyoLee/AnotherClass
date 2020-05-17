@@ -11,6 +11,7 @@ from django.views.generic import ListView
 from django.contrib.auth.hashers import check_password
 from django.urls.base import reverse
 from django.http.response import HttpResponseNotAllowed
+from django.db.models import Q
 
 # Create your views here.
 def index(request):
@@ -165,14 +166,25 @@ def community(request):
     if request.user is None:
         redirect('login')
     else:
+        c = request.GET.get('c', '')
+        k = request.GET.get('k', '')
         cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
         cate_list = Category.objects.all()
+
         if cateId == '':
             post_list = Post.objects.all()
             cateName = '전체 글'
+
         else:
             post_list = Post.objects.filter(category=cateId)
             cateName = get_object_or_404(Category, pk=cateId).name
+
+        if k:  # k가 있으면
+            if c == '1':
+                post_list = post_list.filter(Q(title__icontains=k) | Q(text__icontains=k))  # 작성자에 k가 포함되어 있는 레코드만 필터링
+            elif c == '2':
+                filtered_author = User.objects.get(username=k)
+                post_list = post_list.filter(author=filtered_author)
 
         page = request.GET.get('page', 1)
         paginator = Paginator(post_list, 10)
@@ -183,9 +195,7 @@ def community(request):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
         return render(request, 'firstApp/community.html', {
-            'posts': posts, 'cate_list': cate_list, 'cateName': cateName, 'cateId':cateId, 'page': page})
-
-
+            'posts': posts, 'cate_list': cate_list, 'cateName': cateName, 'cateId': cateId, 'k': k, 'page': page})
 
 
 @login_required(login_url='/login/')
