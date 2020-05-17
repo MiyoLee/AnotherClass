@@ -25,7 +25,7 @@ class Post(models.Model):
     category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=2)
     title = models.CharField(max_length=60)
     text = RichTextUploadingField()
-    created_date = models.DateTimeField(default=timezone.localtime())
+    created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
     views = models.PositiveIntegerField(default=0)
@@ -45,7 +45,7 @@ class Comment(models.Model):
     post = models.ForeignKey('firstApp.Post', on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     text = models.TextField(max_length=300)
-    created_date = models.DateTimeField(default=timezone.localtime())
+    created_date = models.DateTimeField(default=timezone.now)
     approved_comment = models.BooleanField(default=False)
 
     class Meta:
