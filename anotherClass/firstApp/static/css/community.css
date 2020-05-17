@@ -4,6 +4,7 @@ ul{
 }
 th{
     color:gray;
+    background-color:#f0f1fc;
 }
 .lighter{
     font-weight:lighter;
@@ -19,8 +20,11 @@ th{
     padding:3rem;
     padding-top:0;
 }
+.community-nav-link,.community_nav-link:visited{
+    color:gray !important;
+}
 .community-nav-link:hover,.community_nav-link:active{
-    color:#918FB7 !important;
+    color:black !important;
 }
 .community_search_bar{
     margin-top:2rem;

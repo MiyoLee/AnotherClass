@@ -12,6 +12,7 @@ from django.contrib.auth.hashers import check_password
 from django.urls.base import reverse
 from django.http.response import HttpResponseNotAllowed
 from django.db.models import Q
+from annoying.functions import get_object_or_None
 
 # Create your views here.
 def index(request):
@@ -183,7 +184,7 @@ def community(request):
             if c == '1':
                 post_list = post_list.filter(Q(title__icontains=k) | Q(text__icontains=k))  # 작성자에 k가 포함되어 있는 레코드만 필터링
             elif c == '2':
-                filtered_author = User.objects.get(username=k)
+                filtered_author = get_object_or_None(User, username=k)
                 post_list = post_list.filter(author=filtered_author)
 
         page = request.GET.get('page', 1)
@@ -195,7 +196,7 @@ def community(request):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
         return render(request, 'firstApp/community.html', {
-            'posts': posts, 'cate_list': cate_list, 'cateName': cateName, 'cateId': cateId, 'k': k, 'page': page})
+            'posts': posts, 'cate_list': cate_list, 'cateName': cateName, 'cateId': cateId, 'c': c, 'k': k, 'page': page})
 
 
 @login_required(login_url='/login/')
