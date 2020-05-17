@@ -22,3 +22,7 @@ th{
 .community-nav-link:hover,.community_nav-link:active{
     color:#918FB7 !important;
 }
+.community_search_bar{
+    margin-top:5%
+    margin-bottom:5%
+}

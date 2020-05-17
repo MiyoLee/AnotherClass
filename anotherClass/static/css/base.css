@@ -1,3 +1,49 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+.class_price{
+float:right;
+color:#4ECAC6;
+font-weight:bold;
+font-size:25px;
+}
+
+.col-md-4 a:hover{
+text-decoration:none;
+color:#000;
+}
+
+.class_price:hover{
+color:#9895c7;
+}
+.tutor_name{
+font-weight:bold;
+font-size:14px;
+}
+.class-update-button{
+float:left;
+text-align:center;
+list-style:none;
+}
+
+.class-update-button .abc{
+display: inline-block;
+width:99px;
+margin-top:10px;
+padding-top:13px;
+border:1px solid #4ECAC6;
+height:50px;
+}
+
 .mastfoot {
     color: #333;
 }
@@ -29,7 +75,7 @@ text-decoration:none;
 
 }
 .btn-secondary:hover{
-    background-color: #d3d3d3 !important;
+    background-color: none !important;
     border:none !important;
     color:#6d6b89  !important;
 }
@@ -71,3 +117,13 @@ text-decoration:none;
 .a_underline:hover{
     color:black;
 }
+
+/*search bar in community*/
+.active-purple-2 input.form-control[type=text]:focus:not([readonly]) {
+              border-bottom: 1px solid #ce93d8;
+              box-shadow: 0 1px 0 0 #ce93d8;
+            }
+            .active-purple input.form-control[type=text] {
+              border-bottom: 1px solid #ce93d8;
+              box-shadow: 0 1px 0 0 #ce93d8;
+            }

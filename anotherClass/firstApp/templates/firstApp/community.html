@@ -71,13 +71,19 @@
 							</div>
 						</div>
 					</div>
-					<div class="community_search_bar text-center">
-						<form class="form-inline" >
-						  <input class="form-control mr-sm-2" type="text" placeholder="검색어를 입력하세요." aria-label="Search">
-						  <button class="btn btn-primary my-2 my-sm-0" type="submit" style="height:38px">
-							<i class="fas fa-search"></i>
-						  </button>
-						</form>
+
+					<!-- Search form -->
+					<div class="community_search_bar">
+					<form action="#" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
+						<select name="search_for"class="form-control form-control-md mr-3 w-15">
+							<option value="1" selected>선택</option>
+							<option value="2">글 제목</option>
+							<option value="3">작성자</option>
+						</select>
+					  <input class="form-control form-control-md mr-3 w-50" type="text" placeholder="검색어를 입력해주세요."
+						aria-label="Search">
+						<span class="community_search_icon"><i class="fas fa-search" aria-hidden="true" type="submit"></i></span>
+					</form>
 					</div>
 						{% if posts.has_other_pages %}
 						<nav aria-label="Page navigation example">

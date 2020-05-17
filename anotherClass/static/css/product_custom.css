@@ -108,6 +108,69 @@ list-style:none;
 .product-info li{
 padding-top:8px;
 }
+.tutor_photo{
+
+width:200px;
+border-radius : 100px;
+}
+.tutor_body{
+padding-top:50px;
+}
+.certification{
+}
+
+.class_date{
+line-height:3em;
+padding-top:20px;
+padding-bottom:20px;
+background-color:rgb(242, 242, 251);
+border-radius : 15px;
+width:1000px;
+padding-left:10px;
+margin-bottom:30px;
+position: relative;
+left:40px;
+}
+
+.class_date > h1{
+text-align:center;
+font-size:25px;
+color: #4ECAC6;
+font-weight:bold;
+}
+
+.class_date > div {
+padding-left:20px;
+}
+.class_date > hr{
+width:900px;
+}
+.tutor_detail{
+line-height:3em;
+margin-left:150px;
+padding-top:20px;
+padding-bottom:20px;
+background-color:rgb(242, 242, 251);
+border-radius : 15px;
+position: relative;
+top:-200px;
+left:100px;
+width:800px;
+padding-left:10px;
+min-height:200px;
+}
+.tutor_name{
+font-size:18px;
+color: #4ECAC6;
+    font-weight:bold;
+    padding-top:20px;
+    width:200px;
+  text-align:center;
+}
+.tutor_body{
+position: relative;
+top:-200px;
+}
 
 .button{
 font-weight:bold;
@@ -122,6 +185,22 @@ padding-top:16px;
   text-align:center;
   position: relative;
 left:5%;
+margin-top:25px;
+}
+
+.twobutton{
+font-weight:bold;
+font-size:19px;
+float:left;
+background-color:rgb(58, 192, 189);
+color:#fff;
+width:150px;height:60px;
+padding-top:16px;
+  margin-right:20px;
+  margin-bottom:15px;
+  text-align:center;
+  position: relative;
+left:3%;
 margin-top:25px;
 }
 

@@ -23,5 +23,9 @@ th{
     color:#918FB7 !important;
 }
 .community_search_bar{
-    padding-bottom:5%
+    margin-top:2rem;
+    margin-bottom:3rem;
+}
+.community_search_icon{
+    color:#918FB7;
 }
