@@ -36,7 +36,7 @@
             </div>
             <h3 class="post_title">{{post.title}}</h3>
             <p class="post_author"><i class="fas fa-user-circle" style="color:gray"></i> {{post.author}}</p>
-            <span class="post_t">{{post.created_date|date:"y-m-d h:m"}}</span>
+            <span class="post_t">{{post.created_date|date:"y.m.d H:i"}}</span>
             <span class="post_v">조회 {{post.views}}</span>
 
         </div>
@@ -64,7 +64,7 @@
                     <div class="comment_h">
                     <strong><i class="fas fa-user-circle" style="color:gray"></i> {{ comment.author }}</strong>
                     <span class="date lighter">
-                        {{comment.created_date|date:"y-m-d h:m"}}</span>
+                        {{comment.created_date|date:"y.m.d H:i"}}</span>
                         {% if comment.author == request.user %}
                             <span class="comment_edit">
                                 <a class="btn btn-secondary" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
