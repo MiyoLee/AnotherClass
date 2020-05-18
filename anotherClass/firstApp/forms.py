@@ -51,7 +51,7 @@ class CreateClass(forms.ModelForm):
     class Meta:
         model = Class
         fields = ['title', 'tutor', 'tutor_photo', 'category', 'area', 'photo', 'body',
-                  'in_min', 'in_max', 'tutor_body', 'price', 'time', 'level', 'mode']
+                  'in_min', 'in_max', 'tutor_body', 'price', 'time', 'level', 'mode', 'tutor_insta', 'tutor_blog', 'tutor_youtube']
 
         widgets = {
             'title': forms.TextInput(
@@ -60,6 +60,16 @@ class CreateClass(forms.ModelForm):
             'tutor': forms.TextInput(
                 attrs={'style': 'width: 170%', 'placeholder': '이름을 입력하세요.'},
             ),
+            'tutor_insta': forms.TextInput(
+                attrs={'style': 'width: 300%', 'placeholder': '@instagram'},
+            ),
+            'tutor_blog': forms.TextInput(
+                attrs={'style': 'width: 300%', 'placeholder': 'https://blog.naver.com/AnotherClass'},
+            ),
+            'tutor_youtube': forms.TextInput(
+                attrs={'style': 'width: 300%', 'placeholder': '어나더클래스 , youtube.com/AnotherClass'},
+            ),
+
             'price': forms.NumberInput(
                 attrs={'style': 'width: 100px'},
             ),

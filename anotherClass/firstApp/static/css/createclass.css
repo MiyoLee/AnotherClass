@@ -22,9 +22,9 @@ width:180px;
 }
 
 .hr_width{
-width:1200px;
+width:800px;
 position: relative;
-left:-5%;
+left:-18%;
 }
 
 .class_form {
@@ -42,11 +42,14 @@ color:#888;
   float:left;
   margin-left:50px;
   margin-bottom:20px;
+  text-align:center;
   width:700px;
   font-size:13px;
   font-weight:bold;
 }
-
+.tutor{
+padding-top:50px;
+}
 .bottombutton{
 clear:left;
 width:240px;height:40px;

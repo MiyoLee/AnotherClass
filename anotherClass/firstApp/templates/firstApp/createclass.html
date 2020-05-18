@@ -159,7 +159,23 @@
                             </li>
                         </ul>
                             </div>
-                        <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
+
+                            <p>
+                                        <div class="form_title class_form">블로그 주소  </div>
+                                        <div class="class_form">{{ form.tutor_blog }}</div>
+                                    </p>
+                                    <hr class="hr_width">
+                            <p>
+                                        <div class="form_title class_form">인스타 계정  </div>
+                                        <div class="class_form">{{ form.tutor_insta }}</div>
+                                    </p>
+                                    <hr class="hr_width">
+                            <p>
+                                        <div class="form_title class_form">유투브 채널  </div>
+                                        <div class="class_form">{{ form.tutor_youtube }}</div>
+                                    </p>
+                                    <hr class="hr_width">
+                        <div class="tutor state"> 이 페이지에 여러분에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
                        {{form.tutor_body}}
                        <br>
                             <button type="submit" class="btn btn-primary bottombutton" >다음 단계</button>
