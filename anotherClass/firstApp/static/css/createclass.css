@@ -4,8 +4,15 @@
 }
 .createclasscont{
 padding-bottom:50px;
-}
 
+}
+.form_description{
+ text-align:center;
+  width:700px;
+  font-size:13px;
+  font-weight:bold;
+  padding-bottom:50px;
+}
 .empty_block{
 height:100px;
 }

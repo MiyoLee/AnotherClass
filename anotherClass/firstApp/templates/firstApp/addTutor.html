@@ -48,14 +48,14 @@
                                 <div class="stepbutton">이전 단계</div>
                             </li>
                             <li>
-                                <h2>4단계　|　시간 추가하기</h2>
+                                <h2>4단계　|　크리에이터 정보</h2>
                             </li>
                             <li>
                                  <div class="stepbutton">다음 단계</div>
                             </li>
                         </ul>
                             </div>
-
+ <div class="form_description">필수 항목이 아니므로 다음 단계로 넘어갈 수 있습니다. 자격증과 학력은 하나씩 분리하여 기입해 주세요.</div>
 <form method="POST" enctype="multipart/form-data">
 
             {% csrf_token %}
@@ -106,7 +106,8 @@
 
 <div class="empty_block"></div>
                  <a class="btn btn-primary bottombutton"
-             href="{% url 'product' class_detail.id %}">등록하기</a>
+
+             href="{% url 'addTime' class_detail.id %}">등록하기</a>
                         </div>
                         </div>
                         </div>
