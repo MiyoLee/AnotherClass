@@ -13,6 +13,30 @@ padding-bottom:50px;
   font-weight:bold;
   padding-bottom:50px;
 }
+
+.step-num{
+color:#4ECAC6;
+font-size:30px;
+float:left;
+font-weight:bold;
+padding-left:20px;
+}
+.step-title{
+color:#888;
+font-size:30px;
+padding-right:20px;
+float:right;
+padding-right:20px;
+}
+.upperbar{
+margin-right:400px;
+padding-bottom:60px;
+border-bottom: 2px solid #4ECAC6;
+width:820px;
+height:50px;
+
+margin-bottom:40px;
+}
 .empty_block{
 height:100px;
 }
@@ -85,15 +109,7 @@ padding-top:5px;
 padding-bottom:40px;
 }
 
-.stepbutton{
-margin:0px 70px;
-width:100px;height:40px;
-text-align:center;
-background-color:#4ECAC6;
-color:#fff;
-border-radius : 30px;
-padding-top:8px;
-}
+
 
 .blog-post-area textarea{
 margin-bottom:70px;
@@ -105,10 +121,7 @@ width:290px;
 font-size:23px;
 }
 
-.upperbar{
-margin-bottom:20px;
-height:90px;
-}
+
 
 .choose{
 float:left;

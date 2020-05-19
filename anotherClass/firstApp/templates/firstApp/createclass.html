@@ -46,23 +46,16 @@
                         <div class="tab-content">
                         <div class="tab-pane active" id="one">
                             <div class="upperbar">
-                                <ul>
-                            <li>
-                                <div class="stepbutton">이전 단계</div>
-                            </li>
-                            <li>
-                                <h2>1단계　|　클래스 기본정보</h2>
-                            </li>
-                            <li>
-                                <div class="stepbutton">다음 단계</div>
-                            </li>
-                                </ul>
+
+                                <div class="step-num">1단계</div>
+                                <div class="step-title">클래스 기본정보</div>
                             </div>
 
                             <div class="createcont">
                                 <form method="POST" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {{ form.media }}
+
                                     <p>
                                         <div class="form_title class_form">클래스 제목  </div>
                                         <div class="class_form">{{ form.title }}</div>
@@ -124,40 +117,27 @@
                                     </p>
                                     <hr class="hr_width">
                             </div>
+                            <button class="btn btn-primary bottombutton" href="#two" data-toggle="tab">다음 단계</button>
                         </div>
 
                         <div class="tab-pane" id="two">
-                            <div class="upperbar">
-                                <ul>
-                            <li>
-                                <div class="stepbutton">이전 단계</div>
-                            </li>
-                            <li>
-                                <h2>2단계　|　클래스 소개</h2>
-                            </li>
-                            <li>
-                                 <div class="stepbutton">다음 단계</div>
-                            </li>
-                        </ul>
+                                                       <div class="upperbar">
+
+                                <div class="step-num">2단계</div>
+                                <div class="step-title">클래스 소개</div>
                             </div>
 
                         <div class="state"> 이 페이지에 여러분의 클래스에 대해 소개해주세요. 설명과 함께 다양한 사진 또는 영상을 첨부하는 것이 좋습니다.</div>
 					    {{ form.body }}
+                             <div><button class="btn btn-primary bottombutton" href="#three" data-toggle="tab">다음 단계</button></div>
                         </div>
 
+
                         <div class="tab-pane" id="three">
-                            <div class="upperbar">
-                                 <ul>
-                            <li>
-                                <div class="stepbutton">이전 단계</div>
-                            </li>
-                            <li>
-                                <h2>3단계　|　크리에이터 소개</h2>
-                            </li>
-                            <li>
-                                 <div class="stepbutton">다음 단계</div>
-                            </li>
-                        </ul>
+                                                        <div class="upperbar">
+
+                                <div class="step-num">3단계</div>
+                                <div class="step-title">크리에이터 소개</div>
                             </div>
 
                             <p>
