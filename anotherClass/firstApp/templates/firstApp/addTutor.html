@@ -1,0 +1,131 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/createclass.css' %}">
+<section>
+		<div class="contents">
+            <div class="createclasscont">
+                <div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+                        <ul class="steptabs">
+                            <li>1단계 > 클래스 기본정보</li>
+                        <ul>
+                            <li>클래스 정보</li>
+                            <li>커버이미지</li>
+                        </ul>
+                            <li>2단계 > 클래스 소개</li>
+                        <ul>
+                            <li>클래스 소개하기</li>
+                        </ul>
+                            <li>3단계 > 크리에이터 소개</li>
+                        <ul>
+                            <li>크리에이터 소개하기</li>
+                        </ul>
+                            <li style="    border: 0px;
+    color: #333333;
+    cursor: default;
+    block:none;
+    font-weight:bold;">4단계 > 크리에이터 정보</li>
+                            <ul>
+                                <li>자격증 추가</li>
+                                <li>학력 인증</li>
+                            </ul>
+                            <li>5단계 > 일정 추가</li>
+                        </ul>
+
+					</div>
+				</div>
+				<div class="col-sm-9">
+					<div class="blog-post-area">
+                        <div class="tab-content">
+
+                        <div>
+                            <div class="upperbar">
+                                 <ul>
+                            <li>
+                                <div class="stepbutton">이전 단계</div>
+                            </li>
+                            <li>
+                                <h2>4단계　|　시간 추가하기</h2>
+                            </li>
+                            <li>
+                                 <div class="stepbutton">다음 단계</div>
+                            </li>
+                        </ul>
+                            </div>
+
+<form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+                <div class="date_form">
+                    <div class="form_title class_form">관련 자격증 추가</div> {{ form1.name }}<input class="date-button btn btn-primary" type="submit" value="등록">
+                </div>
+
+            <br><br>
+            <div>
+
+                 {% for date in class_detail.certi_class.all %}
+            <div>
+                {{ date.name }}
+
+            </div>
+        <div>
+        <hr class="hr_width2">
+    {% empty %}
+        <p></p>
+    {% endfor %}
+            </div>
+        </form>
+<div class="empty_block"></div>
+                  <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+                <div class="date_form">
+                    <div class="form_title class_form">강사 학력 정보</div> {{ form2.university }} {{ form2.department }} {{ form2.state }}<input class="date-button btn btn-primary" type="submit" value="등록">
+                </div>
+
+            <br><br>
+            <div>
+
+                 {% for date in class_detail.edu_class.all %}
+            <div>
+                {{ date.university }} {{ date.department }} {{ date.state }}
+
+            </div>
+        <div>
+        <hr class="hr_width2">
+    {% empty %}
+        <p></p>
+    {% endfor %}
+            </div>
+        </form>
+
+<div class="empty_block"></div>
+                 <a class="btn btn-primary bottombutton"
+             href="{% url 'product' class_detail.id %}">등록하기</a>
+                        </div>
+                        </div>
+                        </div>
+
+
+
+
+
+                    </div>
+				</div>
+			</div>
+            </div>
+		</div>
+    </section>
+
+
+
+
+
+
+
+{% endblock content%}

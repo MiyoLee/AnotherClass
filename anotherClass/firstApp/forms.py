@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post,Comment, ClassQna, Class, Apply, ClassDate
+from .models import Post,Comment, ClassQna, Class, Apply, ClassDate, Certificate, Education
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -45,7 +45,30 @@ class AddTime(forms.ModelForm):
         widgets = {
 
         }
+class CertificateForm(forms.ModelForm):
+    class Meta:
+        model = Certificate
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(
+                attrs={'style': 'width: 40%', 'placeholder': ' 토익 100점 , HSK 8급 , 컴퓨터활용능력 3급 . . .'}
+            )
 
+        }
+class EducationForm(forms.ModelForm):
+    class Meta:
+        model = Education
+        fields = ['university', 'department', 'state']
+        widgets = {
+            'university': forms.TextInput(
+                attrs={'style': 'width: 17%', 'placeholder': ' 서울대학교 '}
+            ),
+            'department': forms.TextInput(
+                attrs={'style': 'width: 17%', 'placeholder': ' 실용음악과'}
+            )
+            
+
+        }
 
 class CreateClass(forms.ModelForm):
     class Meta:
@@ -55,7 +78,7 @@ class CreateClass(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'style': 'width: 500%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'style': 'width: 350%', 'placeholder': '제목을 입력하세요.'}
             ),
             'tutor': forms.TextInput(
                 attrs={'style': 'width: 170%', 'placeholder': '이름을 입력하세요.'},

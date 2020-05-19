@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, Class, Category, ClassQna, Apply, ClassDate
-from .forms import PostForm, CommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime
+from .models import Post, Comment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education
+from .forms import PostForm, CommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime, CertificateForm, EducationForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
+from django.views.generic import FormView
 from django.http import HttpResponse
 from django.http.response import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -15,6 +17,8 @@ from django.db.models import Q
 from annoying.functions import get_object_or_None
 
 # Create your views here.
+
+
 def index(request):
     return render(request, 'firstApp/index.html')
 
@@ -129,7 +133,27 @@ def addTime(request, class_id):
         return render(request, 'firstApp/addTime.html', {
             'class_detail': class_detail, 'form': form})
 
-
+def addTutor(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == "POST":
+        form1 = CertificateForm(request.POST)
+        form2 = EducationForm(request.POST)
+        if form1.is_valid():
+            certi = form1.save(commit=False)
+            certi.inClass = class_detail
+            certi.save()
+            return HttpResponseRedirect("/createclass/{}/addTutor".format(class_id))
+        if form2.is_valid():
+            edu = form2.save(commit=False)
+            edu.inClass = class_detail
+            edu.save()
+            return HttpResponseRedirect("/createclass/{}/addTutor".format(class_id))
+    else:
+        form1 = CertificateForm()
+        form2 = EducationForm()
+        class_detail.save()
+        return render(request, 'firstApp/addTutor.html', {
+            'class_detail': class_detail, 'form1': form1, 'form2': form2})
 
 def update_time(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)

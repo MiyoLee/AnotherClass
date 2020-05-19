@@ -6,7 +6,9 @@
 padding-bottom:50px;
 }
 
-
+.empty_block{
+height:100px;
+}
 .hr_width2{
 width:800px;
 position: relative;
