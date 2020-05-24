@@ -47,6 +47,11 @@
 .comment{
     margin: 20px;
 }
+.ccomment{
+    margin: 20px;
+    position:relative;
+    left:30px;
+}
 .comment_h{
     height:30px;
 }
@@ -57,4 +62,6 @@
 }
 .comment_edit{
     float:right;
+    position:relative;
+    right:10px;
 }

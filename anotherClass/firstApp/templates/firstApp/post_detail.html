@@ -67,9 +67,9 @@
                         {{comment.created_date|date:"y.m.d H:i"}}</span>
                         {% if comment.author == request.user %}
                             <span class="comment_edit">
-                                <a class="btn btn-secondary" href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
-                                <a class="btn btn-secondary"
-                                   href="{% url 'comment_update' pk=comment.pk %}?cateId={{cateId}}&page={{page}}">
+                                <a href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
+                                &nbsp;
+                                <a href="{% url 'comment_update' pk=comment.pk %}?cateId={{cateId}}&page={{page}}">
                                     <i class="fas fa-edit"></i>
                                 </a>
                             </span>
@@ -78,6 +78,30 @@
 
                     <p>{{ comment.text|linebreaks }}</p>
                 </div>
+
+                {% for ccomment in post.ccomments.all%}
+                    {% if ccomment.parent_comment == comment %}
+                    <div class="ccomment">
+                        <div class="comment_h">
+                            <strong><i class="fas fa-user-circle" style="color:gray"></i> {{ ccomment.author }}</strong>
+                            <span class="date lighter">
+                                {{ccomment.created_date|date:"y.m.d H:i"}}</span>
+                                {% if ccomment.author == request.user %}
+                                    <span class="comment_edit">
+                                        <a href="#"><i class="fas fa-trash-alt"></i></a>
+                                        &nbsp;
+                                        <a href="#"><i class="fas fa-edit"></i></a>
+                                    </span>
+                                 {% endif %}
+                        </div>
+
+                        <p>{{ ccomment.text|linebreaks }}</p>
+
+                    </div>
+
+                    {% endif %}
+                {% endfor %}
+
             <hr>
             {% empty %}
             {% endfor %}

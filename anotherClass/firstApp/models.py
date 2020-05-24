@@ -58,6 +58,7 @@ class Comment(models.Model):
         return self.text
 
 class CComment(models.Model):
+    post = models.ForeignKey('firstApp.Post', on_delete=models.CASCADE, related_name='ccomments', default=1)
     parent_comment = models.ForeignKey('firstApp.Comment', on_delete=models.CASCADE, related_name='child_comments')
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     text = models.TextField(max_length=300)
