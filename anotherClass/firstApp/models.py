@@ -46,7 +46,6 @@ class Comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     text = models.TextField(max_length=300)
     created_date = models.DateTimeField(default=timezone.now)
-    approved_comment = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['id']
@@ -57,6 +56,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+class CComment(models.Model):
+    parent_comment = models.ForeignKey('firstApp.Comment', on_delete=models.CASCADE, related_name='child_comments')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+    text = models.TextField(max_length=300)
+    created_date = models.DateTimeField(default=timezone.now)
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'title')
