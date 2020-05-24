@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education
-from .forms import PostForm, CommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime, CertificateForm, EducationForm
+from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime, CertificateForm, EducationForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -97,10 +97,7 @@ def time_remove(request, pk):
     time.delete()
     return redirect('addTime', class_id=time.inClass.pk)
 
-def comment_remove(request, pk):
-    comment = get_object_or_404(Comment, pk=pk)
-    comment.delete()
-    return redirect('post_detail', pk=comment.post.pk)
+
 
 
 def product(request, class_id):
@@ -302,7 +299,6 @@ def comment_remove(request, pk):
     return redirect('/community/post/'+str(comment.post.pk)+'/?cateId='+str(cateId)+'&page='+str(page), pk=comment.post.pk)
 
 
-
 def comment_update(request, pk):
     my_comment = get_object_or_404(Comment, pk=pk)
     cateId = request.GET.get('cateId', '')
@@ -318,6 +314,25 @@ def comment_update(request, pk):
                   {'my_comment': my_comment, 'post': my_comment.post, 'form': form, 'page': page, 'cateId': cateId}
                   )
 
+def create_ccomment(request,pk):
+    parent_comment = get_object_or_404(Comment, pk=pk)
+    post = get_object_or_404(Post, pk=parent_comment.post.pk)
+    cateId = request.GET.get('cateId', '')
+    page = request.GET.get('page', 1)
+    if request.method == 'POST':
+        form = CCommentForm(request.POST)
+        if form.is_valid():
+            ccomment = form.save(commit=False)
+            ccomment.post = post
+            ccomment.parent_comment = parent_comment
+            ccomment.author = User.objects.get(username=request.user.get_username())
+            ccomment.save()
+        return redirect('/community/post/'+str(post.pk)+'/?cateId='+str(cateId)+'&page='+str(page), pk=post.pk)
+    else:
+        form = CommentForm()
+    return render(request, 'firstApp/create_ccomment.html',
+                  {'post': post, 'form': form, 'parent_comment': parent_comment, 'page': page, 'cateId': cateId}
+                  )
 
 def login(request):
     if request.method == "POST":

@@ -72,8 +72,13 @@
                                 <a href="{% url 'comment_update' pk=comment.pk %}?cateId={{cateId}}&page={{page}}">
                                     <i class="fas fa-edit"></i>
                                 </a>
+
                             </span>
                         {% endif %}
+                         &nbsp;
+                        <a href="{% url 'create_ccomment' pk=comment.pk %}?cateId={{cateId}}&page={{page}}">
+                            <i class="fas fa-reply"></i>
+                        </a>
                     </div>
 
                     <p>{{ comment.text|linebreaks }}</p>
@@ -91,8 +96,10 @@
                                         <a href="#"><i class="fas fa-trash-alt"></i></a>
                                         &nbsp;
                                         <a href="#"><i class="fas fa-edit"></i></a>
+
                                     </span>
                                  {% endif %}
+
                         </div>
 
                         <p>{{ ccomment.text|linebreaks }}</p>

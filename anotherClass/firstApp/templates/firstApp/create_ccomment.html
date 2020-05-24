@@ -57,32 +57,29 @@
                     <div class="comment_h">
                     <strong><i class="fas fa-user-circle"></i> {{ comment.author }}</strong>
                     </div>
-                    {% if comment.pk == my_comment.pk %}
-                        <form method="POST" class="post-form" style="margin:0; height:100px;">
-                            {% csrf_token %}
-                            {{ form.text }}
-                            <button type="submit" class="btn btn-primary comment_submit">수정</button>
-                        </form>
-                    {% else %}
-                        <p>{{ comment.text|linebreaks }}</p>
-                    {% endif %}
+                    <p>{{ comment.text|linebreaks }}</p>
                 </div>
                 {% for ccomment in post.ccomments.all%}
                     {% if ccomment.parent_comment == comment %}
-                    <div class="ccomment">
-                        <div class="comment_h">
-                            <strong><i class="fas fa-user-circle" style="color:gray"></i> {{ ccomment.author }}</strong>
-                            <span class="date lighter">
-                                {{ccomment.created_date|date:"y.m.d H:i"}}</span>
-
+                        <div class="ccomment">
+                            <div class="comment_h">
+                                <strong><i class="fas fa-user-circle" style="color:gray"></i> {{ ccomment.author }}</strong>
+                                <span class="date lighter">
+                                    {{ccomment.created_date|date:"y.m.d H:i"}}</span>
+                            </div>
+                            <p>{{ ccomment.text|linebreaks }}</p>
                         </div>
-
-                        <p>{{ ccomment.text|linebreaks }}</p>
-
-                    </div>
-
                     {% endif %}
                 {% endfor %}
+                {% if parent_comment.pk == comment.pk %}
+                    <div class="ccomment">
+                        <form method="POST" class="post-form" style="margin:0; height:100px;">
+                            {% csrf_token %}
+                            {{ form.text }}
+                            <button type="submit" class="btn btn-primary comment_submit">등록</button>
+                        </form>
+                    </div>
+                {% endif %}
             <hr>
             {% empty %}
             {% endfor %}

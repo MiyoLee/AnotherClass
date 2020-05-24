@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post,Comment, ClassQna, Class, Apply, ClassDate, Certificate, Education
+from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, Certificate, Education
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -22,6 +22,15 @@ class CommentForm(forms.ModelForm):
 
     class Meta:
         model = Comment
+        fields = ['text']
+        widgets = {
+            'text': forms.Textarea(attrs={'class': 'form-control',
+                                          'style': 'margin:0; display:inline-block; width:90%; height:100px;'})
+        }
+class CCommentForm(forms.ModelForm):
+
+    class Meta:
+        model = CComment
         fields = ['text']
         widgets = {
             'text': forms.Textarea(attrs={'class': 'form-control',
