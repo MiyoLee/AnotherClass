@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education
+from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education
 from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime, CertificateForm, EducationForm
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -332,6 +332,28 @@ def create_ccomment(request,pk):
         form = CommentForm()
     return render(request, 'firstApp/create_ccomment.html',
                   {'post': post, 'form': form, 'parent_comment': parent_comment, 'page': page, 'cateId': cateId}
+                  )
+
+def remove_ccomment(request, pk):
+    ccomment = get_object_or_404(CComment, pk=pk)
+    cateId = request.GET.get('cateId', '')
+    page = request.GET.get('page', 1)
+    ccomment.delete()
+    return redirect('/community/post/'+str(ccomment.post.pk)+'/?cateId='+str(cateId)+'&page='+str(page), pk=ccomment.post.pk)
+
+def update_ccomment(request, pk):
+    my_ccomment = get_object_or_404(CComment, pk=pk)
+    cateId = request.GET.get('cateId', '')
+    page = request.GET.get('page', 1)
+    if request.method == 'POST':
+        form = CCommentForm(request.POST, instance=my_ccomment)
+        if form.is_valid():
+            form.save()
+        return redirect('/community/post/'+str(my_ccomment.post.pk)+'/?cateId='+str(cateId)+'&page='+str(page), pk=my_ccomment.post.pk)
+    else:
+        form = CCommentForm(instance=my_ccomment)
+    return render(request, 'firstApp/update_ccomment.html',
+                  {'my_ccomment': my_ccomment, 'post': my_ccomment.post, 'form': form, 'page': page, 'cateId': cateId}
                   )
 
 def login(request):

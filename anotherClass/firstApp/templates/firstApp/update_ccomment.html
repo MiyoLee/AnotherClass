@@ -1,0 +1,94 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/post_detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+
+<div class="container">
+
+    <div class="blog-post-area">
+        <div class="post_info">
+            <div class="post_category">
+                <i class="fas fa-clipboard"></i>
+                <span>{{post.category}}</span>
+                <table style="float:right">
+                <tr>
+                    {% if post.author == request.user %}
+                    <td>
+                    <a class="a_underline" href="{% url 'update_post' post.pk %}">
+                        수정
+                    </a>
+                    </td>
+                    <td class="post_v">|</td>
+                    <td>
+                    <a class="a_underline" href="{% url 'delete_post' post.pk %}">
+                        삭제
+                    </a>
+                    </td>
+                    <td class="post_v">|</td>
+                    {% endif %}
+                    <td>
+                    <a class="a_underline" href="/community/?page={{page}}">목록</a>
+                    </td>
+                </tr>
+                </table>
+            </div>
+            <h3 class="post_title">{{post.title}}</h3>
+            <p class="post_author"><i class="fas fa-user-circle"></i> {{post.author}}</p>
+            <span class="post_t">{{post.created_date|date:"y-m-d h:m"}}</span>
+            <span class="post_v">조회 {{post.views}}</span>
+
+        </div>
+        <hr>
+        <div class="post_contents">
+            {{post.text | safe}}
+        </div>
+        <div class="post_content_f">
+        댓글 {{ post.comments.count }}
+
+        </div>
+    </div>
+
+    <div class="blog-comment-area bg-light">
+        <div class="comment_contents">
+            {% for comment in post.comments.all %}
+                <div class="comment">
+                    <div class="comment_h">
+                    <strong><i class="fas fa-user-circle"></i> {{ comment.author }}</strong>
+                    </div>
+
+                        <p>{{ comment.text|linebreaks }}</p>
+
+                </div>
+                {% for ccomment in post.ccomments.all%}
+                    {% if ccomment.parent_comment == comment %}
+                    <div class="ccomment">
+                        <div class="comment_h">
+                            <strong><i class="fas fa-user-circle" style="color:gray"></i> {{ ccomment.author }}</strong>
+                            <span class="date lighter">
+                                {{ccomment.created_date|date:"y.m.d H:i"}}</span>
+
+                        </div>
+                        {% if ccomment.pk == my_ccomment.pk %}
+                            <form method="POST" class="post-form" style="margin:0; height:100px;">
+                                {% csrf_token %}
+                                {{ form.text }}
+                                <button type="submit" class="btn btn-primary comment_submit">수정</button>
+                            </form>
+                        {% else %}
+                            <p>{{ ccomment.text|linebreaks }}</p>
+                        {% endif %}
+                    </div>
+
+                    {% endif %}
+                {% endfor %}
+            <hr>
+            {% empty %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content%}
