@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education
+from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer
 from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm
 from django.contrib.auth.models import User
 from django.contrib import auth

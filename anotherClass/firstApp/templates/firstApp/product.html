@@ -157,16 +157,21 @@
             </div>
             <img class="product-q-img" src="{% static 'image\q.png' %}"><div class="product-question">{{ qna.question }}</div>
             {% if user == class_detail.author %}
-            <a class="btn btn-primary answer-button" href="{% url 'create_answer' pk=qna.pk %}">답변</a>
+                {% if qna.answer_class.all %}
+                    {% for answer in qna.answer_class.all %}
+                    <a class="btn btn-primary answer-button" href="{% url 'create_answer' pk=qna.pk %}">수정</a>
+                    {% endfor %}
+                {% else%}
+                    <a class="btn btn-primary answer-button" href="{% url 'create_answer' pk=qna.pk %}">답변</a>
+                {% endif %}
             {% endif %}
             {% for answer in qna.answer_class.all %}
-
-             {% if answer.answer %}
+                {% if answer.answer %}
             <div class="product-answer"><img class="product-q-img" src="{% static 'image\a.png' %}">
                 <span>
                     {{ answer.answer }}
-             {% endif %}
-                    {% endfor %}
+                {% endif %}
+            {% endfor %}
                 </span>
             </div>
         </div>
