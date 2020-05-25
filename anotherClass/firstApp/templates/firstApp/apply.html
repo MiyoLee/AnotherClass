@@ -8,69 +8,53 @@
 {% if user.is_active %}
 
 <link rel="stylesheet" href="{% static 'css/createclass.css' %}">
-	<section>
-		<div class="contents">
+   <section>
+      <div class="contents">
             <div class="createclasscont">
                 <div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
+            <div class="col-sm-3">
+               <div class="left-sidebar">
                         <ul class="steptabs">
                             <li class="active"><a href="#one" data-toggle="tab">1단계 > 일정 선택</a></li>
                             <br>
                             <li><a href="#two" data-toggle="tab">2단계 > 신청서 작성</a></li>
                         </ul>
 
-					</div>
-				</div>
-				<div class="col-sm-9">
-					<div class="blog-post-area">
+               </div>
+            </div>
+            <div class="col-sm-9">
+               <div class="blog-post-area">
                         <div class="tab-content">
                         <div class="tab-pane active" id="one">
                             <div class="upperbar">
-                                <ul>
-                            <li>
-                                <div class="stepbutton">이전 단계</div>
-                            </li>
-                            <li>
-                                <h2>1단계　|　일정 선택</h2>
-                            </li>
-                            <li>
-                                <div class="stepbutton">다음 단계</div>
-                            </li>
-                                </ul>
+                                    <div class="step-num">1단계</div>
+                                    <div class="step-title">일정 선택</div>
                             </div>
 
                             <div class="createcont">
                                 <form method="POST" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {{ form.media }}
-                                	<p>
+                                   <p>
                                         <b>클래스 : </b>
                                         {{ class_detail.title }}
                                     </p>
-                                    {% for date in class_detail.date_class.all %}
-                                    <li>
-                                        <input type="radio" name="rad1" value="버튼">  
+                                    <br>
+                                    <b>일정 선택 : </b>
+                                    <select>
+                                        {% for date in class_detail.date_class.all %}
                                         <option>{{ date.date }}</option>
-                                    </li>
-                                    {% endfor %}
-                                   
+                                        {% empty %}
+                                     {% endfor %}
+                                    </select>
                             </div>
+                            <button class="btn btn-primary bottombutton" href="#two" data-toggle="tab">다음 단계</button>
                         </div>
 
                         <div class="tab-pane" id="two">
                             <div class="upperbar">
-                                <ul>
-                            <li>
-                                <div class="stepbutton">이전 단계</div>
-                            </li>
-                            <li>
-                                <h2>2단계　|　신청서 작성</h2>
-                            </li>
-                            <li>
-                                 <div class="stepbutton">다음 단계</div>
-                            </li>
-                        </ul>
+                                <div class="step-num">2단계</div>
+                                <div class="step-title">신청서 작성</div>
                             </div>
                             <p>
                                 <b>이름 : </b>
@@ -84,14 +68,15 @@
                                 <b>튜터에게 전하는 말 : </b>
                                 {{ form.text }}
                             </p>
+                            <button class="btn btn-primary bottombutton" href="#one" data-toggle="tab" style="display:inline-block; margin-left: -100;">이전 단계</button>
                             <button type="submit" class="btn btn-primary bottombutton" >등록하기</button>
 
                         </form>
                     </div>
-				</div>
-			</div>
             </div>
-		</div>
+         </div>
+            </div>
+      </div>
     </section>
 
 {% else %}

@@ -2,32 +2,59 @@
 {% load static %}
 
 {% block content %}
-    <h5>내가 신청한 클래스</h5>
-
-    <div class="album py-5 bg-light">
-
-      <div class="container">
-
-          <div class="row">
-              {% for class in classs %}
-        <div class="col-md-4">
-          <a class="productdetail"
-             href="{% url 'product' class.id %}">
-            <div class="card mb-4 shadow-sm">
-            <img src="{{class.photo.url}}" width="338px" height="250px">
-            <div class="card-body">
-              <p class="class_title">{{class.title}}</p>
-
-                <small class="tutor_name">{{class.tutor}}</small>
-                  <span class="class_price">{{class.price}} 원</span>
-
-              </div>
-
-            </div>
-          </a>
+{% if user.is_active %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="left-sidebar">
+              <ul>
+                <li data-toggle="tab"><br>
+                  <h3><a href="" class="nounderline">My page</a></h3><br>
+                  <a class="nav-link"><strong>{{user.username}}님</strong></a>
+                  <br>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/mypage/myApply">나의 수강클래스</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/mypage/myClass">나의 개설클래스</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/change_pw">비밀번호 변경</a>
+                  </li>
+                </li>
+                  <hr>
+                    <li><a class="a_underline lighter" href="/logout" >로그아웃</a></li>
+                    <li><a class="a_underline lighter" href="/delete" >탈퇴하기</a></li>
+              </ul>
+          </div>   
         </div>
-        {% endfor %}
+         
+          <div class="col-sm-9">
+            <h5>내가 신청한 클래스</h5>
+            <table class="table">
+              <tr>
+                <th>클래스</th>
+                <th>튜터</th>
+                <th>가격</th>
+              </tr>
+              {% for class in classs %}
+              <tr>
+                <td>
+                  <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}a</a>
+                </td>
+                <td class="lighter">{{ class.tutor }}b</td>
+                <td class="lighter">{{ class.price }}c</td>
+              </tr>
+              {% endfor %}
+            </table>
           </div>
       </div>
-  </div>
-  {% endblock content %}
+    </div>
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다. \n로그인을 해주세요.')
+    window.location.href = '/login';
+  </script>
+{% endif %}
+{% endblock content %}
