@@ -97,39 +97,15 @@ def time_remove(request, pk):
     time.delete()
     return redirect('addTime', class_id=time.inClass.pk)
 
+def certi_remove(request, pk):
+    certi = get_object_or_404(Certificate, pk=pk)
+    certi.delete()
+    return redirect('addTutor', class_id=certi.inClass.pk)
 
-
-
-def product(request, class_id):
-    class_detail = get_object_or_404(Class, pk=class_id)
-    if request.method == "POST":
-        form = QuestionForm(request.POST)
-        if form.is_valid():
-            question = form.save(commit=False)
-            question.inClass = class_detail
-            question.author = User.objects.get(username=request.user.get_username())
-            question.save()
-            return HttpResponseRedirect("/product/{}".format(class_id))
-    else:
-        form = QuestionForm()
-        class_detail.save()
-        return render(request, 'firstApp/product.html', {
-            'class_detail': class_detail, 'form': form})
-
-def addTime(request, class_id):
-    class_detail = get_object_or_404(Class, pk=class_id)
-    if request.method == "POST":
-        form = AddTime(request.POST)
-        if form.is_valid():
-            time = form.save(commit=False)
-            time.inClass = class_detail
-            time.save()
-            return HttpResponseRedirect("/createclass/{}/addTime".format(class_id))
-    else:
-        form = AddTime()
-        class_detail.save()
-        return render(request, 'firstApp/addTime.html', {
-            'class_detail': class_detail, 'form': form})
+def edu_remove(request, pk):
+    edu = get_object_or_404(Education, pk=pk)
+    edu.delete()
+    return redirect('addTutor', class_id=edu.inClass.pk)
 
 def addTutor(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
@@ -153,13 +129,68 @@ def addTutor(request, class_id):
         return render(request, 'firstApp/addTutor.html', {
             'class_detail': class_detail, 'form1': form1, 'form2': form2})
 
+
+def create_answer(request, pk):
+    parent_question = get_object_or_404(ClassQna, pk=pk)
+    class_detail = get_object_or_404(Class, pk=parent_question.inClass.pk)
+    if request.method == 'POST':
+        form = AnswerForm(request.POST)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.inClass = class_detail
+            answer.inQuestion = parent_question
+            answer.author = User.objects.get(username=request.user.get_username())
+            answer.save()
+        return HttpResponseRedirect("/product/{}".format(class_detail.id))
+
+    else:
+        form = AnswerForm()
+    return render(request, 'firstApp/create_answer.html',
+                  {'class_detail': class_detail, 'form': form, 'parent_question': parent_question}
+                  )
+
+
+def product(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            question = form.save(commit=False)
+            question.inClass = class_detail
+            question.author = User.objects.get(username=request.user.get_username())
+            question.save()
+            return HttpResponseRedirect("/product/{}".format(class_id))
+    else:
+        form = QuestionForm()
+        class_detail.save()
+        return render(request, 'firstApp/product.html', {
+            'class_detail': class_detail, 'form': form})
+
+
+
+def addTime(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == "POST":
+        form = AddTime(request.POST)
+        if form.is_valid():
+            time = form.save(commit=False)
+            time.inClass = class_detail
+            time.save()
+            return HttpResponseRedirect("/createclass/{}/addTime".format(class_id))
+    else:
+        form = AddTime()
+        class_detail.save()
+        return render(request, 'firstApp/addTime.html', {
+            'class_detail': class_detail, 'form': form})
+
+
 def update_time(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
     if request.method == 'POST':
         form = AddTime(request.POST, instance=class_detail)
         if form.is_valid():
             post = form.save(commit=False)
-            time.inClass = class_detail
+            post.inClass = class_detail
             post.save()
             return HttpResponseRedirect("/createclass/{}/addTime".format(class_id))
     else:
@@ -178,7 +209,7 @@ def update_class(request, class_id):
             post = form.save(commit=False)
             post.author = User.objects.get(username = request.user.get_username())
             post.save()
-            return redirect("/product/{}".format(class_id))
+            return redirect('/createclass/'+str(post.id)+'/addTutor/')
         else:
             return render(request, 'firstApp/update_class.html',{'form': form, 'alert_flag': True})
     else:

@@ -142,31 +142,35 @@
       </div>
      <div class="tab-pane" id="reviews" >
 		<div class="more-container">
+            {% if user != class_detail.author %}
             <form method="POST" class="post-form">
                 {% csrf_token %}
                 {{ form.question }}
             <br>
             <button type="submit" class="review-button">등록</button>
             </form>
+            {% endif %}
              {% for qna in class_detail.qna_class.all %}
         <div class="comment">
             <div class="product-review-date">
                 {{ qna.created_date }}
             </div>
-            <strong><img class="product-q-img" src="{% static 'image\q.png' %}"><span class="product-question">{{ qna.question }}</span></strong>
+            <img class="product-q-img" src="{% static 'image\q.png' %}"><div class="product-question">{{ qna.question }}</div>
+            {% if user == class_detail.author %}
+            <a class="btn btn-primary answer-button" href="{% url 'create_answer' pk=qna.pk %}">답변</a>
+            {% endif %}
             {% for answer in qna.answer_class.all %}
+
              {% if answer.answer %}
             <div class="product-answer"><img class="product-q-img" src="{% static 'image\a.png' %}">
                 <span>
                     {{ answer.answer }}
-                    <div class="product-review-date"> {{ answer.created_date }} </div>
-                    {% endif %}
-                    {% endfor %}</span></div>
-
+             {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
         </div>
-
         <div class="product-review-hr"><hr></div>
-    {% empty %}
         <p></p>
     {% endfor %}
         </div>

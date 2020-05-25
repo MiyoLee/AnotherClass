@@ -62,7 +62,7 @@
                  {% for date in class_detail.certi_class.all %}
             <div>
                 {{ date.name }}
-
+                <a class="btn btn-secondary" href="{% url 'certi_remove' pk=date.pk %}"><i class="fas fa-trash-alt"></i></a>
             </div>
         <div>
         <hr class="hr_width2">
@@ -86,7 +86,7 @@
                  {% for date in class_detail.edu_class.all %}
             <div>
                 {{ date.university }} {{ date.department }} {{ date.state }}
-
+                <a class="btn btn-secondary" href="{% url 'edu_remove' pk=date.pk %}"><i class="fas fa-trash-alt"></i></a>
             </div>
         <div>
         <hr class="hr_width2">

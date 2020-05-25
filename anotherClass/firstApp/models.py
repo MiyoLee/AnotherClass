@@ -128,6 +128,7 @@ class ClassQna(models.Model):
 class ClassAnswer(models.Model):
     answer = models.TextField()
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+    inClass = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, default=1, related_name='anw_class')
     inQuestion = models.ForeignKey('firstApp.ClassQna', on_delete=models.CASCADE, default=1, related_name='answer_class')
     created_date = models.DateTimeField(default=timezone.now)
     def __str__(self):
