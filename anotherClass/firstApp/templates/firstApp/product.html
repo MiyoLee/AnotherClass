@@ -154,8 +154,14 @@
                 {{ qna.created_date }}
             </div>
             <strong><img class="product-q-img" src="{% static 'image\q.png' %}"><span class="product-question">{{ qna.question }}</span></strong>
+            {% for answer in qna.answer_class.all %}
+             {% if answer.answer %}
             <div class="product-answer"><img class="product-q-img" src="{% static 'image\a.png' %}">
-                <span>{{ qna.answer }}</span></div>
+                <span>
+                    {{ answer.answer }}
+                    <div class="product-review-date"> {{ answer.created_date }} </div>
+                    {% endif %}
+                    {% endfor %}</span></div>
 
         </div>
 

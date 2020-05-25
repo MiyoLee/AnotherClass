@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, Certificate, Education
+from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, Certificate, Education, ClassAnswer
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -39,12 +39,20 @@ class CCommentForm(forms.ModelForm):
 
 
 class QuestionForm(forms.ModelForm):
-
     class Meta:
         model = ClassQna
         fields = ['question']
         widgets = {
             'question': forms.Textarea(attrs={'class': 'form-control', 'style': 'width: 100%; height:10%; resize:none;'})
+        }
+
+class AnswerForm(forms.ModelForm):
+    class Meta:
+        model = ClassAnswer
+        fields = ['answer']
+        widgets = {
+            'answer': forms.Textarea(
+                attrs={'class': 'form-control', 'style': 'width: 100%; height:10%; resize:none;'})
         }
 
 class AddTime(forms.ModelForm):

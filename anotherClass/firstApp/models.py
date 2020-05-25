@@ -119,12 +119,19 @@ class ClassReview(models.Model):
 
 class ClassQna(models.Model):
     question = models.TextField()
-    answer = models.TextField(null=True, blank=True, default='등록된 답변이 없습니다.')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     inClass = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, default=1, related_name='qna_class')
     created_date = models.DateTimeField(default=timezone.now)
-    answer_date = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return self.question
+
+class ClassAnswer(models.Model):
+    answer = models.TextField()
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
+    inQuestion = models.ForeignKey('firstApp.ClassQna', on_delete=models.CASCADE, default=1, related_name='answer_class')
+    created_date = models.DateTimeField(default=timezone.now)
+    def __str__(self):
+        return self.answer
 
 class State(models.Model):
     name = models.CharField(max_length=50)

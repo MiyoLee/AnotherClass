@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education
-from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime, CertificateForm, EducationForm
+from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -107,6 +107,7 @@ def product(request, class_id):
         if form.is_valid():
             question = form.save(commit=False)
             question.inClass = class_detail
+            question.author = User.objects.get(username=request.user.get_username())
             question.save()
             return HttpResponseRedirect("/product/{}".format(class_id))
     else:
