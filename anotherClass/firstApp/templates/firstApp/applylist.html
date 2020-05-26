@@ -38,13 +38,13 @@
                 <th>튜터</th>
                 <th>가격</th>
               </tr>
-              {% for class in classs %}
+              {% for apply in applys %}
               <tr>
                 <td>
-                  <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}a</a>
+                  <a class="a_underline" href="{% url 'product' apply.inClass.pk %}">{{ apply.inClass.title }}</a>
                 </td>
-                <td class="lighter">{{ class.tutor }}b</td>
-                <td class="lighter">{{ class.price }}c</td>
+                <td class="lighter">{{ apply.inClass.tutor }}</td>
+                <td class="lighter">{{ apply.inClass.price }}</td>
               </tr>
               {% endfor %}
             </table>

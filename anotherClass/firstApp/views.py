@@ -37,8 +37,8 @@ def myClass(request):
 
 @login_required(login_url='/login/')
 def myApply(request):
-    classs = Apply.objects.filter(author=request.user)
-    return render(request, 'firstApp/applylist.html', {'classs':classs})
+    applys = Apply.objects.filter(author=request.user)
+    return render(request, 'firstApp/applylist.html', {'applys':applys})
        
 def categoryselect(request):
     cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
