@@ -1,0 +1,196 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/product_custom.css' %}">
+<div class="container">
+    <div class="product">
+        <div class="product-pic">
+            {% if class_detail.photo %}
+            <img src="{{ class_detail.photo.url }}" alt="">
+            {% endif %}
+        </div>
+        <div class="product-info">
+          <h2>{{ class_detail.title }}</h2>
+          <div class="center">
+            <div class="perprice">{{class_detail.price}} 원</div>
+            <div class="hour">/1회</div>
+            <div class="onetime">총 1회 {{class_detail.time}} 시간 / 시간당 10,000원</div>
+          <img src="{% static 'image\stars.png' %}">
+          </div>
+
+          <ul>
+          <li>
+            <b>지역 :</b>
+             <a>{{ class_detail.area }}</a>
+          </li>
+          <li>
+            <b>수강 가능한 날짜 :</b>
+                              <select>
+                     {% for date in class_detail.date_class.all %}
+                     <option>{{ date.date }}</option>
+                     {% empty %}
+                  {% endfor %}
+                 </select>
+          </li>
+          <li>
+            <b>난이도 :</b>
+            <a>{{ class_detail.level }}</a>
+          </li>
+           <li>
+            <b>수업방식 :</b>
+             <a>{{ class_detail.mode }}</a>
+          </li>
+              <li>
+                   <div>
+                   {% if class_detail.in_min != 1 %}
+                   {% if class_detail.in_max != 1 %}
+                   <b>최대 인원:</b>
+                   {{class_detail.in_min}}명 ~ {{class_detail.in_max}}명
+                   {% endif %}
+                   {% endif %}
+               </div>
+              </li>
+          </ul>
+
+            {% if user != class_detail.author %}
+                <a href="{% url 'apply' class_detail.id %}" class="btn btn-primary button" >
+                클래스 신청하기
+                </a>
+                {% else %}
+                <a href="{% url 'update_class' class_detail.id %}" class="btn btn-primary twobutton">
+                    정보 수정
+                </a>
+                <a href="{% url 'update_time' class_detail.id %}" class="btn btn-primary twobutton">
+                    시간 추가
+                </a>
+            {% endif %}
+
+        </div>
+</div>
+    <div class="category-tab shop-details-tab">
+
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#details" data-toggle="tab">클래스 소개</a></li>
+			<li><a href="#tutor" data-toggle="tab">강사 정보</a></li>
+			<li><a href="#tag" data-toggle="tab">REVIEW</a></li>
+			<li><a href="#reviews" data-toggle="tab">Q & A</a></li>
+		</ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="details">
+        <div class="more-container">
+
+          <div class="con-desc">
+              {{ class_detail.body | safe }}
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tutor">
+        <div class="more-container">
+          <div class="con-desc">
+              <div class="tutor_top">
+                  {% if class_detail.tutor_photo %}
+                <img class="tutor_photo" src="{{ class_detail.tutor_photo.url }}" alt="">
+                {% endif %}
+                  <div class="tutor_name">{{class_detail.tutor}}</div>
+              <div class="tutor_detail">
+                    {% for certificate in class_detail.certi_class.all %}
+                      <div><img class="product-q-img" src="{% static 'image\certificate.png' %}">{{ certificate.name}}</div>
+                {% empty %}
+                <p></p>
+                {% endfor %}
+                {% for education in class_detail.edu_class.all %}
+                      <div><img class="product-q-img" src="{% static 'image\graduated.png' %}"> {{ education.university}}
+                      {{ education.department}}
+                      {{ education.state}} </div>
+                {% empty %}
+                <p></p>
+                {% endfor %}
+                  {% if class_detail.tutor_insta %}
+              <div><img class="product-q-img" src="{% static 'image\insta.png' %}">{{class_detail.tutor_insta}}</div>
+                   {% endif %}
+                  {% if class_detail.tutor_blog %}
+              <div><img class="product-q-img" src="{% static 'image\blog.png' %}">{{class_detail.tutor_blog}}</div>
+                   {% endif %}
+                  {% if class_detail.tutor_youtube %}
+                    <div><img class="product-q-img" src="{% static 'image\youtube.png' %}">{{class_detail.tutor_youtube}}</div>
+                   {% endif %}
+              </div>
+              </div>
+
+
+              <div class="tutor_body">{{ class_detail.tutor_body | safe }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tag">
+        <div class="more-container">
+              {% for review in class_detail.review_class.all %}
+        <div class="comment">
+            <div class="product-review-date">
+                {{ review.created_date }}
+            </div>
+            <strong><img class="product-review-img" src="{% static 'image\review.png' %}"><span class="product-review-title">{{ review.title }}</span></strong>
+            <p>{{ review.body|linebreaks }}</p>
+        </div>
+        <div class="product-review-hr"><hr></div>
+    {% empty %}
+        <p></p>
+    {% endfor %}
+        </div>
+      </div>
+     <div class="tab-pane" id="reviews" >
+		<div class="more-container">
+            {% if user != class_detail.author %}
+            <form method="POST" class="post-form">
+                {% csrf_token %}
+                {{ form.question }}
+            <br>
+            <button type="submit" class="review-button">등록</button>
+            </form>
+            {% endif %}
+             {% for qna in class_detail.qna_class.all %}
+        <div class="comment">
+            <div class="product-review-date">
+                {{ qna.created_date }}
+            </div>
+            <img class="product-q-img" src="{% static 'image\q.png' %}"><div class="product-question">{{ qna.question }}</div>
+                        {% if qna.pk == parent_question.pk %}
+                        <form method="POST" class="post-form">
+                            {% csrf_token %}
+                            {{ form.answer }}
+                            <button style="margin-top:10px; margin-right:10px; " type="submit" class="btn btn-primary comment_submit answer-button">등록</button>
+                        </form>
+
+            {% else%}
+            {% if user == class_detail.author %}
+             {% if qna.answer_class.all %}
+                    <a class="btn btn-primary answer-button" href="{% url 'create_answer' pk=qna.pk %}">수정</a>
+                {% else%}
+                    <a class="btn btn-primary answer-button" href="{% url 'create_answer' pk=qna.pk %}">답변</a>
+                {% endif %}
+            {% endif %}
+            {% endif %}
+            {% for answer in qna.answer_class.all %}
+             {% if answer.answer %}
+            <div class="product-answer"><img class="product-q-img" src="{% static 'image\a.png' %}">
+                <span>
+                    {{ answer.answer }}
+
+                    {% endif %}
+                    {% endfor %}
+                </span>
+            </div>
+        </div>
+        <div class="product-review-hr"><hr></div>
+        <p></p>
+    {% endfor %}
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content%}
+
+
