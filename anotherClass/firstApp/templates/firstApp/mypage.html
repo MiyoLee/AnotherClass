@@ -5,16 +5,43 @@
 {% if user.is_active %}
 <link rel="stylesheet" href="{% static 'css/paginate.css' %}">
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
+<link rel="stylesheet" href="{% static 'css/mypage.css' %}">
 		<div class="container">
 			<h3><a href="" class="nounderline">My page</a></h3>
         	<br>
+			<div class="my_block">
+				<div class="my_block_title">수강한 클래스</div>
+				<div><a href="/mypage/myApply">내가 신청한 클래스</a></div>
+				<div><a> </a></div>
+				<div><a> </a></div>
+
+			</div>
+			<div class="my_block">
+				<div class="my_block_title">개설한 클래스</div>
+				<div><a href="/mypage/myClass">내가 개설한 클래스</a></div>
+				<div><a> </a></div>
+				<div><a> </a></div>
+
+			</div>
+			<div class="my_block">
+				<div class="my_block_title">정보수정</div>
+				<div><a href="/change_pw">비밀번호 변경</a></div>
+				<div><a>개인 정보 수정</a></div>
+				<div><a href="/delete" >회원탈퇴</a></div>
+				<div><a href="/logout" >로그아웃</a></div>
+
+			</div>
+
+
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
+
 						<ul>
 							<li data-toggle="tab">
 								<a class="nav-link"><strong>{{user.username}}님</strong></a>
 									<br>
+
 									<li class="nav-item">
 									  <a class="nav-link" href="/mypage/myApply">나의 수강클래스</a>
 									</li>
