@@ -1,0 +1,15 @@
+.my_block{
+width:330px;
+height:200px;
+border:1px solid black;
+float:left;
+box-sizing:border-box;
+padding:20px;
+margin:18px;
+}
+
+.my_block_title{
+text-align:center;
+font-size:20px;
+padding-bottom:20px;
+}
