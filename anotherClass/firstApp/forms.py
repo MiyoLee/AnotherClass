@@ -127,6 +127,7 @@ class CreateClass(forms.ModelForm):
 
         }
 
+
 class ApplyForm(forms.ModelForm):
     class Meta:
         model = Apply

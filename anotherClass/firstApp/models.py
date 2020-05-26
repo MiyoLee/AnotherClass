@@ -3,6 +3,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib import admin
 from ckeditor_uploader.fields import RichTextUploadingField
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
@@ -81,13 +83,13 @@ class Class(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=50)
     tutor = models.CharField(max_length=10)
-    tutor_photo = models.ImageField(upload_to="tutor", default='')
+    tutor_photo = ProcessedImageField(upload_to="tutor", processors=[ResizeToFill(300,300)], default='')
     tutor_insta = models.CharField(null=True, blank=True, max_length=50, default='')
     tutor_blog = models.CharField(null=True, blank=True, max_length=50, default='')
     tutor_youtube = models.CharField(null=True, blank=True, max_length=50, default='')
     category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=1, related_name='category')
     area = models.ForeignKey('firstApp.Area', on_delete=models.CASCADE, default=1)
-    photo = models.ImageField(upload_to="class")
+    photo = ProcessedImageField(upload_to="class", processors=[ResizeToFill(600,450)], default='')
     body = RichTextUploadingField(default='')
     tutor_body = RichTextUploadingField(default='')
     price = models.PositiveIntegerField(null=True)

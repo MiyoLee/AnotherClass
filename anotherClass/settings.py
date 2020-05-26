@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'firstApp.apps.FirstappConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
