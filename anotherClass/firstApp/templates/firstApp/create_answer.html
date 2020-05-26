@@ -71,14 +71,14 @@
     <div class="category-tab shop-details-tab">
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="#details" data-toggle="tab">클래스 소개</a></li>
+			<li ><a href="#details" data-toggle="tab">클래스 소개</a></li>
 			<li><a href="#tutor" data-toggle="tab">강사 정보</a></li>
 			<li><a href="#tag" data-toggle="tab">REVIEW</a></li>
-			<li><a href="#reviews" data-toggle="tab">Q & A</a></li>
+			<li class="active"><a href="#reviews" data-toggle="tab">Q & A</a></li>
 		</ul>
 
     <div class="tab-content">
-      <div class="tab-pane active" id="details">
+      <div class="tab-pane " id="details">
         <div class="more-container">
 
           <div class="con-desc">
@@ -140,7 +140,7 @@
     {% endfor %}
         </div>
       </div>
-     <div class="tab-pane" id="reviews" >
+     <div class="tab-pane active" id="reviews" >
 		<div class="more-container">
             {% if user != class_detail.author %}
             <form method="POST" class="post-form">
