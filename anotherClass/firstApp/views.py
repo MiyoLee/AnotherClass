@@ -253,6 +253,14 @@ def community(request):
         return render(request, 'firstApp/community.html', {
             'posts': posts, 'cate_list': cate_list, 'cateName': cateName, 'cateId': cateId, 'c': c, 'k': k, 'page': page})
 
+def searchResult(request):
+    classs = None
+    query = None
+    if 'q' in request.GET:
+        query = request.GET.get('q')
+        classs = Class.objects.all().filter(Q(title__icontains = query) | Q(tutor__icontains = query) | Q(tutor_body__icontains = query) | Q(body__icontains = query))
+
+    return render(request, 'firstApp/search.html', {'query':query, 'classs':classs})
 
 @login_required(login_url='/login/')
 def myPost(request):

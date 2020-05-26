@@ -1,0 +1,35 @@
+{% extends 'firstApp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div>
+        <p class = "text-center my_search_text"><b>"{{ query }}" 의 검색 결과</b></p>
+    </div>
+
+    <div class="album py-5 bg-light">
+
+        <div class="container">
+
+            <div class="row">
+            {% for class in classs %}
+            <div class="col-md-4">
+                <a class="productdetail" href="{% url 'product' class.id %}">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{class.photo.url}}" width="338px" height="250px">
+                    <div class="card-body">
+                        <p class="class_title">{{class.title}}</p>
+                        <small class="tutor_name">{{class.tutor}}</small>
+                        <span class="class_price">{{class.price}} 원</span>
+                    </div>
+                </div>
+                </a>
+            </div>
+            {% empty %}
+            <div class = "row mx-auto">
+                <p class="text-center my_search_text">검색 결과가 없습니다.</p>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

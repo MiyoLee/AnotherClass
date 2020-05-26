@@ -40,6 +40,7 @@ urlpatterns = [
     path('community/<int:pk>/create_ccomment', views.create_ccomment, name='create_ccomment'),
     path('community/<int:pk>/remove_ccomment', views.remove_ccomment, name='remove_ccomment'),
     path('community/<int:pk>/update_ccomment', views.update_ccomment, name='update_ccomment'),
+    path('search/', views.searchResult, name='searchResult'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
