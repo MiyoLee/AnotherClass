@@ -29,6 +29,8 @@ def blogMain(request):
     classs = Class.objects.all()
     return render(request, 'firstApp/blogMain.html', {'classs':classs})
 
+def intro_createclass(request):
+    return render(request, 'firstApp/intro_createclass.html')
 
 @login_required(login_url='/login/')
 def myClass(request):

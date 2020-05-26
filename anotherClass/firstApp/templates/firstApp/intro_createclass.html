@@ -1,0 +1,27 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/intro_create.css' %}">
+<link rel="stylesheet" href="{% static 'css/createclass.css' %}">
+<div class="intro_body">
+        <div class="product-pic">
+            <img class="intro_create_img" src="{% static 'image\createclass.png' %}">
+        </div>
+
+        <div class="product-info">
+          <div class="intro_create">
+              <div class="intro_title"> 여러분의 재능을 공유해주세요.</div>
+              <div class="intro_content"> 여러분이 가진 재능은</div>
+              <div class="intro_content"> 다른 누군가의 인생을 바꿔줄 수 있습니다.</div>
+              <div class="intro_content"> 엑셀, 마케팅, 디자인부터 댄스, 공예, 심지어 쏘맥 타는 법까지!</div>
+              <div class="intro_content"> 여러분의 소중한 경험을 나눠주세요.</div>
+              <a href="/createclass" class="intro_button">클래스 등록하기</a>
+          </div>
+
+        </div>
+        <div class="middle-one"></div>
+</div>
+<div> </div>
+{% endblock content%}
