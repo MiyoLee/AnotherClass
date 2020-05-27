@@ -30,6 +30,7 @@ urlpatterns = [
     path('mypage/', views.mypage, name='mypage'),
     path('mypage/myClass/', views.myClass, name='myClass'),
     path('mypage/myApply/', views.myApply, name='myApply'),
+    path('mypage/mylike/', views.mylike, name='mylike'),
     path('change_pw/', views.change_pw, name='change_pw'),
     path('community/myPost/', views.myPost, name='myPost'),
     path('community/post/<int:pk>/', views.post_detail, name='post_detail'),

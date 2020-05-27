@@ -32,20 +32,20 @@
         </div>
          
           <div class="col-sm-9">
-            <h5>내가 신청한 클래스</h5>
+            <h5>내가 좋아요 누른 클래스</h5>
             <table class="table">
               <tr>
                 <th>클래스</th>
                 <th>튜터</th>
                 <th>가격</th>
               </tr>
-              {% for apply in applys %}
+              {% for class in classs %}
               <tr>
                 <td>
-                  <a class="a_underline" href="{% url 'product' apply.inClass.pk %}">{{ apply.inClass.title }}</a>
+                  <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
                 </td>
-                <td class="lighter">{{ apply.inClass.tutor }}</td>
-                <td class="lighter">{{ apply.inClass.price }}</td>
+                <td class="lighter">{{ class.tutor }}</td>
+                <td class="lighter">{{ class.price }}</td>
               </tr>
               {% endfor %}
             </table>
