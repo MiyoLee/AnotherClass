@@ -20,7 +20,6 @@ from .models import Certificate
 from .models import ClassDate
 from .models import Apply
 
-
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment)
 admin.site.register(CComment)

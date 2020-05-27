@@ -98,6 +98,8 @@ class Class(models.Model):
     mode = models.ForeignKey('firstApp.Mode', on_delete=models.CASCADE, default=1, related_name='mode')
     in_min = models.PositiveIntegerField(null=True, blank=True, default='1')
     in_max = models.PositiveIntegerField(null=True, blank=True, default='1')
+    like_user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_class')
+    like_count = models.PositiveIntegerField(default=0)
     def __str__(self):
         return self.title
 

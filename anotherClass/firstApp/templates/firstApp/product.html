@@ -51,11 +51,24 @@
                    {% endif %}
                </div>
               </li>
+          <li>
+            <b>좋아요 :</b>
+              <a>{{ class_detail.like_count }}</a>
+          </li> 
           </ul>
 
             {% if user != class_detail.author %}
-                <a href="{% url 'apply' class_detail.id %}" class="btn btn-primary button" >
-                클래스 신청하기
+                <a href="{% url 'apply' class_detail.id %}" class="btn btn-primary twobutton" >
+                클래스 신청
+                </a>
+                <a href="{% url 'like' class_detail.id %}">
+                  {% if user in class_detail.like_user.all %}
+                    <a href="{% url 'like' class_detail.id %}" class="btn btn-primary twobutton">좋아요 취소♡</a>
+                    
+                  {% else %}
+                    <a href="{% url 'like' class_detail.id %}" class="btn btn-primary twobutton">좋아요♥</a>
+                    
+                  {% endif %}
                 </a>
                 {% else %}
                 <a href="{% url 'update_class' class_detail.id %}" class="btn btn-primary twobutton">

@@ -150,10 +150,21 @@ def create_answer(request, pk):
     return render(request, 'firstApp/create_answer.html',
                   {'class_detail': class_detail, 'form': form, 'parent_question': parent_question}
                   )
-
+def like(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.user in class_detail.like_user.all():
+        class_detail.like_user.remove(request.user)
+        class_detail.like_count -=1
+        class_detail.save()
+    else:
+        class_detail.like_user.add(request.user)
+        class_detail.like_count +=1
+        class_detail.save()
+    return HttpResponseRedirect("/product/{}".format(class_id))
 
 def product(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
+
     if request.method == "POST":
         form = QuestionForm(request.POST)
         if form.is_valid():
@@ -167,8 +178,6 @@ def product(request, class_id):
         class_detail.save()
         return render(request, 'firstApp/product.html', {
             'class_detail': class_detail, 'form': form})
-
-
 
 def addTime(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
