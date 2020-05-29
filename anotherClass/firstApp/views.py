@@ -50,7 +50,7 @@ def mylike(request):
 def categoryselect(request):
     cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
     if cateId == '':
-        classes = Class.objects.all()
+        classes = Class.objects.all().order_by('-like_count')
     else:
         classes = Class.objects.filter(category=cateId)
     cate_list = Category.objects.all()
