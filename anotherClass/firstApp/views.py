@@ -158,6 +158,8 @@ def create_answer(request, pk):
     return render(request, 'firstApp/create_answer.html',
                   {'class_detail': class_detail, 'form': form, 'parent_question': parent_question}
                   )
+
+@login_required(login_url='/login/')
 def like(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
     if request.user in class_detail.like_user.all():
