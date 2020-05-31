@@ -15,9 +15,7 @@
                 <div class="col-sm-3">
                     <div class="left-sidebar">
                         <ul>
-                            <li>1단계 > 일정 선택</li>
-                            <br>
-                            <li>2단계 > 신청서 작성</li>
+                            <li>1단계 > 신청서 작성</li>
                         </ul>
 
                     </div>
@@ -31,18 +29,26 @@
                         <form enctype="multipart/form-data" method="POST">
                                 {% csrf_token %}
                                 {{ form.media }}
-                            <p>
-                                <b>이름 : </b>
-                                {{ form.name }}
-                            </p>
-                            <p>
-                                <b>전화번호 : </b>
-                                {{ form.number }}
-                            </p>
-                            <p>
-                                <b>튜터에게 전하는 말 : </b>
-                                {{ form.text }}
-                            </p>
+                                <p>
+                                    <b>클래스 :  </b>
+                                    {{ class_detail.title }}
+                                </p>
+                                <p>
+                                    <b>일정 :  </b>
+                                    {{ date.date }}
+                                </p>                                
+                                <p>
+                                    <b>이름 : </b>
+                                    {{ form.name }}
+                                </p>
+                                <p>
+                                    <b>전화번호 : </b>
+                                    {{ form.number }}
+                                </p>
+                                <p>
+                                    <b>튜터에게 전하는 말 : </b>
+                                    {{ form.text }}
+                                </p>
 
                         <input type="submit" class="btn btn-primary" value="완료">
                         </form>

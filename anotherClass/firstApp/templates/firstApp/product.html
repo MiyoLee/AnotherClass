@@ -44,7 +44,7 @@
                     </div>
                 </li>
                 <li>
-
+                    {% if user != class_detail.author %}
                     {% if heart == 1 %}
                     <a href="{% url 'like' class_detail.id %}"><b><img
                             src="https://img.icons8.com/material-sharp/24/000000/like.png"/></b></a>
@@ -53,6 +53,9 @@
                             src="https://img.icons8.com/metro/26/000000/like.png"/></b></a>
                     {% endif %}
                     {{ class_detail.like_count }}
+                    {% else %}
+                    <b>좋아요 :</b> {{ class_detail.like_count }}
+                    {% endif %}
                 </li>
             </ul>
             {% if user != class_detail.author %}
@@ -66,7 +69,7 @@
                 </select>
                 <br>
                 <div>
-                <input class="btn btn-primary" type="submit" value="클래스 신청">
+                <input class="btn btn-primary twobutton" type="submit" value="클래스 신청">
                 </div>
             </form>
 
