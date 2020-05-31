@@ -6,62 +6,34 @@
 <link rel="stylesheet" href="{% static 'css/paginate.css' %}">
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
 <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
-		<div class="container">			
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						<ul>
-							<li data-toggle="tab">
-								<a href="{% url 'mypage' %}" class="nounderline"><h3>My page</h3></a>
-								<br>
-								<a class="nav-link"><strong>{{user.username}}님</strong></a>
-									<br>
-									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/mylike">좋아하는 클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myApply">수강클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myClass">개설클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="">내 정보 관리</a>
-									</li>
-							</li>
-						</ul>
-					</div>
-				</div>
+		<div class="container">
+			<div class="mytop">
+				<div class="myname">{{user.username}}님</div><div class="mypagetitle">마이페이지</div>
+			</div>
 
 				<div class="my_block">
 					<div class="my_block_title">수강 클래스</div>
-					<div><a href="/mypage/myApply">내가 신청한 클래스</a></div>
-					<div><a> </a></div>
-					<div><a> </a></div>
+					<div class="my_block_list"><a href="/mypage/myApply">내가 신청한 클래스</a></div>
+					<div class="my_block_list"><a href="/mypage/mylike">내가 좋아요 누른 클래스</a></div>
+					<div class="my_block_list"><a> </a></div>
 				</div>
 				<div class="my_block">
 					<div class="my_block_title">개설 클래스</div>
-					<div><a href="/mypage/myClass">내가 개설한 클래스</a></div>
-					<div><a> </a></div>
-					<div><a> </a></div>
-				</div>
-				<div class="my_block">
-					<div class="my_block_title">관심 클래스</div>
-					<div><a href="/mypage/mylike">내가 좋아요 누른 클래스</a></div>
-					<div><a> </a></div>
-					<div><a> </a></div>
+					<div class="my_block_list"><a href="/mypage/myClass">내가 개설한 클래스</a></div>
+					<div class="my_block_list"><a> </a></div>
+					<div class="my_block_list"><a> </a></div>
 				</div>
 				<div class="my_block">
 					<div class="my_block_title">내 정보 관리</div>
-					<div><a>개인 정보 수정</a></div>
-					<div><a href="/change_pw">비밀번호 변경</a></div>
-					<div><a href="/logout" >로그아웃</a></div>
-					<div><a href="/delete" >회원탈퇴</a></div>
+					<div class="my_block_list"><a>개인 정보 수정</a></div>
+					<div class="my_block_list"><a href="/change_pw">비밀번호 변경</a></div>
+					<div class="my_block_list"><a href="/logout" >로그아웃</a></div>
+					<div class="my_block_list"><a href="/delete" >회원탈퇴</a></div>
 				</div>
 			</div>
 		</div>
 			
-
+<div class="term-block" style="width:1000px; height:200px;"> </div>
 
 {% else %}
 <script type="text/javascript">
