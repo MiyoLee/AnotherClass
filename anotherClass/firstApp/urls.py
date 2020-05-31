@@ -13,6 +13,7 @@ urlpatterns = [
     path('product/<int:class_id>/update', views.update_class, name='update_class'),
     path('product/<int:class_id>/apply/', views.apply, name='apply'),
     path('product/<int:pk>/create_answer/', views.create_answer, name='create_answer'),
+    path('product/<int:pk>/update_answer/', views.update_answer, name='update_answer'),
     path('createpost/', views.createpost, name='createpost'),
     path('intro_createclass/', views.intro_createclass, name='intro_createclass'),
     path('createclass/', views.createclass, name='createclass'),

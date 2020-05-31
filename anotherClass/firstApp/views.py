@@ -140,6 +140,28 @@ def addTutor(request, class_id):
             'class_detail': class_detail, 'form1': form1, 'form2': form2})
 
 
+def update_answer(request, pk):
+    answer = get_object_or_404(ClassAnswer, pk=pk)
+    parent_question = get_object_or_404(ClassQna, pk=answer.inQuestion.pk)
+    class_detail = get_object_or_404(Class, pk=answer.inClass.pk)
+
+    if request.method == 'POST':
+        form = AnswerForm(request.POST, instance=answer)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.inClass = class_detail
+            answer.inQuestion = parent_question
+            answer.author = User.objects.get(username=request.user.get_username())
+            answer.save()
+        return HttpResponseRedirect("/product/{}".format(class_detail.id))
+
+    else:
+        form = AnswerForm(instance=answer)
+        parent_question.save()
+    return render(request, 'firstApp/update_answer.html',
+                  {'class_detail': class_detail, 'form': form, 'parent_question': parent_question}
+                  )
+
 def create_answer(request, pk):
     parent_question = get_object_or_404(ClassQna, pk=pk)
     class_detail = get_object_or_404(Class, pk=parent_question.inClass.pk)
@@ -171,6 +193,9 @@ def like(request, class_id):
         class_detail.like_count +=1
         class_detail.save()
     return HttpResponseRedirect("/product/{}".format(class_id))
+
+
+
 
 def product(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)

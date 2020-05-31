@@ -156,22 +156,14 @@
                 {{ qna.created_date }}
             </div>
             <img class="product-q-img" src="{% static 'image\q.png' %}"><div class="product-question">{{ qna.question }}</div>
-                        {% if qna.pk == parent_question.pk %}
+                         {% if qna.pk == parent_question.pk %}
                         <form method="POST" class="post-form">
                             {% csrf_token %}
                             {{ form.answer }}
-                            <button style="margin-top:10px; margin-right:10px; " type="submit" class="btn btn-primary comment_submit answer-button">등록</button>
+                            <button style="margin-top:10px; margin-right:10px; " type="submit" class="btn btn-primary comment_submit answer-button">수정</button>
                         </form>
+                        {% endif %}
 
-            {% else%}
-            {% if user == class_detail.author %}
-             {% if qna.answer_class.all %}
-                    <a class="btn btn-primary answer-button" href="{% url 'update_answer' pk=qna.pk %}">수정</a>
-                {% else%}
-                    <a class="btn btn-primary answer-button" href="{% url 'create_answer' pk=qna.pk %}">답변</a>
-                {% endif %}
-            {% endif %}
-            {% endif %}
             {% for answer in qna.answer_class.all %}
              {% if answer.answer %}
             <div class="product-answer"><img class="product-q-img" src="{% static 'image\a.png' %}">
