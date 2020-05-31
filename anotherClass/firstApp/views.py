@@ -42,10 +42,6 @@ def myApply(request):
     applys = Apply.objects.filter(author=request.user)
     return render(request, 'firstApp/applylist.html', {'applys':applys})
 
-def apply_detail(request, pk):
-    apply = get_object_or_404(Apply, pk=pk)
-    return render(request, 'firstApp/apply_detail.html', {'apply': apply})
-
 @login_required(login_url='/login/')
 def mylike(request):
     classs = Class.objects.filter(like_user=request.user)
