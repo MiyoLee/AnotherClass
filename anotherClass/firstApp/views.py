@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer
-from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm
+from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview
+from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -62,7 +62,6 @@ def categoryselect(request):
 
 @login_required(login_url='/login/')
 def apply(request, class_id):
-
     date_id = request.GET.get('date', '')
     date = get_object_or_404(ClassDate, pk=date_id)
     class_detail = get_object_or_404(Class, pk=class_id)
@@ -81,7 +80,20 @@ def apply(request, class_id):
         form = ApplyForm()
         return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form, 'date': date})
 
-
+def review(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.inClass = class_detail
+            review.save()
+            return HttpResponseRedirect("/product/{}".format(class_id))
+        else:
+            return render(request, 'firstApp/create_review.html', {'alert_flag': True, 'class_detail': class_detail, 'form': form})
+    else:
+        form = ReviewForm()
+        return render(request, 'firstApp/create_review.html', {'class_detail': class_detail, 'form': form})
 
 
 @login_required(login_url='/login/')

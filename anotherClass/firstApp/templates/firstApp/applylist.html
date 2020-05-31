@@ -47,6 +47,9 @@
                                href="#{{apply.pk}}" class="a_underline">
                                 {{apply.inClass}}
                             </a>
+                            <div class="createreview">
+                        <a href="{% url 'review' class_id=apply.inClass.pk %}"> 리뷰작성</a>
+                    </div>
                         </p>
 
                         <div class="collapse" id="{{apply.pk}}">

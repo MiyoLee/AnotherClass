@@ -10,6 +10,9 @@ th{
     font-weight:lighter;
     font-size:10pt;
 }
+.createreview{
+float:right;
+}
 
 .cate-select{
     display:inline-block;
