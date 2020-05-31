@@ -3,59 +3,79 @@
 
 {% block content %}
 {% if user.is_active %}
-<link rel="stylesheet" href="{% static 'css/community.css' %}">
-    <div class="container">
-      <div class="row">
+<link href="{% static 'css/community.css' %}" rel="stylesheet">
+<link href="{% static 'css/apply_detail.css' %}" rel="stylesheet">
+<div class="container">
+    <div class="row">
         <div class="col-sm-3">
-          <div class="left-sidebar">
-            <ul>
-							<li data-toggle="tab">
-								<a href="{% url 'mypage' %}" class="nounderline"><h3>My page</h3></a><br>
-								<a class="nav-link"><strong>{{user.username}}님</strong></a>
-									<br>
-									<li class="nav-item">
-										<a class="nav-link" href="/mypage/mylike">좋아하는 클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myApply">수강클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myClass">개설클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="">내 정보 관리</a>
-									</li>
+            <div class="left-sidebar">
+                <ul>
+                    <li data-toggle="tab">
+                        <a class="nounderline" href="{% url 'mypage' %}"><h3>My page</h3></a><br>
+                        <a class="nav-link"><strong>{{user.username}}님</strong></a>
+                        <br>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mypage/mylike">좋아하는 클래스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mypage/myApply">수강클래스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mypage/myClass">개설클래스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">내 정보 관리</a>
+                    </li>
 
-							</li>
-						</ul>
-          </div>   
+                    </li>
+                </ul>
+            </div>
         </div>
-         
-          <div class="col-sm-9">
+
+        <div class="col-sm-9">
             <h5>내가 신청한 클래스</h5>
             <table class="table">
-              <tr>
-                <th>클래스</th>
-                <th>튜터</th>
-                <th>가격</th>
-              </tr>
-              {% for apply in applys %}
-              <tr>
-                <td>
-                  <a class="a_underline" href="{% url 'product' apply.inClass.pk %}">{{ apply.inClass.title }}</a>
-                </td>
-                <td class="lighter">{{ apply.inClass.tutor }}</td>
-                <td class="lighter">{{ apply.inClass.price }}</td>
-              </tr>
-              {% endfor %}
+                <tr>
+                    <th>클래스</th>
+
+                </tr>
+                {% for apply in applys %}
+                <tr>
+                    <td>
+                        <p>
+                            <a aria-controls="collapseExample" aria-expanded="false" data-toggle="collapse"
+                               href="#{{apply.pk}}" class="a_underline">
+                                {{apply.inClass}}
+                            </a>
+                        </p>
+
+                        <div class="collapse" id="{{apply.pk}}">
+                            <div class="card card-body lighter" >
+                                <p>수업시간 : <span class="font-weight-bold">{{apply.date.date}}</span></p>
+                                <p>가격 : {{apply.inClass.price}}￦</p>
+                                <p>신청자 : {{apply.name}}</p>
+                                <p>신청 내용 : {{apply.text | safe}}</p>
+                                <a class="a_underline" href="{% url 'product' apply.inClass.pk %}">클래스 바로가기</a>
+                                <p class="text-right" style="color:red; margin:0;">승인 대기</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+
+                {% endfor %}
             </table>
-          </div>
-      </div>
+        </div>
     </div>
+</div>
 {% else %}
 <script type="text/javascript">
     alert('잘못된 접근입니다. \n로그인을 해주세요.')
     window.location.href = '/login';
-  </script>
+
+
+
+
+</script>
 {% endif %}
 {% endblock content %}

@@ -105,8 +105,8 @@ class Class(models.Model):
 
 class Apply(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
-    inClass = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, default=1, related_name='apply_class')
-    date = models.DateTimeField(default=timezone.now)
+    inClass = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, default=1, related_name='apply')
+    date = models.ForeignKey('firstApp.ClassDate', on_delete=models.CASCADE, default=1, related_name='apply')
     name = models.CharField(max_length=10)
     number = models.CharField(max_length=13)
     text = RichTextUploadingField(default='')

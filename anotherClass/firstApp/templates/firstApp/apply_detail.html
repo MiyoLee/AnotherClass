@@ -1,0 +1,50 @@
+{% extends 'firstApp/base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_active %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="left-sidebar">
+            <ul>
+							<li data-toggle="tab">
+								<a href="{% url 'mypage' %}" class="nounderline"><h3>My page</h3></a><br>
+								<a class="nav-link"><strong>{{user.username}}님</strong></a>
+									<br>
+									<li class="nav-item">
+										<a class="nav-link" href="/mypage/mylike">좋아하는 클래스</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="/mypage/myApply">수강클래스</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="/mypage/myClass">개설클래스</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="">내 정보 관리</a>
+									</li>
+
+							</li>
+						</ul>
+          </div>
+        </div>
+
+          <div class="col-sm-9">
+            <h5>내가 신청한 클래스</h5>
+			  <div class="blog-post-area">
+				  {{apply.inClass}}
+				  {{apply.date.date}}
+				  {{apply.text | safe}}
+			  </div>
+          </div>
+      </div>
+    </div>
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다. \n로그인을 해주세요.')
+    window.location.href = '/login';
+  </script>
+{% endif %}
+{% endblock content %}

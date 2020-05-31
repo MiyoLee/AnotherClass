@@ -7,55 +7,30 @@
 {% endif %}
 {% if user.is_active %}
 
-<link rel="stylesheet" href="{% static 'css/createclass.css' %}">
-   <section>
-      <div class="contents">
-            <div class="createclasscont">
-                <div class="row">
-            <div class="col-sm-3">
-               <div class="left-sidebar">
-                        <ul class="steptabs">
-                            <li class="active"><a href="#one" data-toggle="tab">1단계 > 일정 선택</a></li>
+<link href="{% static 'css/createclass.css' %}" rel="stylesheet">
+<section>
+    <div class="contents">
+        <div class="createclasscont">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <ul>
+                            <li>1단계 > 일정 선택</li>
                             <br>
-                            <li><a href="#two" data-toggle="tab">2단계 > 신청서 작성</a></li>
+                            <li>2단계 > 신청서 작성</li>
                         </ul>
 
-               </div>
-            </div>
-            <div class="col-sm-9">
-               <div class="blog-post-area">
-                        <div class="tab-content">
-                        <div class="tab-pane active" id="one">
-                            <div class="upperbar">
-                                    <div class="step-num">1단계</div>
-                                    <div class="step-title">일정 선택</div>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="blog-post-area">
+                        <div class="upperbar">
 
-                            <div class="createcont">
-                                <form method="POST" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    {{ form.media }}
-                                   <p>
-                                        <b>클래스 : </b>
-                                        {{ class_detail.title }}
-                                    </p>
-                                    <br>
-                                    <b>일정 선택 : </b>
-                                    <select>
-                                        {% for date in class_detail.date_class.all %}
-                                        <option>{{ date.date }}</option>
-                                        {% empty %}
-                                     {% endfor %}
-                                    </select>
-                            </div>
-                            <button class="btn btn-primary bottombutton" href="#two" data-toggle="tab">다음 단계</button>
+                            <div class="step-title">신청서 작성</div>
                         </div>
-
-                        <div class="tab-pane" id="two">
-                            <div class="upperbar">
-                                <div class="step-num">2단계</div>
-                                <div class="step-title">신청서 작성</div>
-                            </div>
+                        <form enctype="multipart/form-data" method="POST">
+                                {% csrf_token %}
+                                {{ form.media }}
                             <p>
                                 <b>이름 : </b>
                                 {{ form.name }}
@@ -68,21 +43,24 @@
                                 <b>튜터에게 전하는 말 : </b>
                                 {{ form.text }}
                             </p>
-                            <button class="btn btn-primary bottombutton" href="#one" data-toggle="tab" style="display:inline-block; margin-left: -100;">이전 단계</button>
-                            <button type="submit" class="btn btn-primary bottombutton" >등록하기</button>
 
+                        <input type="submit" class="btn btn-primary" value="완료">
                         </form>
                     </div>
+                </div>
+
             </div>
-         </div>
-            </div>
-      </div>
-    </section>
+        </div>
+    </div>
+    </div>
+</section>
 
 {% else %}
 <script type="text/javascript">
     alert('잘못된 접근입니다. \n클래스를 신청하려면 로그인을 해주세요.')
     window.location.href = '/login';
-  </script>
+
+
+</script>
 {% endif %}
 {% endblock content%}

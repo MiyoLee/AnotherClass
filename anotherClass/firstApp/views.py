@@ -42,6 +42,10 @@ def myApply(request):
     applys = Apply.objects.filter(author=request.user)
     return render(request, 'firstApp/applylist.html', {'applys':applys})
 
+def apply_detail(request, pk):
+    apply = get_object_or_404(Apply, pk=pk)
+    return render(request, 'firstApp/apply_detail.html', {'apply': apply})
+
 @login_required(login_url='/login/')
 def mylike(request):
     classs = Class.objects.filter(like_user=request.user)
@@ -62,6 +66,9 @@ def categoryselect(request):
 
 @login_required(login_url='/login/')
 def apply(request, class_id):
+
+    date_id = request.GET.get('date', '')
+    date = get_object_or_404(ClassDate, pk=date_id)
     class_detail = get_object_or_404(Class, pk=class_id)
     if request.method == "POST":
         form = ApplyForm(request.POST)
@@ -69,14 +76,14 @@ def apply(request, class_id):
             apply = form.save(commit=False)
             apply.author = User.objects.get(username = request.user.get_username())
             apply.inClass = class_detail
+            apply.date = date
             apply.save()
             return HttpResponseRedirect("/product/{}".format(class_id))
         else:
             return render(request, 'firstApp/apply.html', {'alert_flag': True, 'class_detail': class_detail, 'form': form})
     else:
         form = ApplyForm()
-        class_detail.save()
-        return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form})
+        return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form, 'date': date})
 
 
 
