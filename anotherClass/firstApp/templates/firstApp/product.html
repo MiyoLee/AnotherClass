@@ -44,33 +44,34 @@
                     </div>
                 </li>
                 <li>
-                    <b>좋아요 :</b>
-                    <a>{{ class_detail.like_count }}</a>
+
+                    {% if heart == 1 %}
+                    <a href="{% url 'like' class_detail.id %}"><b><img
+                            src="https://img.icons8.com/material-sharp/24/000000/like.png"/></b></a>
+                    {% else %}
+                    <a href="{% url 'like' class_detail.id %}"><b><img
+                            src="https://img.icons8.com/metro/26/000000/like.png"/></b></a>
+                    {% endif %}
+                    {{ class_detail.like_count }}
                 </li>
             </ul>
-            <b>수강 날짜 선택</b>
-
             {% if user != class_detail.author %}
-            <form method="get" action="{% url 'apply' class_detail.id%}">
-                    <select name="date">
-                        {% for date in class_detail.date_class.all %}
-                        <option value="{{date.pk}}">{{ date.date }}</option>
-                        {% empty %}
-                        {% endfor %}
-                    </select>
-
-            <input type="submit" class="btn btn-primary" value="클래스 신청">
+            <b>수강 날짜 선택</b>
+            <form action="{% url 'apply' class_detail.id%}" method="get">
+                <select name="date">
+                    {% for date in class_detail.date_class.all %}
+                    <option value="{{date.pk}}">{{ date.date }}</option>
+                    {% empty %}
+                    {% endfor %}
+                </select>
+                <br>
+                <div>
+                <input class="btn btn-primary" type="submit" value="클래스 신청">
+                </div>
             </form>
-            <a href="{% url 'like' class_detail.id %}">
-                {% if user in class_detail.like_user.all %}
-                <a class="btn btn-primary twobutton" href="{% url 'like' class_detail.id %}">좋아요 취소♡</a>
 
-                {% else %}
-                <a class="btn btn-primary twobutton" href="{% url 'like' class_detail.id %}">좋아요♥</a>
-
-                {% endif %}
-            </a>
             {% else %}
+            <b>수업 가능 날짜</b>
             <select name="date">
                 {% for date in class_detail.date_class.all %}
                 <option value="{{date.pk}}">{{ date.date }}</option>

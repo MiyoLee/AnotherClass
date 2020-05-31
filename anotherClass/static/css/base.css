@@ -117,3 +117,11 @@ text-decoration:none;
 .a_underline:hover{
     color:black;
 }
+
+
+.filled_heart{
+color:red;
+}
+.empty_heart{
+color:red;
+}

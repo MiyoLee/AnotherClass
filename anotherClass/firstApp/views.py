@@ -172,6 +172,9 @@ def like(request, class_id):
 
 def product(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
+    heart = 0
+    if request.user in class_detail.like_user.all():
+        heart = 1
 
     if request.method == "POST":
         form = QuestionForm(request.POST)
@@ -185,7 +188,7 @@ def product(request, class_id):
         form = QuestionForm()
         class_detail.save()
         return render(request, 'firstApp/product.html', {
-            'class_detail': class_detail, 'form': form})
+            'class_detail': class_detail, 'heart': heart, 'form': form})
 
 def addTime(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
