@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview
+from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area
 from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -57,8 +57,17 @@ def categoryselect(request):
     return render(request, 'firstApp/categoryselect.html',
                   {'classes': classes, 'cate_list': cate_list, 'cateId': cateId})
 
+def class_search(request):
+    classs = None
+    areas = Area.objects.all()
+    categorys = Category.objects.all()
 
+    if 'q' and 'p' in request.GET:
+        query1 = request.GET.get('q')
+        query2 = request.GET.get('p')
+        classs = Class.objects.filter(category__name= query1, area__name=query2)
 
+    return render(request, 'firstApp/class_search.html', {'classs':classs, 'areas' : areas, 'categorys' : categorys})
 
 @login_required(login_url='/login/')
 def apply(request, class_id):

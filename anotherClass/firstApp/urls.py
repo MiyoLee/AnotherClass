@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('main/', views.blogMain, name='main'),
     path('class/', views.categoryselect, name='class'),
+    path('class_search/', views.class_search, name='class_search'),
     path('product/<int:class_id>/', views.product, name='product'),
     path('product/<int:class_id>/like/', views.like, name='like'),
     path('product/<int:class_id>/update', views.update_class, name='update_class'),

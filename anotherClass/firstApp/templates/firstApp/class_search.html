@@ -1,0 +1,63 @@
+{% extends 'firstApp/base.html' %}
+{% load static %}
+
+{% block upper_content %}
+<link rel="stylesheet" href="{% static 'css/selectbox.css' %}">
+    <form  action="{% url 'class_search' %}" method="get">
+    <div class="container bg-light select-box">
+            <div class="filter-item">
+                <span class="filter-name">카테고리</span>
+                <select name="q">
+                    {% for category in categorys %}
+                    <option selected name="q">{{category.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-item">
+                <span class="filter-name">지역</span>
+                <select name="p">
+                    {% for area in areas %}
+                    <option selected name='p'>{{area.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <br>
+
+    <input class="btn btn-primary bottombutton" type="submit" value="전체적용">
+
+    </div>
+
+    </form>
+{% endblock upper_content%}
+{% block content %}
+<p class = "text-center my_search_text"><b>검색결과</b></p>
+
+    <div class="album py-5 bg-light">
+
+        <div class="container">
+
+            <div class="row">
+                {% for class in classs %}
+          <div class="col-md-4">
+            <a class="productdetail"
+               href="{% url 'product' class.id %}">
+              <div class="card mb-4 shadow-sm">
+              <img src="{{class.photo.url}}" width="338px" height="250px">
+              <div class="card-body">
+                <p class="card-text">{{class.title}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                   <small class="tutor_name">{{class.tutor}}</small>
+                    <span class="class_price">{{class.price}} 원</span>
+                </div>
+              </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
