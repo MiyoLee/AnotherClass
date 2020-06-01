@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area
-from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm
+from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -522,6 +522,17 @@ def change_pw(request):
 @login_required
 def delete(request):
     if request.method == 'POST':
-        request.user.delete()
-        return redirect('/main')
-    return render(request, 'firstApp/delete.html')
+        password_form = CheckPasswordForm(request.user, request.POST)
+        
+        if password_form.is_valid():
+            request.user.delete()
+            logout(request)
+            return redirect('/main')
+    else:
+        password_form = CheckPasswordForm(request.user)
+
+    return render(request, 'firstApp/delete.html', {'password_form':password_form})
+
+@login_required
+def intro_delete(request):
+    return render(request, 'firstApp/intro_delete.html')

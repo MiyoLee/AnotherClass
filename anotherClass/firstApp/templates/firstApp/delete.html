@@ -2,18 +2,54 @@
 {% load static %}
 
 {% block content %}
-{% if user.is_active %}	
 
-<form method="POST">
-	{% csrf_token %}
-	<div class="text-center">
-		<h3><strong>회원 탈퇴</strong></h3>
-		<br>
-    <p>정말로 탈퇴하시겠습니까?</p>
-	<button type="submit" class="btn btn-primary bottombutton" >예</button>
-	<a href="{% url 'mypage' %}" class="btn btn-primary button" >아니요</a>
-	</div>
+{% if user.is_active %}	
+<form method="POST" novalidate>
+    {% csrf_token %}
+    <div class="text-center">
+        <h3><strong>회원 탈퇴</strong></h3><br>
+        <p>
+            <유의사항>
+            <br><br><strong>{{ user.username }}</strong> 회원님의 계정이 삭제됩니다.
+          <br>탈퇴시 모든 이용 정보가 삭제되며 복구할 수 없습니다.
+            </p>
+            <label>
+                <input type="checkbox" name="ck" onClick="checkDisable(this.form)">
+                <span>유의사항 동의</span>
+            </label>
+    <div>
+        
+        <div align="center">
+        {{ password_form.password }}
+        {% if password_form.password.errors %}
+        <script type="text/javascript">
+            document.getElementsByName('password')[0].setAttribute('class', 'form-control is-invalid')
+        </script>
+        {% for error in password_form.password.errors %}
+        <div class="invalid-feedback">
+            {{ error }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        </div>
+        <br>
+    </div>
+
+
+    
+    <button class="btn btn-primary bottombutton" type="submit" name="bt" disabled="true" >탈퇴하기</button>
+    </div>
 </form>
+
+<script type="text/javascript">
+    function checkDisable(form) {
+        if (form.ck.checked == true) {
+            form.bt.disabled = false;
+        } else {
+            form.bt.disabled = true;
+        }
+    }
+</script>
 {% else %}
 <script type="text/javascript">
     alert('잘못된 접근입니다. \n로그인이 필요합니다.')

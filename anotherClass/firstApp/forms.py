@@ -3,7 +3,7 @@ from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, 
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django.contrib.auth.models import User
-
+from django.contrib.auth.hashers import check_password
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -167,3 +167,20 @@ class SignupForm(ModelForm):
         widgets = {'password':forms.PasswordInput}
         
         fields = ['username','password','last_name','first_name','email']
+
+class CheckPasswordForm(forms.Form):
+    password = forms.CharField(max_length=50, label='비밀번호', widget=forms.PasswordInput(
+        attrs={'class': 'form-control','style': 'width: 20%', 'placeholder': '비밀번호 입력'}), 
+    )
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        confirm_password = self.user.password
+        
+        if password:
+            if not check_password(password, confirm_password):
+                self.add_error('password', '비밀번호가 일치하지 않습니다.')

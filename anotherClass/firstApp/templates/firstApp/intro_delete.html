@@ -1,0 +1,24 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+{% if user.is_active %}	
+<form method="POST" novalidate>
+	{% csrf_token %}
+	<div class="text-center">
+		<h3><strong>회원 탈퇴</strong></h3>
+		<br>
+    <p>정말로 탈퇴하시겠습니까?</p>
+    <a href="{% url 'delete' %}" class="btn btn-primary button" >예</a>
+	<a href="{% url 'mypage' %}" class="btn btn-primary button" >아니요</a>
+	</div>
+	
+
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다. \n로그인이 필요합니다.')
+    window.location.href = '/login';
+  </script>
+
+{% endif %}
+{% endblock content%}

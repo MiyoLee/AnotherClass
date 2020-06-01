@@ -1,3 +1,14 @@
+.delete_block{
+width:330px;
+height:200px;
+border:3px solid #B6B3E5;
+border-radius : 10px;
+float:left;
+box-sizing:border-box;
+padding:20px;
+margin:18px;  
+}
+
 .my_block{
 width:330px;
 height:200px;
