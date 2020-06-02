@@ -54,6 +54,8 @@ class ReviewForm(forms.ModelForm):
             'title': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex) 재밌고 유용한 수업이었어요!'}
               ),
+            'body': forms.Textarea(attrs={'class': 'form-control',
+                                          'style': 'margin:0; display:inline-block; width:65%; height:300px;'})
 
         }
 
