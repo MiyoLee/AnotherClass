@@ -5,6 +5,17 @@ font-size:20px;
 .product-review-date{
 float:right;
 }
+.like_block{
+position:absolute;
+width:92px;
+height:40px;
+background-color:#fff;
+border-radius:10px;
+bottom:90px;
+left:790px;
+text-align:center;
+padding-top:7px;
+}
 .product-review-hr hr{
 margin:50px 0px;
 }
@@ -66,7 +77,6 @@ width:600px;height:450px;
 
 .product-info{
  width:1000px;
- height:600px;
  padding-top: 20px;
  position: relative;
  left: 5%;

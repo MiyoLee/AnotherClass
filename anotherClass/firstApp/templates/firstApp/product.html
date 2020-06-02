@@ -4,12 +4,23 @@
 {% block content %}
 <link href="{% static 'css/product_custom.css' %}" rel="stylesheet">
 <div class="container">
+                         <div class="like_block">
+                        {% if heart == 1 %}
+                    <a href="{% url 'like' class_detail.id %}"><b><img
+                            src="https://img.icons8.com/material-sharp/24/000000/like.png"/></b></a>
+                    {% else %}
+                    <a href="{% url 'like' class_detail.id %}"><b><img
+                            src="https://img.icons8.com/metro/26/000000/like.png"/></b></a>
+                    {% endif %}
+                    {{ class_detail.like_count }}
+             </div>
     <div class="product">
         <div class="product-pic">
             {% if class_detail.photo %}
             <img alt="" src="{{ class_detail.photo.url }}">
             {% endif %}
         </div>
+
         <div class="product-info">
             <h2>{{ class_detail.title }}</h2>
             <div class="center">
@@ -43,21 +54,9 @@
                         {% endif %}
                     </div>
                 </li>
-                <li>
-                    {% if user != class_detail.author %}
-                    {% if heart == 1 %}
-                    <a href="{% url 'like' class_detail.id %}"><b><img
-                            src="https://img.icons8.com/material-sharp/24/000000/like.png"/></b></a>
-                    {% else %}
-                    <a href="{% url 'like' class_detail.id %}"><b><img
-                            src="https://img.icons8.com/metro/26/000000/like.png"/></b></a>
-                    {% endif %}
-                    {{ class_detail.like_count }}
-                    {% else %}
-                    <b>좋아요 :</b> {{ class_detail.like_count }}
-                    {% endif %}
-                </li>
             </ul>
+
+
             {% if user != class_detail.author %}
             <b>수강 날짜 선택</b>
             <form action="{% url 'apply' class_detail.id%}" method="get">
