@@ -25,6 +25,8 @@ def index(request):
 def mypage(request):
     return render(request, 'firstApp/mypage.html')
 
+
+
 def blogMain(request):
     classs = Class.objects.all()
     return render(request, 'firstApp/blogMain.html', {'classs':classs})
@@ -160,6 +162,9 @@ def addTutor(request, class_id):
         return render(request, 'firstApp/addTutor.html', {
             'class_detail': class_detail, 'form1': form1, 'form2': form2})
 
+def create_complete(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    return render(request, 'firstApp/create_complete.html', {'class_detail': class_detail})
 
 def update_answer(request, pk):
     answer = get_object_or_404(ClassAnswer, pk=pk)

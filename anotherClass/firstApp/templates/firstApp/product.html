@@ -118,15 +118,15 @@
                             <div class="tutor_name">{{class_detail.tutor}}</div>
                             <div class="tutor_detail">
                                 {% for certificate in class_detail.certi_class.all %}
-                                <div><img class="product-q-img" src="{% static 'image\certificate.png' %}">{{
-                                    certificate.name}}
+                                <div><img class="product-q-img" src="{% static 'image\certificate.png' %}">
+                                    {{ certificate.name }}
                                 </div>
                                 {% empty %}
                                 <p></p>
                                 {% endfor %}
                                 {% for education in class_detail.edu_class.all %}
-                                <div><img class="product-q-img" src="{% static 'image\graduated.png' %}"> {{
-                                    education.university}}
+                                <div><img class="product-q-img" src="{% static 'image\graduated.png' %}">
+                                    {{ education.university}}
                                     {{ education.department}}
                                     {{ education.state}}
                                 </div>

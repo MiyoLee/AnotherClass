@@ -18,6 +18,7 @@ urlpatterns = [
     path('createpost/', views.createpost, name='createpost'),
     path('intro_createclass/', views.intro_createclass, name='intro_createclass'),
     path('createclass/', views.createclass, name='createclass'),
+    path('createclass/<int:class_id>/complete/', views.create_complete, name='create_complete'),
     path('createclass/<int:class_id>/addTime/', views.addTime, name='addTime'),
     path('createclass/<int:class_id>/addTutor/', views.addTutor, name='addTutor'),
     path('createclass/<int:class_id>/updateTime/', views.update_time, name='update_time'),

@@ -1,0 +1,51 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/createcomplete.css' %}">
+
+<div class="container">
+
+    <div class="blog-post-area">
+        <div class="big-title">클래스가 성공적으로 등록되었습니다.</div>
+        <div class="middle-title"> 클래스 개설 정보 </div>
+
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0lax">클래스 제목</th>
+    <th class="tg-0lax">강사 이름</th>
+    <th class="tg-0lax">지역</th>
+    <th class="tg-0lax">1회당 가격/시간</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0lax">{{class_detail.title}}</td>
+    <td class="tg-0lax">{{class_detail.tutor}}</td>
+    <td class="tg-0lax">{{class_detail.area}}</td>
+    <td class="tg-0lax">{{class_detail.price}}원/{{class_detail.time}}시간</td>
+  </tr>
+</tbody>
+</table>
+        <div class="des-list">
+             <div class="description">- 개설한 클래스는 마이페이지 > 내가 개설한 클래스에서 확인하실 수 있습니다.</div>
+            <div class="description">- 적절하지 않은 클래스는 관리자에 의하여 삭제될 수 있으며, 해당 회원은 클래스 개설에 제한을 받을 수 있습니다. </div>
+
+        </div>
+
+
+        <div class="nextbutton">
+                        <a class="btn btn-primary "
+             href="{% url 'product' class_detail.id %}">클래스 상세페이지으로 가기 ▶</a>
+                        <a class="btn btn-primary "
+             href="{% url 'main' %}">메인 페이지로 가기 ▶</a>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+{% endblock content%}

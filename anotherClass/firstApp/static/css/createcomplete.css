@@ -1,0 +1,38 @@
+.big-title{
+font-size:35px;
+text-align:center;
+font-weight:bold;
+color:#4ECAC6;
+margin-bottom:80px;
+}
+.middle-title{
+font-weight:bold;
+font-size:20px;
+margin: 15px 30px;
+}
+.tg  {margin-left:50px; width:1000px;border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:#B6B3E5;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:18px;
+  overflow:hidden;padding:10px 20px;word-break:normal;}
+.tg th{border-color:#B6B3E5;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:18px;
+  font-weight:normal;overflow:hidden;padding:10px 20px;word-break:normal;}
+.tg .tg-0lax{text-align:center;vertical-align:top}
+
+.nextbutton{
+position:relative;
+left:300px;
+margin:50 0px;
+}
+.nextbutton >a {
+margin:10px;
+height:45px;
+
+padding:0 20px;
+padding-top:12px;
+}
+.description{
+padding-left:50px;
+padding-bottom:4px;
+}
+.des-list{
+padding-top:60px;
+}
