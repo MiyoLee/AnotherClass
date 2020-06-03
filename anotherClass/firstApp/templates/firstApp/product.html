@@ -66,18 +66,16 @@
 
 
             {% if user != class_detail.author %}
-            <b>수강 날짜 선택</b>
+
             <form action="{% url 'apply' class_detail.id%}" method="get">
-                <select name="date">
-                    {% for date in class_detail.date_class.all %}
-                    <option value="{{date.pk}}">{{ date.date }}</option>
-                    {% empty %}
-                    {% endfor %}
-                </select>
-                <br>
-                <div>
-                    <input class="btn btn-primary twobutton" type="submit" value="클래스 신청">
-                </div>
+                <b>수강 날짜 선택</b>
+            <select name="date">
+                {% for date in class_detail.date_class.all %}
+                <option value="{{date.pk}}">{{ date.date }}</option>
+                {% empty %}
+                {% endfor %}
+            </select>
+                    <input class="btn btn-primary button" type="submit" value="클래스 신청">
             </form>
 
             {% else %}
