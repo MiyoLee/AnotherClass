@@ -4,8 +4,15 @@
 {% block content %}
 <link href="{% static 'css/product_custom.css' %}" rel="stylesheet">
 <div class="container">
-                         <div class="like_block">
-                         
+
+    <div class="product">
+        <div class="product-pic">
+            {% if class_detail.photo %}
+            <img alt="" src="{{ class_detail.photo.url }}">
+            {% endif %}
+        </div>
+         <div class="like_block">
+
                     {% if user != class_detail.author %}
                     {% if heart == 1 %}
                     <a href="{% url 'like' class_detail.id %}"><b><img
@@ -20,13 +27,6 @@
                     {{ class_detail.like_count }}
                     {% endif %}
              </div>
-    <div class="product">
-        <div class="product-pic">
-            {% if class_detail.photo %}
-            <img alt="" src="{{ class_detail.photo.url }}">
-            {% endif %}
-        </div>
-
         <div class="product-info">
             <h2>{{ class_detail.title }}</h2>
             <div class="center">

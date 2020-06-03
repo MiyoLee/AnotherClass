@@ -11,8 +11,8 @@ width:92px;
 height:40px;
 background-color:#fff;
 border-radius:10px;
-bottom:90px;
-left:790px;
+bottom:-85px;
+left:500px;
 text-align:center;
 padding-top:7px;
 }
@@ -64,7 +64,7 @@ left: 13%;
 }
 
 .product{
-
+position:relative;
 }
 
 .product-pic{
@@ -209,6 +209,8 @@ padding-top:7px;
 left:5%;
 margin-top:25px;
 }
+
+
 
 .twobutton{
 font-weight:bold;
