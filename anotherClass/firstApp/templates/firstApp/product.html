@@ -5,7 +5,9 @@
 <link href="{% static 'css/product_custom.css' %}" rel="stylesheet">
 <div class="container">
                          <div class="like_block">
-                        {% if heart == 1 %}
+                         
+                    {% if user != class_detail.author %}
+                    {% if heart == 1 %}
                     <a href="{% url 'like' class_detail.id %}"><b><img
                             src="https://img.icons8.com/material-sharp/24/000000/like.png"/></b></a>
                     {% else %}
@@ -13,6 +15,7 @@
                             src="https://img.icons8.com/metro/26/000000/like.png"/></b></a>
                     {% endif %}
                     {{ class_detail.like_count }}
+                    {% endif %}
              </div>
     <div class="product">
         <div class="product-pic">
@@ -54,6 +57,12 @@
                         {% endif %}
                     </div>
                 </li>
+                {% if user == class_detail.author %}
+                <li>
+                    <b>좋아요 :</b> {{ class_detail.like_count }}
+                </li>       
+                {% endif %}
+                
             </ul>
 
 
