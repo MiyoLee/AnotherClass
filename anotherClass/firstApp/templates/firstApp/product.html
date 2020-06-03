@@ -8,10 +8,9 @@
     <div class="product">
         <div class="product-pic">
             {% if class_detail.photo %}
-            <img alt="" src="{{ class_detail.photo.url }}">
+            <img style="width:600px;height:450px;" alt="" src="{{ class_detail.photo.url }}">
             {% endif %}
-        </div>
-         <div class="like_block">
+             <div class="like_block">
 
                     {% if user != class_detail.author %}
                     {% if heart == 1 %}
@@ -27,6 +26,8 @@
                     {{ class_detail.like_count }}
                     {% endif %}
              </div>
+        </div>
+
         <div class="product-info">
             <h2>{{ class_detail.title }}</h2>
             <div class="center">

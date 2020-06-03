@@ -11,7 +11,7 @@ width:92px;
 height:40px;
 background-color:#fff;
 border-radius:10px;
-bottom:-85px;
+bottom:10px;
 left:500px;
 text-align:center;
 padding-top:7px;
@@ -64,15 +64,16 @@ left: 13%;
 }
 
 .product{
-position:relative;
+
 }
 
 .product-pic{
 float:left;
+position:relative;
 }
 
 .product-pic img{
-width:600px;height:450px;
+
 }
 
 .product-info{
