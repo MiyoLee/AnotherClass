@@ -388,12 +388,12 @@ def community(request):
 
 def searchResult(request):
     classs = None
-    q = request.GET.get('q', '')
-    if q:
-        classs = Class.objects.all().filter(Q(title__icontains = q) | Q(tutor__icontains = q)
-                                                | Q(tutor_body__icontains = q) | Q(body__icontains = q))
+    qq = request.GET.get('qq', '')
+    if qq:
+        classs = Class.objects.all().filter(Q(title__icontains = qq) | Q(tutor__icontains = qq)
+                                                | Q(tutor_body__icontains = qq) | Q(body__icontains = qq))
 
-    return render(request, 'firstApp/search.html', {'q':q, 'classs':classs})
+    return render(request, 'firstApp/search.html', {'qq':qq, 'classs':classs})
 
 @login_required(login_url='/login/')
 def myPost(request):
