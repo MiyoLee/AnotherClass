@@ -3,41 +3,47 @@
 
 {% block upper_content %}
 <link rel="stylesheet" href="{% static 'css/selectbox.css' %}">
+<p class = "text-center my_search_text"><b>클래스 검색</b></p>
     <form  action="{% url 'class_search' %}" method="get">
     <div class="container bg-light select-box">
             <div class="filter-item">
                 <span class="filter-name">카테고리</span>
-                <select name="q">
+                <select name="q" value="{{ q }}">
+                    <option selected value="전체">전체보기</option>
                     {% for category in categorys %}
-                    <option selected name="q">{{category.name}}</option>
+                    <option>{{category.name}}</option>
                     {% endfor %}
                 </select>
             </div>
 
             <div class="filter-item">
                 <span class="filter-name">지역</span>
-                <select name="p">
+                <select name="p" value="{{ p }}">
+                    <option selected value="전체">전체보기</option>
                     {% for area in areas %}
-                    <option selected name='p'>{{area.name}}</option>
+                    <option>{{area.name}}</option>
                     {% endfor %}
                 </select>
             </div>
 
-            <br>
-
-    <input class="btn btn-primary bottombutton" type="submit" value="전체적용">
-
+            <div class="filter-item">
+                <span class="filter-name">가격대</span>
+                <input type="number" name="k" value="{{ k }}" placeholder="0"> ~ <input type="number" value="{{ kk }}" name="kk">
+            </div>
+           
+ <br>
+    <input class="btn btn-primary bottombutton" type="submit" value="적용하기">
     </div>
-
     </form>
 {% endblock upper_content%}
 {% block content %}
-<p class = "text-center my_search_text"><b>검색결과</b></p>
+<p class = "text-center my_search_text"><b>{{q}} / {{p}} / {{k}}~{{kk}}<br>검색결과</b></p>
+
 
     <div class="album py-5 bg-light">
 
         <div class="container">
-
+            
             <div class="row">
                 {% for class in classs %}
           <div class="col-md-4">

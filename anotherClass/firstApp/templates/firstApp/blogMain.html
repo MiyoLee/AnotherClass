@@ -81,6 +81,16 @@
 <div class="album py-5 bg-light">
 
       <div class="container">
+        <form  action="{% url 'class_align' %}" method="get">
+          <div class="filter-item" align="right">
+              <span class="filter-name">정렬</span>
+              <select name="r" value="{{ r }}">
+                  <option selected disabled value="0">--선택--</option>
+                  <option value="1">낮은 가격순</option>
+                  <option value="2">높은 가격순</option>
+              </select><input type="submit" value="적용">
+          </div>
+          </form>
 
         <div class="row">
           {% for class in classs %}
