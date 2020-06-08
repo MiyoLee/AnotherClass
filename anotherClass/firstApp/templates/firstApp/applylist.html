@@ -58,8 +58,10 @@
                                 <p>가격 : {{apply.inClass.price}}￦</p>
                                 <p>신청자 : {{apply.name}}</p>
                                 <p>신청 내용 : {{apply.text | safe}}</p>
-                                <a class="a_underline" href="{% url 'product' apply.inClass.pk %}">클래스 바로가기</a>
-                                <p class="text-right" style="color:red; margin:0;">승인 대기</p>
+                                <a class="gotoClass" href="{% url 'product' apply.inClass.pk %}">클래스 바로가기</a>
+
+                                <p class="text-right cancelApply"><a href="{% url 'cancelApply' apply.pk %}" class="a_underline"
+                                onclick="return confirm('수강신청을 취소하시겠습니까?')">수강신청 취소</a></p>
                             </div>
                         </div>
                     </td>

@@ -4,7 +4,8 @@
     font-family: sans-serif;
 }
 .input-field {
-    width: 16%;
+    width: 23%;
+    height:7%;
     padding: 2px 0;
     margin: 2px 0;
     border: none;
@@ -13,11 +14,16 @@
     background: transparent;
 }
 .submit {
-    width: 16%;
+    width: 23%;
+    height:7%;
     padding: 10px 20px;
     cursor: pointer;
     display: block;
     background: linear-gradient(to right, #B6B3E5, #4ECAC6);
     border: 0;
     outline: none;
+}
+.alert{
+color:red;
+margin-top:16px;
 }

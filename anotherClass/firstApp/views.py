@@ -43,7 +43,10 @@ def myClass(request):
 def myApply(request):
     applys = Apply.objects.filter(author=request.user)
     return render(request, 'firstApp/applylist.html', {'applys':applys})
-
+def cancelApply(request, pk):
+    apply = get_object_or_404(Apply, pk=pk)
+    apply.delete()
+    return redirect('myApply')
 @login_required(login_url='/login/')
 def mylike(request):
     classs = Class.objects.filter(like_user=request.user)
@@ -540,7 +543,7 @@ def login(request):
             auth.login(request, user)
             return redirect('/main')
         else:
-            return render(request, 'firstApp/login.html', {'alert_flag': True})
+            return render(request, 'firstApp/login.html', {'loginError': True})
     else:
         return render(request, 'firstApp/login.html')
 

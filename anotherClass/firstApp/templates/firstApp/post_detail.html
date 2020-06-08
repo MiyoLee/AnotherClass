@@ -22,7 +22,7 @@
                     </td>
                     <td class="post_v">|</td>
                     <td>
-                    <a class="a_underline" href="{% url 'delete_post' post.pk %}">
+                    <a class="a_underline" href="{% url 'delete_post' post.pk %}" onclick="return confirm('정말 삭제하시겠습니까?')">
                         삭제
                     </a>
                     </td>
@@ -67,7 +67,8 @@
                         {{comment.created_date|date:"y.m.d H:i"}}</span>
                         {% if comment.author == request.user %}
                             <span class="comment_edit">
-                                <a href="{% url 'comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt"></i></a>
+                                <a href="{% url 'comment_remove' pk=comment.pk %}" onclick="return confirm('정말 삭제하시겠습니까?')">
+                                    <i class="fas fa-trash-alt"></i></a>
                                 &nbsp;
                                 <a href="{% url 'comment_update' pk=comment.pk %}?cateId={{cateId}}&page={{page}}">
                                     <i class="fas fa-edit"></i>
@@ -93,7 +94,8 @@
                                 {{ccomment.created_date|date:"y.m.d H:i"}}</span>
                                 {% if ccomment.author == request.user %}
                                     <span class="comment_edit">
-                                        <a href="{% url 'remove_ccomment' pk=ccomment.pk %}"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="{% url 'remove_ccomment' pk=ccomment.pk %}" onclick="return confirm('정말 삭제하시겠습니까?')">
+                                            <i class="fas fa-trash-alt"></i></a>
                                         &nbsp;
                                         <a href="{% url 'update_ccomment' pk=ccomment.pk %}"><i class="fas fa-edit"></i></a>
 

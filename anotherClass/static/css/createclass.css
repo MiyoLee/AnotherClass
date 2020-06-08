@@ -6,6 +6,12 @@
 padding-bottom:50px;
 
 }
+.right-button{
+position:relative;
+width:100px;
+left:350px;
+margin-top:50px;
+}
 .form_description{
  text-align:center;
   width:700px;
