@@ -12,7 +12,8 @@ margin:18px;
 .my_block{
 width:330px;
 height:200px;
-border:3px solid #B6B3E5;
+
+background-color:#F3FAFD;
 border-radius : 10px;
 float:left;
 box-sizing:border-box;
@@ -21,7 +22,7 @@ margin:18px;
 }
 
 .my_block_title{
-color:#B6B3E5;
+color:#3CA9B4;
 font-weight:bold;
 text-align:center;
 font-size:20px;
@@ -37,10 +38,9 @@ padding-bottom:4px;
 font-size:20px;
 }
 .mypagetitle{
-font-size:28px;
-color:#4ECAC6;
+font-size:24px;
 font-weight:bold;
-padding-bottom:30px;
+padding-bottom:60px;
 }
 
 .my_block_list :hover{

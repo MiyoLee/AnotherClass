@@ -261,7 +261,6 @@ overflow:auto;
 }
 
 .nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus {
-    background-color: #F685A2;
     border: 0px;
     color: #FFFFFF;
     cursor: default;
@@ -322,7 +321,7 @@ text-decoration:none;
 }
 
 .nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus {
-    background-color: #4ECAC6;
+    background-color: #74C7CC;
     border: 0px;
     color: #FFFFFF;
     cursor: default;
