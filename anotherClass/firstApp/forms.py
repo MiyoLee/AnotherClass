@@ -124,10 +124,10 @@ class CreateClass(forms.ModelForm):
                 attrs={'style': 'width: 300%', 'placeholder': '어나더클래스 , youtube.com/AnotherClass'},
             ),
 
-            'price': forms.NumberInput(
+            'price': forms.TextInput(
                 attrs={'style': 'width: 100px'},
             ),
-            'time': forms.NumberInput(
+            'time': forms.TextInput(
                 attrs={'style': 'width: 100px'},
             ),
             'in_min': forms.NumberInput(

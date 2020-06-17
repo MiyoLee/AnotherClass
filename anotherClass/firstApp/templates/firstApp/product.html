@@ -4,7 +4,6 @@
 {% block content %}
 <link href="{% static 'css/product_custom.css' %}" rel="stylesheet">
 <div class="container">
-
     <div class="product">
         <div class="product-pic">
             {% if class_detail.photo %}
@@ -102,8 +101,8 @@
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#details">클래스 소개</a></li>
             <li><a data-toggle="tab" href="#tutor">강사 정보</a></li>
-            <li><a data-toggle="tab" href="#tag">REVIEW</a></li>
-            <li><a data-toggle="tab" href="#reviews">Q & A</a></li>
+            <li><a data-toggle="tab" href="#review">REVIEW</a></li>
+            <li><a data-toggle="tab" href="#qna">Q & A</a></li>
         </ul>
 
         <div class="tab-content">
@@ -160,7 +159,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane" id="tag">
+            <div class="tab-pane" id="review">
                 <div class="more-container">
                     {% for review in class_detail.review_class.all %}
                     <div class="comment">
@@ -179,7 +178,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="tab-pane" id="reviews">
+            <div class="tab-pane" id="qna">
                 <div class="more-container">
                     {% if user != class_detail.author %}
                     <form class="post-form" method="POST">
