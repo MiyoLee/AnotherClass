@@ -202,7 +202,7 @@
                         {% csrf_token %}
                         {{ form.question }}
                         <br>
-                        <button class="review-button" type="submit">등록</button>
+                        <button class="btn btn-primary review-button" type="submit">등록</button>
                     </form>
                     {% endif %}
                     {% for qna in class_detail.qna_class.all %}
