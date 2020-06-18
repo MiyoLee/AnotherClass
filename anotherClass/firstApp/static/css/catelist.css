@@ -15,8 +15,9 @@
 .catebar{
     text-align: center;
     height: 15rem;
-    margin:2rem;
-    padding:2rem;
+    margin-bottom:2rem;
+    margin: 0rem 2rem;
+    padding:0rem 2rem;
     text-align: center;
 }
 .cateicon{
@@ -24,4 +25,19 @@
 }
 .icon{
     width:50px;
+}
+
+.for_slick_slider{
+display:flex;
+}
+
+.for_slick_slider .items{
+width:600px;
+height:450px;
+z-index:1;
+}
+
+.for_slick_slider .items img{
+width:600px;
+height:450px;
 }

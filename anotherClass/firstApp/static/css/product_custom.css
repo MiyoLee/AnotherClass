@@ -13,6 +13,17 @@ width:600px;
 height:450px;
 }
 
+.for_slick_slider .itemss{
+width:1500px;
+height:450px;
+z-index:1;
+}
+
+.for_slick_slider .itemss img{
+width:1500px;
+height:450px;
+}
+
 .product-review-title{
 color:#4ECAC6;
 font-size:20px;

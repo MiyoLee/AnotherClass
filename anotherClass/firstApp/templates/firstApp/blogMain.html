@@ -1,7 +1,24 @@
 {% extends 'firstApp/base.html'%}
 {% load static %}
 {% block upper_content %}
+<link rel="stylesheet" href="{% static 'css/slick.css' %}">
+<link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+<link rel="stylesheet" href="{% static 'css/product_custom.css' %}">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/slick.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/product.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/catelist.css' %}">
+
+            <div style="width:1500px;height:450px;position:relatidve; left:80px;" class="for_slick_slider single-item">
+                <div class="itemss"><img style="width:1500px;height:450px;" src="{% static 'image\배너1.png' %}"></div>
+                <div class="itemss"><img style="width:1500px;height:450px;" src="{% static 'image\배너2.png' %}"></div>
+                <div class="itemss"><img style="width:1500px;height:450px;" src="{% static 'image\배너3.png' %}"></div>
+
+            </div>
+
+
 <div class="catebar">
   <ul class="catelist">
     <li class="cateitem">

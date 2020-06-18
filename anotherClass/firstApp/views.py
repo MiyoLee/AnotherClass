@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area
-from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm
+from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate,Images, Education, ClassAnswer, ClassReview, Area
+from .forms import PostForm, CommentForm, CCommentForm, QuestionForm,ImageForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm
 from django.contrib.auth.models import User
+from django.forms import modelformset_factory
+from django.template import RequestContext
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
@@ -172,19 +174,27 @@ def review(request, class_id):
 
 @login_required(login_url='/login/')
 def createclass(request):
+    ImageFormSet = modelformset_factory(Images,
+                                        form=ImageForm, extra=3)
     if request.method == 'POST':
         form = CreateClass(request.POST, request.FILES)
-
-        if form.is_valid():
+        formset = ImageFormSet(request.POST, request.FILES,
+                               queryset=Images.objects.none())
+        if form.is_valid() and formset.is_valid():
             post = form.save(commit=False)
             post.author = User.objects.get(username = request.user.get_username())
             post.save()
+            for form in formset.cleaned_data:
+                image = form['image']
+                photo = Images(post=post, image=image)
+                photo.save()
             return redirect('/createclass/'+str(post.id)+'/addTutor/')
         else:
-            return render(request, 'firstApp/createclass.html', {'form': form, 'alert_flag': True})
+            return render(request, 'firstApp/createclass.html', {'form': form, 'formset': formset, 'alert_flag': True})
     else:
         form = CreateClass()
-        return render(request, 'firstApp/createclass.html', {'form': form})
+        formset = ImageFormSet(queryset=Images.objects.none())
+        return render(request, 'firstApp/createclass.html', {'form': form, 'formset': formset})
 
 
 

@@ -80,7 +80,7 @@
 .slick-prev
 {
 z-index:1;
-    left: 25px;
+    left: 10px;
 }
 [dir='rtl'] .slick-prev
 {

@@ -52,10 +52,13 @@
                             </div>
 
                             <div class="createcont">
-                                <form method="POST" enctype="multipart/form-data">
+                                <form id="post_form" method="POST" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {{ form.media }}
-
+                                           {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form }}
+    {% endfor %}
                                     <p>
                                         <div class="form_title class_form">클래스 제목  </div>
                                         <div class="class_form">{{ form.title }}</div>
