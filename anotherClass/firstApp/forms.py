@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, Certificate, Education, Images, ClassAnswer, ClassReview
+from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django.contrib.auth.models import User
@@ -141,11 +141,6 @@ class CreateClass(forms.ModelForm):
 
         }
 
-class ImageForm(forms.ModelForm):
-    image = forms.ImageField(label='Image')
-    class Meta:
-        model = Images
-        fields = ('image', )
 
 class ApplyForm(forms.ModelForm):
     class Meta:

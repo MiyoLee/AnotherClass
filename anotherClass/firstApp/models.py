@@ -104,16 +104,6 @@ class Class(models.Model):
         return self.title
 
 
-def get_image_filename(instance, filename):
-    id = instance.post.id
-    return "post_images/%s" % (id)
-
-
-class Images(models.Model):
-    post = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, default=None)
-    image = models.ImageField(upload_to=get_image_filename,
-                              verbose_name='Image')
-
 
 class Apply(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
