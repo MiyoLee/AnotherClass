@@ -5,6 +5,8 @@
     height: 12rem;
     margin:0;
     padding:0;
+    position:relative;
+    bottom:45px;
 }
 .cateitem{
     text-align: center;
@@ -29,6 +31,8 @@
 
 .for_slick_slider{
 display:flex;
+position:relative;
+bottom:30px;
 }
 
 .for_slick_slider .items{

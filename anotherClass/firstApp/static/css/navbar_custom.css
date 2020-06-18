@@ -13,6 +13,7 @@ a{
 }
 .navbar{
     border-bottom: 0.1px solid rgb(219, 222, 224);
+    margin-bottom:3em;
 }
 .navbar-custom{
     font-size: x-large;
