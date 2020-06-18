@@ -1,3 +1,17 @@
+.for_slick_slider{
+display:flex;
+}
+
+.for_slick_slider .items{
+width:600px;
+height:450px;
+z-index:1;
+}
+
+.for_slick_slider .items img{
+width:600px;
+height:450px;
+}
 
 .product-review-title{
 color:#4ECAC6;
@@ -12,7 +26,7 @@ width:92px;
 height:40px;
 background-color:#fff;
 border-radius:10px;
-bottom:10px;
+bottom:40px;
 left:500px;
 text-align:center;
 padding-top:7px;
@@ -78,15 +92,17 @@ position:relative;
 }
 
 .product-info{
- width:1000px;
- padding-top: 20px;
- position: relative;
- left: 5%;
+ float:left;
+ width:500px;
+ padding-top: 10px;
+ padding-left:30px;
+
 }
+
 .center{
- position: relative;
-left:10%;
+text-align:center;
 }
+
 .product-info h2{
 font-weight:bold;
 font-size:20px;
@@ -100,7 +116,16 @@ left:-3%;
 color: rgb(58, 192, 189);
 font-size: 25px;
 font-weight:bold;
-float:left;
+padding-top:5px;
+padding-right:10px;
+}
+.datechoice{
+padding-left:30px;
+}
+.pertime{
+color: #9B9EEA;
+font-size: 25px;
+font-weight:bold;
 padding-top:5px;
 padding-right:10px;
 }
@@ -121,8 +146,6 @@ font-weight:bold;
 
 .product-info img{
 padding-top:10px;
-padding-bottom:15px;
-padding-left:5px;
 }
 
 .product-info ul{
@@ -208,7 +231,7 @@ padding-top:7px;
   margin-bottom:15px;
   text-align:center;
   position: relative;
-left:5%;
+left:23%;
 margin-top:25px;
 }
 
@@ -226,7 +249,7 @@ padding-top:16px;
   margin-bottom:15px;
   text-align:center;
   position: relative;
-left:3%;
+left:17%;
 margin-top:25px;
 }
 
