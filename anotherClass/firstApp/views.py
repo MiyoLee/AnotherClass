@@ -186,7 +186,6 @@ def createclass(request):
             return render(request, 'firstApp/createclass.html', {'form': form, 'alert_flag': True})
     else:
         form = CreateClass()
-        formset = ImageFormSet(queryset=Images.objects.none())
         return render(request, 'firstApp/createclass.html', {'form': form})
 
 
