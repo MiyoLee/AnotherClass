@@ -3,67 +3,111 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/product_custom.css' %}">
+<link href="{% static 'css/product_custom.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/slick.css' %}">
+<link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'js/slick.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/product.js' %}"></script>
 <div class="container">
     <div class="product">
         <div class="product-pic">
-            {% if class_detail.photo %}
-            <img src="{{ class_detail.photo.url }}" alt="">
-            {% endif %}
-        </div>
-        <div class="product-info">
-          <h2>{{ class_detail.title }}</h2>
-          <div class="center">
-            <div class="perprice">{{class_detail.price}} 원</div>
-            <div class="hour">/1회</div>
-            <div class="onetime">총 1회 {{class_detail.time}} 시간 / 시간당 10,000원</div>
-          <img src="{% static 'image\stars.png' %}">
-          </div>
 
-          <ul>
-          <li>
-            <b>지역 :</b>
-             <a>{{ class_detail.area }}</a>
-          </li>
-          <li>
-            <b>수강 가능한 날짜 :</b>
-                              <select>
-                     {% for date in class_detail.date_class.all %}
-                     <option>{{ date.date }}</option>
-                     {% empty %}
-                  {% endfor %}
-                 </select>
-          </li>
-          <li>
-            <b>난이도 :</b>
-            <a>{{ class_detail.level }}</a>
-          </li>
-           <li>
-            <b>수업방식 :</b>
-             <a>{{ class_detail.mode }}</a>
-          </li>
-              <li>
-                   <div>
-                   {% if class_detail.in_min != 1 %}
-                   {% if class_detail.in_max != 1 %}
-                   <b>최대 인원:</b>
-                   {{class_detail.in_min}}명 ~ {{class_detail.in_max}}명
-                   {% endif %}
-                   {% endif %}
-               </div>
-              </li>
-          </ul>
+            <div style="width:600px;height:450px;" class="for_slick_slider single-item">
+                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
+                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
+                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
+                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
+                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
+            </div>
+
+             <div class="like_block">
+
+                    {% if user != class_detail.author %}
+                    {% if heart == 1 %}
+                    <a href="{% url 'like' class_detail.id %}"><b><img
+                            src="https://img.icons8.com/material-sharp/24/000000/like.png"/></b></a>
+                    {% else %}
+                    <a href="{% url 'like' class_detail.id %}"><b><img
+                            src="https://img.icons8.com/metro/26/000000/like.png"/></b></a>
+                    {% endif %}
+                    {{ class_detail.like_count }}
+                    {% else %}
+                    <b><img src="https://img.icons8.com/material-sharp/24/000000/like.png"/></b>
+                    {{ class_detail.like_count }}
+                    {% endif %}
+             </div>
+        </div>
+
+        <div class="product-info">
+            <h2 style="line-height:1.8;">{{ class_detail.title }}</h2>
+            <div class="center">
+                <span class="perprice">{{class_detail.price}}원  /</span>
+                <span class="pertime"> {{class_detail.time}}시간 /</span>
+                <span>1회당</span>
+                <div><img src="{% static 'image\stars.png' %}"></div>
+            </div>
+
+            <ul>
+                <li>
+                    <b>지역 :</b>
+                    <a>{{ class_detail.area }}</a>
+                </li>
+
+                <li>
+                    <b>난이도 :</b>
+                    <a>{{ class_detail.level }}</a>
+                </li>
+                <li>
+                    <b>수업방식 :</b>
+                    <a>{{ class_detail.mode }}</a>
+                </li>
+                <li>
+                    <div>
+                        {% if class_detail.in_min != 1 %}
+                        {% if class_detail.in_max != 1 %}
+                        <b>최대 인원:</b>
+                        {{class_detail.in_min}}명 ~ {{class_detail.in_max}}명
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </li>
+
+
+            </ul>
+
 
             {% if user != class_detail.author %}
-                <a href="{% url 'apply' class_detail.id %}" class="btn btn-primary button" >
-                클래스 신청하기
-                </a>
-                {% else %}
-                <a href="{% url 'update_class' class_detail.id %}" class="btn btn-primary twobutton">
-                    정보 수정
-                </a>
-                <a href="{% url 'update_time' class_detail.id %}" class="btn btn-primary twobutton">
-                    시간 추가
-                </a>
+
+            <form style="margin:0px;" action="{% url 'apply' class_detail.id%}" method="get">
+                <span style="padding-left:70px; margin-top:40px; font-weight:bold; padding-right:10px;">수강 날짜 선택</span>
+            <select name="date" >
+                {% for date in class_detail.date_class.all %}
+                <option value="{{date.pk}}">{{ date.date }}</option>
+                {% empty %}
+                {% endfor %}
+            </select>
+
+
+                    <input class="btn btn-primary button" type="submit" value="클래스 신청">
+            </form>
+
+            {% else %}
+            <b style="padding-left:70px; margin-top:40px; padding-right:10px;">수강 날짜 선택</b>
+            <select name="date">
+                {% for date in class_detail.date_class.all %}
+                <option value="{{date.pk}}">{{ date.date }}</option>
+                {% empty %}
+                {% endfor %}
+            </select>
+            <a class="btn btn-primary twobutton" href="{% url 'update_class' class_detail.id %}">
+                정보 수정
+            </a>
+            <a class="btn btn-primary twobutton" href="{% url 'update_time' class_detail.id %}">
+                시간 추가
+            </a>
             {% endif %}
 
         </div>

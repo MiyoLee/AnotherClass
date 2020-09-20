@@ -274,6 +274,7 @@ overflow:auto;
 }
 
 .category-tab ul {
+    bottom: 1px;
     background: #fff;
     border-bottom: 1px solid #4ECAC6;
     list-style: none outside none;
@@ -429,7 +430,7 @@ position: relative;
     margin: 0 0 20px;
     padding: 0;
 }
-ul {
+.ul-tag {
     display: block;
     list-style-type: disc;
     margin-block-start: 1em;

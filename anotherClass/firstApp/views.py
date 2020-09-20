@@ -264,7 +264,7 @@ def create_answer(request, pk):
             answer.inQuestion = parent_question
             answer.author = User.objects.get(username=request.user.get_username())
             answer.save()
-        return HttpResponseRedirect("/product/{}".format(class_detail.id))
+        return HttpResponseRedirect("/product/{}/#qna".format(class_detail.id))
 
     else:
         form = AnswerForm()
