@@ -115,13 +115,30 @@
             <a class="productdetail"
                href="{% url 'product' class.id %}">
               <div class="card mb-4 shadow-sm">
-              <img src="{{class.photo.url}}" width="338px" height="250px">
-<div class="card-body">
+              <img src="{{class.photo.url}}" width="338px" height="250px" style="align-self: center;margin-top: 5px;">
+                  {% if class.on_sale == True %}
+                  <div class="on_sale">SALE</div>
+                  {% endif %}
+                <div class="card-body">
                 <p class="class_title">{{class.title}}</p>
 
                   <small class="tutor_name">{{class.tutor}}</small>
-                    <span class="class_price">{{class.price}} 원</span>
 
+                    {% if class.on_sale == True %}
+                    <span class="class_price">{{class.sale_price}} 원</span>
+                        <span style="
+                        text-decoration: line-through;
+                        color: #848484;
+                        font-size: 16px;
+                        float: right;
+                        font-weight: bolder;
+                        position: relative;
+                        bottom: -11px;
+                        margin-right: 8px; ">{{class.price}} 원</span>
+
+                    {% else %}
+                    <span class="class_price">{{class.price}} 원</span>
+                    {% endif %}
 
                 </div>
               </div>

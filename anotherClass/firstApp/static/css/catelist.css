@@ -45,3 +45,25 @@ z-index:1;
 width:600px;
 height:450px;
 }
+.tutor_name{
+font-size:18px;
+color: #4ECAC6;
+    font-weight:bold;
+    padding-top:20px;
+    width:200px;
+  text-align:center;
+}
+
+.on_sale{
+    position: absolute;
+    width: 82px;
+    font-weight: bolder;
+    height: 35px;
+    background-color: #FC2D67;
+    color: white;
+    border-radius: 10px;
+    left: 10px;
+    top: 10px;
+    text-align: center;
+    padding-top: 5px;
+}

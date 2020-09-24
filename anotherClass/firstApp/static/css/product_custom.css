@@ -217,14 +217,7 @@ width:800px;
 padding-left:10px;
 min-height:200px;
 }
-.tutor_name{
-font-size:18px;
-color: #4ECAC6;
-    font-weight:bold;
-    padding-top:20px;
-    width:200px;
-  text-align:center;
-}
+
 .tutor_body{
 position: relative;
 top:-200px;
