@@ -2,40 +2,66 @@
 {% load static %}
 
 {% block content %}
-    <h5>내가 개설한 클래스</h5>
+{% if user.is_active %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="left-sidebar">
+            <ul>
+							<li data-toggle="tab">
+								<a href="{% url 'mypage' %}" class="nounderline"><h3>My page</h3></a><br>
+								<a class="nav-link"><strong>{{user.username}}님</strong></a>
+									<br>
+									<li class="nav-item">
+										<a class="nav-link" href="/mypage/mylike">관심 클래스</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="/mypage/myApply">수강클래스</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="/mypage/myClass">개설클래스</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="">내 정보 관리</a>
+									</li>
 
-    <div class="album py-5 bg-light">
-
-        <div class="container">
-
-            <div class="row">
-                {% for class in classs %}
-          <div class="col-md-4">
-            <a class="productdetail"
-               href="{% url 'product' class.id %}">
-              <div class="card mb-4 shadow-sm">
-              <img src="{{class.photo.url}}" width="338px" height="250px" style="align-self: center;margin-top: 5px;">
-                  {% if class.on_sale == True %}
-                  <div class="on_sale">SALE</div>
-                  {% endif %}
-              <div class="card-body">
-                <p class="class_title">{{class.title}}</p>
-
-                  <small class="tutor_name">{{class.tutor}}</small>
-                    <span class="class_price">{{class.price}} 원</span>
-                    <div class="class-update-button">
-                        <a class="abc" href="{% url 'update_class' class.id %}">정보수정</a>
-                        <a class="abc" href="{% url 'update_time' class.id %}">시간추가</a>
-                        <a class="abc" href="#">삭제</a>
-                    </div>
-
-                </div>
-
-              </div>
-            </a>
+							</li>
+						</ul>
           </div>
-          {% endfor %}
-            </div>
         </div>
+
+          <div class="col-sm-9">
+            <h5>내가 개설한 클래스</h5>
+            <table class="table">
+              <tr>
+                <th>클래스</th>
+                <th></th>
+                <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+              </tr>
+              {% for class in classs %}
+              <tr>
+                <td>
+                  <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
+                </td>
+                <td class="lighter"><a class="abc" href="{% url 'update_class' class.id %}">정보수정</a></td>
+                <td class="lighter"><a class="abc" href="{% url 'update_time' class.id %}">일정추가</a></td>
+                  <td class="lighter"><a class="abc">할인</a></td>
+                  <td class="lighter"><a class="abc">보관</a></td>
+                  <td class="lighter"><a class="abc">삭제</a></td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+      </div>
     </div>
-    {% endblock content %}
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다. \n로그인을 해주세요.')
+    window.location.href = '/login';
+  </script>
+{% endif %}
+{% endblock content %}

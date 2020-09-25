@@ -121,7 +121,7 @@ padding-top:10px;
 text-align:center;
 position:relative;
 left:-3%;
-height:120px;
+height:60px;
 }
 
 .perprice{
@@ -435,16 +435,12 @@ position: relative;
     display: inline-block;
     text-align: center;
     list-style:none;
-    height: 12rem;
-    margin:0;
     padding:0;
-    position:relative;
-    bottom:50px;
+
 }
 .proitem{
     text-align: center;
     margin: 1rem;
-    margin-top: 2rem;
     float: left;
     height: 120px;
     width: 120px;
@@ -462,4 +458,27 @@ position: relative;
 
 .proicon{
 width:55px;
+}
+
+.price_div{
+height: 90px;
+    text-align: right;
+    padding-top: 7px;
+}
+.price_tag{
+text-decoration: line-through;
+    font-weight: bold;
+    color: #848484;
+}
+.sale_tag{
+font-size: 30px;
+    text-align: right;
+    font-weight: bold;
+    padding-right: 40px;
+    padding-left: 10px;
+    color: #74C7CC;
+}
+.time_tag{
+    padding-right: 50px;
+    font-weight: bold;
 }

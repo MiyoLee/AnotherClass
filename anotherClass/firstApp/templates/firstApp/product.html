@@ -68,19 +68,24 @@
 
                     </div>
                 </li>
-
-                </li>
-
-                
             </ul>
 
+            <div class="price_div">
+                 <div class="time_tag"> 1회 {{class_detail.time}}시간 </div>
+                {% if class_detail.on_sale == True %}
+                <span class="price_tag">{{class_detail.price}}원</span>
+                <span class="sale_tag">{{class_detail.sale_price}}원</span>
+
+                    {% else %}
+                    <span class="sale_tag">{{class_detail.price}} 원</span>
+                    {% endif %}
+            </div>
 
             {% if user != class_detail.author %}
-
             <form style="margin:0px;" action="{% url 'apply' class_detail.id%}" method="get">
                 <span style="padding-left:70px; margin-top:40px; font-weight:bold; padding-right:10px;
-                              position: relative; top: -20px;">수강 날짜 선택</span>
-            <select style=" position: relative; top: -20px;" name="date" >
+                              ">수강 날짜 선택</span>
+            <select name="date" >
                 {% for date in class_detail.date_class.all %}
                 <option value="{{date.pk}}">{{ date.date }}</option>
                 {% empty %}
@@ -92,8 +97,8 @@
             </form>
 
             {% else %}
-            <b style="padding-left:70px; margin-top:40px; padding-right:10px; position: relative; top: -20px;">수강 날짜 선택</b>
-            <select style="position: relative; top: -20px;" name="date">
+            <b style="padding-left:70px; margin-top:40px; padding-right:10px;">수강 날짜 선택</b>
+            <select name="date">
                 {% for date in class_detail.date_class.all %}
                 <option value="{{date.pk}}">{{ date.date }}</option>
                 {% empty %}
@@ -103,7 +108,7 @@
                 정보 수정
             </a>
             <a class="btn btn-primary twobutton" href="{% url 'update_time' class_detail.id %}">
-                시간 추가
+                일정 추가
             </a>
             {% endif %}
 
