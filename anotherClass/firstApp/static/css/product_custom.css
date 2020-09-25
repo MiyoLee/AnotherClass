@@ -117,10 +117,11 @@ text-align:center;
 .product-info h2{
 font-weight:bold;
 font-size:20px;
-padding-bottom:10px;
+padding-top:10px;
 text-align:center;
 position:relative;
 left:-3%;
+height:120px;
 }
 
 .perprice{
@@ -156,16 +157,14 @@ font-weight:bold;
 }
 
 .product-info img{
-padding-top:10px;
+padding-top: 15px;
 }
 
 .product-info ul{
 font-size:15px;
 list-style:none;
 }
-.product-info li{
-padding-top:8px;
-}
+
 .tutor_photo{
 
 width:200px;
@@ -431,4 +430,36 @@ position: relative;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
+}
+.prolist{
+    display: inline-block;
+    text-align: center;
+    list-style:none;
+    height: 12rem;
+    margin:0;
+    padding:0;
+    position:relative;
+    bottom:50px;
+}
+.proitem{
+    text-align: center;
+    margin: 1rem;
+    margin-top: 2rem;
+    float: left;
+    height: 120px;
+    width: 120px;
+    position: relative;
+    top: 20px;
+    border: 3px solid #9B9EEA;
+    border-radius: 10px;
+}
+
+.proitem-item{
+    font-weight: bold;
+    padding-top: 15px;
+    color:#848484;
+}
+
+.proicon{
+width:55px;
 }

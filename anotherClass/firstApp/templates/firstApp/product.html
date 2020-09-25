@@ -45,36 +45,30 @@
 
         <div class="product-info">
             <h2 style="line-height:1.8;">{{ class_detail.title }}</h2>
-            <div class="center">
-                <span class="perprice">{{class_detail.price}}원  /</span>
-                <span class="pertime"> {{class_detail.time}}시간 /</span>
-                <span>1회당</span>
-                <div><img src="{% static 'image\stars.png' %}"></div>
-            </div>
+<!--            <div class="center">-->
+<!--                <span class="perprice">{{class_detail.price}}원  /</span>-->
+<!--                <span class="pertime"> {{class_detail.time}}시간 /</span>-->
+<!--                <span>1회당</span>-->
+<!--                <div><img src="{% static 'image\stars.png' %}"></div>-->
+<!--            </div>-->
 
-            <ul>
-                <li>
-                    <b>지역 :</b>
-                    <a>{{ class_detail.area }}</a>
-                </li>
+            <ul class="prolist">
+                <li class="proitem"><img class="proicon" src="{% static 'image\location.png' %}"><div class="proitem-item">{{class_detail.area}}</div> </li>
+                <li class="proitem"><img class="proicon" src="{% static 'image\difficulty.png' %}"><div class="proitem-item">{{class_detail.level}}</div></li>
+                <li class="proitem"><img class="proicon" src="{% static 'image\mode2.png' %}">
+                    <div class="proitem-item">
 
-                <li>
-                    <b>난이도 :</b>
-                    <a>{{ class_detail.level }}</a>
-                </li>
-                <li>
-                    <b>수업방식 :</b>
-                    <a>{{ class_detail.mode }}</a>
-                </li>
-                <li>
-                    <div>
-                        {% if class_detail.in_min != 1 %}
-                        {% if class_detail.in_max != 1 %}
-                        <b>최대 인원:</b>
-                        {{class_detail.in_min}}명 ~ {{class_detail.in_max}}명
-                        {% endif %}
-                        {% endif %}
+                    {% if class_detail.in_min != 1 %}
+                    {% if class_detail.in_max != 1 %}
+                    {{class_detail.in_min}}명 ~ {{class_detail.in_max}}명
+                    {% endif %}
+                        {% else %}
+                        {{class_detail.mode}}
+                    {% endif %}
+
                     </div>
+                </li>
+
                 </li>
 
                 
@@ -84,8 +78,9 @@
             {% if user != class_detail.author %}
 
             <form style="margin:0px;" action="{% url 'apply' class_detail.id%}" method="get">
-                <span style="padding-left:70px; margin-top:40px; font-weight:bold; padding-right:10px;">수강 날짜 선택</span>
-            <select name="date" >
+                <span style="padding-left:70px; margin-top:40px; font-weight:bold; padding-right:10px;
+                              position: relative; top: -20px;">수강 날짜 선택</span>
+            <select style=" position: relative; top: -20px;" name="date" >
                 {% for date in class_detail.date_class.all %}
                 <option value="{{date.pk}}">{{ date.date }}</option>
                 {% empty %}
@@ -97,8 +92,8 @@
             </form>
 
             {% else %}
-            <b style="padding-left:70px; margin-top:40px; padding-right:10px;">수강 날짜 선택</b>
-            <select name="date">
+            <b style="padding-left:70px; margin-top:40px; padding-right:10px; position: relative; top: -20px;">수강 날짜 선택</b>
+            <select style="position: relative; top: -20px;" name="date">
                 {% for date in class_detail.date_class.all %}
                 <option value="{{date.pk}}">{{ date.date }}</option>
                 {% empty %}
