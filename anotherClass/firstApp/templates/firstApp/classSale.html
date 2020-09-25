@@ -1,0 +1,68 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+{% if alert_flag %}
+<script>alert("폼을 모두 작성해주세요.")</script>
+{% endif %}
+{% if user.is_active and user == class_detail.author %}
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<link href="{% static 'css/createclass.css' %}" rel="stylesheet">
+<section>
+    <div class="contents">
+        <div class="createclasscont">
+            <div class="row">
+                <div class="col-sm-3">
+
+                </div>
+                <div class="col-sm-9">
+                    <div class="blog-post-area">
+                        <div class="upperbar">
+
+                            <div class="step-title">클래스 할인 적용</div>
+                        </div>
+
+                                    <p>
+                                       <div class="form_title class_form">클래스  </div>
+                                    <div class="class_form">{{class_detail.title}}</div>
+                                    </p>
+                                                            <hr class="hr_width">
+                                    <p>
+                                       <div class="form_title class_form">정가  </div>
+                                    <div class="class_form">{{class_detail.price}} 원</div>
+                                    </p>
+                        <hr class="hr_width">
+
+                        <form enctype="multipart/form-data" method="POST">
+
+                                {% csrf_token %}
+                                {{ form.media }}
+                                    <p>
+                                       <div class="form_title class_form">할인가  </div>
+                  {% if class_detail.sale_price != null %}
+                  <div class="class_form"><input class="input" name="sale_price" value="{{class_detail.sale_price}}"> 원</div>
+                            {% else%}
+                            <div class="class_form"><input class="input" name="sale_price"> 원</div>
+                  {% endif %}
+                                    </p>
+
+                        <input type="submit" class="btn btn-primary right-button" value="완료">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다.')
+    window.location.href = '/main';
+
+
+</script>
+{% endif %}
+{% endblock content%}

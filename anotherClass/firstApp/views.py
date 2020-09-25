@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area
-from .forms import PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm
+from .forms import ClassSale, PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 from django.template import RequestContext
@@ -26,8 +26,6 @@ def index(request):
 
 def mypage(request):
     return render(request, 'firstApp/mypage.html')
-
-
 
 def blogMain(request):
     classs = Class.objects.all()
@@ -63,6 +61,7 @@ def categoryselect(request):
     cate_list = Category.objects.all()
     return render(request, 'firstApp/categoryselect.html',
                   {'classes': classes, 'cate_list': cate_list, 'cateId': cateId})
+
 
 def class_align(request):
     r = request.GET.get('r', '') #정렬
@@ -339,12 +338,25 @@ def update_time(request, class_id):
         return render(request, 'firstApp/addTime.html', {
             'class_detail': class_detail, 'form': form})
 
+def classSale(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == 'POST':
+        form = ClassSale(request.POST, instance=class_detail)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            return HttpResponseRedirect("/product/{}".format(class_id))
+        else:
+            return render(request, 'firstApp/classSale.html', {'form': form, 'alert_flag': True})
+    else:
+        form = ClassSale(instance=class_detail)
+        return render(request, 'firstApp/classSale.html', {
+            'class_detail': class_detail, 'form': form})
 
 def update_class(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
     if request.method == 'POST':
         form = CreateClass(request.POST, request.FILES, instance=class_detail)
-
         if form.is_valid():
             post = form.save(commit=False)
             post.author = User.objects.get(username = request.user.get_username())
@@ -354,7 +366,7 @@ def update_class(request, class_id):
             return render(request, 'firstApp/update_class.html',{'form': form, 'alert_flag': True})
     else:
         form = CreateClass(instance=class_detail)
-        return render(request, 'firstApp/update_class.html', {'form': form})
+        return render(request, 'firstApp/update_class.html', {'class_detail': class_detail, 'form': form})
 
 def community(request):
     if request.user is None:

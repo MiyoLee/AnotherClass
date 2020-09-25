@@ -116,7 +116,7 @@
                href="{% url 'product' class.id %}">
               <div class="card mb-4 shadow-sm">
               <img src="{{class.photo.url}}" width="338px" height="250px" style="align-self: center;margin-top: 5px;">
-                  {% if class.on_sale == True %}
+                  {% if class.sale_price != null %}
                   <div class="on_sale">SALE</div>
                   {% endif %}
                 <div class="card-body">
