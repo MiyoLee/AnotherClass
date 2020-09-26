@@ -381,9 +381,9 @@ def community(request):
         if cateId == '':
             post_list = Post.objects.all()
             cateName = '전체 글'
+            # 인기글 만드는 함수..
+            best = Post.objects.order_by('views');
 
-            best_1 = cate_list;
-            best_2 = cate_list;
         else:
             post_list = Post.objects.filter(category=cateId)
             cateName = get_object_or_404(Category, pk=cateId).name
@@ -405,7 +405,7 @@ def community(request):
             posts = paginator.page(paginator.num_pages)
         return render(request, 'firstApp/community.html', {
             'posts': posts, 'cate_list': cate_list, 'cateName': cateName,
-            'cateId': cateId, 'c': c, 'k': k, 'page': page, 'best_1': best_1, 'best_2': best_2})
+            'cateId': cateId, 'c': c, 'k': k, 'page': page, 'best': best})
 
 def searchResult(request):
     classs = None
