@@ -42,7 +42,8 @@
 					<br><br><br>
 					<div class="blog-post-area">
 							<table class="table">
-								<tr>
+								<tr class="lighter">
+									<th>게시판명</th>
 									<th>제목</th>
 									<th>작성일</th>
 									<th>작성자</th>
@@ -50,7 +51,12 @@
 								</tr>
 								{% for post in posts %}
 								<tr>
-									<td>
+									<td class="lighter">
+										<a class="a_underline" href="{% url 'community'%}?cateId={{post.category.pk}}">
+											{{ post.category }}
+										</a>
+									</td>
+									<td class="lighter">
 										<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
 											{{ post.title }}
 										</a>
