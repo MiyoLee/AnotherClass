@@ -2,15 +2,19 @@ ul{
     list-style:none;
     padding-left:0
 }
+
 th{
     color:gray;
     background-color:#f0f1fc;
 }
+.upper_box{
+    border: #C6D2D3 0.05px solid;
+    padding:2%;
+    margin-bottom:10%;
+}
 .lighter{
 
     font-size:10pt;
-}
-.createreview{
 }
 
 .cate-select{

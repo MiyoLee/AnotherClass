@@ -376,11 +376,14 @@ def community(request):
         k = request.GET.get('k', '')
         cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
         cate_list = Category.objects.all()
-
+        best_1 = '';
+        best_2 = '';
         if cateId == '':
             post_list = Post.objects.all()
             cateName = '전체 글'
 
+            best_1 = cate_list;
+            best_2 = cate_list;
         else:
             post_list = Post.objects.filter(category=cateId)
             cateName = get_object_or_404(Category, pk=cateId).name
@@ -401,7 +404,8 @@ def community(request):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
         return render(request, 'firstApp/community.html', {
-            'posts': posts, 'cate_list': cate_list, 'cateName': cateName, 'cateId': cateId, 'c': c, 'k': k, 'page': page})
+            'posts': posts, 'cate_list': cate_list, 'cateName': cateName,
+            'cateId': cateId, 'c': c, 'k': k, 'page': page, 'best_1': best_1, 'best_2': best_2})
 
 def searchResult(request):
     classs = None

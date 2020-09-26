@@ -41,6 +41,27 @@
 
 					<br><br><br>
 					<div class="blog-post-area">
+						{% if best_1 %}
+						<div class="container upper_box">
+							<div class="row">인기글</div>
+							<div class="row">
+							  <div class="col">
+								  {% for category in best_1 %}
+								<li>
+									{{category.name}}
+								</li>
+								{% endfor %}
+							  </div>
+							  <div class="col">
+								  {% for category in best_2 %}
+								<li>
+									{{category.name}}
+								</li>
+								{% endfor %}
+							  </div>
+							</div>
+						</div>
+						{% endif %}
 							<table class="table">
 								<tr class="lighter">
 									<th>게시판명</th>
@@ -60,7 +81,7 @@
 										<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
 											{{ post.title }}
 										</a>
-										<span class="lighter" style="color:gray;">[{{ post.comments.count }}]</span>
+										<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
 									</td>
 									<td class="lighter">{{post.created_date|date:'y.m.d H:i'}}</td>
 									<td class="lighter">{{post.author}}</td>
