@@ -376,8 +376,7 @@ def community(request):
         k = request.GET.get('k', '')
         cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
         cate_list = Category.objects.all()
-        best_1 = '';
-        best_2 = '';
+        best = ''
         if cateId == '':
             post_list = Post.objects.all()
             cateName = '전체 글'
