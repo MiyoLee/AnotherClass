@@ -40,6 +40,7 @@ urlpatterns = [
     path('mypage/myApply/<int:class_id>/review', views.review, name='review'),
     path('mypage/mylike/', views.mylike, name='mylike'),
     path('change_pw/', views.change_pw, name='change_pw'),
+    path('community/best/', views.bestPost, name='bestPost'),
     path('community/myPost/', views.myPost, name='myPost'),
     path('community/post/<int:pk>/', views.post_detail, name='post_detail'),
     path('community/<int:pk>/update', views.update_post, name='update_post'),

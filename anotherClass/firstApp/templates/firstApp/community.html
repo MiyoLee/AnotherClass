@@ -20,7 +20,7 @@
 							</li>
 							<br>
 							<li><i class="fas fa-trophy"></i>
-								<a class="a_underline font-weight-bolder" href="{% url 'community' %}">인기 글</a>
+								<a class="a_underline font-weight-bolder" href="{% url 'bestPost' %}">인기 글</a>
 							</li>
 							<br>
 							<p class="font-weight-bolder"><i class="fas fa-clipboard"></i> 카테고리별</p>
@@ -42,15 +42,15 @@
 				<div class="col-sm-9">
 
 					<h4 style="font-weight:bold;">{{cateName}}</h4>
+					<br>
 
-					<br><br><br>
 					<div class="blog-post-area">
 						{% if best %}
 						<div class="container upper_box">
 							<div class="text-right lighter" style="font-size:9pt;">
-								<a class="a_underline" style="color:gray;" href="{% url 'community' %}">더보기 ></a>
+								<a class="a_underline" style="color:gray;" href="{% url 'bestPost' %}">더보기 ></a>
 							</div>
-							<div class="row" style="margin:0 0 2% 0; padding:0 1% 1% 1%; font-weight:bold; color:#6E73C5">
+							<div class="row" style="margin:0 0 2% 0; padding:0 1% 1% 1%; font-weight:bold; color:#5157C0">
 								실시간 인기글
 							</div>
 							<div class="row lighter" >
@@ -83,7 +83,8 @@
 							</div>
 						</div>
 						{% endif %}
-							<table class="table">
+							<table class="table" style="border-top-style:solid;">
+								<thead>
 								<tr class="lighter">
 									<th>게시판명</th>
 									<th>제목</th>
@@ -91,6 +92,7 @@
 									<th>작성자</th>
 									<th>조회수</th>
 								</tr>
+								</thead>
 								{% for post in posts %}
 								<tr>
 									<td class="lighter">
@@ -114,7 +116,7 @@
 								</tr>
 								{% endfor %}
 							</table>
-						
+						{% if cateId != "0" %}
 						<div align="right">
 							<div id="btn"> 
 								<a href="/createpost">
@@ -122,9 +124,11 @@
 								</a>
 							</div>
 						</div>
+						{% endif %}
 					</div>
 
 					<!-- Search form -->
+					{% if cateId != "0"%}
 					<div class="community_search_bar">
 					<form action="" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
 						<input type="hidden" name="cateId" value="{{cateId}}">
@@ -139,6 +143,9 @@
 						</span>
 					</form>
 					</div>
+					{% else %}
+					<br><br>
+					{% endif %}
 						{% if posts.has_other_pages %}
 						<nav aria-label="Page navigation example">
 						  <ul class="pagination justify-content-center">

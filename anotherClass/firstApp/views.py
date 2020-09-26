@@ -406,6 +406,20 @@ def community(request):
             'posts': posts, 'cate_list': cate_list, 'cateName': cateName,
             'cateId': cateId, 'c': c, 'k': k, 'page': page, 'best': best})
 
+def bestPost(request):
+    cate_list = Category.objects.all()
+    post_list = Post.objects.order_by('views');
+    page = request.GET.get('page', 1)
+    paginator = Paginator(post_list, 10)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+    return render(request, 'firstApp/community.html', {
+       'posts': posts, 'cate_list': cate_list, 'cateName' : "인기 글", 'cateId': "0", 'page': page})
+
 def searchResult(request):
     classs = None
     qq = request.GET.get('qq', '')
@@ -428,7 +442,7 @@ def myPost(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     return render(request, 'firstApp/community.html', {
-       'posts': posts, 'cate_list': cate_list, 'page': page})
+       'posts': posts, 'cate_list': cate_list, 'cateName': "내가 쓴 글", 'cateId': "0", 'page': page})
 
 @login_required(login_url='/login/')
 def post_detail(request, pk):
