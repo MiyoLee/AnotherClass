@@ -11,7 +11,7 @@
     <div class="container bg-light select-box">
             <div class="filter-item">
                 <span class="filter-name">카테고리</span>
-                <select name="q" value="{{ q }}">
+                <select name="category" value="{{ c }}">
                     <option selected value="전체">전체보기</option>
                     {% for category in categorys %}
                     <option>{{category.name}}</option>
@@ -21,7 +21,7 @@
 
             <div class="filter-item">
                 <span class="filter-name">지역</span>
-                <select name="p" value="{{ p }}">
+                <select name="area" value="{{ a }}">
                     <option selected value="전체">전체보기</option>
                     {% for area in areas %}
                     <option>{{area.name}}</option>
@@ -30,17 +30,32 @@
             </div>
 
             <div class="filter-item">
-                <span class="filter-name">가격대</span>
-                <input class="input" type="text" name="k" value="{{ k }}" placeholder="0"> ~ <input class="input" type="text" value="{{ kk }}" name="kk">
+                <span class="filter-name">레벨</span>
+                <select name="level" value="{{ l }}">
+                    <option selected value="전체">전체보기</option>
+                    {% for level in levels %}
+                    <option>{{level.name}}</option>
+                    {% endfor %}
+                </select>
             </div>
-           
+
+            <div class="filter-item">
+                <span class="filter-name">가격대</span>
+                <input type="radio" name="price" value="p1"> 1만원 이하 &nbsp;&nbsp;
+                <input type="radio" name="price" value="p2"> 1만원 ~ 2만원&nbsp;&nbsp;
+                <input type="radio" name="price" value="p3"> 2만원 ~ 3만원&nbsp;&nbsp;
+                <input type="radio" name="price" value="p4"> 3만원 ~ 4만원&nbsp;&nbsp;
+                <input type="radio" name="price" value="p5"> 4만원 ~ 5만원&nbsp;&nbsp;
+                <input type="radio" name="price" value="p6"> 5만원 이상
+            </div>
  <br>
     <input class="btn btn-primary bottombutton" type="submit" value="적용하기">
     </div>
     </form>
 {% endblock upper_content%}
 {% block content %}
-<p class = "text-center my_search_text"><b>{{q}} / {{p}} / {{k}}~{{kk}}<br>검색결과</b></p>
+<p class = "text-center my_search_text">
+    <b>검색결과</b><br> 카테고리 : {{category}} <br> 지역 : {{area}} <br> 레벨 : {{level}} <br> 가격대 : {{price}}</p>
 
 
     <div class="album py-5 bg-light">
