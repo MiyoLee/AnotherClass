@@ -45,6 +45,25 @@ z-index:1;
 width:600px;
 height:450px;
 }
+
+.for_slick_slider .itemss{
+width:1500px;
+height:450px;
+z-index:1;
+}
+
+.autoplay :hover{
+text-decoration:none;
+}
+.class_title :hover{
+color: #333333;
+}
+
+.for_slick_slider .itemss img{
+width:1500px;
+height:450px;
+}
+
 .tutor_name{
 font-size:18px;
 color: #4ECAC6;
