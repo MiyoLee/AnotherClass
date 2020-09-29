@@ -40,6 +40,7 @@ urlpatterns = [
     path('mypage/myApply/<int:pk>/cancel', views.cancelApply, name='cancelApply'),
     path('mypage/myApply/<int:class_id>/review', views.review, name='review'),
     path('mypage/mylike/', views.mylike, name='mylike'),
+    path('mypage/sybermoney/', views.sybermoney, name='sybermoney'),
     path('change_pw/', views.change_pw, name='change_pw'),
     path('community/best/', views.bestPost, name='bestPost'),
     path('community/myPost/', views.myPost, name='myPost'),

@@ -1,0 +1,67 @@
+{% extends 'firstApp/base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_active %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="left-sidebar">
+            <ul>
+							<li data-toggle="tab">
+								<a href="/mypage" class="nounderline"><h3>My page</h3></a><br>
+								<a class="nav-link"><strong>{{user.username}}님</strong></a>
+									<br>
+									<li class="nav-item">
+										<a class="nav-link" href="/change_pw">비밀번호 변경</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="/logout">로그아웃</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="/intro_delete">회원탈퇴</a>
+									</li>
+
+							</li>
+						</ul>
+          </div>
+        </div>
+
+          <div class="col-sm-9">
+            <h5>사이버 머니 현황</h5>
+            <p>
+              <b>현재 금액 :  </b>
+              500,000원
+            </p>
+
+            <p>
+              <b>결제 내역</b>
+            </p>
+          <table class="table">
+            <tr>
+              <th>클래스</th>
+              <th>가격</th>
+            </tr>
+            {% for apply in applys %}
+            <tr>
+              <td>
+                <a class="a_underline">{{apply.inClass.title}}</a>
+              </td>
+              <td class="lighter">{{apply.inClass.price}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+
+              <div align="right">총합 :             원</div>
+
+          </div>
+      </div>
+    </div>
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다. \n로그인을 해주세요.')
+    window.location.href = '/login';
+  </script>
+{% endif %}
+{% endblock content %}

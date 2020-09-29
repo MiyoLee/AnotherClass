@@ -43,15 +43,22 @@ def myClass(request):
 def myApply(request):
     applys = Apply.objects.filter(author=request.user)
     return render(request, 'firstApp/applylist.html', {'applys':applys})
+
 def cancelApply(request, pk):
     apply = get_object_or_404(Apply, pk=pk)
     apply.delete()
     return redirect('myApply')
+
 @login_required(login_url='/login/')
 def mylike(request):
     classs = Class.objects.filter(like_user=request.user)
     return render(request, 'firstApp/mylike.html', {'classs':classs})
        
+@login_required(login_url='/login/')
+def sybermoney(request):
+    applys = Apply.objects.filter(author=request.user)
+    return render(request, 'firstApp/sybermoney.html', {'applys':applys})
+
 def categoryselect(request):
     cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
     if cateId == '':
@@ -61,7 +68,6 @@ def categoryselect(request):
     cate_list = Category.objects.all()
     return render(request, 'firstApp/categoryselect.html',
                   {'classes': classes, 'cate_list': cate_list, 'cateId': cateId})
-
 
 def class_align(request):
     r = request.GET.get('r', '') #정렬
