@@ -41,12 +41,15 @@
 
             <div class="filter-item">
                 <span class="filter-name">가격대</span>
-                <input type="radio" name="price" value="p1"> 1만원 이하 &nbsp;&nbsp;
-                <input type="radio" name="price" value="p2"> 1만원 ~ 2만원&nbsp;&nbsp;
-                <input type="radio" name="price" value="p3"> 2만원 ~ 3만원&nbsp;&nbsp;
-                <input type="radio" name="price" value="p4"> 3만원 ~ 4만원&nbsp;&nbsp;
-                <input type="radio" name="price" value="p5"> 4만원 ~ 5만원&nbsp;&nbsp;
-                <input type="radio" name="price" value="p6"> 5만원 이상
+                <select name="price">
+                    <option selected value="전체">전체보기</option>
+                    <option value="p1">1만원 이하</option>
+                    <option value="p2">1만원~2만원</option>
+                    <option value="p3">2만원~3만원</option>
+                    <option value="p4">3만원~4만원</option>
+                    <option value="p5">4만원~5만원</option>
+                    <option value="p6">5만원 이상</option>
+                </select>
             </div>
  <br>
     <input class="btn btn-primary bottombutton" type="submit" value="적용하기">
