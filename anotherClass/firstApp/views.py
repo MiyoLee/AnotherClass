@@ -240,7 +240,7 @@ def apply(request, class_id):
             apply.inClass = class_detail
             apply.date = date
             apply.save()
-            return HttpResponseRedirect("/product/{}".format(class_id))
+            return redirect("/product/{}".format(class_id) + '/apply/complete/')
         else:
             return render(request, 'firstApp/apply.html', {'alert_flag': True, 'class_detail': class_detail, 'form': form})
     else:
@@ -321,6 +321,10 @@ def addTutor(request, class_id):
 def create_complete(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
     return render(request, 'firstApp/create_complete.html', {'class_detail': class_detail})
+
+def apply_complete(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    return render(request, 'firstApp/apply_complete.html', {'class_detail': class_detail})
 
 def update_answer(request, pk):
     answer = get_object_or_404(ClassAnswer, pk=pk)
