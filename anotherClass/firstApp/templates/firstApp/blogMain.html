@@ -9,6 +9,7 @@
 <script type="text/javascript" src="{% static 'js/slick.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/product.js' %}"></script>
+<script src="https://kit.fontawesome.com/81816a43c2.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{% static 'css/catelist.css' %}">
 
 <div class="container-fluid" style="width:1500px;">
@@ -89,7 +90,14 @@
     </li>
   </ul>
 </div>
+
+
 <div class="container-fluid" style="width:1400px;">
+    {% if user.is_active %}
+<div class="slide_title"> 지금 {{user.username}}님에게 추천하는 원데이클래스 ! </div>
+{% else %}
+<div class="slide_title"> 지금 당신에게 추천하는 원데이클래스 ! </div>
+{% endif %}
             <div class="autoplay">
 
               {% for class in classs %}
@@ -128,7 +136,6 @@
 
           {% endfor %}
 </div>
-
 {% endblock upper_content%}
 {% block content %}
 {% if user.is_active %}

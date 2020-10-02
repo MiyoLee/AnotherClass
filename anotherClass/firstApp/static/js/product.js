@@ -6,6 +6,8 @@ $(function(){
     variableWidth: true,
     centerMode: true,
     centerPadding: '0px',
+    prevArrow: '<span class="priv_arrow"><i class="fas fa-angle-left"></i></span>',
+    nextArrow: '<span class="next_arrow"><i class="fas fa-angle-right"></i></span>',
     });
 });
 
@@ -16,5 +18,7 @@ $(function(){
     autoplaySpeed: 2000,
     variableWidth: true,
     centerMode: true,
+    prevArrow: '<span class="priv_arrow"><i class="fas fa-angle-left"></i></span>',
+    nextArrow: '<span class="next_arrow"><i class="fas fa-angle-right"></i></span>',
     });
 });

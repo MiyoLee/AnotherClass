@@ -8,6 +8,13 @@
     position:relative;
     bottom:50px;
 }
+
+.slide_title{
+    height: 80px;
+    font-size: 20px;
+    display: block;
+    color: #333;
+}
 .cateitem{
     text-align: center;
     margin:1rem;
@@ -16,7 +23,7 @@
 }
 .catebar{
     text-align: center;
-    height: 15rem;
+    height: 10rem;
     margin-bottom:2rem;
     margin: 0rem 2rem;
     padding:0rem 2rem;
