@@ -101,10 +101,49 @@
             <div class="autoplay">
 
               {% for class in classs %}
-              <div class="card mb-4 shadow-sm" style="width:300px; height:380px; margin-right:20px;">
+              <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
                   <a class="productdetail"
                href="{% url 'product' class.id %}">
-              <img src="{{class.photo.url}}" width="288px" height="220px" style="margin-left: 5px; margin-top: 5px;">
+              <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
+                  {% if class.sale_price != null %}
+                  <div class="on_sale">SALE</div>
+                  {% endif %}
+                <div class="card-body">
+                <p class="class_title">{{class.title}}</p>
+
+                  <small class="tutor_name">{{class.tutor}}</small>
+
+                    {% if class.on_sale == True %}
+                    <span class="class_price">{{class.sale_price}} 원</span>
+                        <span style="
+                        text-decoration: line-through;
+                        color: #848484;
+                        font-size: 16px;
+                        float: right;
+                        font-weight: bolder;
+                        position: relative;
+                        bottom: -11px;
+                        margin-right: 8px; ">{{class.price}} 원</span>
+
+                    {% else %}
+                    <span class="class_price">{{class.price}} 원</span>
+                    {% endif %}
+
+                </div>
+                                  </a>
+              </div>
+
+
+          {% endfor %}
+</div>
+    <div class="slide_title">사회적 거리두기로 인한 우울함, 집콕취미로 극복 ! </div>
+    <div class="autoplay">
+
+              {% for class in slide %}
+              <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
+                  <a class="productdetail"
+               href="{% url 'product' class.id %}">
+              <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
                   {% if class.sale_price != null %}
                   <div class="on_sale">SALE</div>
                   {% endif %}

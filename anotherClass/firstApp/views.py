@@ -29,7 +29,8 @@ def mypage(request):
 
 def blogMain(request):
     classs = Class.objects.all()
-    return render(request, 'firstApp/blogMain.html', {'classs':classs})
+    slide = Class.objects.filter(category__name='미술, 공예')
+    return render(request, 'firstApp/blogMain.html', {'classs':classs, 'slide':slide})
 
 def intro_createclass(request):
     return render(request, 'firstApp/intro_createclass.html')
