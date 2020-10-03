@@ -8,14 +8,6 @@
     position:relative;
     bottom:50px;
 }
-
-.slide_title{
-    height: 80px;
-    font-size: 20px;
-    display: block;
-    color: #333;
-    margin-top:40px;
-}
 .cateitem{
     text-align: center;
     margin:1rem;
@@ -24,7 +16,7 @@
 }
 .catebar{
     text-align: center;
-    height: 10rem;
+    height: 15rem;
     margin-bottom:2rem;
     margin: 0rem 2rem;
     padding:0rem 2rem;
@@ -53,25 +45,6 @@ z-index:1;
 width:600px;
 height:450px;
 }
-
-.for_slick_slider .itemss{
-width:1500px;
-height:450px;
-z-index:1;
-}
-
-.autoplay :hover{
-text-decoration:none;
-}
-.class_title :hover{
-color: #333333;
-}
-
-.for_slick_slider .itemss img{
-width:1500px;
-height:450px;
-}
-
 .tutor_name{
 font-size:18px;
 color: #4ECAC6;

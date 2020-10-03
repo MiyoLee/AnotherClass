@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
 
-        fields = ['category', 'title', 'text']
+        fields = ['category', 'bullet', 'title', 'text']
 
         widgets = {
                     'title': forms.TextInput(
@@ -104,7 +104,7 @@ class EducationForm(forms.ModelForm):
 class ClassSale(forms.ModelForm):
     class Meta:
         model = Class
-        fields = ['sale_price', 'on_sale']
+        fields = ['sale_price']
 
 class CreateClass(forms.ModelForm):
     class Meta:

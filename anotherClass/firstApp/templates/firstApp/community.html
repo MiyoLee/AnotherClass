@@ -59,6 +59,7 @@
 								  {% for post in best|slice:":5"%}
 								  	<li style="line-height:25px;">
 										{{forloop.counter}}.
+										[{{ post.bullet }}]
 										<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
 											{{ post.title|truncatechars:40 }}
 											<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
@@ -72,6 +73,7 @@
 									  {% for post in best|slice:"5:10"%}
 										<li style="line-height:25px;">
 											{{forloop.counter|add:"5"}}.
+											[{{ post.bullet }}]
 											<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
 												{{ post.title|truncatechars:40 }}
 												<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
@@ -85,7 +87,7 @@
 						{% endif %}
 							<table class="table" style="border-top-style:solid;">
 								<thead>
-								<tr class="lighter">
+								<tr class="lighter text-center">
 									<th>게시판명</th>
 									<th>제목</th>
 									<th>작성일</th>
@@ -101,6 +103,7 @@
 										</a>
 									</td>
 									<td class="lighter">
+										<span style="color:#B3B2C3; font-weight:bold;">{{ post.bullet }}</span>&nbsp;
 										<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
 											{{ post.title }}
 										</a>

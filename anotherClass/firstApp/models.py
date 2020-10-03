@@ -22,15 +22,22 @@ class detailArea(models.Model):
     def __str__(self):
         return self.name
 
+class Bullet(models.Model):
+    name = models.CharField(max_length=20)
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)
     category = models.ForeignKey('firstApp.Category', on_delete=models.CASCADE, default=2)
+    bullet = models.ForeignKey('firstApp.Bullet', on_delete=models.CASCADE, default=1)
     title = models.CharField(max_length=60)
     text = RichTextUploadingField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
     views = models.PositiveIntegerField(default=0)
+    recommendations = models.PositiveIntegerField(default=0)
 
 
     class Meta:
@@ -101,7 +108,7 @@ class Class(models.Model):
     like_user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_class')
     like_count = models.PositiveIntegerField(default=0)
     on_sale = models.BooleanField(null=True, default=False)
-    sale_price = models.CharField(null=True, blank=True, max_length=10)
+    sale_price = models.CharField(null=True, max_length=10)
     def __str__(self):
         return self.title
 

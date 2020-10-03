@@ -9,18 +9,14 @@
 <script type="text/javascript" src="{% static 'js/slick.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/product.js' %}"></script>
-<script src="https://kit.fontawesome.com/81816a43c2.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{% static 'css/catelist.css' %}">
 
-<div class="container-fluid" style="width:1500px;">
-    <div class="banner">
-            <div class="for_slick_slider single-item">
-                <div class="itemss"><img src="{% static 'image\배너1.png' %}"></div>
-                <div class="itemss"><img src="{% static 'image\배너2.png' %}"></div>
-                <div class="itemss"><img src="{% static 'image\배너3.png' %}"></div>
+            <div style="width:1500px;height:450px;position:relatidve; left:80px;" class="for_slick_slider single-item">
+                <div class="itemss"><img style="width:1500px;height:450px;" src="{% static 'image\배너1.png' %}"></div>
+                <div class="itemss"><img style="width:1500px;height:450px;" src="{% static 'image\배너2.png' %}"></div>
+                <div class="itemss"><img style="width:1500px;height:450px;" src="{% static 'image\배너3.png' %}"></div>
+
             </div>
-    </div>
-</div>
 
 
 <div class="catebar">
@@ -91,90 +87,6 @@
   </ul>
 </div>
 
-
-<div class="container-fluid" style="width:1400px;">
-    {% if user.is_active %}
-<div class="slide_title"> 지금 {{user.username}}님에게 추천하는 원데이클래스 ! </div>
-{% else %}
-<div class="slide_title"> 지금 당신에게 추천하는 원데이클래스 ! </div>
-{% endif %}
-            <div class="autoplay">
-
-              {% for class in classs %}
-              <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
-                  <a class="productdetail"
-               href="{% url 'product' class.id %}">
-              <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
-                  {% if class.sale_price != null %}
-                  <div class="on_sale">SALE</div>
-                  {% endif %}
-                <div class="card-body">
-                <p class="class_title">{{class.title}}</p>
-
-                  <small class="tutor_name">{{class.tutor}}</small>
-
-                    {% if class.on_sale == True %}
-                    <span class="class_price">{{class.sale_price}} 원</span>
-                        <span style="
-                        text-decoration: line-through;
-                        color: #848484;
-                        font-size: 16px;
-                        float: right;
-                        font-weight: bolder;
-                        position: relative;
-                        bottom: -11px;
-                        margin-right: 8px; ">{{class.price}} 원</span>
-
-                    {% else %}
-                    <span class="class_price">{{class.price}} 원</span>
-                    {% endif %}
-
-                </div>
-                                  </a>
-              </div>
-
-
-          {% endfor %}
-</div>
-    <div class="slide_title">사회적 거리두기로 인한 우울함, 집콕취미로 극복 ! </div>
-    <div class="autoplay">
-
-              {% for class in slide %}
-              <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
-                  <a class="productdetail"
-               href="{% url 'product' class.id %}">
-              <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
-                  {% if class.sale_price != null %}
-                  <div class="on_sale">SALE</div>
-                  {% endif %}
-                <div class="card-body">
-                <p class="class_title">{{class.title}}</p>
-
-                  <small class="tutor_name">{{class.tutor}}</small>
-
-                    {% if class.on_sale == True %}
-                    <span class="class_price">{{class.sale_price}} 원</span>
-                        <span style="
-                        text-decoration: line-through;
-                        color: #848484;
-                        font-size: 16px;
-                        float: right;
-                        font-weight: bolder;
-                        position: relative;
-                        bottom: -11px;
-                        margin-right: 8px; ">{{class.price}} 원</span>
-
-                    {% else %}
-                    <span class="class_price">{{class.price}} 원</span>
-                    {% endif %}
-
-                </div>
-                                  </a>
-              </div>
-
-
-          {% endfor %}
-</div>
 {% endblock upper_content%}
 {% block content %}
 {% if user.is_active %}
