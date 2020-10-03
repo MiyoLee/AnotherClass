@@ -104,7 +104,7 @@ class EducationForm(forms.ModelForm):
 class ClassSale(forms.ModelForm):
     class Meta:
         model = Class
-        fields = ['sale_price']
+        fields = ['sale_price', 'on_sale']
 
 class CreateClass(forms.ModelForm):
     class Meta:

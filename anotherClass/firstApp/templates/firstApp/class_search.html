@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static 'css/catelist.css' %}">
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-<p class = "text-center my_search_text"><b>클래스 검색</b></p>
+<p class = "text-center my_search_text"><b style="font-weight:bold; color:#B6B3E5;">클래스 검색</b></p>
     <form  action="{% url 'class_search' %}" method="get">
     <div class="container bg-light select-box">
             <div class="filter-item">
@@ -58,7 +58,9 @@
 {% endblock upper_content%}
 {% block content %}
 <p class = "text-center my_search_text">
-    <b>검색결과</b><br> 카테고리 : {{category}} <br> 지역 : {{area}} <br> 레벨 : {{level}} <br> 가격대 : {{price}}</p>
+     <b style="font-weight:bold; color:#B6B3E5;">검색결과</b>
+    <br><br> <strong>카테고리</strong> : {{category}} &nbsp;&nbsp; <strong>지역</strong> : {{area}}
+    &nbsp;&nbsp; <strong>레벨</strong> : {{level}} &nbsp;&nbsp; <strong>가격대</strong> : {{price}}</p>
 
 
     <div class="album py-5 bg-light">
@@ -100,6 +102,10 @@
               </div>
             </a>
           </div>
+                {% empty %}
+                  <div class = "row mx-auto">
+                      <p class="text-center my_search_text">검색 결과가 없습니다.</p>
+                  </div>
           {% endfor %}
             </div>
         </div>

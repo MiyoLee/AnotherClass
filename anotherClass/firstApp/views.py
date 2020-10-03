@@ -29,7 +29,8 @@ def mypage(request):
 
 def blogMain(request):
     classs = Class.objects.all()
-    return render(request, 'firstApp/blogMain.html', {'classs':classs})
+    slide = Class.objects.filter(category__name='미술, 공예')
+    return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide})
 
 def intro_createclass(request):
     return render(request, 'firstApp/intro_createclass.html')
@@ -44,9 +45,6 @@ def myApply(request):
     applys = Apply.objects.filter(author=request.user)
     return render(request, 'firstApp/applylist.html', {'applys':applys})
 
-def sybermoney(request):
-    applys = Apply.objects.filter(author=request.user)
-    return render(request, 'firstApp/sybermoney.html', {'applys':applys})
 def cancelApply(request, pk):
     apply = get_object_or_404(Apply, pk=pk)
     apply.delete()
@@ -55,6 +53,11 @@ def cancelApply(request, pk):
 def mylike(request):
     classs = Class.objects.filter(like_user=request.user)
     return render(request, 'firstApp/mylike.html', {'classs':classs})
+
+@login_required(login_url='/login/')
+def sybermoney(request):
+    applys = Apply.objects.filter(author=request.user)
+    return render(request, 'firstApp/sybermoney.html', {'applys':applys})
 
 def categoryselect(request):
     cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
@@ -92,7 +95,7 @@ def class_search(request):
         if  a == '전체': 
             if l == '전체': # 카테고리 전체 & 지역 전체 & 레벨 전체
                 classs = Class.objects.all().order_by('-like_count')
-                if p == '':
+                if p == '전체':
                     classs = Class.objects.all().order_by('-like_count')
                 elif p == 'p1':
                     classs = Class.objects.filter(price__range=[0,10000])
@@ -108,7 +111,7 @@ def class_search(request):
                     classs = Class.objects.filter(price__range=[49999,50000000])
             elif 'level' in request.GET: # 카테고리 전체 & 지역 전체 & 레벨 선택
                 classs = Class.objects.filter(level__name= l)
-                if p == '':
+                if p == '전체':
                     classs = Class.objects.filter(level__name= l)
                 elif p == 'p1':
                     classs = Class.objects.filter(level__name= l, price__range=[0,10000])
@@ -126,7 +129,7 @@ def class_search(request):
         elif 'area' in request.GET:
             if l == '전체': # 카테고리 전체 & 지역 선택 & 레벨 전체
                 classs = Class.objects.filter(area__name= a)
-                if p == '':
+                if p == '전체':
                     classs = Class.objects.filter(area__name= a)
                 elif p == 'p1':
                     classs = Class.objects.filter(area__name= a, price__range=[0,10000])
@@ -142,7 +145,7 @@ def class_search(request):
                     classs = Class.objects.filter(area__name= a, price__range=[49999,50000000])
             elif 'level' in request.GET: #카테고리 전체 & 지역 선택 & 레벨 선택
                 classs = Class.objects.filter(area__name= a, level__name= l)
-                if p == '':
+                if p == '전체':
                     classs = Class.objects.filter(area__name= a, level__name= l)
                 elif p == 'p1':
                     classs = Class.objects.filter(area__name= a, level__name= l, price__range=[0,10000])
@@ -161,7 +164,7 @@ def class_search(request):
         if 'category' in request.GET:
             if l == '전체': # 카테고리 선택 & 지역 전체 & 레벨 전체
                 classs = Class.objects.filter(category__name= c)
-                if p == '':
+                if p == '전체':
                     classs = Class.objects.filter(category__name= c)
                 elif p == 'p1':
                     classs = Class.objects.filter(category__name= c, price__range=[0,10000])
@@ -177,7 +180,7 @@ def class_search(request):
                     classs = Class.objects.filter(category__name= c, price__range=[49999,50000000])
             elif 'level' in request.GET: #카테고리 선택 & 지역 전체 & 레벨 선택
                 classs = Class.objects.filter(category__name= c, level__name= l)
-                if p == '':
+                if p == '전체':
                     classs = Class.objects.filter(category__name= c, level__name= l)
                 elif p == 'p1':
                     classs = Class.objects.filter(category__name= c, level__name= l, price__range=[0,10000])
@@ -195,7 +198,7 @@ def class_search(request):
     elif 'category' and 'area' in request.GET:
             if l == '전체': # 카테고리 선택 & 지역 선택 & 레벨 전체
                 classs = Class.objects.filter(area__name= a, category__name= c)
-                if p == '':
+                if p == '전체':
                     classs = Class.objects.filter(area__name= a, category__name= c)
                 elif p == 'p1':
                     classs = Class.objects.filter(area__name= a, category__name= c, price__range=[0,10000])
@@ -211,7 +214,7 @@ def class_search(request):
                     classs = Class.objects.filter(area__name= a, category__name= c, price__range=[49999,50000000])
             elif 'level' in request.GET: #카테고리 선택 & 지역 선택 & 레벨 선택
                 classs = Class.objects.filter(area__name= a, category__name= c, level__name= l)
-                if p == '':
+                if p == '전체':
                     classs = Class.objects.filter(area__name= a, category__name= c, level__name= l)
                 elif p == 'p1':
                     classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, price__range=[0,10000])

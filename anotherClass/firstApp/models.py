@@ -110,7 +110,7 @@ class Class(models.Model):
     like_user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_class')
     like_count = models.PositiveIntegerField(default=0)
     on_sale = models.BooleanField(null=True, default=False)
-    sale_price = models.CharField(null=True, max_length=10)
+    sale_price = models.CharField(null=True, blank=True, max_length=10)
     def __str__(self):
         return self.title
 

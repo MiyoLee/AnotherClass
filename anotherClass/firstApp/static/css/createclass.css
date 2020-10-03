@@ -1,3 +1,7 @@
+#radio_1, #radio_2{
+margin:10px;
+}
+
 .createclasscont .blog-post-area li{
   float:left;
   list-style:none;

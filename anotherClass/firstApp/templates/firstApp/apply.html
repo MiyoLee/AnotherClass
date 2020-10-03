@@ -5,6 +5,9 @@
 {% if alert_flag %}
 <script>alert("폼을 모두 작성해주세요.")</script>
 {% endif %}
+{% if alert_flag2 %}
+<script>alert("수강신청이 완료되었습니다.")</script>
+{% endif %}
 {% if user.is_active %}
 
 <link href="{% static 'css/createclass.css' %}" rel="stylesheet">
