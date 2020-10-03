@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment,CComment, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area, Level
+from .models import Post, Comment, CComment, Bullet, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area, Level
 from .forms import ClassSale, PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory
@@ -464,10 +464,12 @@ def community(request):
     if request.user is None:
         redirect('login')
     else:
+        b = request.GET.get('b', '')
         c = request.GET.get('c', '')
         k = request.GET.get('k', '')
         cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
         cate_list = Category.objects.all()
+        bullet_list = Bullet.objects.all()
         best = ''
         if cateId == '':
             post_list = Post.objects.all()
@@ -481,10 +483,15 @@ def community(request):
 
         if k:  # k가 있으면
             if c == '1':
+                if b:
+                    post_list = post_list.filter(bullet=b)
                 post_list = post_list.filter(Q(title__icontains=k) | Q(text__icontains=k))  # 작성자에 k가 포함되어 있는 레코드만 필터링
             elif c == '2':
                 filtered_author = get_object_or_None(User, username=k)
+                if b:
+                    post_list = post_list.filter(bullet=b)
                 post_list = post_list.filter(author=filtered_author)
+
 
         page = request.GET.get('page', 1)
         paginator = Paginator(post_list, 10)
@@ -496,7 +503,7 @@ def community(request):
             posts = paginator.page(paginator.num_pages)
         return render(request, 'firstApp/community.html', {
             'posts': posts, 'cate_list': cate_list, 'cateName': cateName,
-            'cateId': cateId, 'c': c, 'k': k, 'page': page, 'best': best})
+            'cateId': cateId, 'bullets': bullet_list, 'b': b, 'c': c, 'k': k, 'page': page, 'best': best})
 
 def bestPost(request):
     cate_list = Category.objects.all()

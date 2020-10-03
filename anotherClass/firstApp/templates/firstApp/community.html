@@ -115,7 +115,7 @@
 								</tr>
 								{% empty %}
 								<tr>
-									<td colspan="4"><p class="text-center" style="padding:20%">검색 결과가 없습니다.</p></td>
+									<td colspan="5"><p class="text-center" style="padding:20%">해당 게시물은 존재하지 않습니다.</p></td>
 								</tr>
 								{% endfor %}
 							</table>
@@ -135,6 +135,12 @@
 					<div class="community_search_bar">
 					<form action="" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
 						<input type="hidden" name="cateId" value="{{cateId}}">
+						<select name="b"class="form-control form-control-sm mr-3 w-15">
+								<option value="">전체</option>
+								{% for bullet in bullets %}
+									<option value="{{bullet.pk}}">{{ bullet.name }}</option>
+								{% endfor %}
+						</select>
 						<select name="c"class="form-control form-control-sm mr-3 w-15">
 								<option value="1">제목+내용</option>
 								<option value="2">작성자</option>
