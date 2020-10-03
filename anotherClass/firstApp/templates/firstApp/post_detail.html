@@ -52,8 +52,9 @@
             <a href="{% url 'post_recommend' post.pk %}">
             <button class="btn btn-light"><i class="fas fa-thumbs-up" style="color:pink;"></i>
                 추천 : {{post.recommendations}}</button></a>
+            <a href="{% url 'post_no_recommend' post.pk %}">
             <button class="btn btn-light"><i class="fas fa-thumbs-down" style="color:gray;"></i>
-                비추천 : {{post.no_recommendations}}</button>
+                비추천 : {{post.no_recommendations}}</button></a>
         </div>
         <div class="post_content_f">
         댓글 {{ post.comments.count }}

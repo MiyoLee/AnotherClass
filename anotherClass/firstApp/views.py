@@ -577,6 +577,17 @@ def recommend(request, pk):
     return redirect('/community/post/' + str(pk) + '/?cateId=' + str(cateId) + '&page=' + str(page), pk=pk)
 
 @login_required(login_url='/login/')
+def no_recommend(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    cateId = request.GET.get('cateId', '')
+    page = request.GET.get('page', 1)
+    if request.user not in post.no_recommend_user.all():
+        post.no_recommendations += 1
+        post.no_recommend_user.add(request.user)
+        post.save()
+    return redirect('/community/post/' + str(pk) + '/?cateId=' + str(cateId) + '&page=' + str(page), pk=pk)
+
+@login_required(login_url='/login/')
 def createpost(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
