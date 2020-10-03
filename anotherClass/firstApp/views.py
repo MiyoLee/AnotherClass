@@ -43,6 +43,10 @@ def myClass(request):
 def myApply(request):
     applys = Apply.objects.filter(author=request.user)
     return render(request, 'firstApp/applylist.html', {'applys':applys})
+
+def sybermoney(request):
+    applys = Apply.objects.filter(author=request.user)
+    return render(request, 'firstApp/sybermoney.html', {'applys':applys})
 def cancelApply(request, pk):
     apply = get_object_or_404(Apply, pk=pk)
     apply.delete()
@@ -51,7 +55,7 @@ def cancelApply(request, pk):
 def mylike(request):
     classs = Class.objects.filter(like_user=request.user)
     return render(request, 'firstApp/mylike.html', {'classs':classs})
-       
+
 def categoryselect(request):
     cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
     if cateId == '':
@@ -240,7 +244,7 @@ def apply(request, class_id):
             apply.inClass = class_detail
             apply.date = date
             apply.save()
-            return HttpResponseRedirect("/product/{}".format(class_id))
+            return HttpResponseRedirect("/product/{}".format(class_id) + '/apply/apply_complete')
         else:
             return render(request, 'firstApp/apply.html', {'alert_flag': True, 'class_detail': class_detail, 'form': form})
     else:
@@ -321,6 +325,10 @@ def addTutor(request, class_id):
 def create_complete(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
     return render(request, 'firstApp/create_complete.html', {'class_detail': class_detail})
+
+def apply_complete(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    return render(request, 'firstApp/apply_complete.html', {'class_detail': class_detail})
 
 def update_answer(request, pk):
     answer = get_object_or_404(ClassAnswer, pk=pk)
