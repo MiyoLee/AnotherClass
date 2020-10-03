@@ -231,6 +231,9 @@ def class_search(request):
     return render(request, 'firstApp/class_search.html', 
     {'category': c, 'area': a, 'price': p, 'level': l, 'levels' : levels, 'classs':classs, 'areas' : areas, 'categorys' : categorys})
 
+def subtract(value, arg):
+    return value - arg
+    
 @login_required(login_url='/login/')
 def apply(request, class_id):
     date_id = request.GET.get('date', '')

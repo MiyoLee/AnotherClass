@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'imagekit',
+    'firstApp',
+    'templatetags',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +68,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'firstApp.templates.load_setting',
             ],
+            'libraries':{
+                'custom_tags': 'firstApp.templatetags.custom_tags',
+            }
         },
     },
 ]

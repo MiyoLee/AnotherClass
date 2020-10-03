@@ -1,6 +1,6 @@
 {% extends 'firstApp/base.html'%}
 {% load static %}
-
+{% load custom_tags %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/createcomplete.css' %}">
 
@@ -20,7 +20,7 @@
 <tbody>
   <tr>
     <td class="tg-0lax">{{class_detail.price}}</td>
-    <td class="tg-0lax"></td>
+    <td class="tg-0lax">{{500000|subtract:class_detail.price}}</td>
   </tr>
 </tbody>
 </table>
