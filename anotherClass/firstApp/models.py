@@ -38,7 +38,9 @@ class Post(models.Model):
             blank=True, null=True)
     views = models.PositiveIntegerField(default=0)
     recommendations = models.PositiveIntegerField(default=0)
-
+    recommend_user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='recommend_post')
+    no_recommendations = models.PositiveIntegerField(default=0)
+    no_recommend_user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='no_recommend_post')
 
     class Meta:
         ordering = ['-id']

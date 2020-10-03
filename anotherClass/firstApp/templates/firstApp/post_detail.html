@@ -12,6 +12,9 @@
             <div class="post_category">
                 <i class="fas fa-clipboard"></i>
                 <a class="a_underline" href="/community?cateId={{post.category.pk}}"><span>{{post.category}}</span></a>
+                &nbsp;&nbsp;
+                <span style="color:#B3B2C3; font-weight:bold;">{{post.bullet}}</span>
+
                 <table style="float:right">
                 <tr>
                     {% if post.author == request.user %}
@@ -34,6 +37,7 @@
                 </tr>
                 </table>
             </div>
+
             <h3 class="post_title">{{post.title}}</h3>
             <p class="post_author"><i class="fas fa-user-circle" style="color:gray"></i> {{post.author}}</p>
             <span class="post_t">{{post.created_date|date:"y.m.d H:i"}}</span>
@@ -43,6 +47,13 @@
         <hr>
         <div class="post_contents">
             {{post.text | safe}}
+        </div>
+        <div class="text-center">
+            <a href="{% url 'post_recommend' post.pk %}">
+            <button class="btn btn-light"><i class="fas fa-thumbs-up" style="color:pink;"></i>
+                추천 : {{post.recommendations}}</button></a>
+            <button class="btn btn-light"><i class="fas fa-thumbs-down" style="color:gray;"></i>
+                비추천 : {{post.no_recommendations}}</button>
         </div>
         <div class="post_content_f">
         댓글 {{ post.comments.count }}

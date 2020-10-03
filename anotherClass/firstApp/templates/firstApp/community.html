@@ -90,14 +90,15 @@
 								<tr class="lighter text-center">
 									<th>게시판명</th>
 									<th>제목</th>
-									<th>작성일</th>
 									<th>작성자</th>
+									<th>작성일</th>
 									<th>조회수</th>
+									<th>추천</th>
 								</tr>
 								</thead>
 								{% for post in posts %}
 								<tr>
-									<td class="lighter">
+									<td class="lighter text-center">
 										<a class="a_underline" href="{% url 'community'%}?cateId={{post.category.pk}}">
 											{{ post.category }}
 										</a>
@@ -109,13 +110,14 @@
 										</a>
 										<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
 									</td>
-									<td class="lighter">{{post.created_date|date:'y.m.d H:i'}}</td>
-									<td class="lighter">{{post.author}}</td>
-									<td class="lighter">{{post.views}}</td>
+									<td class="lighter text-center">{{post.author}}</td>
+									<td class="lighter text-center">{{post.created_date|date:'y.m.d H:i'}}</td>
+									<td class="lighter text-center">{{post.views}}</td>
+									<td class="lighter text-center">{{post.recommendations}}</td>
 								</tr>
 								{% empty %}
 								<tr>
-									<td colspan="5"><p class="text-center" style="padding:20%">해당 게시물은 존재하지 않습니다.</p></td>
+									<td colspan="6"><p class="text-center" style="padding:20%">해당 게시물은 존재하지 않습니다.</p></td>
 								</tr>
 								{% endfor %}
 							</table>

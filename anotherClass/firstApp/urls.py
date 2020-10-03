@@ -46,6 +46,7 @@ urlpatterns = [
     path('community/<int:pk>/update', views.update_post, name='update_post'),
     path('community/<int:pk>/delete', views.delete_post, name='delete_post'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('community/<int:pk>/post_recommend', views.recommend, name='post_recommend'),
     path('community/<int:pk>/comment_remove', views.comment_remove, name='comment_remove'),
     path('community/<int:pk>/comment_update', views.comment_update, name='comment_update'),
     path('community/<int:pk>/create_ccomment', views.create_ccomment, name='create_ccomment'),

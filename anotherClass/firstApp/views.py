@@ -565,6 +565,16 @@ def post_detail(request, pk):
         return render(request, 'firstApp/post_detail.html', {
             'post': post, 'form': form, 'page': page, 'cateId': cateId})
 
+@login_required(login_url='/login/')
+def recommend(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    cateId = request.GET.get('cateId', '')
+    page = request.GET.get('page', 1)
+    if request.user not in post.recommend_user.all():
+        post.recommendations += 1
+        post.recommend_user.add(request.user)
+        post.save()
+    return redirect('/community/post/' + str(pk) + '/?cateId=' + str(cateId) + '&page=' + str(page), pk=pk)
 
 @login_required(login_url='/login/')
 def createpost(request):
