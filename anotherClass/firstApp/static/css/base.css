@@ -11,10 +11,12 @@ input[type=number] {
 
 
 .class_price{
-float:right;
 color:#4ECAC6;
 font-weight:bold;
 font-size:25px;
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
 }
 
 .col-md-4 a:hover{

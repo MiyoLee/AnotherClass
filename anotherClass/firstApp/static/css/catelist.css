@@ -82,14 +82,28 @@ color: #4ECAC6;
 
 .on_sale{
     position: absolute;
-    width: 82px;
+    width: 52px;
     font-weight: bolder;
-    height: 35px;
+    height: 30px;
     background-color: #FC2D67;
     color: white;
     border-radius: 10px;
     left: 10px;
     top: 10px;
     text-align: center;
-    padding-top: 5px;
+    padding-top: 2px;
+}
+
+.true_price{
+                        text-decoration: line-through;
+                        color: #848484;
+                        font-size: 16px;
+                        float: right;
+                        font-weight: bolder;
+                        position: relative;
+                        bottom:18px;
+}
+
+.class_title{
+height:72px;
 }
