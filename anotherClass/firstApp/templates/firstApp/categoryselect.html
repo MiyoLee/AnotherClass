@@ -97,14 +97,14 @@
                           {% if class.on_sale == True %}
                           <span class="class_price">{{class.sale_price}} 원</span>
                               <span style="
-                              text-decoration: line-through;
-                              color: #848484;
-                              font-size: 16px;
-                              float: right;
-                              font-weight: bolder;
-                              position: relative;
-                              bottom: -11px;
-                              margin-right: 8px; ">{{class.price}} 원</span>
+                                  text-decoration: line-through;
+    color: #848484;
+    font-size: 16px;
+    float: right;
+    font-weight: bolder;
+    position: relative;
+    bottom: 25px;
+    margin-right: 3px;">{{class.price}} 원</span>
       
                           {% else %}
                           <span class="class_price">{{class.price}} 원</span>
