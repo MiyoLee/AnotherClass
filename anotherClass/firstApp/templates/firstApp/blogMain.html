@@ -167,63 +167,6 @@
 </div>
 {% endblock upper_content%}
 {% block content %}
-{% if user.is_active %}
-<h5>{{user.username}}님의 맞춤 추천 클래스</h5>
-{% else %}
-<h5>더 많은 클래스를 경험하시려면 회원가입 하세요!</h5>
-{% endif %}
 
-<div class="album py-5 bg-light">
 
-      <div class="container">
-        <form  action="{% url 'class_align' %}" method="get">
-          <div class="filter-item" align="right">
-              <span class="filter-name">정렬</span>
-              <select name="r" value="{{ r }}">
-                  <option selected disabled value="0">--선택--</option>
-                  <option value="1">낮은 가격순</option>
-                  <option value="2">높은 가격순</option>
-              </select><input type="submit" value="적용">
-          </div>
-          </form>
-
-        <div class="row">
-          {% for class in classs %}
-          <div class="col-md-4">
-            <a class="productdetail"
-               href="{% url 'product' class.id %}">
-              <div class="card mb-4 shadow-sm">
-              <img src="{{class.photo.url}}" width="338px" height="250px" style="align-self: center;margin-top: 5px;">
-                  {% if class.sale_price != null %}
-                  <div class="on_sale">SALE</div>
-                  {% endif %}
-                <div class="card-body">
-                <p class="class_title">{{class.title}}</p>
-
-                  <small class="tutor_name">{{class.tutor}}</small>
-
-                    {% if class.on_sale == True %}
-                    <span class="class_price">{{class.sale_price}} 원</span>
-                        <span style="
-                        text-decoration: line-through;
-                        color: #848484;
-                        font-size: 16px;
-                        float: right;
-                        font-weight: bolder;
-                        position: relative;
-                        bottom: -11px;
-                        margin-right: 8px; ">{{class.price}} 원</span>
-
-                    {% else %}
-                    <span class="class_price">{{class.price}} 원</span>
-                    {% endif %}
-
-                </div>
-              </div>
-            </a>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
 {% endblock content%}

@@ -75,6 +75,10 @@ def categoryselect(request):
                   {'classes': classes, 'cate_list': cate_list, 'cateId': cateId})
 
 def class_align(request):
+    classs = Class.objects.all()
+    areas = Area.objects.all()
+    categorys = Category.objects.all()
+    levels = Level.objects.all()
     r = request.GET.get('r', '') #정렬
     if r == '1':
         classs = Class.objects.all().order_by('price')
@@ -82,7 +86,8 @@ def class_align(request):
         classs = Class.objects.all().order_by('-price')
     else:
         classs = Class.objects.all()
-    return render(request, 'firstApp/blogMain.html', {'r' : r, 'classs': classs})
+    return render(request, 'firstApp/class_search.html', {'r' : r, 'classs': classs, 
+    'levels' : levels, 'areas' : areas, 'categorys' : categorys})
 
 def class_search(request):
     classs = Class.objects.all()
