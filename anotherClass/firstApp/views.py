@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, CComment, Bullet, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area, Level
+from .models import Post, Comment, CComment, Bullet, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area, Level, Profile
 from .forms import ClassSale, PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory
@@ -49,6 +49,7 @@ def cancelApply(request, pk):
     apply = get_object_or_404(Apply, pk=pk)
     apply.delete()
     return redirect('myApply')
+
 @login_required(login_url='/login/')
 def mylike(request):
     classs = Class.objects.filter(like_user=request.user)
@@ -57,7 +58,8 @@ def mylike(request):
 @login_required(login_url='/login/')
 def sybermoney(request):
     applys = Apply.objects.filter(author=request.user)
-    return render(request, 'firstApp/sybermoney.html', {'applys':applys})
+    profiles = Profile.objects.filter(user=request.user)
+    return render(request, 'firstApp/sybermoney.html', {'applys':applys, 'profiles':profiles})
 
 def categoryselect(request):
     cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
@@ -68,7 +70,6 @@ def categoryselect(request):
     cate_list = Category.objects.all()
     return render(request, 'firstApp/categoryselect.html',
                   {'classes': classes, 'cate_list': cate_list, 'cateId': cateId})
-
 
 def class_align(request):
     r = request.GET.get('r', '') #정렬
@@ -233,9 +234,6 @@ def class_search(request):
 
     return render(request, 'firstApp/class_search.html', 
     {'category': c, 'area': a, 'price': p, 'level': l, 'levels' : levels, 'classs':classs, 'areas' : areas, 'categorys' : categorys})
-
-def subtract(value, arg):
-    return value - arg
     
 @login_required(login_url='/login/')
 def apply(request, class_id):
@@ -333,8 +331,12 @@ def create_complete(request, class_id):
     return render(request, 'firstApp/create_complete.html', {'class_detail': class_detail})
 
 def apply_complete(request, class_id):
+    profiles = Profile.objects.filter(user=request.user)
     class_detail = get_object_or_404(Class, pk=class_id)
-    return render(request, 'firstApp/apply_complete.html', {'class_detail': class_detail})
+    profile = request.user.profile
+    profile.sybermoney = profile.sybermoney - int(class_detail.price)
+    profile.save()
+    return render(request, 'firstApp/apply_complete.html', {'class_detail': class_detail, 'profiles':profiles})
 
 def update_answer(request, pk):
     answer = get_object_or_404(ClassAnswer, pk=pk)
