@@ -48,6 +48,9 @@ def myApply(request):
 def cancelApply(request, pk):
     apply = get_object_or_404(Apply, pk=pk)
     apply.delete()
+    profile = request.user.profile
+    profile.sybermoney = profile.sybermoney + int(apply.inClass.price)
+    profile.save()
     return redirect('myApply')
 
 @login_required(login_url='/login/')
