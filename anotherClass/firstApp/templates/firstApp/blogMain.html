@@ -103,7 +103,7 @@
                   <a class="productdetail"
                href="{% url 'product' class.id %}">
               <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
-                  {% if class.sale_price != null %}
+                  {% if class.on_sale == True %}
                   <div class="on_sale">SALE</div>
                   {% endif %}
                 <div class="card-body">
@@ -116,7 +116,7 @@
                         <span class="class_price">{{class.sale_price}} 원</span>
 
                     {% else %}
-                    <span class="class_price">{{class.price}} 원</span>
+                    <span class="class_price">{{class.sale_price}} 원</span>
                     {% endif %}
 
                 </div>
@@ -134,7 +134,7 @@
                   <a class="productdetail"
                href="{% url 'product' class.id %}">
               <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
-                  {% if class.sale_price != null %}
+                  {% if class.on_sale == True %}
                   <div class="on_sale">SALE</div>
                   {% endif %}
                 <div class="card-body">
@@ -155,7 +155,7 @@
                         margin-right: 8px; ">{{class.price}} 원</span>
 
                     {% else %}
-                    <span class="class_price">{{class.price}} 원</span>
+                    <span class="class_price">{{class.sale_price}} 원</span>
                     {% endif %}
 
                 </div>

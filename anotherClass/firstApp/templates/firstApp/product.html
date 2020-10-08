@@ -45,12 +45,7 @@
 
         <div class="product-info">
             <h2 style="line-height:1.8;">{{ class_detail.title }}</h2>
-<!--            <div class="center">-->
-<!--                <span class="perprice">{{class_detail.price}}원  /</span>-->
-<!--                <span class="pertime"> {{class_detail.time}}시간 /</span>-->
-<!--                <span>1회당</span>-->
-<!--                <div><img src="{% static 'image\stars.png' %}"></div>-->
-<!--            </div>-->
+
 
             <ul class="prolist">
                 <li class="proitem"><img class="proicon" src="{% static 'image\location.png' %}"><div class="proitem-item">{{class_detail.area}}</div> </li>
@@ -72,12 +67,12 @@
 
             <div class="price_div">
                  <div class="time_tag"> 1회 {{class_detail.time}}시간 </div>
-                {% if class_detail.sale_price != null %}
+                {% if class_detail.on_sale == True %}
                 <span class="price_tag">{{class_detail.price}}원</span>
                 <span class="sale_tag">{{class_detail.sale_price}}원</span>
 
                     {% else %}
-                    <span class="sale_tag">{{class_detail.price}} 원</span>
+                    <span class="sale_tag">{{class_detail.sale_price}} 원</span>
                     {% endif %}
             </div>
 

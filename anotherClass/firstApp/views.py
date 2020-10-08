@@ -107,33 +107,33 @@ def class_search(request):
                 if p == '전체':
                     classs = Class.objects.all().order_by('-like_count')
                 elif p == 'p1':
-                    classs = Class.objects.filter(price__range=[0,10000])
+                    classs = Class.objects.filter(sale_price__range=[0,10000])
                 elif p == 'p2':
-                    classs = Class.objects.filter(price__range=[10000,20000])
+                    classs = Class.objects.filter(sale_price__range=[10000,20000])
                 elif p == 'p3':
-                    classs = Class.objects.filter(price__range=[19999,30000])
+                    classs = Class.objects.filter(sale_price__range=[19999,30000])
                 elif p == 'p4':
-                    classs = Class.objects.filter(price__range=[29999,40000])
+                    classs = Class.objects.filter(sale_price__range=[29999,40000])
                 elif p == 'p5':
-                    classs = Class.objects.filter(price__range=[39999,50000])
+                    classs = Class.objects.filter(sale_price__range=[39999,50000])
                 elif p == 'p6':
-                    classs = Class.objects.filter(price__range=[49999,50000000])
+                    classs = Class.objects.filter(sale_price__range=[49999,50000000])
             elif 'level' in request.GET: # 카테고리 전체 & 지역 전체 & 레벨 선택
                 classs = Class.objects.filter(level__name= l)
                 if p == '전체':
                     classs = Class.objects.filter(level__name= l)
                 elif p == 'p1':
-                    classs = Class.objects.filter(level__name= l, price__range=[0,10000])
+                    classs = Class.objects.filter(level__name= l, sale_price__range=[0,10000])
                 elif p == 'p2':
-                    classs = Class.objects.filter(level__name= l, price__range=[10000,20000])
+                    classs = Class.objects.filter(level__name= l, sale_price__range=[10000,20000])
                 elif p == 'p3':
-                    classs = Class.objects.filter(level__name= l, price__range=[19999,30000])
+                    classs = Class.objects.filter(level__name= l, sale_price__range=[19999,30000])
                 elif p == 'p4':
-                    classs = Class.objects.filter(level__name= l, price__range=[29999,40000])
+                    classs = Class.objects.filter(level__name= l, sale_price__range=[29999,40000])
                 elif p == 'p5':
-                    classs = Class.objects.filter(level__name= l, price__range=[39999,50000])
+                    classs = Class.objects.filter(level__name= l, sale_price__range=[39999,50000])
                 elif p == 'p6':
-                    classs = Class.objects.filter(level__name= l, price__range=[49999,50000000])
+                    classs = Class.objects.filter(level__name= l, sale_price__range=[49999,50000000])
 
         elif 'area' in request.GET:
             if l == '전체': # 카테고리 전체 & 지역 선택 & 레벨 전체
@@ -141,33 +141,33 @@ def class_search(request):
                 if p == '전체':
                     classs = Class.objects.filter(area__name= a)
                 elif p == 'p1':
-                    classs = Class.objects.filter(area__name= a, price__range=[0,10000])
+                    classs = Class.objects.filter(area__name= a, sale_price__range=[0,10000])
                 elif p == 'p2':
-                    classs = Class.objects.filter(area__name= a, price__range=[10000,20000])
+                    classs = Class.objects.filter(area__name= a, sale_price__range=[10000,20000])
                 elif p == 'p3':
-                    classs = Class.objects.filter(area__name= a, price__range=[19999,30000])
+                    classs = Class.objects.filter(area__name= a, sale_price__range=[19999,30000])
                 elif p == 'p4':
-                    classs = Class.objects.filter(area__name= a, price__range=[29999,40000])
+                    classs = Class.objects.filter(area__name= a, sale_price__range=[29999,40000])
                 elif p == 'p5':
-                    classs = Class.objects.filter(area__name= a, price__range=[39999,50000])
+                    classs = Class.objects.filter(area__name= a, sale_price__range=[39999,50000])
                 elif p == 'p6':
-                    classs = Class.objects.filter(area__name= a, price__range=[49999,50000000])
+                    classs = Class.objects.filter(area__name= a, sale_price__range=[49999,50000000])
             elif 'level' in request.GET: #카테고리 전체 & 지역 선택 & 레벨 선택
                 classs = Class.objects.filter(area__name= a, level__name= l)
                 if p == '전체':
                     classs = Class.objects.filter(area__name= a, level__name= l)
                 elif p == 'p1':
-                    classs = Class.objects.filter(area__name= a, level__name= l, price__range=[0,10000])
+                    classs = Class.objects.filter(area__name= a, level__name= l, sale_price__range=[0,10000])
                 elif p == 'p2':
-                    classs = Class.objects.filter(area__name= a, level__name= l, price__range=[10000,20000])
+                    classs = Class.objects.filter(area__name= a, level__name= l, sale_price__range=[10000,20000])
                 elif p == 'p3':
-                    classs = Class.objects.filter(area__name= a, level__name= l, price__range=[19999,30000])
+                    classs = Class.objects.filter(area__name= a, level__name= l, sale_price__range=[19999,30000])
                 elif p == 'p4':
-                    classs = Class.objects.filter(area__name= a, level__name= l, price__range=[29999,40000])
+                    classs = Class.objects.filter(area__name= a, level__name= l, sale_price__range=[29999,40000])
                 elif p == 'p5':
-                    classs = Class.objects.filter(area__name= a, level__name= l, price__range=[39999,50000])
+                    classs = Class.objects.filter(area__name= a, level__name= l, sale_price__range=[39999,50000])
                 elif p == 'p6':
-                    classs = Class.objects.filter(area__name= a, level__name= l, price__range=[49999,50000000])
+                    classs = Class.objects.filter(area__name= a, level__name= l, sale_price__range=[49999,50000000])
 
     elif a == '전체':
         if 'category' in request.GET:
@@ -176,33 +176,33 @@ def class_search(request):
                 if p == '전체':
                     classs = Class.objects.filter(category__name= c)
                 elif p == 'p1':
-                    classs = Class.objects.filter(category__name= c, price__range=[0,10000])
+                    classs = Class.objects.filter(category__name= c, sale_price__range=[0,10000])
                 elif p == 'p2':
-                    classs = Class.objects.filter(category__name= c, price__range=[10000,20000])
+                    classs = Class.objects.filter(category__name= c, sale_price__range=[10000,20000])
                 elif p == 'p3':
-                    classs = Class.objects.filter(category__name= c, price__range=[19999,30000])
+                    classs = Class.objects.filter(category__name= c, sale_price__range=[19999,30000])
                 elif p == 'p4':
-                    classs = Class.objects.filter(category__name= c, price__range=[29999,40000])
+                    classs = Class.objects.filter(category__name= c, sale_price__range=[29999,40000])
                 elif p == 'p5':
-                    classs = Class.objects.filter(category__name= c, price__range=[39999,50000])
+                    classs = Class.objects.filter(category__name= c, sale_price__range=[39999,50000])
                 elif p == 'p6':
-                    classs = Class.objects.filter(category__name= c, price__range=[49999,50000000])
+                    classs = Class.objects.filter(category__name= c, sale_price__range=[49999,50000000])
             elif 'level' in request.GET: #카테고리 선택 & 지역 전체 & 레벨 선택
                 classs = Class.objects.filter(category__name= c, level__name= l)
                 if p == '전체':
                     classs = Class.objects.filter(category__name= c, level__name= l)
                 elif p == 'p1':
-                    classs = Class.objects.filter(category__name= c, level__name= l, price__range=[0,10000])
+                    classs = Class.objects.filter(category__name= c, level__name= l, sale_price__range=[0,10000])
                 elif p == 'p2':
-                    classs = Class.objects.filter(category__name= c, level__name= l, price__range=[10000,20000])
+                    classs = Class.objects.filter(category__name= c, level__name= l, sale_price__range=[10000,20000])
                 elif p == 'p3':
-                    classs = Class.objects.filter(category__name= c, level__name= l, price__range=[19999,30000])
+                    classs = Class.objects.filter(category__name= c, level__name= l, sale_price__range=[19999,30000])
                 elif p == 'p4':
-                    classs = Class.objects.filter(category__name= c, level__name= l, price__range=[29999,40000])
+                    classs = Class.objects.filter(category__name= c, level__name= l, sale_price__range=[29999,40000])
                 elif p == 'p5':
-                    classs = Class.objects.filter(category__name= c, level__name= l, price__range=[39999,50000])
+                    classs = Class.objects.filter(category__name= c, level__name= l, sale_price__range=[39999,50000])
                 elif p == 'p6':
-                    classs = Class.objects.filter(category__name= c, level__name= l, price__range=[49999,50000000])
+                    classs = Class.objects.filter(category__name= c, level__name= l, sale_price__range=[49999,50000000])
                 
     elif 'category' and 'area' in request.GET:
             if l == '전체': # 카테고리 선택 & 지역 선택 & 레벨 전체
@@ -210,33 +210,33 @@ def class_search(request):
                 if p == '전체':
                     classs = Class.objects.filter(area__name= a, category__name= c)
                 elif p == 'p1':
-                    classs = Class.objects.filter(area__name= a, category__name= c, price__range=[0,10000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, sale_price__range=[0,10000])
                 elif p == 'p2':
-                    classs = Class.objects.filter(area__name= a, category__name= c, price__range=[10000,20000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, sale_price__range=[10000,20000])
                 elif p == 'p3':
-                    classs = Class.objects.filter(area__name= a, category__name= c, price__range=[19999,30000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, sale_price__range=[19999,30000])
                 elif p == 'p4':
-                    classs = Class.objects.filter(area__name= a, category__name= c, price__range=[29999,40000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, sale_price__range=[29999,40000])
                 elif p == 'p5':
-                    classs = Class.objects.filter(area__name= a, category__name= c, price__range=[39999,50000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, sale_price__range=[39999,50000])
                 elif p == 'p6':
-                    classs = Class.objects.filter(area__name= a, category__name= c, price__range=[49999,50000000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, sale_price__range=[49999,50000000])
             elif 'level' in request.GET: #카테고리 선택 & 지역 선택 & 레벨 선택
                 classs = Class.objects.filter(area__name= a, category__name= c, level__name= l)
                 if p == '전체':
                     classs = Class.objects.filter(area__name= a, category__name= c, level__name= l)
                 elif p == 'p1':
-                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, price__range=[0,10000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, sale_price__range=[0,10000])
                 elif p == 'p2':
-                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, price__range=[10000,20000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, sale_price__range=[10000,20000])
                 elif p == 'p3':
-                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, price__range=[19999,30000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, sale_price__range=[19999,30000])
                 elif p == 'p4':
-                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, price__range=[29999,40000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, sale_price__range=[29999,40000])
                 elif p == 'p5':
-                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, price__range=[39999,50000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, sale_price__range=[39999,50000])
                 elif p == 'p6':
-                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, price__range=[49999,50000000])
+                    classs = Class.objects.filter(area__name= a, category__name= c, level__name= l, sale_price__range=[49999,50000000])
     else:
         classs = Class.objects.all().order_by('-like_count')
 
@@ -281,11 +281,11 @@ def review(request, class_id):
 
 @login_required(login_url='/login/')
 def createclass(request):
-
     if request.method == 'POST':
         form = CreateClass(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
+            post.sale_price = post.price
             post.author = User.objects.get(username = request.user.get_username())
             post.save()
             return redirect('/createclass/'+str(post.id)+'/addTutor/')
@@ -460,6 +460,8 @@ def classSale(request, class_id):
         form = ClassSale(request.POST, instance=class_detail)
         if form.is_valid():
             post = form.save(commit=False)
+            if post.sale_price == None :
+                post.sale_price = class_detail.price
             post.save()
             return HttpResponseRedirect("/product/{}".format(class_id))
         else:
