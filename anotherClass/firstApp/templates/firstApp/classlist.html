@@ -45,13 +45,23 @@
               {% for class in classs %}
               <tr>
                 <td>
-                  <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
+                    {% if class.on_permission == True %}
+                    <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
+                    {% else%}
+                    <a class="a_underline" style="text-decoration: line-through;" href="{% url 'product' class.id %}">{{ class.title }}</a>
+                    <span style="
+    font-size: 11px;
+    color: red;
+    position: relative;
+    bottom: 1px;
+    left: 15px;"> 심사중 </span>
+                    {% endif %}
                 </td>
                 <td class="lighter"><a class="abc" href="{% url 'update_class' class.id %}">정보수정</a></td>
                 <td class="lighter"><a class="abc" href="{% url 'update_time' class.id %}">일정추가</a></td>
                   <td class="lighter"><a class="abc" href="{% url 'classSale' class.id %}">할인</a></td>
                   <td class="lighter"><a class="abc">보관</a></td>
-                  <td class="lighter"><a class="abc">삭제</a></td>
+                  <td class="lighter"><a class="abc" onclick="return confirm('삭제한 클래스는 복구할 수 없습니다.\n정말 삭제하시겠습니까?')" href="{% url 'product_remove' class.id %}">삭제</a></td>
               </tr>
               {% endfor %}
             </table>

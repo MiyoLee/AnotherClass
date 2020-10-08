@@ -11,6 +11,7 @@ urlpatterns = [
     path('class_search/', views.class_search, name='class_search'),
     path('class_align/', views.class_align, name='class_align'),
     path('product/<int:class_id>/', views.product, name='product'),
+    path('product/<int:pk>/remove', views.product_remove, name='product_remove'),
     path('product/<int:class_id>/like/', views.like, name='like'),
     path('product/<int:class_id>/update', views.update_class, name='update_class'),
     path('product/<int:class_id>/sale', views.classSale, name='classSale'),
