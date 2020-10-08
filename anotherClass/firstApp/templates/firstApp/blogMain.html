@@ -96,9 +96,40 @@
 {% else %}
 <div class="slide_title"> 지금 당신에게 추천하는 원데이클래스 ! </div>
 {% endif %}
-            <div class="autoplay">
+    <div class="autoplay">
 
               {% for class in classs %}
+              <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
+                  <a class="productdetail"
+               href="{% url 'product' class.id %}">
+              <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
+                  {% if class.on_sale == True %}
+                  <div class="on_sale">SALE</div>
+                  {% endif %}
+                <div class="card-body">
+                <p class="class_title">{{class.title}}</p>
+
+                  <small class="tutor_name">{{class.tutor}}</small>
+
+                    {% if class.on_sale == True %}
+                        <span class="true_price">{{class.price}} 원</span>
+                        <span class="class_price">{{class.sale_price}} 원</span>
+
+                    {% else %}
+                    <span class="class_price">{{class.sale_price}} 원</span>
+                    {% endif %}
+
+                </div>
+                                  </a>
+              </div>
+
+
+          {% endfor %}
+</div>
+    <div class="slide_title">곧 마감될지 몰라요, 좋아요 TOP 10 ! </div>
+    <div class="autoplay">
+
+              {% for class in best %}
               <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
                   <a class="productdetail"
                href="{% url 'product' class.id %}">
@@ -143,16 +174,8 @@
                   <small class="tutor_name">{{class.tutor}}</small>
 
                     {% if class.on_sale == True %}
-                    <span class="class_price">{{class.sale_price}} 원</span>
-                        <span style="
-                        text-decoration: line-through;
-                        color: #848484;
-                        font-size: 16px;
-                        float: right;
-                        font-weight: bolder;
-                        position: relative;
-                        bottom: -11px;
-                        margin-right: 8px; ">{{class.price}} 원</span>
+                        <span class="true_price">{{class.price}} 원</span>
+                        <span class="class_price">{{class.sale_price}} 원</span>
 
                     {% else %}
                     <span class="class_price">{{class.sale_price}} 원</span>

@@ -29,8 +29,9 @@ def mypage(request):
 
 def blogMain(request):
     classs = Class.objects.all()
+    best = Class.objects.all().order_by('-like_count')[:10]
     slide = Class.objects.filter(category__name='미술, 공예')
-    return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide})
+    return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best})
 
 def intro_createclass(request):
     return render(request, 'firstApp/intro_createclass.html')
