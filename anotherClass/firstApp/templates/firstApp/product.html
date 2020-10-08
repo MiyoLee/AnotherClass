@@ -16,7 +16,13 @@
 <div class="container">
     <div class="product">
         <div class="product-pic">
-
+            {% if class_detail.on_permission == False %}
+            <div class="photo-icon">심 사 중</div>
+            <div class="permissioning">본 클래스는 인증 심사중으로 다른 사용자에게 보여지지 않습니다.</div>
+            {% endif %}
+            {% if class_detail.on_sale == True %}
+            <div class="sale-icon">SALE</div>
+            {% endif %}
             <div style="width:600px;height:450px;" class="for_slick_slider single-item">
                 <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
                 <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>

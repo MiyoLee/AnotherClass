@@ -1,7 +1,44 @@
 .for_slick_slider{
 display:flex;
 }
-
+.permissioning{
+    position: absolute;
+    left: 110px;
+    top: 10px;
+    z-index: 1;
+    color: white;
+    font-weight:bold;
+    text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+}
+.sale-icon{
+    position: absolute;
+    width: 82px;
+    font-weight: bolder;
+    height: 40px;
+    background-color: #4ECAC6;
+    color: white;
+    font-size:20px;
+    border-radius: 10px;
+    left: 10px;
+    top: 10px;
+    text-align: center;
+    padding-top: 4px;
+    z-index: 1;
+}
+.photo-icon{
+    position: absolute;
+    width: 82px;
+    font-weight: bolder;
+    height: 40px;
+    background-color: #FC2D67;
+    color: white;
+    border-radius: 10px;
+    left: 10px;
+    top: 10px;
+    text-align: center;
+    padding-top: 8px;
+    z-index: 1;
+}
 .single-item .priv_arrow{
     width: 50px;
     height: 50px;

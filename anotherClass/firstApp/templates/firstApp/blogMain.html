@@ -12,7 +12,7 @@
 <script src="https://kit.fontawesome.com/81816a43c2.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{% static 'css/catelist.css' %}">
 
-            <div class="container-fluid" style="width:1500px;">
+<div class="container-fluid" style="width:1500px;">
                 <div class="banner">
                     <div class="for_slick_slider single-item">
                         <div class="itemss"><img src="{% static 'image\배너1.png' %}"></div>
@@ -21,8 +21,6 @@
                     </div>
                 </div>
             </div>
-
-
 <div class="catebar">
   <ul class="catelist">
     <li class="cateitem">
@@ -91,7 +89,7 @@
   </ul>
 </div>
 <div class="container-fluid" style="width:1400px;">
-    {% if user.is_active %}
+{% if user.is_active %}
 <div class="slide_title"> 지금 {{user.username}}님에게 추천하는 원데이클래스 ! </div>
 {% else %}
 <div class="slide_title"> 지금 당신에게 추천하는 원데이클래스 ! </div>
