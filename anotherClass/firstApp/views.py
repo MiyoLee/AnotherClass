@@ -65,15 +65,7 @@ def sybermoney(request):
     profiles = Profile.objects.filter(user=request.user)
     return render(request, 'firstApp/sybermoney.html', {'applys':applys, 'profiles':profiles})
 
-def categoryselect(request):
-    cateId = request.GET.get('cateId', '')  # url의 쿼리스트링을 가져온다. 없는 경우 공백을 리턴한다
-    if cateId == '':
-        classes = Class.objects.filter(on_permission=True).order_by('-like_count')
-    else:
-        classes = Class.objects.filter(on_permission=True, category=cateId)
-    cate_list = Category.objects.all()
-    return render(request, 'firstApp/categoryselect.html',
-                  {'classes': classes, 'cate_list': cate_list, 'cateId': cateId})
+
 
 def class_align(request):
     classs = Class.objects.filter(on_permission=True)
