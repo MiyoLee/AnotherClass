@@ -11,10 +11,14 @@
     <div class="container bg-light select-box">
             <div class="filter-item">
                 <span class="filter-name">카테고리</span>
-                <select name="category" value="{{ c }}">
-                    <option selected value="전체">전체보기</option>
+                <select name="category" >
+                    <option value="전체">전체보기</option>
                     {% for category in categorys %}
-                    <option>{{category.name}}</option>
+                        {% if category.pk == cate %}
+                            <option selected value={{category.pk}}>{{category.name}}</option>
+                        {% else %}
+                            <option value={{category.pk}}>{{category.name}}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
