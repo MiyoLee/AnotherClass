@@ -36,6 +36,7 @@ urlpatterns = [
     path('delete/', views.delete, name='delete'),
     path('mypage/', views.mypage, name='mypage'),
     path('mypage/myClass/', views.myClass, name='myClass'),
+    path('mypage/myClass/<int:class_id>/applicant', views.applicant, name='applicant'),
     path('mypage/myApply/', views.myApply, name='myApply'),
     path('mypage/myApply/<int:pk>/cancel', views.cancelApply, name='cancelApply'),
     path('mypage/myApply/<int:class_id>/review', views.review, name='review'),

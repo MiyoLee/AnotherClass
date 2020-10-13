@@ -272,6 +272,9 @@ def review(request, class_id):
         form = ReviewForm()
         return render(request, 'firstApp/create_review.html', {'class_detail': class_detail, 'form': form})
 
+def applicant(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    return render(request, 'firstApp/applicant.html', {'class_detail': class_detail})
 
 @login_required(login_url='/login/')
 def createclass(request):
