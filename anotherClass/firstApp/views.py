@@ -441,20 +441,6 @@ def addTime(request, class_id):
             'class_detail': class_detail, 'form': form})
 
 
-def update_time(request, class_id):
-    class_detail = get_object_or_404(Class, pk=class_id)
-    if request.method == 'POST':
-        form = AddTime(request.POST, instance=class_detail)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.inClass = class_detail
-            post.save()
-            return HttpResponseRedirect("/createclass/{}/updateTime".format(class_id))
-    else:
-        form = AddTime()
-        class_detail.save()
-        return render(request, 'firstApp/addTime.html', {
-            'class_detail': class_detail, 'form': form})
 
 def classSale(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)

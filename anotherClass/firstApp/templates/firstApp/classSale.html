@@ -60,9 +60,9 @@
                                     <p>
                                        <div class="form_title class_form">할인가  </div>
                    {% if class_detail.on_sale == True %}
-                             <div class="class_form"><input class="input" id="price" name="sale_price" value="{{class_detail.sale_price}}"> 원</div>
+                             <div class="class_form"><input id="price" name="sale_price" value="{{class_detail.sale_price}}"> 원</div>
                              {% else %}
-                            <div class="class_form"><input class="input" id="price" name="sale_price" disabled=""> 원</div>
+                            <div class="class_form"><input id="price" name="sale_price" disabled=""> 원</div>
                               {% endif %}
                                     </p>
 

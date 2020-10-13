@@ -24,7 +24,6 @@ urlpatterns = [
     path('product/<int:class_id>/apply/apply_complete', views.apply_complete, name='apply_complete'),
     path('createclass/<int:class_id>/addTime/', views.addTime, name='addTime'),
     path('createclass/<int:class_id>/addTutor/', views.addTutor, name='addTutor'),
-    path('createclass/<int:class_id>/updateTime/', views.update_time, name='update_time'),
     path('createclass/addTime/<int:pk>/time/remove', views.time_remove, name='time_remove'),
     path('createclass/addTutor/<int:pk>/certi/remove', views.certi_remove, name='certi_remove'),
     path('createclass/addTutor/<int:pk>/edu/remove', views.edu_remove, name='edu_remove'),
