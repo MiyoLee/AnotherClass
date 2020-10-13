@@ -453,7 +453,7 @@ def update_time(request, class_id):
     else:
         form = AddTime()
         class_detail.save()
-        return render(request, 'firstApp/updateTime.html', {
+        return render(request, 'firstApp/addTime.html', {
             'class_detail': class_detail, 'form': form})
 
 def classSale(request, class_id):
