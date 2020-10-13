@@ -1,5 +1,6 @@
 {% extends 'firstApp/base.html'%}
 {% load static %}
+{% load humanize %}
 {% block upper_content %}
 <link rel="stylesheet" href="{% static 'css/slick.css' %}">
 <link rel="stylesheet" href="{% static 'css/slick-theme.css' %}">
@@ -103,11 +104,11 @@
                   <small class="tutor_name">{{class.tutor}}</small>
 
                     {% if class.on_sale == True %}
-                        <span class="true_price">{{class.price}} 원</span>
-                        <span class="class_price">{{class.sale_price}} 원</span>
+                        <span class="true_price">{{class.price|intcomma}} 원</span>
+                        <span class="class_price">{{class.sale_price|intcomma}} 원</span>
 
                     {% else %}
-                    <span class="class_price">{{class.sale_price}} 원</span>
+                    <span class="class_price">{{class.sale_price|intcomma}} 원</span>
                     {% endif %}
 
                 </div>
@@ -134,11 +135,11 @@
                   <small class="tutor_name">{{class.tutor}}</small>
 
                     {% if class.on_sale == True %}
-                        <span class="true_price">{{class.price}} 원</span>
-                        <span class="class_price">{{class.sale_price}} 원</span>
+                        <span class="true_price">{{class.price|intcomma}} 원</span>
+                        <span class="class_price">{{class.sale_price|intcomma}} 원</span>
 
                     {% else %}
-                    <span class="class_price">{{class.sale_price}} 원</span>
+                    <span class="class_price">{{class.sale_price|intcomma}} 원</span>
                     {% endif %}
 
                 </div>
@@ -165,11 +166,11 @@
                   <small class="tutor_name">{{class.tutor}}</small>
 
                     {% if class.on_sale == True %}
-                        <span class="true_price">{{class.price}} 원</span>
-                        <span class="class_price">{{class.sale_price}} 원</span>
+                        <span class="true_price">{{class.price|intcomma}} 원</span>
+                        <span class="class_price">{{class.sale_price|intcomma}} 원</span>
 
                     {% else %}
-                    <span class="class_price">{{class.sale_price}} 원</span>
+                    <span class="class_price">{{class.sale_price|intcomma}} 원</span>
                     {% endif %}
 
                 </div>
