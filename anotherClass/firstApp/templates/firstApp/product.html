@@ -1,6 +1,6 @@
 {% extends 'firstApp/base.html'%}
 {% load static %}
-
+{% load humanize %}
 {% block content %}
 <link href="{% static 'css/product_custom.css' %}" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/slick.css' %}">
@@ -74,11 +74,11 @@
             <div class="price_div">
                  <div class="time_tag"> 1회 {{class_detail.time}}시간 </div>
                 {% if class_detail.on_sale == True %}
-                <span class="price_tag">{{class_detail.price}}원</span>
-                <span class="sale_tag">{{class_detail.sale_price}}원</span>
+                <span class="price_tag">{{class_detail.price|intcomma}}원</span>
+                <span class="sale_tag">{{class_detail.sale_price|intcomma}}원</span>
 
                     {% else %}
-                    <span class="sale_tag">{{class_detail.sale_price}} 원</span>
+                    <span class="sale_tag">{{class_detail.sale_price|intcomma}} 원</span>
                     {% endif %}
             </div>
 

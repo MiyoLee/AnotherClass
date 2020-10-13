@@ -32,21 +32,22 @@
         </div>
 
           <div class="col-sm-9">
-            <h5>내가 개설한 클래스</h5>
+            <h5>{{class_detail.title}}</h5>
             <table class="table">
               <tr>
-                <th>클래스</th>
-                <th></th>
-                <th></th>
-                  <th></th>
+                <th>이름</th>
+                <th>ID</th>
+                <th>휴대폰</th>
+                  <th>일정</th>
                   <th></th>
                   <th></th>
               </tr>
               {% for apply in class_detail.apply.all %}
               <tr>
-                <td>
-                    {{apply.name}}
-                </td>
+                <td>{{apply.name}}</td>
+                  <td>{{apply.author}}</td>
+                  <td>{{apply.number}}</td>
+                  <td>{{apply.date.date}}</td>
                 </tr>
               {% endfor %}
             </table>

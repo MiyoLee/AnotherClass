@@ -282,6 +282,7 @@ def createclass(request):
         form = CreateClass(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
+            post.price = post.price.replace(',', '')
             post.sale_price = post.price
             post.author = User.objects.get(username = request.user.get_username())
             post.save()
