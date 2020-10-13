@@ -499,7 +499,7 @@ def community(request):
             post_list = Post.objects.all()
             cateName = '전체 글'
             # 인기글 만드는 함수..
-            best = Post.objects.order_by('views');
+            best = Post.objects.order_by('-views', '-recommendations')
 
         else:
             post_list = Post.objects.filter(category=cateId)
@@ -531,7 +531,7 @@ def community(request):
 
 def bestPost(request):
     cate_list = Category.objects.all()
-    post_list = Post.objects.order_by('views');
+    post_list = Post.objects.order_by('-views', '-recommendations')
     page = request.GET.get('page', 1)
     paginator = Paginator(post_list, 10)
     try:
@@ -541,7 +541,7 @@ def bestPost(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     return render(request, 'firstApp/community.html', {
-       'posts': posts, 'cate_list': cate_list, 'cateName' : "인기 글", 'cateId': "0", 'page': page})
+       'posts': posts, 'cate_list': cate_list, 'cateName': "인기 글", 'cateId': "0", 'page': page})
 
 def searchResult(request):
     classs = None
@@ -565,7 +565,7 @@ def myPost(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     return render(request, 'firstApp/community.html', {
-       'posts': posts, 'cate_list': cate_list, 'cateName': "내가 쓴 글", 'cateId': "0", 'page': page})
+       'posts': posts, 'cate_list': cate_list, 'cateName': "내가 쓴 글", 'cateId': "1", 'page': page})
 
 @login_required(login_url='/login/')
 def post_detail(request, pk):
