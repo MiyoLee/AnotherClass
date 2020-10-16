@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 from django.template import RequestContext
 from django.contrib import auth
+from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 from django.views.generic import FormView
@@ -44,7 +45,8 @@ def myClass(request):
 @login_required(login_url='/login/')
 def myApply(request):
     applys = Apply.objects.filter(author=request.user)
-    return render(request, 'firstApp/applylist.html', {'applys':applys})
+    now = timezone.localtime()
+    return render(request, 'firstApp/applylist.html', {'applys':applys, 'now':now})
 
 def cancelApply(request, pk):
     apply = get_object_or_404(Apply, pk=pk)
