@@ -25,18 +25,18 @@
                                 {% csrf_token %}
                                 {{ form.media }}
                                 <p>
-                                    <b>클래스 :  </b>
+                                    <b style="margin-right:20px;">클래스 :  </b>
                                     {{ class_detail.title }}
                                 </p>
                                 <p>
-                                    <b>제목 : </b>
-                                    {{ form.title }}
+                                    <div class="class_form" style="font-weight:bold; margin-right:20px;">제목 : </div>
+                                    <div class="class_form">{{ form.title }}</div>
                                 </p>
                                 <p>
                                     {{ form.body }}
                                 </p>
 
-                        <input type="submit" class="btn btn-primary right-button" value="완료">
+                        <input type="submit" class="btn btn-primary right-button" onclick="return confirm('리뷰를 등록하시겠습니까?')"value="완료">
                         </form>
                     </div>
                 </div>
