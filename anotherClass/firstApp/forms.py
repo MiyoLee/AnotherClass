@@ -52,10 +52,10 @@ class ReviewForm(forms.ModelForm):
         fields = ['title', 'body']
         widgets = {
             'title': forms.TextInput(
-                attrs={'style': 'width: 350%', 'placeholder': '제목을 입력하세요.'}
-            ),
+                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex) 재밌고 유용한 수업이었어요!'}
+              ),
             'body': forms.Textarea(attrs={'class': 'form-control',
-                                          'style': 'margin:0; display:inline-block; width:777px; height:300px;'})
+                                          'style': 'margin:0; display:inline-block; width:65%; height:300px;'})
 
         }
 

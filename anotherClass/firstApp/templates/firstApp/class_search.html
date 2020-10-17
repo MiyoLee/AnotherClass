@@ -5,67 +5,61 @@
 <link rel="stylesheet" href="{% static 'css/selectbox.css' %}">
 <link rel="stylesheet" href="{% static 'css/catelist.css' %}">
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
+<script type="text/javascript" src="{% static 'js/priceInput.js' %}"></script>
 
-<p class = "text-center my_search_text"><b style="font-weight:bold; color:#B6B3E5;">클래스 검색</b></p>
     <form  action="{% url 'class_search' %}" method="get">
     <div class="container bg-light select-box">
             <div class="filter-item">
                 <span class="filter-name">카테고리</span>
-                <select name="category" >
-                    <option value="전체">전체보기</option>
-                    {% for category in categorys %}
-                        {% if category.pk == cate %}
-                            <option selected value={{category.pk}}>{{category.name}}</option>
+                {% for category in categorys %}
+                    {% if category.pk in cid_list%}
+                        <div class="form-check form-check-inline">
+                                <label><input class="form-check-input" type="checkbox" name="category" value={{category.pk}} checked>
+                                    {{category.name}}</label>
+                        </div>
                         {% else %}
-                            <option value={{category.pk}}>{{category.name}}</option>
-                        {% endif %}
-                    {% endfor %}
-                </select>
+                        <div class="form-check form-check-inline">
+                                <label><input class="form-check-input" type="checkbox" name="category" value={{category.pk}}>
+                                    {{category.name}}</label>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
 
             <div class="filter-item">
                 <span class="filter-name">지역</span>
-                <select name="area" value="{{ a }}">
-                    <option selected value="전체">전체보기</option>
+                <select name="area">
+                    <option value="">전체보기</option>
                     {% for area in areas %}
-                    <option>{{area.name}}</option>
+                    <option value={{area.pk}}>{{area.name}}</option>
                     {% endfor %}
                 </select>
             </div>
 
             <div class="filter-item">
                 <span class="filter-name">레벨</span>
-                <select name="level" value="{{ l }}">
-                    <option selected value="전체">전체보기</option>
+                <select name="level">
+                    <option value="">전체보기</option>
                     {% for level in levels %}
-                    <option>{{level.name}}</option>
+                    <option value={{level.pk}}>{{level.name}}</option>
                     {% endfor %}
                 </select>
             </div>
 
             <div class="filter-item">
                 <span class="filter-name">가격대</span>
-                <select name="price" value="{{ p }}">
-                    <option selected value="전체">전체보기</option>
-                    <option value="p1">1만원 이하</option>
-                    <option value="p2">1만원 ~ 2만원</option>
-                    <option value="p3">2만원 ~ 3만원</option>
-                    <option value="p4">3만원 ~ 4만원</option>
-                    <option value="p5">4만원 ~ 5만원</option>
-                    <option value="p6">5만원 이상</option>
-                </select>
+                <span><input class="price_search_input" id="minPrice" name="price1" type="text" maxlength="9"></span>
+                <span>원 ~</span>
+                <span><input class="price_search_input" id="maxPrice" name="price2" type="text" maxlength="9"></span>
+                <span>원</span>
+                &nbsp;<span id="errmsg"></span>
             </div>
- <br>
-    <input class="btn btn-primary bottombutton" type="submit" value="적용하기">
+    <br>
+        <div class="text-right"><input class="btn btn-primary" type="submit" value="적용하기"></div>
     </div>
     </form>
 {% endblock upper_content%}
 {% block content %}
-<p class = "text-center my_search_text">
-     <b style="font-weight:bold; color:#B6B3E5;">검색결과</b>
-    <br><br> <strong>카테고리</strong> : {{category}} &nbsp;&nbsp; <strong>지역</strong> : {{area}}
-    &nbsp;&nbsp; <strong>레벨</strong> : {{level}} &nbsp;&nbsp; <strong>가격대</strong> : {{price}}</p>
-
 
     <div class="album py-5 bg-light">
 

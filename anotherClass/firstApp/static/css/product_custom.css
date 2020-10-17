@@ -1,23 +1,6 @@
 .for_slick_slider{
 display:flex;
 }
-.tutor_name{
-    width: 200px;
-    text-align: center;
-    padding-top: 10;
-    font-size: 19;
-    font-weight: bold;
-    color: #9b9eea;
-}
-.no_detail{
-    font-weight: bold;
-    padding-top: 60;
-    text-align: center;
-}
-.no_review, .no_question{
-    font-weight: bold;
-    text-align: center;
-}
 .permissioning{
     position: absolute;
     left: 110px;

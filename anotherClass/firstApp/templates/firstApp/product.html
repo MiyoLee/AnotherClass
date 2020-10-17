@@ -147,6 +147,7 @@
                                     {{ certificate.name }}
                                 </div>
                                 {% empty %}
+                                <p></p>
                                 {% endfor %}
                                 {% for education in class_detail.edu_class.all %}
                                 <div><img class="product-q-img" src="{% static 'image\graduated.png' %}">
@@ -155,8 +156,8 @@
                                     {{ education.state}}
                                 </div>
                                 {% empty %}
+                                <p></p>
                                 {% endfor %}
-
                                 {% if class_detail.tutor_insta %}
                                 <div><img class="product-q-img" src="{% static 'image\insta.png' %}">{{class_detail.tutor_insta}}
                                 </div>
@@ -169,12 +170,6 @@
                                 <div><img class="product-q-img" src="{% static 'image\youtube.png' %}">{{class_detail.tutor_youtube}}
                                 </div>
                                 {% endif %}
-                                <div class="no_detail" style="display: none;"> 등록된 강사 정보가 없습니다. </div>
-                             <script>
-                                if($('.tutor_detail').children().length <= 2){
-                                    $('.no_detail').css("display","block");
-                                }
-                             </script>
                             </div>
                         </div>
 
@@ -198,36 +193,27 @@
                         <hr>
                     </div>
                     {% empty %}
+                    <p></p>
                     {% endfor %}
-                    <div class="no_review" style="display:none;"> 등록된 리뷰가 없습니다. </div>
-                    <script>
-                        if($('#review > .more-container').children().length <= 2){
-                            $('.no_review').css("display","block");
-                        }
-                    </script>
                 </div>
             </div>
             <div class="tab-pane" id="qna">
                 <div class="more-container">
                     {% if user != class_detail.author %}
-                    <form style="margin-bottom:50px;" class="post-form" method="POST">
+                    <form class="post-form" method="POST">
                         {% csrf_token %}
                         {{ form.question }}
                         <br>
                         <button class="btn btn-primary review-button" type="submit">등록</button>
                     </form>
                     {% endif %}
-
-                    <div class="no_question" style="display:none;"> 등록된 질문이 없습니다. </div>
                     {% for qna in class_detail.qna_class.all %}
                     <div class="comment">
-
                         <div class="product-review-date">
                             {{ qna.created_date }}
                         </div>
                         <img class="product-q-img" src="{% static 'image\q.png' %}">
                         <div class="product-question">{{ qna.question }}</div>
-
                         {% if user == class_detail.author %}
                         {% if qna.answer_class.all %}
                         {% for answer in qna.answer_class.all %}
@@ -242,12 +228,9 @@
                         <div class="product-answer"><img class="product-q-img" src="{% static 'image\a.png' %}">
                             <span>
                     {{ answer.answer }}
-                                {% if user == class_detail.author %}
                                 <a class="btn btn-primary answer-button" href="{% url 'update_answer' pk=answer.pk %}">수정</a>
-                                {% endif %}
                 {% endif %}
             {% endfor %}
-
                 </span>
                         </div>
                     </div>
@@ -261,11 +244,6 @@
         </div>
     </div>
 </div>
-                        <script>
-                           if($('.product-question').length === 0 ){
-                                $('.no_question').css("display", "block");
-                            };
-                        </script>
 {% endblock content%}
 
 
