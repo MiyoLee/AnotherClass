@@ -17,8 +17,9 @@ from django.urls.base import reverse
 from django.http.response import HttpResponseNotAllowed
 from django.db.models import Q
 from annoying.functions import get_object_or_None
+from django.shortcuts import render
+from .filters import UserFilter
 
-# Create your views here.
 
 
 def index(request):
@@ -79,26 +80,39 @@ def class_align(request):
         classs = Class.objects.filter(on_permission=True).order_by('-price')
     else:
         classs = Class.objects.filter(on_permission=True)
-    return render(request, 'firstApp/class_search.html', {'r' : r, 'classs': classs, 
-    'levels' : levels, 'areas' : areas, 'categorys' : categorys})
+    return render(request, 'firstApp/class_search.html', {'r': r, 'classs': classs,
+    'levels' : levels, 'areas': areas, 'categorys' : categorys})
 
 def class_search(request):
-    classs = Class.objects.filter(on_permission=True)
+    #filter 기능...건들지마..
+    class_list = Class.objects.filter(on_permission=True)
+    class_filter = UserFilter(request.GET, queryset=class_list)
+
+
     areas = Area.objects.all()
     categorys = Category.objects.all()
     levels = Level.objects.all()
 
     cid_list = []
+    lid_list = []
     c_list = request.GET.getlist('category', None) #카테고리
+    l_list = request.GET.getlist('level', None)  # 레벨
+    a = request.GET.get('area', None) #지역
+    aid = 0  #a가 전체일때 aid=0
     for c in c_list:
         cid_list.append(int(c))
+    for l in l_list:
+        lid_list.append(int(l))
+    if a:
+        aid = int(a)    #area가 정해졌을때
 
-    a = request.GET.get('area', '') #지역
-    l = request.GET.get('level', '') #레벨
-    classs = Class.objects.filter(on_permission=True).order_by('-like_count')
 
-    return render(request, 'firstApp/class_search.html', {'cid_list': cid_list, 'a': a,
-    'l': l, 'levels': levels, 'classs': classs, 'areas': areas, 'categorys': categorys})
+
+    #classs = Class.objects.filter(on_permission=True).order_by('-like_count')
+
+    return render(request, 'firstApp/class_search.html', {'cid_list': cid_list, 'aid': aid,
+    'lid_list': lid_list, 'levels': levels, 'class_list': class_list, 'areas': areas, 'categorys': categorys,
+                                                          'filter': class_filter})
     
 @login_required(login_url='/login/')
 def apply(request, class_id):
@@ -398,13 +412,13 @@ def bestPost(request):
        'posts': posts, 'cate_list': cate_list, 'cateName': "인기 글", 'cateId': "0", 'page': page})
 
 def searchResult(request):
-    classs = None
+    class_list = None
     qq = request.GET.get('qq', '')
     if qq:
-        classs = Class.objects.filter(on_permission=True).filter(Q(title__icontains=qq) | Q(tutor__icontains=qq) |
+        class_list = Class.objects.filter(on_permission=True).filter(Q(title__icontains=qq) | Q(tutor__icontains=qq) |
                                                                  Q(tutor_body__icontains=qq) | Q(body__icontains=qq))
 
-    return render(request, 'firstApp/search.html', {'qq':qq, 'classs':classs})
+    return render(request, 'firstApp/search.html', {'qq': qq, 'class_list':class_list})
 
 @login_required(login_url='/login/')
 def myPost(request):

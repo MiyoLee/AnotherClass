@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'imagekit',
     'firstApp',
     'templatetags',
+    'widget_tweaks',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

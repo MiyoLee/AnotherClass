@@ -14,3 +14,10 @@
     position: relative;
     right: 11rem;
 }
+#errmsg
+{
+color: green;
+}
+.price_search_input{
+    width:120px;
+}
