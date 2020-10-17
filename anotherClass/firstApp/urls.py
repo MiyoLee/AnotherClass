@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
 from django_filters.views import FilterView
-from .filters import UserFilter
+from .filters import ClassFilter
 
 
 urlpatterns = [

@@ -18,10 +18,17 @@ from django.http.response import HttpResponseNotAllowed
 from django.db.models import Q
 from annoying.functions import get_object_or_None
 from django.shortcuts import render
-from .filters import UserFilter
+from .filters import ClassFilter
+'''
+class ClassListView(ListView):
+    model = Class
+    template_name = 'firstApp/class_search.html'
 
-
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = ClassFilter(self.request.GET, queryset=self.get_queryset())
+        return context
+'''
 def index(request):
     return render(request, 'firstApp/index.html')
 
@@ -83,10 +90,11 @@ def class_align(request):
     return render(request, 'firstApp/class_search.html', {'r': r, 'classs': classs,
     'levels' : levels, 'areas': areas, 'categorys' : categorys})
 
+
 def class_search(request):
     #filter 기능...건들지마..
     class_list = Class.objects.filter(on_permission=True)
-    class_filter = UserFilter(request.GET, queryset=class_list)
+    class_filter = ClassFilter(request.GET, queryset=class_list)
 
 
     areas = Area.objects.all()
@@ -113,7 +121,7 @@ def class_search(request):
     return render(request, 'firstApp/class_search.html', {'cid_list': cid_list, 'aid': aid,
     'lid_list': lid_list, 'levels': levels, 'class_list': class_list, 'areas': areas, 'categorys': categorys,
                                                           'filter': class_filter})
-    
+
 @login_required(login_url='/login/')
 def apply(request, class_id):
     date_id = request.GET.get('date', '')

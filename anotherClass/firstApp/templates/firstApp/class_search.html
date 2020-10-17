@@ -1,33 +1,20 @@
 {% extends 'firstApp/base.html' %}
 {% load static %}
 {% load humanize %}
+{% load bootstrap %}
 {% block upper_content %}
 
 <link rel="stylesheet" href="{% static 'css/selectbox.css' %}">
 <link rel="stylesheet" href="{% static 'css/catelist.css' %}">
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 <script type="text/javascript" src="{% static 'js/priceInput.js' %}"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-
-
-
-
-
-<div>
-    <form class="" method="get">
-      {{filter.form.as_p}}
-      <button type="submit">검색</button>
+<div class="container">
+    <form method="get">
+        {{ filter.form|bootstrap }}
+        <button type="submit" class="btn btn-primary">적용</button>
     </form>
 
-
-    <ul>
-        {% for class in filter.qs %}
-            <li>{{class.title}}</li>
-        {% empty %}
-          No data
-        {% endfor %}
-    </ul>
 </div>
 
 
@@ -40,7 +27,7 @@
 
 
 
-    <form  action="{% url 'class_search' %}" method="get">
+ <!--   <form  action="{% url 'class_search' %}" method="get">
     <div class="container bg-light select-box">
             <div class="filter-item">
                 <span class="filter-name">카테고리</span>
@@ -101,14 +88,14 @@
     <br>
         <div class="text-right"><input class="btn btn-primary" type="submit" value="적용하기"></div>
     </div>
-    </form>
+    </form>-->
 {% endblock upper_content%}
 {% block content %}
 
     <div class="album py-5 bg-light">
 
         <div class="container">
-            <form  action="{% url 'class_align' %}" method="get">
+            <!--<form  action="{% url 'class_align' %}" method="get">
                 <div class="filter-item" align="right">
                     <span class="filter-name">정렬</span>
                     <select name="r" value="{{ r }}">
@@ -117,42 +104,42 @@
                         <option value="2">높은 가격순</option>
                     </select><input type="submit" value="적용">
                 </div>
-                </form>
+            </form>-->
             <div class="row">
-          {% for class in class_list %}
-          <div class="col-md-4">
-            <a class="productdetail"
-               href="{% url 'product' class.id %}">
-              <div class="card mb-4 shadow-sm">
-              <img src="{{class.photo.url}}" width="338px" height="250px" style="align-self: center;margin-top: 5px;">
-                  {% if class.on_sale == True %}
-                  <div class="on_sale">SALE</div>
-                  {% endif %}
-                <div class="card-body">
-                <p class="class_title">{{class.title}}</p>
+              {% for class in filter.qs %}
+              <div class="col-md-4">
+                <a class="productdetail"
+                   href="{% url 'product' class.id %}">
+                  <div class="card mb-4 shadow-sm">
+                  <img src="{{class.photo.url}}" width="338px" height="250px" style="align-self: center;margin-top: 5px;">
+                      {% if class.on_sale == True %}
+                      <div class="on_sale">SALE</div>
+                      {% endif %}
+                    <div class="card-body">
+                    <p class="class_title">{{class.title}}</p>
 
-                  <small class="tutor_name">{{class.tutor}}</small>
+                      <small class="tutor_name">{{class.tutor}}</small>
 
-                    {% if class.on_sale == True %}
-                    <span class="class_price">{{class.sale_price|intcomma}} 원</span>
-                        <span style="
-                            text-decoration: line-through;
-    color: #848484;
-    font-size: 16px;
-    float: right;
-    font-weight: bolder;
-    position: relative;
-    bottom: 25px;
-    margin-right: 3px;">{{class.price|intcomma}} 원</span>
+                        {% if class.on_sale == True %}
+                        <span class="class_price">{{class.sale_price|intcomma}} 원</span>
+                            <span style="
+                                text-decoration: line-through;
+        color: #848484;
+        font-size: 16px;
+        float: right;
+        font-weight: bolder;
+        position: relative;
+        bottom: 25px;
+        margin-right: 3px;">{{class.price|intcomma}} 원</span>
 
-                    {% else %}
-                    <span class="class_price">{{class.price|intcomma}} 원</span>
-                    {% endif %}
+                        {% else %}
+                        <span class="class_price">{{class.price|intcomma}} 원</span>
+                        {% endif %}
 
-                </div>
+                    </div>
+                  </div>
+                </a>
               </div>
-            </a>
-          </div>
                 {% empty %}
                   <div class = "row mx-auto">
                       <p class="text-center my_search_text">검색 결과가 없습니다.</p>

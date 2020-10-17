@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'firstApp.apps.FirstappConfig',
     'ckeditor',
     'ckeditor_uploader',
+    'django_filters',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [
