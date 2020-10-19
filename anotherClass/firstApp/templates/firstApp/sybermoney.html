@@ -9,19 +9,22 @@
         <div class="col-sm-3">
           <div class="left-sidebar">
             <ul>
+              <li>
+								<a class= "nounderline" href="{% url 'mypage' %}"><h3>MY PAGE</h3></a>
+							</li><br>
 							<li data-toggle="tab">
-								<a href="/mypage" class="nounderline"><h3>My page</h3></a><br>
 								<a class="nav-link"><strong>{{user.username}}님</strong></a>
-									<br>
+                  <br>
+                  <li class="nav-item">
+									  <a class="nav-link" href="/mypage/member_info_management">내 정보 관리</a>
+									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="/change_pw">비밀번호 변경</a>
 									</li>
 									<li class="nav-item">
 									  <a class="nav-link" href="/logout">로그아웃</a>
 									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="/intro_delete">회원탈퇴</a>
-									</li>
+									
 
 							</li>
 						</ul>

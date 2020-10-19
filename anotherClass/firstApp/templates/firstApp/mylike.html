@@ -9,21 +9,20 @@
         <div class="col-sm-3">
           <div class="left-sidebar">
             <ul>
+              <li>
+								<a class= "nounderline" href="{% url 'mypage' %}"><h3>MY PAGE</h3></a>
+							</li><br>
 							<li data-toggle="tab">
-								<a href="{% url 'mypage' %}" class="nounderline"><h3>My page</h3></a><br>
 								<a class="nav-link"><strong>{{user.username}}님</strong></a>
 									<br>
 									<li class="nav-item">
 										<a class="nav-link" href="/mypage/mylike">관심 클래스</a>
 									</li>
 									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myApply">수강클래스</a>
+									  <a class="nav-link" href="/mypage/myApply">수강 클래스</a>
 									</li>
 									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myClass">개설클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="">내 정보 관리</a>
+									  <a class="nav-link" href="/mypage/myClass">개설 클래스</a>
 									</li>
 
 							</li>
@@ -32,7 +31,7 @@
         </div>
          
           <div class="col-sm-9">
-            <h5>내가 좋아요 누른 클래스</h5>
+            <h4 style="font-weight:bold; color:#B6B3E5;">관심 클래스</h4><br><br>
             <table class="table">
               <tr>
                 <th>클래스</th>

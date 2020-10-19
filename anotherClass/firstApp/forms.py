@@ -4,6 +4,9 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
+import django.forms
+import django.forms.utils
+import django.forms.widgets
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -155,10 +158,10 @@ class ApplyForm(forms.ModelForm):
 
         widgets = {
             'name': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex)홍길동'},
+                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex)홍길동'}
             ),
             'number': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex)010-1234-5678'},
+                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex)010-1234-5678'}
             ),
             'text': forms.CharField(widget=CKEditorUploadingWidget()),
         }
@@ -166,11 +169,17 @@ class ApplyForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['location', 'birth_date']
+        fields = ['location', 'birth_date', 'gender', 'number']
 
         widgets = {
             'location': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 200%', 'placeholder': 'ex)서울시 마포구 신촌로6길 18'}
+                attrs={'class': 'form-control', 'style': 'width: 200%', 'placeholder': 'ex) 서울시 마포구 신촌로6길 18'}
+            ),
+            'number': forms.TextInput(
+                attrs={'class': 'form-control', 'style': 'width: 80%', 'placeholder': 'ex) 010-1234-5678'}
+            ),
+            'birth_date': forms.DateInput(
+                attrs={'class': 'form-control', 'style': 'width: 70%', 'placeholder': 'ex) 1990-01-01'}
             )
         }
 
