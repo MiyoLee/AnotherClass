@@ -1,0 +1,66 @@
+{% extends 'firstApp/base.html'%}
+{% load static %}
+
+{% block content %}
+{% if alert_flag %}
+<script>alert("폼을 모두 작성해주세요.")</script>
+{% endif %}
+{% if user.is_active %}
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<link href="{% static 'css/createclass.css' %}" rel="stylesheet">
+<section>
+    <div class="contents">
+        <div class="createclasscont">
+            <div class="row">
+                <div class="col-sm-3">
+
+                </div>
+                <div class="col-sm-9">
+                    <div class="blog-post-area">
+                        <div class="upperbar">
+                            <div class="step-title">내 정보 관리</div>
+                        </div>
+                        <form enctype="multipart/form-data" method="POST">
+                                {% csrf_token %}
+                                {{ form.media }}
+                                    <p>
+                                       <div class="form_title class_form">User</div>
+                                    <div class="class_form">{{user.username}}</div>
+                                    </p>
+                                    <hr class="hr_width">
+                                    <p>
+                                       <div class="form_title class_form">성별  </div>
+                                    <div class="class_form">남 여</div>
+                                    </p>
+                                    <hr class="hr_width">
+                                    <p>
+                                       <div class="form_title class_form">주소  </div>
+                                    <div class="class_form">{{ form.location }}</div>
+                                    </p>
+                                    <hr class="hr_width">
+                                    <p>
+                                       <div class="form_title class_form">생년월일  </div>
+                                    <div class="class_form">{{ form.birth_date }} ex) 1990-01-01</div>
+                                    </p>
+                                    <hr class="hr_width">
+
+                            <input type="submit" class="btn btn-primary right-button" value="저장하기" onclick="return confirm('저장하시겠습니까?')">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다.')
+    window.location.href = '/main';
+
+
+</script>
+{% endif %}
+{% endblock content%}

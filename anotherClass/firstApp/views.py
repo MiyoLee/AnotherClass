@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment, CComment, Bullet, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area, Level, Profile
-from .forms import ClassSale, PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm
+from .forms import ClassSale, PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm, ProfileForm
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 from django.template import RequestContext
@@ -73,7 +73,18 @@ def sybermoney(request):
     profiles = Profile.objects.filter(user=request.user)
     return render(request, 'firstApp/sybermoney.html', {'applys':applys, 'profiles':profiles})
 
-
+@login_required(login_url='/login/')
+def member(request):
+    if request.method == "POST":
+        form = ProfileForm(request.POST, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect('mypage')
+        else:
+            return render(request, 'firstApp/member_info_management.html', {'alert_flag': True, 'form': form})
+    else:
+        form = ProfileForm(instance=request.user.profile)
+        return render(request, 'firstApp/member_info_management.html', {'form': form})
 
 def class_align(request):
     classs = Class.objects.filter(on_permission=True)

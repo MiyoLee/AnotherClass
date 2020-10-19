@@ -1,9 +1,10 @@
 from django import forms
-from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview
+from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Profile
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -160,6 +161,17 @@ class ApplyForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex)010-1234-5678'},
             ),
             'text': forms.CharField(widget=CKEditorUploadingWidget()),
+        }
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['location', 'birth_date']
+
+        widgets = {
+            'location': forms.TextInput(
+                attrs={'class': 'form-control', 'style': 'width: 200%', 'placeholder': 'ex)서울시 마포구 신촌로6길 18'}
+            )
         }
 
 class SignupForm(ModelForm):
