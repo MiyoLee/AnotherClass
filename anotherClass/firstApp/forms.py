@@ -56,10 +56,10 @@ class ReviewForm(forms.ModelForm):
         fields = ['title', 'body']
         widgets = {
             'title': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex) 재밌고 유용한 수업이었어요!'}
+                attrs={'class': 'form-control', 'style': 'width: 700px;position: relative;bottom: 30;left: 60;', 'placeholder': 'ex) 재밌고 유용한 수업이었어요!'}
               ),
             'body': forms.Textarea(attrs={'class': 'form-control',
-                                          'style': 'margin:0; display:inline-block; width:65%; height:300px;'})
+                                          'style': 'margin:0; display:inline-block; width:802px; height:300px;'})
 
         }
 

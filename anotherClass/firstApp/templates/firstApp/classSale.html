@@ -1,6 +1,6 @@
 {% extends 'firstApp/base.html'%}
 {% load static %}
-
+{% load humanize %}
 {% block content %}
 {% if alert_flag %}
 <script>alert("폼을 모두 작성해주세요.")</script>
@@ -29,7 +29,7 @@
                                                             <hr class="hr_width">
                                     <p>
                                        <div class="form_title class_form">정가  </div>
-                                    <div class="class_form">{{class_detail.price}} 원</div>
+                                    <div class="class_form">{{class_detail.price|intcomma}} 원</div>
                                     </p>
                         <hr class="hr_width">
 

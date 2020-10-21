@@ -1,6 +1,6 @@
 {% extends 'firstApp/base.html' %}
 {% load static %}
-
+{% load humanize %}
 {% block content %}
 {% if user.is_active %}
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
@@ -44,7 +44,7 @@
                   <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
                 </td>
                 <td class="lighter">{{ class.tutor }}</td>
-                <td class="lighter">{{ class.price }}</td>
+                <td class="lighter">{{ class.price|intcomma }}</td>
               </tr>
               {% endfor %}
             </table>
