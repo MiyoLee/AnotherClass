@@ -46,7 +46,9 @@
                                 {{apply.inClass}}
                             </a>
                             <div class="createreview">
+                        {% if apply.date.date < now%}
                         <a href="{% url 'review' class_id=apply.inClass.pk %}"> 리뷰작성</a>
+                        {% endif %}
                     </div>
                         </p>
 

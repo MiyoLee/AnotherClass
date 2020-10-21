@@ -23,10 +23,9 @@
             {% endif %}
             <div style="width:600px;height:450px;" class="for_slick_slider single-item">
                 <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
-                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
-                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
-                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
-                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
+                {% for image in class_detail.class_photo.all %}
+                <div class="items"><img style="width:600px;height:450px;" src="{{ image.image.url }}"></div>
+                {% endfor %}
             </div>
 
              <div class="like_block">
