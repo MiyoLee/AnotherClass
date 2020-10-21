@@ -186,7 +186,7 @@ class ProfileForm(forms.ModelForm):
         }
 
 
-class SignupForm(ModelForm):
+class SignupForm(forms.ModelForm):
     password_확인 = forms.CharField(max_length=200, widget=forms.PasswordInput(attrs = {'placeholder': '필수 입력'}))
     password = forms.CharField(max_length=200, widget=forms.PasswordInput(attrs = {'placeholder': '필수 입력'}))
     username = forms.CharField(widget=forms.TextInput(attrs = {'placeholder': '필수 입력'}))
