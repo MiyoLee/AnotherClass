@@ -1,7 +1,7 @@
 from django import forms
-from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Profile
+from .models import Post, Comment, CComment, ClassQna, Class, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Profile, Category
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
-from django.forms import ModelForm
+from django.forms import ModelForm, CheckboxSelectMultiple
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 import django.forms
@@ -167,8 +167,6 @@ class ApplyForm(forms.ModelForm):
         }
 
 class ProfileForm(forms.ModelForm):
-    model_categories = forms.MultipleChoiceField(widget = forms.CheckboxSelectMultiple)
-    
     class Meta:
         model = Profile
         fields = ['location', 'birth_date', 'gender', 'number', 'model_categories']
@@ -182,8 +180,11 @@ class ProfileForm(forms.ModelForm):
             ),
             'birth_date': forms.DateInput(
                 attrs={'class': 'form-control', 'style': 'width: 70%', 'placeholder': 'ex) 1990-01-01'}
+            ),
+            'model_categories' : forms.CheckboxSelectMultiple(
             )
         }
+
 
 class SignupForm(ModelForm):
     password_확인 = forms.CharField(max_length=200, widget=forms.PasswordInput(attrs = {'placeholder': '필수 입력'}))

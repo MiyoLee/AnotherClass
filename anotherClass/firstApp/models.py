@@ -8,6 +8,9 @@ from imagekit.processors import ResizeToFill
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.forms.models import ModelForm
+from django.forms.widgets import CheckboxSelectMultiple
+from django.forms import CheckboxSelectMultiple
 
 class Profile(models.Model):
 
@@ -15,24 +18,13 @@ class Profile(models.Model):
         ('M','남자'),
         ('W','여자'),
     )
-    MODEL_CATEGORIES =(
-        ('art','미술,공예'),
-        ('ent','음악,댄스'),
-        ('design','디자인,개발'),
-        ('career','커리어'),
-        ('lang','언어'),
-        ('beauty','뷰티'),
-        ('cooking','요리,베이킹'),
-        ('etc','기타')
-    )
-    
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     sybermoney = models.IntegerField(default=500000)
     number = models.CharField(max_length=13, null=True, blank=True)
     gender = models.CharField(max_length=80, choices=GENDER_CHOICES, null=True, blank=True)
     location = models.CharField(max_length=100, blank=True)
     birth_date = models.DateField(max_length=10, null=True, blank=True)
-    model_categories = models.CharField(max_length = 255, choices = MODEL_CATEGORIES, null = True, blank = True)
+    model_categories = models.ManyToManyField('firstApp.Category', null = True, blank = True, related_name='model_categories')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
