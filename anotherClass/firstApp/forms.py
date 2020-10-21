@@ -191,13 +191,13 @@ class SignupForm(ModelForm):
     password = forms.CharField(max_length=200, widget=forms.PasswordInput(attrs = {'placeholder': '필수 입력'}))
     username = forms.CharField(widget=forms.TextInput(attrs = {'placeholder': '필수 입력'}))
 
-    field_order=['username','password','password_확인','last_name','first_name','email'] 
+    field_order=['username','password','password_확인','first_name','email'] 
 
     class Meta:
         model=User
         widgets = {'password':forms.PasswordInput}
         
-        fields = ['username','password','last_name','first_name','email']
+        fields = ['username','password','first_name','email']
 
 class CheckPasswordForm(forms.Form):
     password = forms.CharField(max_length=50, label='비밀번호', widget=forms.PasswordInput(

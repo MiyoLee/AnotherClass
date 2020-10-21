@@ -617,8 +617,7 @@ def signup(request):
         if form.is_valid():
             if form.cleaned_data['password']  == form.cleaned_data['password_확인']:
                 new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'])
-                new_user.last_name = form.cleaned_data['last_name']
-                new_user.first_name = form.cleaned_data['first_name']
+                new_user.name = form.cleaned_data['first_name']
                 new_user.save()
                 return redirect('/main')
             else:
