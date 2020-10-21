@@ -6,6 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.forms.models import ModelForm
@@ -145,7 +146,9 @@ class Class(models.Model):
     def __str__(self):
         return self.title
 
-
+class Photo(models.Model):
+    post = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, null=True, related_name='class_photo')
+    image = models.ImageField(upload_to="class", blank=True, null=True)
 
 class Apply(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)

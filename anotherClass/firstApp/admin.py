@@ -21,6 +21,7 @@ from .models import Certificate
 from .models import ClassDate
 from .models import Apply
 from .models import Profile
+from .models import Photo
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment)
@@ -41,3 +42,4 @@ admin.site.register(Certificate)
 admin.site.register(ClassDate)
 admin.site.register(Apply)
 admin.site.register(Profile)
+admin.site.register(Photo)

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, CComment, Bullet, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area, Level, Profile
+from .models import Photo, Post, Comment, CComment, Bullet, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area, Level, Profile
 from .forms import ClassSale, PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm, ProfileForm
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory
@@ -182,9 +182,14 @@ def createclass(request):
             post.sale_price = post.price
             post.author = User.objects.get(username = request.user.get_username())
             post.save()
+            for img in request.FILES.getlist('imgs'):
+                photo = Photo()
+                photo.post = post
+                photo.image = img
+                photo.save()
             return redirect('/createclass/'+str(post.id)+'/addTutor/')
         else:
-            return render(request, 'firstApp/createclass.html', {'form': form, 'alert_flag': True})
+            return render(request, 'firstApp/createclass.html')
     else:
         form = CreateClass()
         return render(request, 'firstApp/createclass.html', {'form': form})

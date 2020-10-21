@@ -110,6 +110,7 @@ class ClassSale(forms.ModelForm):
         model = Class
         fields = ['sale_price', 'on_sale']
 
+
 class CreateClass(forms.ModelForm):
     class Meta:
         model = Class
