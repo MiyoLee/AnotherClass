@@ -167,9 +167,11 @@ class ApplyForm(forms.ModelForm):
         }
 
 class ProfileForm(forms.ModelForm):
+    model_categories = forms.MultipleChoiceField(widget = forms.CheckboxSelectMultiple)
+    
     class Meta:
         model = Profile
-        fields = ['location', 'birth_date', 'gender', 'number']
+        fields = ['location', 'birth_date', 'gender', 'number', 'model_categories']
 
         widgets = {
             'location': forms.TextInput(

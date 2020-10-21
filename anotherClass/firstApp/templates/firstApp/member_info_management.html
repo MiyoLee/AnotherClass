@@ -25,7 +25,7 @@
                                 {{ form.media }}
                                     <p>
                                        <div class="form_title class_form">User</div>
-                                    <div class="class_form">{{user.username}}</div>
+                                    <div class="class_form">{{ user.username }}</div>
                                     </p>
                                     <hr class="hr_width">
                                     <p>
@@ -41,6 +41,11 @@
                                     <p>
                                        <div class="form_title class_form">전화번호  </div>
                                     <div class="class_form">{{ form.number }}</div>
+                                    </p>
+                                    <hr class="hr_width">
+                                    <p>
+                                       <div class="form_title class_form">관심 카테고리</div>
+                                    <div class="class_form">{{ form.model_categories }}</div>
                                     </p>
                                     <hr class="hr_width">
                                     <p>
