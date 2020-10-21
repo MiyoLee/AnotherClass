@@ -1,3 +1,19 @@
+.no_div{
+    text-align: center;
+    margin-top: 55px;
+    font-weight: bold;
+    display:none;
+}
+
+.product_tutor_name{
+    text-align: center;
+    width: 200px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #9b9eea;
+}
+
 .for_slick_slider{
 display:flex;
 }

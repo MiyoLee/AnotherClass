@@ -20,3 +20,4 @@ $(function(){
     nextArrow: '<span class="next_arrow"><i class="fas fa-angle-right"></i></span>',
     });
 });
+
