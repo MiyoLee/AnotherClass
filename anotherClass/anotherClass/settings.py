@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'django_filters',
     'bootstrapform',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

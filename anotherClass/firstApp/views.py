@@ -104,36 +104,23 @@ def class_align(request):
     'levels' : levels, 'areas': areas, 'categorys' : categorys})
 
 
+def is_valid_queryparam(param):
+    return param != '' and param is not None
 def class_search(request):
     #filter 기능...건들지마..
+    price1 = request.GET.get('price1', '')
+    price2 = request.GET.get('price2', '')
     class_list = Class.objects.filter(on_permission=True)
+    if is_valid_queryparam(price1):
+        class_list = class_list.filter(sale_price__gte=price1)
+    if is_valid_queryparam(price2):
+        class_list = class_list.filter(sale_price__lte=price2)
+
     class_filter = ClassFilter(request.GET, queryset=class_list)
-
-
-    areas = Area.objects.all()
-    categorys = Category.objects.all()
-    levels = Level.objects.all()
-
-    cid_list = []
-    lid_list = []
-    c_list = request.GET.getlist('category', None) #카테고리
-    l_list = request.GET.getlist('level', None)  # 레벨
-    a = request.GET.get('area', None) #지역
-    aid = 0  #a가 전체일때 aid=0
-    for c in c_list:
-        cid_list.append(int(c))
-    for l in l_list:
-        lid_list.append(int(l))
-    if a:
-        aid = int(a)    #area가 정해졌을때
-
-
 
     #classs = Class.objects.filter(on_permission=True).order_by('-like_count')
 
-    return render(request, 'firstApp/class_search.html', {'cid_list': cid_list, 'aid': aid,
-    'lid_list': lid_list, 'levels': levels, 'class_list': class_list, 'areas': areas, 'categorys': categorys,
-                                                          'filter': class_filter})
+    return render(request, 'firstApp/class_search.html', {'filter': class_filter, 'price1': price1, 'price2': price2})
 
 @login_required(login_url='/login/')
 def apply(request, class_id):
