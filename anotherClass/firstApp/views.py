@@ -60,7 +60,7 @@ def cancelApply(request, pk):
     apply = get_object_or_404(Apply, pk=pk)
     apply.delete()
     profile = request.user.profile
-    profile.sybermoney = profile.sybermoney + int(apply.inClass.price)
+    profile.sybermoney = profile.sybermoney + int(apply.inClass.sale_price)
     profile.save()
     return redirect('myApply')
 
@@ -237,7 +237,7 @@ def apply_complete(request, class_id):
     profiles = Profile.objects.filter(user=request.user)
     class_detail = get_object_or_404(Class, pk=class_id)
     profile = request.user.profile
-    profile.sybermoney = profile.sybermoney - int(class_detail.price)
+    profile.sybermoney = profile.sybermoney - int(class_detail.sale_price)
     profile.save()
     return render(request, 'firstApp/apply_complete.html', {'class_detail': class_detail, 'profiles':profiles})
 
