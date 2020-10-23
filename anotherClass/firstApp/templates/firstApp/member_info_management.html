@@ -30,38 +30,38 @@
                                     <hr class="hr_width">
                                     <p>
                                        <div class="form_title class_form">이름</div>
-                                    <div class="class_form">{{ user.first_name }}</div>
+                                    <div class="class_form">{{ user_form.first_name }}</div>
                                     </p>
                                     <hr class="hr_width">
                                     <p>
                                        <div class="form_title class_form">성별  </div>
-                                    <div class="class_form">{{ form.gender }}</div>
+                                    <div class="class_form">{{ profile_form.gender }}</div>
                                     </p>
                                     <hr class="hr_width">
                                     <p>
                                        <div class="form_title class_form">생년월일  </div>
-                                    <div class="class_form">{{ form.birth_date }}</div>
+                                    <div class="class_form">{{ profile_form.birth_date }}</div>
                                     </p>
                                     <hr class="hr_width">
                                     <p>
                                        <div class="form_title class_form">전화번호  </div>
-                                    <div class="class_form">{{ form.number }}</div>
+                                    <div class="class_form">{{ profile_form.number }}</div>
                                     </p>
                                     <hr class="hr_width">
                                     <p>
                                        <div class="form_title class_form">관심 카테고리</div>
-                                    <div class="class_form">{{ form.model_categories }}
+                                    <div class="class_form">{{ profile_form.model_categories }}
                                     </div>
                                     </p>
                                     <hr class="hr_width">
                                     <p>
                                        <div class="form_title class_form">E-mail  </div>
-                                    <div class="class_form">{{ user.email }}</div>
+                                    <div class="class_form">{{ user_form.email }}</div>
                                     </p>
                                     <hr class="hr_width">
                                     <p>
                                        <div class="form_title class_form">주소  </div>
-                                    <div class="class_form">{{ form.location }}</div>
+                                    <div class="class_form">{{ profile_form.location }}</div>
                                     </p>
 
                             <input type="submit" class="btn btn-primary right-button" value="저장하기" onclick="return confirm('저장하시겠습니까?')">

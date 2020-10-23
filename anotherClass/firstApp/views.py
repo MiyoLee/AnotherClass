@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Photo, Post, Comment, CComment, Bullet, Class, Category, ClassQna, Apply, ClassDate, Certificate, Education, ClassAnswer, ClassReview, Area, Level, Profile
-from .forms import ClassSale, PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm, ProfileForm
+from .forms import ClassSale, PostForm, CommentForm, CCommentForm, QuestionForm, SignupForm, CreateClass, ReviewForm, ApplyForm, AddTime, CertificateForm, EducationForm, AnswerForm, CheckPasswordForm, ProfileForm, UserForm
 from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 from django.template import RequestContext
@@ -78,15 +78,18 @@ def sybermoney(request):
 @login_required(login_url='/login/')
 def member(request):
     if request.method == "POST":
-        form = ProfileForm(request.POST, instance=request.user.profile)
-        if form.is_valid():
-            form.save()
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
             return redirect('mypage')
         else:
-            return render(request, 'firstApp/member_info_management.html', {'alert_flag': True, 'form': form})
+            return render(request, 'firstApp/member_info_management.html', {'alert_flag': True, 'user_form': user_form, 'profile_form': profile_form})
     else:
-        form = ProfileForm(instance=request.user.profile)
-        return render(request, 'firstApp/member_info_management.html', {'form': form})
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+        return render(request, 'firstApp/member_info_management.html', {'user_form': user_form, 'profile_form': profile_form})
 
 def class_align(request):
     classs = Class.objects.filter(on_permission=True)

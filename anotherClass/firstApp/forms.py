@@ -177,15 +177,28 @@ class ProfileForm(forms.ModelForm):
                 attrs={'class': 'form-control', 'style': 'width: 200%', 'placeholder': 'ex) 서울시 마포구 신촌로6길 18'}
             ),
             'number': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 80%', 'placeholder': 'ex) 010-1234-5678'}
+                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': 'ex) 010-1234-5678'}
             ),
             'birth_date': forms.DateInput(
-                attrs={'class': 'form-control', 'style': 'width: 70%', 'placeholder': 'ex) 1990-01-01'}
+                attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': 'ex) 1990-01-01'}
             ),
             'model_categories' : forms.CheckboxSelectMultiple(
             )
         }
 
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name','email')
+
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={'class': 'form-control', 'style': 'width: 80%'}
+            ),
+            'email': forms.TextInput(
+                attrs={'class': 'form-control', 'style': 'width: 150%', 'placeholder': 'ex) another@gmail.com'}
+            )
+        }
 
 class SignupForm(forms.ModelForm):
     password_확인 = forms.CharField(max_length=200, widget=forms.PasswordInput(attrs = {'placeholder': '필수 입력'}))
