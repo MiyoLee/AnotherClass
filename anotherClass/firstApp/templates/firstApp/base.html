@@ -1,4 +1,6 @@
 {% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -55,14 +57,21 @@
         <a class="nav-link" href="/community">Community</a>
       </li>
     </ul>
-    <!-- 검색 메뉴 -->
-    <form class="form-inline my-2 my-lg-0" action="{% url 'searchResult' %}" method="get">
+  <div class="nav-item nav-item-custom">
+    <div class="row">
+      <form class="form-inline my-2 my-lg-0" action="{% url 'searchResult' %}" method="get">
       {% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="검색" aria-label="Search" name="qq" value="{{ qq }}">
-      <button class="btn btn-primary my-2 my-sm-0" type="submit" style="height:38px">
+      <div class="col-xs-8" style="max-width:50vw;">
+        <input class="form-control mr-sm-2" type="search" placeholder="검색" aria-label="Search" name="qq" value="{{ qq }}">
+      </div>
+       <div class="col-xs-2" style="margin-left:10px;">
+          <button class="btn btn-primary my-2 my-sm-0" type="submit" style="height:38px">
         <i class="fas fa-search"></i>
-      </button>
-    </form>
+            </button>
+       </div>
+      </form>
+    </div>
+      </div>
   </div>
   </div>
 </nav>
