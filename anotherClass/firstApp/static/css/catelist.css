@@ -2,44 +2,40 @@
     display: inline-block;
     text-align: center;
     list-style:none;
-    height: 12rem;
     margin:0;
     padding:0;
-    position:relative;
-    bottom:50px;
 }
 .slide_title{
     height: 80px;
-    font-size: 20px;
+    font-size: min(5vw, 20px);
     display: block;
     color: #333;
-    margin-top:40px;
+    margin-top: 20px;
 }
 .cateitem{
+    max-width: 14vw;
     text-align: center;
-    margin:1rem;
-    margin-top:2rem;
+    margin: 0rem 1rem 1rem 1rem;
     float:left;
+}
+.icon-title{
+    font-size: min(3vw, 15px);
 }
 .catebar{
     text-align: center;
-    height: 10rem;
-    margin-bottom:2rem;
-    margin: 0rem 2rem;
-    padding:0rem 2rem;
-    text-align: center;
 }
+
 .cateicon{
     padding:0.3rem;
 }
 .icon{
+    max-width: 8vw;
     width:50px;
 }
 
 .for_slick_slider{
 max-width:1500px;
 position:relative;
-bottom:30px;
 }
 
 .for_slick_slider .items{

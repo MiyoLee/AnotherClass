@@ -21,14 +21,12 @@
     <nav class="nav nav-masthead justify-content-end">
       {% if user.is_active %}
       <a class="nav-link"><strong>{{user.username}}님, 환영합니다!</strong></a>
-      <a class="nav-link active" href="/">Home</a>
       <a class="nav-link" href="/logout">Logout</a>
       <a class="nav-link" href="#">Notice</a>
       <a class="nav-link" href="/mypage">Mypage</a>
       {% else %}
-      <a class="nav-link active" href="/">Home</a>
       <a class="nav-link" href="/login">Login</a>
-      <a class="nav-link" href="#">Notice</a>
+      <a class="nav-link" href="/signup">Join</a>
       {% endif %}
     </nav>
   </div>
@@ -38,7 +36,9 @@
   <div class="container-fluid" style="width:1500px;">
   <!-- 메뉴의 홈페이지 이름 -->
     <a class="navbar-brand logo" href="/main"><img src="{% static 'image\logo_1.png' %}" alt="Logo" style="max-width: 30vw; width:150px; padding-bottom:10px;"></a>
-  <!-- 모바일때 표시되는 메뉴 버튼(PC 버젼에서는 보이지 않는다.)  -->
+    <a class="navbar-brand logo_2" style="display:none;" href="/main"><img src="{% static 'image\logo_2.png' %}" alt="Logo" style="max-width: 50vw; height:auto; width:300px;"></a>
+
+    <!-- 모바일때 표시되는 메뉴 버튼(PC 버젼에서는 보이지 않는다.)  -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -75,7 +75,6 @@
   </div>
   </div>
 </nav>
-
 <main role="main">
   {% block upper_content %}
 
@@ -90,3 +89,26 @@
       email: lee@gmail.com</p>
   </div>
 </footer>
+<script>
+  window.addEventListener("resize", slideResize);
+  function slideResize() {
+      if(window.innerWidth < 992){
+          $('.logo').css("display", "none");
+          $('.logo_2').css("display", "block");
+      }
+      else{
+          $('.logo_2').css("display", "none");
+          $('.logo').css("display", "block");
+      }
+  }
+  $( document ).ready(function() {
+     if(window.innerWidth < 992){
+          $('.logo').css("display", "none");
+          $('.logo_2').css("display", "block");
+      }
+      else{
+          $('.logo_2').css("display", "none");
+          $('.logo').css("display", "block");
+      }
+  });
+</script>

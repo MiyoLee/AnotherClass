@@ -21,3 +21,24 @@ $(function(){
     });
 });
 
+$(window).resize(function() {
+  if ($(window).width() < 450) {
+    $('.autoplay').slick('slickSetOption', 'slidesToShow', 1);
+    $('.autoplay').css("width", '86vw');
+  }
+  else{
+    $('.autoplay').slick('slickSetOption', 'slidesToShow', 5);
+    $('.autoplay').css("width", '');
+  }
+});
+
+$(document).ready(function() {
+  if ($(window).width() < 450) {
+    $('.autoplay').slick('slickSetOption', 'slidesToShow', 1);
+    $('.autoplay').css("width", '86vw');
+  }
+  else{
+    $('.autoplay').slick('slickSetOption', 'slidesToShow', 5);
+    $('.autoplay').css("width", '');
+  }
+});
