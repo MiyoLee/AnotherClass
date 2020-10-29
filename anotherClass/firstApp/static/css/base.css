@@ -80,20 +80,18 @@ text-decoration:none;
     color:#6d6b89  !important;
 }
 
-.btn-circle.btn-xl {
+.btn-rect.btn-xl {
+    max-width: 20vw;
     width: 105px;
     height: 105px;
-    padding: 10px 16px;
-    border-radius: 50px;
     font-size: 15px;
     line-height: 1.33;
 }
 
-.btn-circle {
+.btn-rect {
     width: 30px;
     height: 30px;
     padding: 6px 0px;
-    border-radius: 15px;
     border:none;
     text-align: center;
     font-size: 12px;
@@ -101,7 +99,7 @@ text-decoration:none;
     line-height: 1.42857;
     background-color:#F3FAFD;
 }
-.btn-circle:hover{
+.btn-rect:hover{
 background-color:#D6EEF1;
 border:none;
 }
@@ -131,3 +129,4 @@ color:red;
 .empty_heart{
 color:red;
 }
+

@@ -1,4 +1,6 @@
 {% load static %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
   integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
@@ -14,6 +16,7 @@
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
 
+<<<<<<< HEAD
 <div class="inner">
   <nav class="nav nav-masthead justify-content-end">
     {% if user.is_active %}
@@ -26,41 +29,67 @@
     <a class="nav-link" href="/login">Login</a>
     {% endif %}
   </nav>
+=======
+<div class="nav inner">
+  <div class="container-fluid" style="width:1500px;">
+    <nav class="nav nav-masthead justify-content-end">
+      {% if user.is_active %}
+      <a class="nav-link"><strong>{{user.username}}님, 환영합니다!</strong></a>
+      <a class="nav-link" href="/logout">Logout</a>
+      <a class="nav-link" href="#">Notice</a>
+      <a class="nav-link" href="/mypage">Mypage</a>
+      {% else %}
+      <a class="nav-link" href="/login">Login</a>
+      <a class="nav-link" href="/signup">Join</a>
+      {% endif %}
+    </nav>
+  </div>
+>>>>>>> 0b334f0147c2dc9c0f27fe19829fa051511d5fa7
 </div>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
+  <div class="container-fluid" style="width:1500px;">
+  <!-- 메뉴의 홈페이지 이름 -->
+    <a class="navbar-brand logo" href="/main"><img src="{% static 'image\logo_1.png' %}" alt="Logo" style="max-width: 30vw; width:150px; padding-bottom:10px;"></a>
+    <a class="navbar-brand logo_2" style="display:none;" href="/main"><img src="{% static 'image\logo_2.png' %}" alt="Logo" style="max-width: 50vw; height:auto; width:300px;"></a>
 
-<nav class="navbar navbar-expand-lg  navbar-light navbar-custom">
-  <a class="navbar-brand" href="/main"><img src="{% static 'image\logo_1.png' %}" alt="Logo" style="width:150px; padding-bottom:10px;"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-
+    <!-- 모바일때 표시되는 메뉴 버튼(PC 버젼에서는 보이지 않는다.)  -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarCollapse">
+  <!-- 메인 메뉴 아이템 -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <!-- Home 메뉴 -->
       <li class="nav-item nav-item-custom">
         <a class="nav-link" href="/class_search">Class</a>
       </li>
+      <!-- Link 메뉴 -->
       <li class="nav-item nav-item-custom">
         <a class="nav-link" href="/intro_createclass">Create</a>
       </li>
       <li class="nav-item nav-item-custom">
         <a class="nav-link" href="/community">Community</a>
       </li>
-      <li class="nav-item nav-item-custom">
-        <a class="nav-link" href="#">Introduction</a>
-      </li>
     </ul>
-    <form class="form-inline mt-2 mt-md-0" action="{% url 'searchResult' %}" method="get">
+  <div class="nav-item nav-item-custom">
+    <div class="row">
+      <form class="form-inline my-2 my-lg-0" action="{% url 'searchResult' %}" method="get">
       {% csrf_token %}
-      <input class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요." aria-label="Search" name="qq" value="{{ qq }}">
-      <button class="btn btn-primary my-2 my-sm-0" type="submit" style="height:38px">
+      <div class="col-xs-8" style="max-width:50vw;">
+        <input class="form-control mr-sm-2" type="search" placeholder="검색" aria-label="Search" name="qq" value="{{ qq }}">
+      </div>
+       <div class="col-xs-2" style="margin-left:10px;">
+          <button class="btn btn-primary my-2 my-sm-0" type="submit" style="height:38px">
         <i class="fas fa-search"></i>
-      </button>
-    </form>
+            </button>
+       </div>
+      </form>
+    </div>
+      </div>
+  </div>
   </div>
 </nav>
-
 <main role="main">
   {% block upper_content %}
 
@@ -75,3 +104,26 @@
       email: lee@gmail.com</p>
   </div>
 </footer>
+<script>
+  window.addEventListener("resize", slideResize);
+  function slideResize() {
+      if(window.innerWidth < 992){
+          $('.logo').css("display", "none");
+          $('.logo_2').css("display", "block");
+      }
+      else{
+          $('.logo_2').css("display", "none");
+          $('.logo').css("display", "block");
+      }
+  }
+  $( document ).ready(function() {
+     if(window.innerWidth < 992){
+          $('.logo').css("display", "none");
+          $('.logo_2').css("display", "block");
+      }
+      else{
+          $('.logo_2').css("display", "none");
+          $('.logo').css("display", "block");
+      }
+  });
+</script>
