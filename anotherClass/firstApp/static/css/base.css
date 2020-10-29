@@ -53,15 +53,16 @@ height:50px;
 color:#333333;
 text-decoration:none;
 }
+
 /*buttons*/
 .btn-primary,  .btn-primary:active, .btn-primary:visited {
-    background-color: #9B9EEA !important;
+    background-color:#6C5ADA !important;
     border:none !important;
     color:white !important;
 
 }
 .btn-primary:hover{
-    background-color: #555792 !important;
+    background-color: #403E84 !important;
     border:none !important;
     color:white !important;
 

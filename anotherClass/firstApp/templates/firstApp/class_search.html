@@ -9,48 +9,60 @@
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 <script type="text/javascript" src="{% static 'js/priceInput.js' %}"></script>
 
+
+
 {% load widget_tweaks %}
 <form method="get">
-  <div class="container bg-light">
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">카테고리</label>
-            <div>
+  <div class="container shadow p-3 mb-5 bg-white rounded select-box">
+    <div class="search-title">클래스 검색</div>
+    <hr>
+        <div class="form-group row select-row">
+            <label class="col-sm-2 col-form-label filter-name">카테고리</label>
+            <div class="cate-checklist">
               {% for choice in filter.form.category %}
-                <label class="checkbox-inline">
+                <label class="checkbox-inline filter-item">
                   {{choice.choice_label}} {{choice.tag}}&nbsp;
                 </label>
               {% endfor %}
             </div>
         </div>
-          <div class="form-group row">
-              <label class="col-sm-2 col-form-label">지역</label>
+          <div class="form-group row select-row">
+              <label class="col-sm-2 col-form-label filter-name">지역</label>
               <div>{% render_field filter.form.area class="form-control" %}</div>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <label class="col-sm-2 col-form-label">레벨</label>
+              <label class="col-sm-2 col-form-label filter-name" style="margin-left:22.1rem;">레벨</label>
               <div>{% render_field filter.form.level class="form-control" %}</div>
           </div>
-      <div class="form-group row">
-          <label class="col-sm-2 col-form-label">가격대</label>
-          <span><input class="price_search_input" id="minPrice" name="price1" type="text" maxlength="9" value={{price1}}></span>
-          <span>원 ~</span>
-          <span><input class="price_search_input" id="maxPrice" name="price2" type="text" maxlength="9" value={{price2}}></span>
-          <span>원</span>
-          &nbsp;<span id="errmsg"></span>
+          <div class="form-group row select-row">
+              <label class="col-sm-2 col-form-label filter-name">수업일</label>
+              <span><input class="form-control" id="minDate" name="date1" type="date" value={{date1}}></span>
+              <span>&nbsp;~&nbsp;</span>
+              <span><input class="form-control" id="maxDate" name="date2" type="date" value={{date2}}></span>
+              <label class="col-sm-2 col-form-label filter-name" style="margin-left:5rem;">수업 형태</label>
+              <div>{% render_field filter.form.mode class="form-control" %}</div>
+          </div>
+      <div class="form-group row select-row">
+          <label class="col-sm-2 col-form-label filter-name">가격대</label>
+          <span><input class="form-control price_search_input" id="minPrice" name="price1" type="text" maxlength="9" value={{price1}}></span>
+          <span class="won">&nbsp;&#8361; ~</span>&nbsp;&nbsp;
+          <span><input class="form-control price_search_input" id="maxPrice" name="price2" type="text" maxlength="9" value={{price2}}></span>
+          <span class="won">&nbsp;&#8361;</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span id="errmsg"></span>
       </div>
       <div class="text-right">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-info">
           적용하기
         </button>
       </div>
   </div>
 </form>
+
 {% endblock upper_content%}
 {% block content %}
 
-    <div class="album py-5 bg-light">
-
+    <div class="album py-5">
         <div class="container">
-            <!--<form  action="{% url 'class_align' %}" method="get">
+            <!--
+            <form  action="{% url 'class_align' %}" method="get">
                 <div class="filter-item" align="right">
                     <span class="filter-name">정렬</span>
                     <select name="r" value="{{ r }}">
@@ -59,7 +71,8 @@
                         <option value="2">높은 가격순</option>
                     </select><input type="submit" value="적용">
                 </div>
-            </form>-->
+            </form>
+            -->
             <div class="row">
               {% for class in filter.qs %}
               <div class="col-md-4">

@@ -11,5 +11,5 @@ class ClassFilter(FilterSet):
 
     class Meta:
         model = Class
-        fields = ['category', 'area', 'level']
+        fields = ['category', 'area', 'level', 'mode']
 
