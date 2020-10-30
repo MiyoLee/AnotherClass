@@ -25,7 +25,7 @@ class Profile(models.Model):
     gender = models.CharField(max_length=80, choices=GENDER_CHOICES, null=True, blank=True)
     location = models.CharField(max_length=100, blank=True)
     birth_date = models.DateField(max_length=10, null=True, blank=True)
-    model_categories = models.ManyToManyField('firstApp.Category', null = True, blank = True, related_name='model_categories')
+    model_categories = models.ManyToManyField('firstApp.Category', blank = True, related_name='model_categories')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
