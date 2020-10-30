@@ -115,7 +115,7 @@ def class_search(request):
     price2 = request.GET.get('price2', '')
     date1 = request.GET.get('date1', '')
     date2 = request.GET.get('date2', '')
-    class_list = Class.objects.filter(on_permission=True)
+    class_list = Class.objects.filter(on_permission=True).order_by('-like_count')
     if is_valid_queryparam(price1):
         class_list = class_list.filter(sale_price__gte=price1)
     if is_valid_queryparam(price2):
@@ -126,10 +126,7 @@ def class_search(request):
     if is_valid_queryparam(date1):
         class_list = class_list.filter(date_class__date__lte=date2).distinct()
 
-
     class_filter = ClassFilter(request.GET, queryset=class_list)
-
-    #classs = Class.objects.filter(on_permission=True).order_by('-like_count')
 
     return render(request, 'firstApp/class_search.html', {'filter': class_filter,
                                                           'price1': price1, 'price2': price2,
