@@ -12,7 +12,7 @@ $(function(){
 $(function(){
     $('.autoplay').slick({
     slidesToScroll: 1,
-    slidesToShow: 5,
+    slidesToShow: 4,
     autoplay: true,
     autoplaySpeed: 4000,
     infinite: false,
@@ -27,7 +27,7 @@ $(window).resize(function() {
     $('.autoplay').css("width", '86vw');
   }
   else{
-    $('.autoplay').slick('slickSetOption', 'slidesToShow', 5);
+    $('.autoplay').slick('slickSetOption', 'slidesToShow', 4);
     $('.autoplay').css("width", '');
   }
 });
@@ -38,7 +38,7 @@ $(document).ready(function() {
     $('.autoplay').css("width", '86vw');
   }
   else{
-    $('.autoplay').slick('slickSetOption', 'slidesToShow', 5);
+    $('.autoplay').slick('slickSetOption', 'slidesToShow', 4);
     $('.autoplay').css("width", '');
   }
 });
