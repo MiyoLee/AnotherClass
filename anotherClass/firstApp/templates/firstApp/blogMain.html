@@ -102,8 +102,9 @@
 <div class="slide_title"> 지금 당신에게 추천하는 원데이클래스 ! </div>
 {% endif %}
     <div class="autoplay">
-              {% for class in classs %}
-              <div class="card mb-4 shadow-sm" style="height:350px; margin-right:20px;">
+
+              {% for class in best %}
+              <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
                   <a class="productdetail"
                href="{% url 'product' class.id %}">
               <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
@@ -193,7 +194,6 @@
           {% endfor %}
 </div>
     <script>
-
         window.addEventListener("resize", slideResize);
         function slideResize() {
             if(window.innerWidth < 1500){

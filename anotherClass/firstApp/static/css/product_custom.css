@@ -123,6 +123,17 @@ font-size:20px;
 .product-review-date{
 float:right;
 }
+.like_block_mb{
+    position: absolute;
+    width: 72px;
+    height: 35px;
+    background-color: #fff;
+    border-radius: 10px;
+    bottom: 40px;
+    left: 10px;
+    text-align: center;
+    padding-top: 5px;
+}
 .like_block{
 position:absolute;
 width:92px;
@@ -194,19 +205,23 @@ position:relative;
 
 }
 
-.product-info{
+.product-info-o{
  float:left;
  width:500px;
  padding-top: 10px;
  padding-left:30px;
-
 }
 
 .center{
 text-align:center;
 }
-
-.product-info h2{
+.product-info-mb h2{
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+    text-align: center;
+}
+.product-info-o h2{
 font-weight:bold;
 font-size:20px;
 padding-top:10px;
@@ -530,7 +545,17 @@ position: relative;
     padding:0;
 
 }
-.proitem{
+.product-info-mb .proitem{
+    text-align: center;
+    margin: 10px;
+    float: left;
+    height: 20vw;
+    width: 20vw;
+    position: relative;
+    border: 4px solid #9B9EEA;
+    border-radius: 10px;
+}
+.product-info-o .proitem{
     text-align: center;
     margin: 1rem;
     float: left;
@@ -541,7 +566,10 @@ position: relative;
     border: 4px solid #9B9EEA;
     border-radius: 10px;
 }
-
+.product-info-mb form{
+    text-align: right;
+    margin-right: 50px;
+}
 .proitem-item{
     font-weight: bold;
     padding-top: 15px;
