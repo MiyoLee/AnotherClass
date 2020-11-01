@@ -20,6 +20,8 @@ from django.db.models import Q
 from annoying.functions import get_object_or_None
 from django.shortcuts import render
 from .filters import ClassFilter
+from django.db.models import IntegerField
+from django.db.models.functions import Cast
 '''
 class ClassListView(ListView):
     model = Class
@@ -104,27 +106,23 @@ def class_align(request):
     else:
         classs = Class.objects.filter(on_permission=True)
     return render(request, 'firstApp/class_search.html', {'r': r, 'classs': classs,
-    'levels' : levels, 'areas': areas, 'categorys' : categorys})
+    'levels': levels, 'areas': areas, 'categorys': categorys})
 
 
 def is_valid_queryparam(param):
     return param != '' and param is not None
 def class_search(request):
-    #filter 기능...건들지마..
     price1 = request.GET.get('price1', '')
     price2 = request.GET.get('price2', '')
     date1 = request.GET.get('date1', '')
     date2 = request.GET.get('date2', '')
     class_list = Class.objects.filter(on_permission=True).order_by('-like_count')
-    if is_valid_queryparam(price1):
-        class_list = class_list.filter(sale_price__gte=price1)
-    if is_valid_queryparam(price2):
-        class_list = class_list.filter(sale_price__lte=price2)
+    if is_valid_queryparam(price1) & is_valid_queryparam(price2):
+        class_list = class_list.annotate(price_as_int=Cast('sale_price', output_field=IntegerField()),)
+        class_list = class_list.filter(price_as_int__range=(int(price1), int(price2)))
 
-    if is_valid_queryparam(date1):
-        class_list = class_list.filter(date_class__date__gte=date1).distinct()
-    if is_valid_queryparam(date1):
-        class_list = class_list.filter(date_class__date__lte=date2).distinct()
+    if is_valid_queryparam(date1) & is_valid_queryparam(date1):
+        class_list = class_list.filter(date_class__date__range=(date1, date2)).distinct()
 
     class_filter = ClassFilter(request.GET, queryset=class_list)
 
