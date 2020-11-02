@@ -1,0 +1,66 @@
+{% extends 'firstApp/base.html' %}
+{% load static %}
+
+{% block content %}
+{% if user.is_active %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="left-sidebar">
+            <ul>
+              <li>
+								<a class= "nounderline" href="{% url 'mypage' %}"><h3>MY PAGE</h3></a>
+							</li><br>
+							<li data-toggle="tab">
+								<a class="nav-link"><strong>{{user.username}}님</strong></a>
+									<br>
+									<li class="nav-item">
+										<a class="nav-link" href="/mypage/mylike">관심 클래스</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="/mypage/myApply">수강 클래스</a>
+									</li>
+									<li class="nav-item">
+									  <a class="nav-link" href="/mypage/myClass">개설 클래스</a>
+									</li>
+
+							</li>
+						</ul>
+          </div>
+        </div>
+
+          <div class="col-sm-9">
+            <h4 style="font-weight:bold; color:#B6B3E5;">승인 받지 않은 클래스</h4><br><br>
+            <table class="table">
+              <tr>
+                <th>클래스</th>
+                <th></th>
+                <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+              </tr>
+              {% for class in classs %}
+              <tr>
+                <td>
+                    <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
+                </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="lighter"><a class="abc" style="color:blue;" onclick="return confirm('클래스를 승인하시겠습니까?')" href="{% url 'class_permit' class.id %}">승인</a></td>
+                  <td class="lighter"><a class="abc" style="color:red;" onclick="return confirm('삭제한 클래스는 복구할 수 없습니다.\n정말 삭제하시겠습니까?')" href="{% url 'product_remove' class.id %}">삭제</a></td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+      </div>
+    </div>
+{% else %}
+<script type="text/javascript">
+    alert('잘못된 접근입니다. \n로그인을 해주세요.')
+    window.location.href = '/login';
+  </script>
+{% endif %}
+{% endblock content %}

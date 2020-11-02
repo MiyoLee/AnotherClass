@@ -143,6 +143,12 @@ class Class(models.Model):
     on_sale = models.BooleanField(null=True, default=False)
     sale_price = models.CharField(null=True, blank=True, max_length=10)
     on_permission = models.BooleanField(null=True, default=False)
+
+    class Meta:
+        permissions = [
+            ('can_permit', 'Can permit')
+        ]
+
     def __str__(self):
         return self.title
 

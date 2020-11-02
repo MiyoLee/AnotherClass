@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.utils import timezone
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.http import HttpResponse
@@ -51,6 +52,12 @@ def intro_createclass(request):
 def myClass(request):
     classs = Class.objects.filter(author=request.user)
     return render(request, 'firstApp/classlist.html', {'classs':classs})
+
+@login_required(login_url='/login/')
+@permission_required('firstApp.can_permit')
+def permit(request):
+    classs = Class.objects.filter(on_permission=False)
+    return render(request, 'firstApp/permit_admin.html', {'classs':classs})
 
 @login_required(login_url='/login/')
 def myApply(request):
@@ -197,6 +204,12 @@ def product_remove(request, pk):
     product = get_object_or_404(Class, pk=pk)
     product.delete()
     return redirect('myClass')
+
+def class_permit(request, pk):
+    product = get_object_or_404(Class, pk=pk)
+    product.on_permission = True
+    product.save()
+    return redirect('permit')
 
 def time_remove(request, pk):
     time = get_object_or_404(ClassDate, pk=pk)
