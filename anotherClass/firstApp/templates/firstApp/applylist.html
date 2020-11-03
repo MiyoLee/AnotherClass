@@ -56,7 +56,7 @@
                         <div class="collapse" id="{{apply.pk}}">
                             <div class="card card-body lighter" >
                                 <p>수업시간 : <span class="font-weight-bold">{{apply.date.date}}</span></p>
-                                <p>가격 : {{apply.inClass.price}}￦</p>
+                                <p>가격 : {{apply.inClass.sale_price}}￦</p>
                                 <p>신청자 : {{apply.name}}</p>
                                 <p>신청 내용 : {{apply.text | safe}}</p>
                                 <a class="gotoClass" href="{% url 'product' apply.inClass.pk %}">클래스 바로가기</a>

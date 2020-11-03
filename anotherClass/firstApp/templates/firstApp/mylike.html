@@ -44,7 +44,7 @@
                   <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
                 </td>
                 <td class="lighter">{{ class.tutor }}</td>
-                <td class="lighter">{{ class.price|intcomma }}</td>
+                <td class="lighter">{{ class.sale_price|intcomma }}</td>
               </tr>
               {% endfor %}
             </table>
