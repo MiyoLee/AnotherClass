@@ -360,9 +360,10 @@ def classSale(request, class_id):
         form = ClassSale(request.POST, instance=class_detail)
         if form.is_valid():
             post = form.save(commit=False)
-            post.sale_price = post.sale_price.replace(',', '')
             if post.sale_price == None :
                 post.sale_price = class_detail.price
+            else:
+                post.sale_price = post.sale_price.replace(',', '')
             post.save()
             return HttpResponseRedirect("/product/{}".format(class_id))
         else:
