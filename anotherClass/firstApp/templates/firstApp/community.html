@@ -75,7 +75,7 @@
 											{{forloop.counter|add:"5"}}.
 											[{{ post.bullet }}]
 											<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
-												{{ post.title|truncatechars:40 }}
+												{{ post.title|truncatechars:20 }}
 												<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
 											</a>
 										</li>
@@ -106,7 +106,7 @@
 									<td class="lighter">
 										<span style="color:#B3B2C3; font-weight:bold;">{{ post.bullet }}</span>&nbsp;
 										<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
-											{{ post.title }}
+											{{ post.title|truncatechars:30}}
 										</a>
 										<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
 									</td>
