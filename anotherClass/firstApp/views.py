@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 from django.template import RequestContext
 from django.utils import timezone
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.views.generic import TemplateView
@@ -92,6 +92,7 @@ def member(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, '수정되었습니다')
             return redirect('mypage')
         else:
             return render(request, 'firstApp/member_info_management.html', {'alert_flag': True, 'user_form': user_form, 'profile_form': profile_form})

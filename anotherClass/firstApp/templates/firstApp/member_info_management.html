@@ -1,12 +1,14 @@
 {% extends 'firstApp/base.html'%}
 {% load static %}
-
+{% include 'main/includes/messages.html' %}
 {% block content %}
+
 {% if alert_flag %}
 <script>alert("폼을 올바르게 작성해주세요. (예시 참고)")</script>
 {% endif %}
+
 {% if user.is_active %}
-  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 <link href="{% static 'css/createclass.css' %}" rel="stylesheet">
 <section>
     <div class="contents">
