@@ -92,7 +92,7 @@ def member(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, '수정되었습니다')
+            messages.success(request, ' ')
             return redirect('mypage')
         else:
             return render(request, 'firstApp/member_info_management.html', {'alert_flag': True, 'user_form': user_form, 'profile_form': profile_form})

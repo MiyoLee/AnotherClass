@@ -3,20 +3,35 @@
 
 {% block content %}
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
-    {% endfor %}
-</ul>
-{% endif %}
+
 
 {% if user.is_active %}
 <link rel="stylesheet" href="{% static 'css/paginate.css' %}">
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
 <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
+
 		<div class="container">
-			<div class="mytop">
+			{% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<div class="container">
+					<div class="row">
+						<div class="col">
+								<div class="alert alert-success">
+										수정되었습니다.
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+								</div>
+						</div>
+					</div>
+				</div>
+				<li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+			
+			<div class="mytop">		
 				<div class="myname">{{user.username}}님, 안녕하세요!</div><br>
 				<div class="mypagetitle">MY PAGE</div>
 			</div>
