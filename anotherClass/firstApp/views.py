@@ -205,6 +205,7 @@ def createclass(request):
 def product_remove(request, pk):
     product = get_object_or_404(Class, pk=pk)
     product.delete()
+    messages.success(request, ' ')
     return redirect('myClass')
 
 def class_permit(request, pk):

@@ -31,8 +31,6 @@
         </div>
 
         <div class="col-sm-9">
-            <h4 style="font-weight:bold; color:#B6B3E5;">신청한 클래스</h4><br><br>
-
             {% if messages %}
 			<ul class="messages">
 				{% for message in messages %}
@@ -51,7 +49,8 @@
 				<li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
 				{% endfor %}
 			</ul>
-			{% endif %}
+            {% endif %}
+            <h4 style="font-weight:bold; color:#B6B3E5;">신청한 클래스</h4><br><br>
             <table class="table">
                 <tr>
                     <th>클래스</th>
