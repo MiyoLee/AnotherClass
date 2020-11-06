@@ -71,6 +71,7 @@ def cancelApply(request, pk):
     profile = request.user.profile
     profile.sybermoney = profile.sybermoney + int(apply.inClass.sale_price)
     profile.save()
+    messages.success(request, ' ')
     return redirect('myApply')
 
 @login_required(login_url='/login/')
@@ -658,7 +659,8 @@ def change_pw(request):
                 user.set_password(new_password)
                 user.save()
                 auth.login(request,user)
-                return redirect('/main')
+                messages.success(request, ' ')
+                return redirect('/mypage')
             else:
                 return render(request, 'firstApp/change_pw.html', {'alert_flag1': True})
         else:
