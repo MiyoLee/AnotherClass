@@ -3,9 +3,7 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
-{% if alert_flag %}
-<script>alert("회원가입이 완료되었습니다! \n로그인 해주세요.")</script>
-{% endif %}
+
 {% if alert_flag1 %}
 <script>alert("비밀번호와 비밀번호 확인이 다릅니다.")</script>
 {% endif %}

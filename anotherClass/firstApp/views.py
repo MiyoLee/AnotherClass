@@ -639,6 +639,7 @@ def signup(request):
                 new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'])
                 new_user.name = form.cleaned_data['first_name']
                 new_user.save()
+                messages.success(request, ' ')
                 return redirect('/main')
             else:
                 return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag1': True})
