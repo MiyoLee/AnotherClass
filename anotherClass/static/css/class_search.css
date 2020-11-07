@@ -100,3 +100,30 @@ color: #4ECAC6;
     height:72px;
 }
 
+.thumb{
+    height:261px;
+}
+
+@media (max-width: 600px) {
+    .card{
+        width:160px;
+        height:220px;
+    }
+    .card-body{
+        padding:8px;
+        height:180px;
+    }
+    .class_title{
+        font-size:10px;
+        height:40px;
+        padding:2px;
+    }
+    .class_price{
+        display:none;
+    }
+    .tutor_name{
+        font-size:8px;
+        color: #4ECAC6;
+        padding:0;
+    }
+}

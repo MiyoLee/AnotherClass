@@ -15,6 +15,10 @@
 .cate-checklist{
   margin-top:1rem;
 }
+cate-checkitem{
+    display:inline-block;
+    width:20px;
+}
 .filter-item{
     padding:7px 15px 7px 15px;
     margin:0;
@@ -25,6 +29,7 @@
     font-weight:bold;
     color:#707C80;
 }
+
 .won{
     padding:6px;
 }
@@ -34,10 +39,47 @@
     position: relative;
     right: 11rem;
 }
+.price_form{
+    width:100%;
+}
+.price_search_input{
+    width:120px;
+}
 #errmsg
 {
 color: blue;
 }
-.price_search_input{
-    width:120px;
+
+@media (max-width: 600px){
+    .row2{
+        display:none;
+    }
+    .row3{
+        display:none;
+    }
+    .row4{
+        margin-bottom:40px;
+    }
+    .cate-checklist{
+      margin-top:0;
+      font-size:10px;
+    }
+    .filter-item{
+        width:120px;
+        padding:7px 15px 7px 15px;
+        margin:0;
+    }
+    .filter-name{
+        font-size:18px;
+        width:100%;
+        margin-bottom:10px;
+    }
+
+    .price_form{
+
+    }
+    .price_search_input{
+        width:90px;
+    }
+    .btn-al
 }

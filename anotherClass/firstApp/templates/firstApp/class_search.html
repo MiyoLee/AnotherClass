@@ -3,12 +3,12 @@
 {% load humanize %}
 {% load bootstrap %}
 {% block upper_content %}
-
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <link rel="stylesheet" href="{% static 'css/selectbox.css' %}">
-<link rel="stylesheet" href="{% static 'css/catelist.css' %}">
+<link rel="stylesheet" href="{% static 'css/class_search.css' %}">
 <link rel="stylesheet" href="{% static 'css/base.css' %}">
 <script type="text/javascript" src="{% static 'js/priceInput.js' %}"></script>
-
 
 
 {% load widget_tweaks %}
@@ -16,23 +16,26 @@
   <div class="container shadow p-3 mb-5 bg-white rounded select-box">
     <div class="search-title">클래스 검색</div>
     <hr>
-        <div class="form-group row select-row">
+        <div class="form-group row select-row row1">
             <label class="col-sm-2 col-form-label filter-name">카테고리</label>
             <div class="cate-checklist">
               {% for choice in filter.form.category %}
                 <label class="checkbox-inline filter-item">
-                  {{choice.choice_label}} {{choice.tag}}&nbsp;
+                  {{choice.tag}} {{choice.choice_label}}
                 </label>
+
               {% endfor %}
             </div>
         </div>
-          <div class="form-group row select-row">
+          <div class="form-group row select-row row2">
               <label class="col-sm-2 col-form-label filter-name">지역</label>
               <div>{% render_field filter.form.area class="form-control" %}</div>
+
               <label class="col-sm-2 col-form-label filter-name" style="margin-left:22.1rem;">레벨</label>
               <div>{% render_field filter.form.level class="form-control" %}</div>
+
           </div>
-          <div class="form-group row select-row">
+          <div class="form-group row select-row row3">
               <label class="col-sm-2 col-form-label filter-name">수업일</label>
               <span><input class="form-control" id="minDate" name="date1" type="date" value={{date1}}></span>
               <span>&nbsp;~&nbsp;</span>
@@ -40,13 +43,15 @@
               <label class="col-sm-2 col-form-label filter-name" style="margin-left:5rem;">수업 형태</label>
               <div>{% render_field filter.form.mode class="form-control" %}</div>
           </div>
-      <div class="form-group row select-row">
+      <div class="form-group row select-row row4">
           <label class="col-sm-2 col-form-label filter-name">가격대</label>
+
           <span><input class="form-control price_search_input" id="minPrice" name="price1" type="text" maxlength="9" value={{price1}}></span>
           <span class="won">&nbsp;&#8361; ~</span>&nbsp;&nbsp;
           <span><input class="form-control price_search_input" id="maxPrice" name="price2" type="text" maxlength="9" value={{price2}}></span>
           <span class="won">&nbsp;&#8361;</span>
           &nbsp;&nbsp;&nbsp;&nbsp;<span id="errmsg"></span>
+
       </div>
       <div class="text-right">
         <button type="submit" class="btn btn-info">
@@ -75,35 +80,25 @@
             -->
             <div class="row">
               {% for class in filter.qs %}
-              <div class="col-md-4">
+              <div class="col-md-4 class_row">
                 <a class="productdetail"
                    href="{% url 'product' class.id %}">
                   <div class="card mb-4 shadow-sm">
-                  <img src="{{class.photo.url}}" width="338px" height="250px" style="align-self: center;margin-top: 5px;">
+                      <img class="thumb" src="{{class.photo.url}}">
                       {% if class.on_sale == True %}
                       <div class="on_sale">SALE</div>
                       {% endif %}
                     <div class="card-body">
-                    <p class="class_title">{{class.title}}</p>
-
-                      <small class="tutor_name">{{class.tutor}}</small>
+                        <p class="class_title">{{class.title}}</p>
+                        <small class="tutor_name">{{class.tutor}}</small>
 
                         {% if class.on_sale == True %}
                         <span class="class_price">{{class.sale_price|intcomma}} 원</span>
-                            <span style="
-                                text-decoration: line-through;
-        color: #848484;
-        font-size: 16px;
-        float: right;
-        font-weight: bolder;
-        position: relative;
-        bottom: 25px;
-        margin-right: 3px;">{{class.price|intcomma}} 원</span>
+                            <span class="original_price">{{class.price|intcomma}} 원</span>
 
                         {% else %}
                         <span class="class_price">{{class.price|intcomma}} 원</span>
                         {% endif %}
-
                     </div>
                   </div>
                 </a>

@@ -9,6 +9,9 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+img{
+    max-width:100%;
+}
 
 .class_price{
 color:#4ECAC6;
@@ -53,6 +56,7 @@ height:50px;
 color:#333333;
 text-decoration:none;
 }
+
 
 /*buttons*/
 .btn-primary,  .btn-primary:active, .btn-primary:visited {

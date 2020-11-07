@@ -2,26 +2,104 @@
     display: inline-block;
     text-align: center;
     list-style:none;
-    height: 12rem;
     margin:0;
     padding:0;
 }
+.slide_title{
+    height: 80px;
+    font-size: min(4vw, 20px);
+    display: block;
+    color: #333;
+    margin-top: 20px;
+}
 .cateitem{
+    max-width: 14vw;
     text-align: center;
-    margin:1rem;
-    margin-top:2rem;
+    margin: 0rem 1rem 1rem 1rem;
     float:left;
+}
+.icon-title{
+    font-size: min(3vw, 15px);
 }
 .catebar{
     text-align: center;
-    height: 15rem;
-    margin:2rem;
-    padding:2rem;
-    text-align: center;
 }
+
 .cateicon{
     padding:0.3rem;
 }
 .icon{
+    max-width: 8vw;
     width:50px;
+}
+
+.for_slick_slider{
+max-width:1500px;
+position:relative;
+}
+
+.for_slick_slider .items{
+width:600px;
+height:450px;
+z-index:1;
+}
+
+.for_slick_slider .items img{
+width:600px;
+height:450px;
+}
+
+.for_slick_slider .itemss{
+z-index:1;
+}
+
+.autoplay :hover{
+text-decoration:none;
+}
+.class_title :hover{
+color: #333333;
+}
+
+.for_slick_slider .itemss img{
+}
+
+.tutor_name{
+font-size:18px;
+color: #4ECAC6;
+    font-weight:bold;
+    padding-top:20px;
+    width:200px;
+  text-align:center;
+}
+
+.on_sale{
+    position: absolute;
+    width: 52px;
+    font-weight: bolder;
+    height: 30px;
+    background-color: #FC2D67;
+    color: white;
+    border-radius: 10px;
+    left: 10px;
+    top: 10px;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.true_price{
+                        text-decoration: line-through;
+                        color: #848484;
+                        font-size: 16px;
+                        float: right;
+                        font-weight: bolder;
+                        position: relative;
+                        bottom:18px;
+}
+
+.class_title{
+    height:72px;
+}
+
+.thumb{
+    height:261px;
 }
