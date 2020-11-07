@@ -88,32 +88,32 @@
 							<table class="table" style="border-top-style:solid;">
 								<thead>
 								<tr class="lighter text-center">
-									<th>게시판명</th>
-									<th>제목</th>
-									<th>작성자</th>
-									<th>작성일</th>
-									<th>조회수</th>
-									<th>추천</th>
+									<th class="col1">게시판명</th>
+									<th class="col2">제목</th>
+									<th class="col3">작성자</th>
+									<th class="col4">작성일</th>
+									<th class="col5">조회수</th>
+									<th class="col6">추천</th>
 								</tr>
 								</thead>
 								{% for post in posts %}
 								<tr>
-									<td class="lighter text-center">
+									<td class="lighter text-center col1">
 										<a class="a_underline" href="{% url 'community'%}?cateId={{post.category.pk}}">
 											{{ post.category }}
 										</a>
 									</td>
-									<td class="lighter">
+									<td class="lighter col2">
 										<span style="color:#B3B2C3; font-weight:bold;">{{ post.bullet }}</span>&nbsp;
 										<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
 											{{ post.title|truncatechars:30}}
 										</a>
 										<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
 									</td>
-									<td class="lighter text-center">{{post.author}}</td>
-									<td class="lighter text-center">{{post.created_date|date:'y.m.d H:i'}}</td>
-									<td class="lighter text-center">{{post.views}}</td>
-									<td class="lighter text-center">{{post.recommendations}}</td>
+									<td class="lighter text-center col3">{{post.author}}</td>
+									<td class="lighter text-center col4">{{post.created_date|date:'y.m.d H:i'}}</td>
+									<td class="lighter text-center col5">{{post.views}}</td>
+									<td class="lighter text-center col6">{{post.recommendations}}</td>
 								</tr>
 								{% empty %}
 								<tr>
@@ -147,7 +147,7 @@
 								<option value="1">제목+내용</option>
 								<option value="2">작성자</option>
 						</select>
-					  <input class="form-control form-control-sm mr-3 w-50" type="text" placeholder="검색어를 입력해주세요."
+					  <input class="form-control form-control-sm mr-3 w-50 " type="text" placeholder="검색어를 입력해주세요."
 						name="k" value="{{ k }}" aria-label="Search">
 						<span class="community_search_icon">
 							<input type="submit" value="검색">
