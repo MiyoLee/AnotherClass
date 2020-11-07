@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 from django.template import RequestContext
 from django.utils import timezone
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.views.generic import TemplateView
@@ -71,6 +71,7 @@ def cancelApply(request, pk):
     profile = request.user.profile
     profile.sybermoney = profile.sybermoney + int(apply.inClass.sale_price)
     profile.save()
+    messages.success(request, ' ')
     return redirect('myApply')
 
 @login_required(login_url='/login/')
@@ -92,6 +93,7 @@ def member(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            messages.success(request, ' ')
             return redirect('mypage')
         else:
             return render(request, 'firstApp/member_info_management.html', {'alert_flag': True, 'user_form': user_form, 'profile_form': profile_form})
@@ -203,6 +205,7 @@ def createclass(request):
 def product_remove(request, pk):
     product = get_object_or_404(Class, pk=pk)
     product.delete()
+    messages.success(request, ' ')
     return redirect('myClass')
 
 def class_permit(request, pk):
@@ -360,9 +363,10 @@ def classSale(request, class_id):
         form = ClassSale(request.POST, instance=class_detail)
         if form.is_valid():
             post = form.save(commit=False)
-            post.sale_price = post.sale_price.replace(',', '')
             if post.sale_price == None :
                 post.sale_price = class_detail.price
+            else:
+                post.sale_price = post.sale_price.replace(',', '')
             post.save()
             return HttpResponseRedirect("/product/{}".format(class_id))
         else:
@@ -635,6 +639,7 @@ def signup(request):
                 new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'])
                 new_user.name = form.cleaned_data['first_name']
                 new_user.save()
+                messages.success(request, ' ')
                 return redirect('/main')
             else:
                 return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag1': True})
@@ -656,7 +661,8 @@ def change_pw(request):
                 user.set_password(new_password)
                 user.save()
                 auth.login(request,user)
-                return redirect('/main')
+                messages.success(request, ' ')
+                return redirect('/mypage')
             else:
                 return render(request, 'firstApp/change_pw.html', {'alert_flag1': True})
         else:

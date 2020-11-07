@@ -31,6 +31,24 @@
         </div>
 
         <div class="col-sm-9">
+            {% if messages %}
+			<ul class="messages">
+				{% for message in messages %}
+				<div class="container">
+					<div class="row">
+						<div class="col">
+								<div class="alert alert-success">
+										수강신청이 취소되었습니다.
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+								</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</ul>
+            {% endif %}
             <h4 style="font-weight:bold; color:#B6B3E5;">신청한 클래스</h4><br><br>
             <table class="table">
                 <tr>
@@ -56,7 +74,7 @@
                         <div class="collapse" id="{{apply.pk}}">
                             <div class="card card-body lighter" >
                                 <p>수업시간 : <span class="font-weight-bold">{{apply.date.date}}</span></p>
-                                <p>가격 : {{apply.inClass.price}}￦</p>
+                                <p>가격 : {{apply.inClass.sale_price}}￦</p>
                                 <p>신청자 : {{apply.name}}</p>
                                 <p>신청 내용 : {{apply.text | safe}}</p>
                                 <a class="gotoClass" href="{% url 'product' apply.inClass.pk %}">클래스 바로가기</a>

@@ -472,7 +472,7 @@ text-decoration:none;
     color: rgb(99,99,99);
     display: block;
     font-family: 'Roboto', sans-serif;
-    font-size: 18px;
+    font-size: min(2vw, 18px);
     text-transform: uppercase;
 }
 
@@ -486,7 +486,7 @@ text-decoration:none;
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 11px 102px;
+    padding: 11px min(102px, 5vw);
  color: #428bca;
     text-decoration: none;
  background: transparent;
@@ -577,7 +577,7 @@ position: relative;
 }
 
 .proicon{
-width:55px;
+    width: min(55px, 12vw);
 }
 
 .price_div{
