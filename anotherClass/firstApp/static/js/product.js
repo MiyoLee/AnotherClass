@@ -24,21 +24,25 @@ $(function(){
 $(window).resize(function() {
   if ($(window).width() < 450) {
     $('.autoplay').slick('slickSetOption', 'slidesToShow', 2);
-
+    $('.like').removeClass('like_block');
+    $('.like').addClass('like_block_mb');
   }
   else{
     $('.autoplay').slick('slickSetOption', 'slidesToShow', 3);
-
+    $('.like').removeClass('like_block_mb');
+    $('.like').addClass('like_block');
   }
 });
 
 $(document).ready(function() {
   if ($(window).width() < 450) {
     $('.autoplay').slick('slickSetOption', 'slidesToShow', 2);
-
+    $('.like').removeClass('like_block');
+    $('.like').addClass('like_block_mb');
   }
   else{
     $('.autoplay').slick('slickSetOption', 'slidesToShow', 3);
-
+    $('.like').removeClass('like_block_mb');
+    $('.like').addClass('like_block');
   }
 });
