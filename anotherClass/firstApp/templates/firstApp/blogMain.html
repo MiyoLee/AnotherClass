@@ -121,59 +121,59 @@
     <div class="autoplay">
 
               {% for class in best %}
-              <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
-                  <a class="productdetail"
-               href="{% url 'product' class.id %}">
-              <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
-                  {% if class.on_sale == True %}
-                  <div class="on_sale">SALE</div>
-                  {% endif %}
-                <div class="card-body">
-                <p class="class_title">{{class.title}}</p>
 
-                  <small class="tutor_name">{{class.tutor}}</small>
+              <div class="col-md-4">
+                <a class="productdetail"
+                   href="{% url 'product' class.id %}">
+                  <div class="card mb-4 shadow-sm">
+                      <img class="thumb" src="{{class.photo.url}}">
+                      {% if class.on_sale == True %}
+                      <div class="on_sale">SALE</div>
+                      {% endif %}
+                    <div class="card-body">
+                        <p class="class_title">{{class.title}}</p>
+                        <small class="tutor_name">{{class.tutor}}</small>
 
-                    {% if class.on_sale == True %}
-                        <span class="true_price">{{class.price|intcomma}} 원</span>
+                        {% if class.on_sale == True %}
                         <span class="class_price">{{class.sale_price|intcomma}} 원</span>
+                            <span class="original_price">{{class.price|intcomma}} 원</span>
 
-                    {% else %}
-                    <span class="class_price">{{class.sale_price|intcomma}} 원</span>
-                    {% endif %}
-
-                </div>
-                                  </a>
+                        {% else %}
+                        <span class="class_price">{{class.price|intcomma}} 원</span>
+                        {% endif %}
+                    </div>
+                  </div>
+                </a>
               </div>
-
 
           {% endfor %}
 </div>
     <div class="slide_title">곧 마감될지 몰라요, 좋아요 TOP 10 ! </div>
     <div class="autoplay">
 
-              {% for class in best %}
-              <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
-                  <a class="productdetail"
-               href="{% url 'product' class.id %}">
-              <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
-                  {% if class.on_sale == True %}
-                  <div class="on_sale">SALE</div>
-                  {% endif %}
-                <div class="card-body">
-                <p class="class_title">{{class.title}}</p>
+              {% for class in classs %}
+              <div class="col-md-4">
+                <a class="productdetail"
+                   href="{% url 'product' class.id %}">
+                  <div class="card mb-4 shadow-sm">
+                      <img class="thumb" src="{{class.photo.url}}">
+                      {% if class.on_sale == True %}
+                      <div class="on_sale">SALE</div>
+                      {% endif %}
+                    <div class="card-body">
+                        <p class="class_title">{{class.title}}</p>
+                        <small class="tutor_name">{{class.tutor}}</small>
 
-                  <small class="tutor_name">{{class.tutor}}</small>
-
-                    {% if class.on_sale == True %}
-                        <span class="true_price">{{class.price|intcomma}} 원</span>
+                        {% if class.on_sale == True %}
                         <span class="class_price">{{class.sale_price|intcomma}} 원</span>
+                            <span class="original_price">{{class.price|intcomma}} 원</span>
 
-                    {% else %}
-                    <span class="class_price">{{class.sale_price|intcomma}} 원</span>
-                    {% endif %}
-
-                </div>
-                                  </a>
+                        {% else %}
+                        <span class="class_price">{{class.price|intcomma}} 원</span>
+                        {% endif %}
+                    </div>
+                  </div>
+                </a>
               </div>
 
 
@@ -183,28 +183,28 @@
     <div class="autoplay">
 
               {% for class in slide %}
-              <div class="card mb-4 shadow-sm" style="width:300px; height:350px; margin-right:20px;">
-                  <a class="productdetail"
-               href="{% url 'product' class.id %}">
-              <img src="{{class.photo.url}}" width="242px" height="181px" style="margin-left: 5px; margin-top: 5px;">
-                  {% if class.on_sale == True %}
-                  <div class="on_sale">SALE</div>
-                  {% endif %}
-                <div class="card-body">
-                <p class="class_title">{{class.title}}</p>
+              <div class="col-md-4">
+                <a class="productdetail"
+                   href="{% url 'product' class.id %}">
+                  <div class="card mb-4 shadow-sm">
+                      <img class="thumb" src="{{class.photo.url}}">
+                      {% if class.on_sale == True %}
+                      <div class="on_sale">SALE</div>
+                      {% endif %}
+                    <div class="card-body">
+                        <p class="class_title">{{class.title}}</p>
+                        <small class="tutor_name">{{class.tutor}}</small>
 
-                  <small class="tutor_name">{{class.tutor}}</small>
-
-                    {% if class.on_sale == True %}
-                        <span class="true_price">{{class.price|intcomma}} 원</span>
+                        {% if class.on_sale == True %}
                         <span class="class_price">{{class.sale_price|intcomma}} 원</span>
+                            <span class="original_price">{{class.price|intcomma}} 원</span>
 
-                    {% else %}
-                    <span class="class_price">{{class.sale_price|intcomma}} 원</span>
-                    {% endif %}
-
-                </div>
-                                  </a>
+                        {% else %}
+                        <span class="class_price">{{class.price|intcomma}} 원</span>
+                        {% endif %}
+                    </div>
+                  </div>
+                </a>
               </div>
 
 
@@ -223,16 +223,7 @@
                         }
                     }
                     else{
-                        $('.row_mb').removeClass("row");
                         $('.main_slide').css("display", "block");
-                        var width = window.outerWidth * 0.9;
-                        $('.for_slick_slider').css("width", width);
-                        $('.single-item').css("width", width);
-                        $('.itemss').css("width", width);
-                        $('.itemss img').css("width", width);
-                        var height = $('.itemss img').css("height");
-                        $('.for_slick_slider').css("height", height);
-                        $('.single-item').css("height", height);
                     }
             }
         }
@@ -249,14 +240,7 @@
                 else{
                     $('.row_mb').removeClass("row");
                     $('.main_slide').css("display", "block");
-                    var width = window.outerWidth * 0.9;
-                    $('.for_slick_slider').css("width", width);
-                    $('.single-item').css("width", width);
-                    $('.itemss').css("width", width);
-                    $('.itemss img').css("width", width);
-                    var height = $('.itemss img').css("height");
-                    $('.for_slick_slider').css("height", height);
-                    $('.single-item').css("height", height);
+
                 }
             }
         });

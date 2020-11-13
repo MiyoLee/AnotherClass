@@ -78,7 +78,6 @@
     display: none;
     float: left;
 
-    height: 400px;
     min-height: 1px;
 }
 [dir='rtl'] .slick-slide
