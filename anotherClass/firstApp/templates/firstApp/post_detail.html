@@ -54,7 +54,7 @@
         <div class="post_contents">
             {{post.text | safe}}
         </div>
-        <div class="text-center">
+        <div class="text-center recommend_bar">
             <a href="{% url 'post_recommend' post.pk %}">
             <button class="btn btn-light"><i class="fas fa-thumbs-up" style="color:pink;"></i>
                 추천 : {{post.recommendations}}</button></a>
@@ -71,7 +71,7 @@
     <div class="blog-comment-area bg-light">
         <div class="comment_contents">
             <div class="new_comment">
-            <form method="POST" class="post-form" style="margin:0; height:100px;">
+            <form method="POST" class="comment_form">
                 {% csrf_token %}
                 {{ form.text }}
                 <button type="submit" class="btn btn-primary comment_submit">등록</button>

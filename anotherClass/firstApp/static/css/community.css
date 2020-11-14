@@ -39,19 +39,80 @@ th{
     color:#918FB7;
 }
 
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #F0F1F9;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 14px;
+  color: gray;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: black;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.btn_sidebar{
+    display:none;
+}
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
 @media (max-width: 600px){
+
+    h4{
+        font-size:12pt;
+        margin:0;
+    }
+    .post_list{
+        padding:0;
+    }
+    .side_bar{
+        display:none;
+    }
     .upper_box{
        display:none;
+    }
+    th{
+        display:none;
     }
     .col1{
         display:none;
     }
     .col2{
-        font-size:10px;
+        width:280px;
+        word-break:break-all
+        font-size:14px;
         padding:0;
     }
     .col3{
-        font-size:10px;
+        font-size:14px;
         padding:0;
     }
     .col4{
@@ -65,9 +126,32 @@ th{
     }
     .btn-primary{
         width:60px;
-        font-size:10px;
+        font-size:13px;
     }
-    .community_search_bar{
-
+    .search_criteria{
+        padding-bottom:10px;
     }
+    .select_b{
+        display:inline-block;
+        width:120px;
+    }
+    .select_c{
+        display:inline-block;
+        width:120px;
+        margin-right:0 !important;
+    }
+    .search_k{
+        width:198.1px !important;
+    }
+    #main{
+        padding:2px;
+    }
+    .web_sidebar{
+        display:none;
+    }
+   .btn_sidebar{
+        display:inline-block;
+    }
+    .sidenav {padding-top: 50px;}
+    .sidenav a {font-size: 17px;}
 }

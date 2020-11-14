@@ -37,7 +37,10 @@
 .post_content_f{
     height:40px;
 }
-
+.comment_form{
+    margin:0;
+    height:100px;
+}
 .comment_contents{
     padding: 20px;
 }
@@ -64,4 +67,34 @@
     float:right;
     position:relative;
     right:30px;
+}
+
+@media(max-width: 600px){
+    .container{
+        padding:1px;
+    }
+    .post_info{
+        padding:0;
+        margin:0;
+    }
+    .post_contents{
+        margin:0;
+    }
+    .comment_contents{
+        padding:0;
+        width:100%;
+    }
+    textarea{
+        width:75% !important;
+        height:75% !important;
+    }
+    .comment_submit{
+        height:75%;
+    }
+    .post_content_f{
+        margin:40px 0 10px 0;
+    }
+    .recommend_bar{
+        margin-top:30px;
+    }
 }

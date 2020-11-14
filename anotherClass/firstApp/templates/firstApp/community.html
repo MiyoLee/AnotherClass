@@ -5,202 +5,257 @@
 {% if alert_flag %}
 <script>alert("삭제되었습니다.")</script>
 {% endif %}
-<link rel="stylesheet" href="{% static 'css/paginate.css' %}">
-<link rel="stylesheet" href="{% static 'css/community.css' %}">
-		<div class="container">
+<link href="{% static 'css/paginate.css' %}" rel="stylesheet">
+<link href="{% static 'css/community.css' %}" rel="stylesheet">
 
+<div class="sidenav" id="mySidenav">
+    <a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+    <a class="font-weight-bold" href="{% url 'community' %}">전체 글</a>
+    <a class="font-weight-bold" href="{% url 'bestPost' %}">인기 글</a>
+    <a class="font-weight-bold">카테고리별</a>
+    <ul>
+        {% for category in cate_list %}
+        <li>
+            <a href="/community/?cateId={{category.pk}}">
+                {{category.name}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <a href="{% url 'myPost' %}">내가 쓴 글</a>
 
-			<div class="row">
-				<div class="col-sm-3">
-					<br><br><br>
-					<div class="left-sidebar">
-						<ul>
-                            <li><i class="fas fa-clipboard"></i>
-								<a class="a_underline font-weight-bolder" href="{% url 'community' %}">전체 글</a>
-							</li>
-							<br>
-							<li><i class="fas fa-trophy"></i>
-								<a class="a_underline font-weight-bolder" href="{% url 'bestPost' %}">인기 글</a>
-							</li>
-							<br>
-							<p class="font-weight-bolder"><i class="fas fa-clipboard"></i> 카테고리별</p>
-							<ul class="nav flex-column">
-								{% for category in cate_list %}
-								<li>
-									<a class="nav-link community-nav-link font-weight-bold" href="/community/?cateId={{category.pk}}">
-										{{category.name}}
-									</a>
-								</li>
-								{% endfor %}
-							</ul>
-							<hr>
-							<li><a class="a_underline lighter" href="{% url 'myPost' %}" >내가 쓴 글</a></li>
-						</ul>
-					</div>	
-				</div>
+</div>
+<span class="btn_sidebar" onclick="openNav()"><i class="fas fa-bars"></i></span>
+<!-- Page Content  -->
+<div id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <br><br><br>
+                <div class="web_sidebar">
+                    <ul>
+                        <li><i class="fas fa-clipboard"></i>
+                            <a class="a_underline font-weight-bolder" href="{% url 'community' %}">전체 글</a>
+                        </li>
+                        <br>
+                        <li><i class="fas fa-trophy"></i>
+                            <a class="a_underline font-weight-bolder" href="{% url 'bestPost' %}">인기 글</a>
+                        </li>
+                        <br>
+                        <p class="font-weight-bolder"><i class="fas fa-clipboard"></i> 카테고리별</p>
+                        <ul class="nav flex-column">
+                            {% for category in cate_list %}
+                            <li>
+                                <a class="nav-link community-nav-link font-weight-bold"
+                                   href="/community/?cateId={{category.pk}}">
+                                    {{category.name}}
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <hr>
+                        <li><a class="a_underline lighter" href="{% url 'myPost' %}">내가 쓴 글</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9 post_list" style="margin:0;">
+                <h4 style="font-weight:bold;">{{cateName}}</h4>
+                <br>
 
-				<div class="col-sm-9">
+                <div class="blog-post-area">
+                    {% if best %}
+                    <div class="container upper_box">
+                        <div class="text-right lighter" style="font-size:9pt;">
+                            <a class="a_underline" href="{% url 'bestPost' %}" style="color:gray;">더보기 ></a>
+                        </div>
+                        <div class="row"
+                             style="margin:0 0 2% 0; padding:0 1% 1% 1%; font-weight:bold; color:#5157C0">
+                            실시간 인기글
+                        </div>
+                        <div class="row lighter">
+                            <div class="col">
+                                <ul>
+                                    {% for post in best|slice:":5"%}
+                                    <li style="line-height:25px;">
+                                        {{forloop.counter}}.
+                                        [{{ post.bullet }}]
+                                        <a class="a_underline"
+                                           href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
+                                            {{ post.title|truncatechars:40 }}
+                                            <span class="lighter"
+                                                  style="color:red;">[{{ post.comments.count }}]</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col">
+                                <ul>
+                                    {% for post in best|slice:"5:10"%}
+                                    <li style="line-height:25px;">
+                                        {{forloop.counter|add:"5"}}.
+                                        [{{ post.bullet }}]
+                                        <a class="a_underline"
+                                           href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
+                                            {{ post.title|truncatechars:20 }}
+                                            <span class="lighter"
+                                                  style="color:red;">[{{ post.comments.count }}]</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <table class="table" style="border-top-style:solid;">
+                        <thead>
+                        <tr class="lighter text-center">
+                            <th class="col1">게시판명</th>
+                            <th class="col2">제목</th>
+                            <th class="col3">작성자</th>
+                            <th class="col4">작성일</th>
+                            <th class="col5">조회수</th>
+                            <th class="col6">추천</th>
+                        </tr>
+                        </thead>
+                        {% for post in posts %}
+                        <tr>
+                            <td class="lighter text-center col1">
+                                <a class="a_underline"
+                                   href="{% url 'community'%}?cateId={{post.category.pk}}">
+                                    {{ post.category }}
+                                </a>
+                            </td>
+                            <td class="lighter col2">
+                                <span style="color:#B3B2C3; font-weight:bold;">{{ post.bullet }}</span>&nbsp;
+                                <a class="a_underline"
+                                   href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
+                                    {{ post.title|truncatechars:30}}
+                                </a>
+                                <span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
+                            </td>
+                            <td class="lighter text-center col3">{{post.author}}</td>
+                            <td class="lighter text-center col4">{{post.created_date|date:'y.m.d H:i'}}</td>
+                            <td class="lighter text-center col5">{{post.views}}</td>
+                            <td class="lighter text-center col6">{{post.recommendations}}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6"><p class="text-center" style="padding:20%">해당 게시물은 존재하지
+                                않습니다.</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    {% if cateId != "0" %}
+                    <div align="right">
+                        <div id="btn">
+                            <a href="/createpost">
+                                <input class="btn btn-primary font-weight-bolder" type="button" value="글쓰기">
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
 
-					<h4 style="font-weight:bold;">{{cateName}}</h4>
-					<br>
-
-					<div class="blog-post-area">
-						{% if best %}
-						<div class="container upper_box">
-							<div class="text-right lighter" style="font-size:9pt;">
-								<a class="a_underline" style="color:gray;" href="{% url 'bestPost' %}">더보기 ></a>
-							</div>
-							<div class="row" style="margin:0 0 2% 0; padding:0 1% 1% 1%; font-weight:bold; color:#5157C0">
-								실시간 인기글
-							</div>
-							<div class="row lighter" >
-							  <div class="col">
-								  <ul>
-								  {% for post in best|slice:":5"%}
-								  	<li style="line-height:25px;">
-										{{forloop.counter}}.
-										[{{ post.bullet }}]
-										<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
-											{{ post.title|truncatechars:40 }}
-											<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
-										</a>
-									</li>
-								  {% endfor %}
-								  </ul>
-							  </div>
-							  <div class="col">
-								  <ul>
-									  {% for post in best|slice:"5:10"%}
-										<li style="line-height:25px;">
-											{{forloop.counter|add:"5"}}.
-											[{{ post.bullet }}]
-											<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
-												{{ post.title|truncatechars:20 }}
-												<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
-											</a>
-										</li>
-									  {% endfor %}
-								  </ul>
-							  </div>
-							</div>
-						</div>
-						{% endif %}
-							<table class="table" style="border-top-style:solid;">
-								<thead>
-								<tr class="lighter text-center">
-									<th class="col1">게시판명</th>
-									<th class="col2">제목</th>
-									<th class="col3">작성자</th>
-									<th class="col4">작성일</th>
-									<th class="col5">조회수</th>
-									<th class="col6">추천</th>
-								</tr>
-								</thead>
-								{% for post in posts %}
-								<tr>
-									<td class="lighter text-center col1">
-										<a class="a_underline" href="{% url 'community'%}?cateId={{post.category.pk}}">
-											{{ post.category }}
-										</a>
-									</td>
-									<td class="lighter col2">
-										<span style="color:#B3B2C3; font-weight:bold;">{{ post.bullet }}</span>&nbsp;
-										<a class="a_underline" href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
-											{{ post.title|truncatechars:30}}
-										</a>
-										<span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
-									</td>
-									<td class="lighter text-center col3">{{post.author}}</td>
-									<td class="lighter text-center col4">{{post.created_date|date:'y.m.d H:i'}}</td>
-									<td class="lighter text-center col5">{{post.views}}</td>
-									<td class="lighter text-center col6">{{post.recommendations}}</td>
-								</tr>
-								{% empty %}
-								<tr>
-									<td colspan="6"><p class="text-center" style="padding:20%">해당 게시물은 존재하지 않습니다.</p></td>
-								</tr>
-								{% endfor %}
-							</table>
-						{% if cateId != "0" %}
-						<div align="right">
-							<div id="btn"> 
-								<a href="/createpost">
-									<input class="btn btn-primary font-weight-bolder" type="button" value="글쓰기">
-								</a>
-							</div>
-						</div>
-						{% endif %}
-					</div>
-
-					<!-- Search form -->
-					{% if cateId != "0"%}
-					<div class="community_search_bar">
-					<form action="" method="get" class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2">
-						<input type="hidden" name="cateId" value="{{cateId}}">
-						<select name="b"class="form-control form-control-sm mr-3 w-15">
-								<option value="">전체</option>
-								{% for bullet in bullets %}
-									<option value="{{bullet.pk}}">{{ bullet.name }}</option>
-								{% endfor %}
-						</select>
-						<select name="c"class="form-control form-control-sm mr-3 w-15">
-								<option value="1">제목+내용</option>
-								<option value="2">작성자</option>
-						</select>
-					  <input class="form-control form-control-sm mr-3 w-50 " type="text" placeholder="검색어를 입력해주세요."
-						name="k" value="{{ k }}" aria-label="Search">
-						<span class="community_search_icon">
+                <!-- Search form -->
+                {% if cateId != "0"%}
+                <div class="community_search_bar">
+                    <form action=""
+                          class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2"
+                          method="get">
+                        <input name="cateId" type="hidden" value="{{cateId}}">
+                        <div class="search_criteria text-center">
+                            <select class="form-control form-control-sm mr-3 w-15 select_b" name="b">
+                                <option value="">전체</option>
+                                {% for bullet in bullets %}
+                                <option value="{{bullet.pk}}">{{ bullet.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <select class="form-control form-control-sm mr-3 w-15 select_c" name="c">
+                                <option value="1">제목+내용</option>
+                                <option value="2">작성자</option>
+                            </select>
+                        </div>
+                        <input aria-label="Search" class="form-control form-control-sm mr-3 w-50 search_k"
+                               name="k"
+                               placeholder="검색어를 입력해주세요." type="text" value="{{ k }}">
+                        <span class="community_search_icon">
 							<input type="submit" value="검색">
 						</span>
-					</form>
-					</div>
-					{% else %}
-					<br><br>
-					{% endif %}
-						{% if posts.has_other_pages %}
-						<nav aria-label="Page navigation example">
-						  <ul class="pagination justify-content-center">
-							{% if posts.has_previous %}
-							  <li class="page-item">
-								  <a class="page-link" href="?cateId={{cateId}}&c={{c}}&k={{k}}&page={{ posts.previous_page_number }}" aria-label="Previous">
-								  	<span aria-hidden="true">&laquo;</span>
-        							<span class="sr-only">Previous</span>
-								  </a>
-							  </li>
-							{% else %}
-							  <li class="page-item disabled"><a class="page-link">
-								  <span>&laquo;</span></a></li>
-							{% endif %}
-							{% for i in posts.paginator.page_range %}
-							  {% if posts.number == i %}
-							  <li class="page-item active">
-								  <a class="page-link" href="#">{{ i }}</a><span class="sr-only">(current)</span></span>
-							  </li>
-							  {% else %}
+                    </form>
+                </div>
+                {% else %}
+                <br><br>
+                {% endif %}
+                {% if posts.has_other_pages %}
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        {% if posts.has_previous %}
+                        <li class="page-item">
+                            <a aria-label="Previous"
+                               class="page-link"
+                               href="?cateId={{cateId}}&c={{c}}&k={{k}}&page={{ posts.previous_page_number }}">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled"><a class="page-link">
+                            <span>&laquo;</span></a></li>
+                        {% endif %}
+                        {% for i in posts.paginator.page_range %}
+                        {% if posts.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link" href="#">{{ i }}</a><span
+                                class="sr-only">(current)</span></span>
+                        </li>
+                        {% else %}
 
-							  	<li class="page-item"><a class="page-link" href="?cateId={{cateId}}&c={{c}}&k={{k}}&page={{ i }}">{{ i }}</a></li>
+                        <li class="page-item"><a class="page-link"
+                                                 href="?cateId={{cateId}}&c={{c}}&k={{k}}&page={{ i }}">{{ i }}</a></li>
 
-							  {% endif %}
-							{% endfor %}
-							{% if posts.has_next %}
-							  <li class="page-item">
-								  <a class="page-link" href="?cateId={{cateId}}&c={{c}}&k={{k}}&page={{ posts.next_page_number }}" aria-label="Next">
-									  <span aria-hidden="true">&raquo;</span>
-									  <span class="sr-only">Next</span>
-								  </a>
-							  </li>
-							{% else %}
-							  <li class="page-item disabled">
-								  <a class="page-link">
-								  <span>&raquo;</span>
-								  </a>
-							  </li>
-							{% endif %}
-						  </ul>
-						</nav>
-						{% endif %}
+                        {% endif %}
+                        {% endfor %}
+                        {% if posts.has_next %}
+                        <li class="page-item">
+                            <a aria-label="Next"
+                               class="page-link"
+                               href="?cateId={{cateId}}&c={{c}}&k={{k}}&page={{ posts.next_page_number }}">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link">
+                                <span>&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% endif %}
 
-				</div>
-			</div>
-		</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+
+
+</script>
+
 {% endblock content %}
