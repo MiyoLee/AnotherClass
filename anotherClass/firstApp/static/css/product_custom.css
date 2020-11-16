@@ -176,12 +176,12 @@ height:35px;
 
 .product-question{
 position:relative;
-left:40px;
+
 top:-30px;
 width:850px;
 color:#4ECAC6;
 font-weight:bold;
-padding-left:10px;
+
 }
 .product-answer{
 padding-top:10px;
@@ -486,7 +486,7 @@ text-decoration:none;
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 11px min(102px, 5vw);
+    padding: 11px 102px;
  color: #428bca;
     text-decoration: none;
  background: transparent;
@@ -631,7 +631,7 @@ font-size: 30px;
     left: -3%;
     }
     .proitem-item {
-    font-size: 12px;
+    font-size: 10px;
     position: relative;
     bottom: 8px;
     font-weight: bold;
@@ -730,5 +730,39 @@ font-size: 30px;
     width: 12px;
     height: 12px;
     margin: 0px 10px;
-}
+    }
+    .nav>li>a {
+    padding: 11px 4vw;
+    }
+    .more-container {
+    padding-top: 50px;
+    }
+    .review-button {
+    position: static;
+    float: right;
+    width: 90px;
+    height: 40px;
+    }
+    .product-review-date {
+    float: none;
+    font-size: 10px;
+    position: relative;
+    left: 50%;
+    }
+    .product-review-img {
+    width: 32px;
+    height: 20px;
+    margin: 0 10 0 0;
+    }
+    .product-question{
+    top: 0;
+    }
+    .product-question {
+    position: static;
+    top: -30px;
+    color: #4ECAC6;
+    font-weight: bold;
+    padding-left: 0px;
+    padding-top:10px;
+    }
 }

@@ -38,3 +38,35 @@ font-weight:bold;
 .intro_content{
 font-size:18px;
 }
+@media (max-width: 600px) {
+    .intro_create_img {
+    float: left;
+    width: 80vw;
+    float: none;
+    }
+    .intro_create {
+    float: none;
+    width: 80vw;
+    height: 400px;
+    background: linear-gradient(to bottom, #bdaceb, #4ECAC6);
+    }
+    .intro_title {
+    padding-top: 50px;
+    font-size: 15px;
+    }
+    .intro_content {
+    font-size: 12px;
+    padding: 0 10px;
+    }
+    .intro_button {
+    height: 80px;
+    width: 300px;
+    border: 2px solid white;
+    padding: 15 15px;
+    position: relative;
+    top: 60px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    }
+}

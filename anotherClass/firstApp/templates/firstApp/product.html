@@ -218,8 +218,10 @@
                         <div class="product-review-date">
                             {{ qna.created_date }}
                         </div>
-                        <img class="product-q-img" src="{% static 'image\q.png' %}">
-                        <div class="product-question">{{ qna.question }}</div>
+
+                        <div class="product-question">
+                            <img class="product-q-img" src="{% static 'image\q.png' %}">
+                            <span>{{ qna.question }}</span></div>
                         {% if user == class_detail.author %}
                         {% if qna.answer_class.all %}
                         {% for answer in qna.answer_class.all %}
@@ -233,7 +235,7 @@
                         {% if answer.answer %}
                         <div class="product-answer"><img class="product-q-img" src="{% static 'image\a.png' %}">
                             <span>
-                    {{ answer.answer }}
+                            {{ answer.answer }}
                                 {% if user == class_detail.author %}
                                 <a class="btn btn-primary answer-button" href="{% url 'update_answer' pk=answer.pk %}">수정</a>
                                 {% endif %}
