@@ -183,6 +183,7 @@
     <div class="autoplay">
 
               {% for class in slide %}
+
               <div class="col-md-4">
                 <a class="productdetail"
                    href="{% url 'product' class.id %}">
@@ -207,8 +208,69 @@
                 </a>
               </div>
 
+                {% endfor %}
+</div>
+    <div class="slide_title">사회적 거리두기로 인한 우울함, 집콕취미로 극복 ! </div>
+    <div class="autoplay">
 
-          {% endfor %}
+              {% for class in slide2 %}
+
+              <div class="col-md-4">
+                <a class="productdetail"
+                   href="{% url 'product' class.id %}">
+                  <div class="card mb-4 shadow-sm">
+                      <img class="thumb" src="{{class.photo.url}}">
+                      {% if class.on_sale == True %}
+                      <div class="on_sale">SALE</div>
+                      {% endif %}
+                    <div class="card-body">
+                        <p class="class_title">{{class.title}}</p>
+                        <small class="tutor_name">{{class.tutor}}</small>
+
+                        {% if class.on_sale == True %}
+                        <span class="class_price">{{class.sale_price|intcomma}} 원</span>
+                            <span class="original_price">{{class.price|intcomma}} 원</span>
+
+                        {% else %}
+                        <span class="class_price">{{class.price|intcomma}} 원</span>
+                        {% endif %}
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+                {% endfor %}
+</div>
+    <div class="slide_title">사회적 거리두기로 인한 우울함, 집콕취미로 극복 ! </div>
+    <div class="autoplay">
+
+              {% for class in slide3 %}
+
+              <div class="col-md-4">
+                <a class="productdetail"
+                   href="{% url 'product' class.id %}">
+                  <div class="card mb-4 shadow-sm">
+                      <img class="thumb" src="{{class.photo.url}}">
+                      {% if class.on_sale == True %}
+                      <div class="on_sale">SALE</div>
+                      {% endif %}
+                    <div class="card-body">
+                        <p class="class_title">{{class.title}}</p>
+                        <small class="tutor_name">{{class.tutor}}</small>
+
+                        {% if class.on_sale == True %}
+                        <span class="class_price">{{class.sale_price|intcomma}} 원</span>
+                            <span class="original_price">{{class.price|intcomma}} 원</span>
+
+                        {% else %}
+                        <span class="class_price">{{class.price|intcomma}} 원</span>
+                        {% endif %}
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+                {% endfor %}
 </div>
     <script>
         window.addEventListener("resize", slideResize);

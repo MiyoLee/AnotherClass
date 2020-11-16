@@ -42,8 +42,13 @@ def mypage(request):
 def blogMain(request):
     classs = Class.objects.filter(on_permission=True)
     best = Class.objects.filter(on_permission=True).order_by('-like_count')[:10]
-    slide = Class.objects.filter(on_permission=True, category__name='미술, 공예')
-    return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best})
+    profile = request.user.profile
+    cate = profile.model_categories.order_by('name')[:3]
+    slide = Class.objects.filter(on_permission=True, category=cate[0])
+    slide2 = Class.objects.filter(on_permission=True, category=cate[1])
+    slide3 = Class.objects.filter(on_permission=True, category=cate[2])
+    return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best,
+                                                      'slide2': slide2, 'slide3': slide3})
 
 def intro_createclass(request):
     return render(request, 'firstApp/intro_createclass.html')
