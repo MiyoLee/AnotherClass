@@ -114,7 +114,7 @@
 
 <div class="container">
 {% if user.is_active %}
-    <div class="slide_title">곧 마감될지 몰라요, 좋아요 TOP 10 ! </div>
+    <div class="slide_title"><strong>곧 마감될지 몰라요, 좋아요 TOP 10 ! </strong></div>
     <div class="autoplay">
 
               {% for class in best %}
@@ -145,7 +145,7 @@
 
           {% endfor %}
 </div>
-<div class="slide_title"> 지금 {{user.username}}님에게 추천하는 원데이클래스 ! </div>
+<div class="slide_title"> <strong>지금 {{user.username}}님에게 추천하는 원데이클래스 !</strong> </div>
     <div class="autoplay">
 
               {% for class in slide %}
@@ -239,7 +239,7 @@
 
 
 {% else %}
-<div class="slide_title"> 지금 당신에게 추천하는 원데이클래스 ! </div>
+<div class="slide_title"> <strong>지금 당신에게 추천하는 원데이클래스 ! </strong></div>
 <div class="autoplay">
 
   {% for class in classs %}
@@ -270,7 +270,7 @@
 
 {% endfor %}
 </div>
-<div class="slide_title">곧 마감될지 몰라요, 좋아요 TOP 10 ! </div>
+<div class="slide_title"><strong>곧 마감될지 몰라요, 좋아요 TOP 10 ! </strong></div>
 <div class="autoplay">
 
   {% for class in best %}
