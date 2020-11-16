@@ -44,11 +44,20 @@ def blogMain(request):
     best = Class.objects.filter(on_permission=True).order_by('-like_count')[:10]
     profile = request.user.profile
     cate = profile.model_categories.order_by('name')[:3]
-    slide = Class.objects.filter(on_permission=True, category=cate[0])
-    slide2 = Class.objects.filter(on_permission=True, category=cate[1])
-    slide3 = Class.objects.filter(on_permission=True, category=cate[2])
-    return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best,
-                                                      'slide2': slide2, 'slide3': slide3})
+    cate_n = profile.model_categories.count()
+    if cate_n >=1:
+        slide = Class.objects.filter(on_permission=True, category=cate[0])
+        if cate_n >=2:
+            slide2 = Class.objects.filter(on_permission=True, category=cate[1])
+            if cate_n >=3:
+                slide3 = Class.objects.filter(on_permission=True, category=cate[2])
+                return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best,
+                                                   'cate': cate, 'slide2': slide2, 'slide3': slide3})
+            return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best,
+                                                          'cate': cate, 'slide2': slide2})
+        return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best,
+                                                      'cate': cate})
+    return render(request, 'firstApp/blogMain.html', {'classs': classs, 'best': best,})
 
 def intro_createclass(request):
     return render(request, 'firstApp/intro_createclass.html')
