@@ -1,6 +1,7 @@
 {% extends 'firstApp/base.html'%}
 {% load static %}
 {% load custom_tags %}
+{% load humanize %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/createcomplete.css' %}">
 
@@ -19,8 +20,8 @@
 </thead>
 <tbody>
   <tr>
-    <td class="tg-0lax">{{class_detail.sale_price}}</td>
-    <td class="tg-0lax">{{user.profile.sybermoney}}</td>
+    <td class="tg-0lax">{{class_detail.sale_price|intcomma}}</td>
+    <td class="tg-0lax">{{user.profile.sybermoney|intcomma}}</td>
   </tr>
 </tbody>
 </table>

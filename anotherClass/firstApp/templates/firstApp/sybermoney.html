@@ -1,6 +1,6 @@
 {% extends 'firstApp/base.html' %}
 {% load static %}
-
+{% load humanize %}
 {% block content %}
 {% if user.is_active %}
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
@@ -35,7 +35,7 @@
             <h4 style="font-weight:bold; color:#B6B3E5;">사이버 머니 현황</h4><br><br>
             <p>
               <b>남은 금액 :  </b>
-              {{user.profile.sybermoney}}
+              {{user.profile.sybermoney|intcomma}}
             </p>
 
             <p>
@@ -51,7 +51,7 @@
               <td>
                 <a class="a_underline">{{apply.inClass.title}}</a>
               </td>
-              <td class="lighter">{{apply.inClass.sale_price}}</td>
+              <td class="lighter">{{apply.inClass.sale_price|intcomma}}</td>
             </tr>
             {% endfor %}
           </table>
