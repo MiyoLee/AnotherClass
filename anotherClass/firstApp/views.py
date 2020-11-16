@@ -42,21 +42,22 @@ def mypage(request):
 def blogMain(request):
     classs = Class.objects.filter(on_permission=True)
     best = Class.objects.filter(on_permission=True).order_by('-like_count')[:10]
-    profile = request.user.profile
-    cate = profile.model_categories.order_by('name')[:3]
-    cate_n = profile.model_categories.count()
-    if cate_n >=1:
-        slide = Class.objects.filter(on_permission=True, category=cate[0])
-        if cate_n >=2:
-            slide2 = Class.objects.filter(on_permission=True, category=cate[1])
-            if cate_n >=3:
-                slide3 = Class.objects.filter(on_permission=True, category=cate[2])
+    if request.user.is_active:
+        profile = request.user.profile
+        cate = profile.model_categories.order_by('name')[:3]
+        cate_n = profile.model_categories.count()
+        if cate_n >=1:
+            slide = Class.objects.filter(on_permission=True, category=cate[0])
+            if cate_n >=2:
+                slide2 = Class.objects.filter(on_permission=True, category=cate[1])
+                if cate_n >=3:
+                    slide3 = Class.objects.filter(on_permission=True, category=cate[2])
+                    return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best,
+                                                       'cate': cate, 'slide2': slide2, 'slide3': slide3})
                 return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best,
-                                                   'cate': cate, 'slide2': slide2, 'slide3': slide3})
+                                                              'cate': cate, 'slide2': slide2})
             return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best,
-                                                          'cate': cate, 'slide2': slide2})
-        return render(request, 'firstApp/blogMain.html', {'classs': classs, 'slide': slide, 'best': best,
-                                                      'cate': cate})
+                                                          'cate': cate})
     return render(request, 'firstApp/blogMain.html', {'classs': classs, 'best': best,})
 
 def intro_createclass(request):
