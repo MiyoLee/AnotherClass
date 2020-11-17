@@ -12,15 +12,14 @@
     color: #333;
     margin-top: 20px;
 }
-.slick-track
-{
-    position: relative;
-    top: 0;
-    left: 0;
-    margin-top:50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+.autoplay .slick-track{
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-top:50px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
 }
 
 .cateitem{
