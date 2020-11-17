@@ -735,7 +735,10 @@ font-size: 30px;
     margin: 0px 10px;
     }
     .nav>li>a {
-    padding: 11px 4vw;
+    padding: 0;
+    width: 20vw;
+    padding: 10 0;
+    text-align: center;
     }
     .more-container {
     padding-top: 50px;
