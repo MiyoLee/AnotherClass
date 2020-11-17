@@ -96,13 +96,15 @@
             </form>
 
             {% else %}
-            <b style="padding-left:70px; margin-top:40px; padding-right:10px;">수강 날짜 선택</b>
-            <select name="date">
+            <div class="date_select_form">
+                    <b class="b_title">수강 날짜 선택</b>
+                    <select name="date">
                 {% for date in class_detail.date_class.all %}
                 <option value="{{date.pk}}">{{ date.date }}</option>
                 {% empty %}
                 {% endfor %}
             </select>
+            </div>
             <a class="btn btn-primary twobutton" href="{% url 'update_class' class_detail.id %}">
                 정보 수정
             </a>
