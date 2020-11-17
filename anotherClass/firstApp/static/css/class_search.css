@@ -144,4 +144,18 @@ color: #4ECAC6;
         color: #4ECAC6;
         padding:0;
     }
+    .on_sale {
+    position: absolute;
+    width: 30px;
+    font-weight: bolder;
+    font-size: 10px;
+    height: 20px;
+    background-color: #FC2D67;
+    color: white;
+    border-radius: 5px;
+    left: 5px;
+    top: 5px;
+    text-align: center;
+    padding-top: 3px;
+    }
 }

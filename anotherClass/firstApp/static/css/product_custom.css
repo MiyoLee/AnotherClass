@@ -763,4 +763,20 @@ font-size: 30px;
     padding-left: 0px;
     padding-top:10px;
     }
+    .sale-icon {
+    position: absolute;
+    width: 45px;
+    font-weight: bolder;
+    font-size: 10px;
+    height: 25px;
+    background-color: #4ECAC6;
+    color: white;
+    font-size: 13px;
+    border-radius: 10px;
+    left: 10px;
+    top: 10px;
+    text-align: center;
+    padding-top: 1px;
+    z-index: 1;
+    }
 }
