@@ -163,17 +163,25 @@ def apply(request, class_id):
     if request.method == "POST":
         form = ApplyForm(request.POST)
         if form.is_valid():
-            apply = form.save(commit=False)
-            apply.author = User.objects.get(username=request.user.get_username())
-            apply.inClass = class_detail
-            apply.date = date
-            apply.save()
-            return HttpResponseRedirect("/product/{}".format(class_id) + '/apply/apply_complete')
+                apply = form.save(commit=False)
+                apply.author = User.objects.get(username=request.user.get_username())
+                apply.inClass = class_detail
+                apply.date = date
+                apply.save()
+                return HttpResponseRedirect("/product/{}".format(class_id) + '/apply/apply_complete')
         else:
             return render(request, 'firstApp/apply.html', {'alert_flag': True, 'class_detail': class_detail, 'form': form})
     else:
         form = ApplyForm()
         return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form, 'date': date})
+
+def apply_complete(request, class_id):
+    profiles = Profile.objects.filter(user=request.user)
+    class_detail = get_object_or_404(Class, pk=class_id)
+    profile = request.user.profile
+    profile.sybermoney = profile.sybermoney - int(class_detail.sale_price)
+    profile.save()
+    return render(request, 'firstApp/apply_complete.html', {'class_detail': class_detail, 'profiles':profiles})
 
 def review(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
@@ -269,14 +277,6 @@ def addTutor(request, class_id):
 def create_complete(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
     return render(request, 'firstApp/create_complete.html', {'class_detail': class_detail})
-
-def apply_complete(request, class_id):
-    profiles = Profile.objects.filter(user=request.user)
-    class_detail = get_object_or_404(Class, pk=class_id)
-    profile = request.user.profile
-    profile.sybermoney = profile.sybermoney - int(class_detail.sale_price)
-    profile.save()
-    return render(request, 'firstApp/apply_complete.html', {'class_detail': class_detail, 'profiles':profiles})
 
 def update_answer(request, pk):
     answer = get_object_or_404(ClassAnswer, pk=pk)
@@ -640,7 +640,8 @@ def login(request):
             auth.login(request, user)
             return redirect('/main')
         else:
-            return render(request, 'firstApp/login.html', {'loginError': True})
+            messages.error(request, ' ')
+            return render(request, 'firstApp/login.html')
     else:
         return render(request, 'firstApp/login.html')
 
