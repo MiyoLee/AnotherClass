@@ -4,6 +4,17 @@
 {% block content %}
 {% if user.is_active %}
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
+<link href="{% static 'css/apply_detail.css' %}" rel="stylesheet">
+<div class="sidenav" id="mySidenav">
+    <a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+    <a class= "nounderline" href="{% url 'mypage' %}"><h3>MY PAGE</h3></a>
+    <a class="nav-link"><strong>{{user.username}}님</strong></a>
+    <hr>
+    <a class="font-weight-bold" href="/mypage/mylike">관심 클래스</a>
+    <a class="font-weight-bold" href="/mypage/myApply">수강 클래스</a>
+    <a class="font-weight-bold" href="/mypage/myClass">개설 클래스</a>
+</div>
+<span class="btn_sidebar" onclick="openNav()"><i class="fas fa-bars"></i></span>
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
@@ -31,24 +42,16 @@
         </div>
 
           <div class="col-sm-9">
-            <h4 style="font-weight:bold; color:#B6B3E5;">승인 받지 않은 클래스</h4><br><br>
+            <h4 class="my_page_title" style="font-weight:bold; color:#B6B3E5;">승인 받지 않은 클래스</h4><br><br>
             <table class="table">
               <tr>
-                <th>클래스</th>
-                <th></th>
-                <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
+                <th colspan="6">클래스</th>
               </tr>
               {% for class in classs %}
               <tr>
                 <td>
-                    <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
+                    <a colspan="6" class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
                 </td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
                   <td class="lighter"><a class="abc" style="color:blue;" onclick="return confirm('클래스를 승인하시겠습니까?')" href="{% url 'class_permit' class.id %}">승인</a></td>
                   <td class="lighter"><a class="abc" style="color:red;" onclick="return confirm('삭제한 클래스는 복구할 수 없습니다.\n정말 삭제하시겠습니까?')" href="{% url 'product_remove' class.id %}">삭제</a></td>
               </tr>
@@ -57,6 +60,16 @@
           </div>
       </div>
     </div>
+<script>
+    function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
 {% else %}
 <script type="text/javascript">
     alert('잘못된 접근입니다. \n로그인을 해주세요.')
