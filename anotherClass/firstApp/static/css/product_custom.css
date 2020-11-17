@@ -207,7 +207,6 @@ position:relative;
 .product-info-o{
  float:left;
  width:500px;
- padding-top: 50px;
  padding-left:30px;
 }
 
@@ -658,7 +657,6 @@ font-size: 30px;
     .product-info-o {
     float: left;
     padding: 0;
-    padding-top: 30;
     }
     .prolist {
     display: inline-block;
