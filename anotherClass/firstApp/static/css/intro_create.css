@@ -1,13 +1,13 @@
 .intro_create{
 background: linear-gradient(to right, #bdaceb, #4ECAC6);
-height:525px;
-width:700px;
+width:50%;
 color:white;
 text-align:center;
 float:left;
 }
 .intro_create_img{
 float:left;
+width:50%;
 }
 
 
@@ -41,21 +41,21 @@ font-size:18px;
 @media (max-width: 600px) {
     .intro_create_img {
     float: left;
-    width: 80vw;
+    width: 100vw;
     float: none;
     }
     .intro_create {
     float: none;
-    width: 80vw;
+    width: 100vw;
     height: 400px;
     background: linear-gradient(to bottom, #bdaceb, #4ECAC6);
     }
     .intro_title {
     padding-top: 50px;
-    font-size: 15px;
+    font-size: 18px;
     }
     .intro_content {
-    font-size: 12px;
+    font-size: 11px;
     padding: 0 10px;
     }
     .intro_button {

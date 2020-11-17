@@ -134,10 +134,11 @@ color: #4ECAC6;
         font-size:12px!important;
     }
     .original_price{
-        font-size:12px;
-        margin:0;
-        position:relative;
-
+        font-size: 10px;
+        margin: 0;
+        position: relative;
+        right: 13px;
+        bottom: 21px;
     }
     .tutor_name{
         font-size:8px;
