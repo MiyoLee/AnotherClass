@@ -6,7 +6,7 @@
     padding:0;
 }
 .slide_title{
-    height: 80px;
+    height: 30px;
     font-size: min(4vw, 20px);
     display: block;
     color: #333;
