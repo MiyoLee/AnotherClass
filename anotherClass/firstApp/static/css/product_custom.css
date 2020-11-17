@@ -579,9 +579,9 @@ position: relative;
 }
 
 .price_div{
-height: 90px;
     text-align: right;
     padding-top: 7px;
+    paddig-bottom: 20px;
 }
 .price_tag{
 text-decoration: line-through;
@@ -743,14 +743,16 @@ font-size: 30px;
     .review-button {
     position: static;
     float: right;
-    width: 90px;
-    height: 40px;
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
     }
     .product-review-date {
     float: none;
     font-size: 10px;
     position: relative;
     left: 50%;
+    width: 50%;
     }
     .product-review-img {
     width: 32px;
@@ -767,6 +769,7 @@ font-size: 30px;
     font-weight: bold;
     padding-left: 0px;
     padding-top:10px;
+    width:100%;
     }
     .sale-icon {
     position: absolute;
@@ -804,6 +807,14 @@ font-size: 30px;
     padding-left: 0;
     }
     .product-review-title {
-    font-size: 18px;
+    font-size: 16px;
+    position: relative;
+    top: 3px;
+    }
+    .comment > p{
+    font-size:13px;
+    }
+    #reviews form {
+    padding-top: 15px;
     }
 }

@@ -7,3 +7,14 @@ font-weight:bold;
 margin:0;
 font-weight:bold;
 }
+@media (max-width: 600px) {
+    .left-sidebar{
+        display:none;
+    }
+    .my_page_title{
+        text-align:center;
+    }
+    .lighter{
+        display:none;
+    }
+}
