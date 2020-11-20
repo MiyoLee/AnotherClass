@@ -6,47 +6,54 @@
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
     <div class="container">
       <div class="row">
-        <div class="col-sm-3">
-          <div class="left-sidebar">
-            <ul>
-							<li data-toggle="tab">
-								<a href="{% url 'mypage' %}" class="nounderline"><h3>My page</h3></a><br>
-								<a class="nav-link"><strong>{{user.username}}님</strong></a>
-									<br>
-									<li class="nav-item">
-										<a class="nav-link" href="/mypage/mylike">관심 클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myApply">수강 클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myClass">개설 클래스</a>
-									</li>
+          <div class="col-sm-3" style="padding:0px;">
+              <br><br><br>
+              <div style=" background-color: #E9F4F7;
+                            padding: 30;
+                            position: relative;
+                            right: 60;
+                            top: 60;
+                            border-radius: 20px; ">
+                  <h4 style="font-weight: bold;
+                        font-size: 18; color: #4ECAC6; padding-bottom: 10;">
+                  현재 개설된 클래스 일정</h4>
+              <ul>
+              {% for date in class_detail.date_class.all %}
+              <li style="padding:5 0;"><a>{{date.date}}</a></li>
+              {% endfor %}
+              </ul>
+              </div>
 
-							</li>
-						</ul>
           </div>
-        </div>
-
           <div class="col-sm-9">
             <h5>{{class_detail.title}}</h5>
+
             <table class="table">
               <tr>
+                  <th>수업 일정</th>
+                  <th>No.</th>
                 <th>이름</th>
                 <th>ID</th>
                 <th>전화번호</th>
-                  <th>일정</th>
-                  <th></th>
-                  <th></th>
               </tr>
-              {% for apply in class_detail.apply.all %}
-              <tr>
-                <td>{{apply.name}}</td>
-                  <td>{{apply.author}}</td>
-                  <td>{{apply.number}}</td>
-                  <td>{{apply.date.date}}</td>
-                </tr>
-              {% endfor %}
+                {% for date in class_detail.date_class.all %}
+                    <script> var num = 0; </script>
+                    {% for apply in date.apply.all %}
+                    <script> num = num + 1 ; if (num == 1) {document.write("<tr><td colspan='5'></td></tr>");}</script>
+                    <tr>
+                        <script>
+                        if(num == 1) {document.write("<td style='font-weight: bold;'>{{apply.date.date}}</td>");}
+                        else {document.write("<td colspan='1'></td>");}
+                        </script>
+                          <td><script> document.write(num)</script></td>
+                          <td>{{apply.name}}</td>
+                          <td>{{apply.author}}</td>
+                          <td>{{apply.number}}</td>
+                    </tr>
+                    {% endfor %}
+                {% endfor %}
+
+
             </table>
           </div>
       </div>

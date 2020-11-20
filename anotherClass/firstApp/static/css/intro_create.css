@@ -42,6 +42,7 @@ font-size:18px;
     .intro_create_img {
     float: left;
     width: 100vw;
+    height: auto;
     float: none;
     }
     .intro_create {

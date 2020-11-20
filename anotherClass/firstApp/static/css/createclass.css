@@ -198,8 +198,13 @@ text-decoration:none;
     position: relative;
     left: 200;
 }
-#id_title{
+#id_title, #id_tutor_blog, #id_tutor_insta, #id_tutor_youtube{
     width:600px;
+}
+.state{
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 40;
 }
 @media (max-width: 600px){
 
