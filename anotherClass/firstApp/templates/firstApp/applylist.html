@@ -103,7 +103,7 @@
                             <a aria-controls="collapseExample" aria-expanded="false" data-toggle="collapse"
                                href="#{{apply.pk}}" class="a_underline">
                                 {{apply.inClass}}
-                         {% if apply.date.date < now%}
+                         {% if apply.date.date < now %}
                         <a style="float:right;" href="{% url 'review' class_id=apply.inClass.pk %}"> 리뷰작성</a>
                         {% endif %}
                             </a>

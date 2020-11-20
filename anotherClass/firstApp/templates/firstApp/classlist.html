@@ -43,53 +43,6 @@
         </div>
 
           <div class="col-sm-9">
-            <h4 class="my_page_title" style="font-weight:bold; color:#B6B3E5;">관심 클래스</h4><br><br>
-            <table class="table">
-              <tr>
-                <th>클래스</th>
-                <th>튜터</th>
-                <th>가격</th>
-              </tr>
-              {% for class in classs %}
-              <tr>
-                <td>
-                  <a class="a_underline" href="{% url 'product' class.id %}">{{ class.title }}</a>
-                </td>
-                <td class="lighter">{{ class.tutor }}</td>
-                <td class="lighter">{{ class.sale_price|intcomma }}</td>
-              </tr>
-              {% endfor %}
-            </table>
-          </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="left-sidebar">
-            <ul>
-              <li>
-								<a class= "nounderline" href="{% url 'mypage' %}"><h3>MY PAGE</h3></a>
-							</li><br>
-							<li data-toggle="tab">
-								<a class="nav-link"><strong>{{user.username}}님</strong></a>
-									<br>
-									<li class="nav-item">
-										<a class="nav-link" href="/mypage/mylike">관심 클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myApply">수강 클래스</a>
-									</li>
-									<li class="nav-item">
-									  <a class="nav-link" href="/mypage/myClass">개설 클래스</a>
-									</li>
-
-							</li>
-						</ul>
-          </div>
-        </div>
-
-          <div class="col-sm-9">
           {% if messages %}
             <ul class="messages">
               {% for message in messages %}
@@ -129,7 +82,7 @@
                     {% endif %}
                 </td>
                 <td class="lighter" id="edit"><a class="abc" href="{% url 'update_class' class.id %}">정보수정</a></td>
-                <td class="lighter" id="add"><a class="abc" href="{% url 'addTime' class.id %}">일정추가</a></td>
+                <td class="lighter" id="add"><a class="abc" href="{% url 'addTime2' class.id %}">일정추가</a></td>
                   <td class="lighter"><a class="abc" href="{% url 'classSale' class.id %}">할인</a></td>
                   <td class="lighter"><a class="abc" href="{% url 'applicant' class.id %}">신청현황</a></td>
                   <td class="lighter"><a class="abc" style="color:red;" onclick="return confirm('삭제한 클래스는 복구할 수 없습니다.\n정말 삭제하시겠습니까?')" href="{% url 'product_remove' class.id %}">삭제</a></td>

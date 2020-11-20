@@ -39,6 +39,14 @@ def index(request):
 def mypage(request):
     return render(request, 'firstApp/mypage.html')
 
+def time_remove_all(request, class_id):
+    times = ClassDate.objects.filter(inClass=class_id)
+    now = timezone.now()
+    for time in times:
+        if time.date < now:
+            time.delete()
+    return redirect('addTime2', class_id=time.inClass.pk)
+
 def blogMain(request):
     classs = Class.objects.filter(on_permission=True)
     best = Class.objects.filter(on_permission=True).order_by('-like_count')[:10]
@@ -253,6 +261,11 @@ def time_remove(request, pk):
     time.delete()
     return redirect('addTime', class_id=time.inClass.pk)
 
+def time_remove2(request, pk):
+    time = get_object_or_404(ClassDate, pk=pk)
+    time.delete()
+    return redirect('addTime2', class_id=time.inClass.pk)
+
 def certi_remove(request, pk):
     certi = get_object_or_404(Certificate, pk=pk)
     certi.delete()
@@ -348,6 +361,7 @@ def like(request, class_id):
 
 def product(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
+    now = timezone.now()
     heart = 0
     if request.user in class_detail.like_user.all():
         heart = 1
@@ -364,7 +378,7 @@ def product(request, class_id):
         form = QuestionForm()
         class_detail.save()
         return render(request, 'firstApp/product.html', {
-            'class_detail': class_detail, 'heart': heart, 'form': form})
+            'class_detail': class_detail, 'heart': heart, 'form': form, 'now': now})
 
 def addTime(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
@@ -381,7 +395,20 @@ def addTime(request, class_id):
         return render(request, 'firstApp/addTime.html', {
             'class_detail': class_detail, 'form': form})
 
-
+def addTime2(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == "POST":
+        form = AddTime(request.POST)
+        if form.is_valid():
+            time = form.save(commit=False)
+            time.inClass = class_detail
+            time.save()
+            return HttpResponseRedirect('addTime2'.format(class_id))
+    else:
+        form = AddTime()
+        class_detail.save()
+        return render(request, 'firstApp/addTime2.html', {
+            'class_detail': class_detail, 'form': form})
 
 def classSale(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)

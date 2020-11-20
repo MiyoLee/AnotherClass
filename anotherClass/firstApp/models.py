@@ -211,3 +211,5 @@ class Certificate(models.Model):
 class ClassDate(models.Model):
     inClass = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, default=1, related_name='date_class')
     date = models.DateTimeField(default=timezone.now)
+    class Meta:
+        ordering = ('-date',)

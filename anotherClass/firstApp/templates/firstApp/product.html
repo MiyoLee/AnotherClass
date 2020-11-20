@@ -86,7 +86,11 @@
                 <span class="form_span">수강 날짜 선택</span>
             <select name="date" >
                 {% for date in class_detail.date_class.all %}
+                {% if date.date < now %}
+                <option value="{{date.pk}}" disabled>{{ date.date }}</option>
+                {% else %}
                 <option value="{{date.pk}}">{{ date.date }}</option>
+                {% endif %}
                 {% empty %}
                 {% endfor %}
             </select>
@@ -100,7 +104,11 @@
                     <b class="b_title">수강 날짜 선택</b>
                     <select name="date">
                 {% for date in class_detail.date_class.all %}
+                {% if date.date < now %}
+                <option value="{{date.pk}}" disabled>{{ date.date }}</option>
+                {% else %}
                 <option value="{{date.pk}}">{{ date.date }}</option>
+                {% endif %}
                 {% empty %}
                 {% endfor %}
             </select>
@@ -108,7 +116,7 @@
             <a class="btn btn-primary twobutton" href="{% url 'update_class' class_detail.id %}">
                 정보 수정
             </a>
-            <a class="btn btn-primary twobutton" href="{% url 'addTime' class_detail.id %}">
+            <a class="btn btn-primary twobutton" href="{% url 'addTime2' class_detail.id %}">
                 일정 추가
             </a>
             {% endif %}
