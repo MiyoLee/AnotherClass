@@ -8,6 +8,37 @@
 {% endif %}
 {% if user.is_active %}
 <link rel="stylesheet" href="{% static 'css/createclass.css' %}">
+<link href="{% static 'css/paginate.css' %}" rel="stylesheet">
+
+<div class="sidenav" style="z-index: 3;" id="mySidenav">
+    <a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a>
+    <a><h3>클래스 개설하기</h3></a>
+                            <a href="#one" onclick="closeNav()" data-toggle="tab">1단계 > 클래스 기본정보</a></li>
+                        <ul>
+                            <a>클래스 정보</a>
+                            <a>커버이미지</a>
+                        </ul>
+                            <a href="#two" onclick="closeNav()" data-toggle="tab">2단계 > 클래스 소개</a>
+                        <ul>
+                            <a>클래스 소개하기</a>
+                        </ul>
+                            <a href="#three" onclick="closeNav()" data-toggle="tab">3단계 > 크리에이터 소개</a>
+                        <ul>
+                            <a>크리에이터 소개하기</a>
+                        </ul>
+
+
+                            <a>4단계 > 크리에이터 정보</a>
+                            <ul>
+                                <a>자격증 추가</a>
+                                <a>학력 인증</a>
+                                <a>SNS</a>
+                            </ul>
+                            <a>5단계 > 일정 추가</a>
+                        </ul>
+</div>
+    <span class="btn_sidebar my-nav-button" onclick="openNav()"><i class="fas fa-caret-right"></i></span>
+
 	<section>
 		<div class="contents">
             <div class="createclasscont">
@@ -15,7 +46,6 @@
 				<div class="col-sm-3">
 					<div class="left-sidebar">
                         <ul class="steptabs">
-
                                 <li class="active"><a href="#one" data-toggle="tab">1단계 > 클래스 기본정보</a></li>
                         <ul>
                             <li>클래스 정보</li>
@@ -120,13 +150,7 @@
                                         <div class="form_title class_form">추가 이미지  </div>
                                     <div class="class_form"><input type="file" accept="image/*" name="imgs" multiple>
                                     </div>
-                                    <div style="    margin-top: 20;
-    font-size: 14;
-    font-weight: bold;
-    color: #9b9eea;
-    position: relative;
-    left: 200;
-">* 선택사항, 다중선택 가능</div>
+                                    <div class="img_option">* 선택사항, 다중선택 가능</div>
                                     </p>
 
                                     <hr class="hr_width">
@@ -174,9 +198,9 @@
                        {{form.tutor_body}}
                        <br>
                             <button type="submit" class="btn btn-primary bottombutton" onclick="return confirm('다음 단계로 넘어가시겠습니까?')" >다음 단계</button>
-                        </div> 
                         </div>
-                        
+                        </div>
+
                         </form>
 
 
@@ -188,9 +212,20 @@
 		</div>
     </section>
 {% else %}
+
 <script type="text/javascript">
     alert('잘못된 접근입니다. \n클래스를 개설하려면 로그인을 해주세요.')
     window.location.href = '/login';
-  </script>
+</script>
+
 {% endif %}
+<script>
+    function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+    }
+</script>
 {% endblock content%}

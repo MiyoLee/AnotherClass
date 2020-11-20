@@ -51,9 +51,8 @@ margin-bottom:40px;
 height:100px;
 }
 .hr_width2{
-width:800px;
-position: relative;
-left:-20%;
+margin-right: 50%;
+width: 800px;
 }
 .date-button{
 margin-left:50px
@@ -65,9 +64,8 @@ width:180px;
 }
 
 .hr_width{
-width:800px;
-position: relative;
-left:-18%;
+margin-right: 50%;
+width: 820px;
 }
 
 .class_form {
@@ -151,3 +149,201 @@ color:#333333;
 text-decoration:none;
 }
 
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #F0F1F9;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 14px;
+  color: gray;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: black;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.btn_sidebar{
+    display:none;
+}
+.img_option{
+    margin-top: 20;
+    font-size: 14;
+    font-weight: bold;
+    color: #9b9eea;
+    position: relative;
+    left: 200;
+}
+#id_title{
+    width:600px;
+}
+@media (max-width: 600px){
+
+    h4{
+        font-size:12pt;
+        margin:0;
+    }
+    .post_list{
+        padding:0;
+    }
+    .side_bar{
+        display:none;
+    }
+    .upper_box{
+       display:none;
+    }
+    th{
+        display:none;
+    }
+    .col1{
+        display:none;
+    }
+    .col2{
+        width:280px;
+        word-break:break-all
+        font-size:14px;
+        padding:0;
+    }
+    .col3{
+        font-size:14px;
+        padding:0;
+    }
+    .col4{
+        display:none;
+    }
+    .col5{
+        display:none;
+    }
+    .col6{
+        display:none;
+    }
+    .btn-primary{
+        width: 110px;
+        font-size:13px;
+    }
+    .search_criteria{
+        padding-bottom:10px;
+    }
+    .select_b{
+        display:inline-block;
+        width:120px;
+    }
+    .select_c{
+        display:inline-block;
+        width:120px;
+        margin-right:0 !important;
+    }
+    .search_k{
+        width:198.1px !important;
+    }
+    #main{
+        padding:2px;
+    }
+    .web_sidebar{
+        display:none;
+    }
+   .btn_sidebar{
+        display:inline-block;
+    }
+    .sidenav {padding-top: 50px;}
+    .sidenav a {font-size: 17px;}
+    .left-sidebar{
+        display: none;
+    }
+    .my-nav-button{
+    padding: 0.5rem 1.5rem 0.5rem 3rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 1rem;
+    color: rgba(0,0,0,.5);
+    border-color: rgba(0,0,0,.3);
+    position: absolute;
+    left: -2rem;
+    z-index:2;
+    }
+    .upperbar {
+    margin-right: 0px;
+    padding-bottom: 0px;
+    border-bottom: 2px solid #4ECAC6;
+    width: 80vw;
+    height: 50px;
+    margin-bottom: 0px;
+    }
+    #id_title, #id_tutor_blog, #id_tutor_insta, #id_tutor_youtube{
+    width:80vw;
+    }
+    #id_in_min, #id_in_max{
+    width: 50px;
+    }
+    .img_option{
+    position: static;
+    left: 0;
+    }
+    .hr_width{
+    width:80vw;
+    }
+    .form_title {
+    width: 100px;
+    }
+    .step-num{
+    font-size:20px;
+    }
+    .step-title{
+    font-size:20px;
+    }
+    .createclasscont .blog-post-area .state {
+     margin-left: 0px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: auto;
+    font-size: 13px;
+    font-weight: bold;
+    }
+    .tutor{
+    padding:0px;
+    }
+    .form_description {
+    text-align: center;
+    width: 80vw;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 30px;
+    padding-top: 10;
+    }
+    .hr_width2 {
+    margin-right: 50%;
+    width: 80vw;
+    }
+    .form_title {
+    font-size: 13px;
+    }
+    .btn-tutor{
+    width:auto;
+    }
+}

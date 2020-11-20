@@ -86,7 +86,7 @@ class CertificateForm(forms.ModelForm):
         fields = ['name']
         widgets = {
             'name': forms.TextInput(
-                attrs={'style': 'width: 40%', 'placeholder': ' 토익 100점 , HSK 8급 , 컴퓨터활용능력 3급 . . .'}
+                attrs={'placeholder': ' 토익 100점 , HSK 8급 , 컴퓨터활용능력 3급 . . .'}
             )
 
         }
@@ -96,10 +96,10 @@ class EducationForm(forms.ModelForm):
         fields = ['university', 'department', 'state']
         widgets = {
             'university': forms.TextInput(
-                attrs={'style': 'width: 17%', 'placeholder': ' 서울대학교 '}
+                attrs={ 'placeholder': ' 서울대학교 '}
             ),
             'department': forms.TextInput(
-                attrs={'style': 'width: 17%', 'placeholder': ' 실용음악과'}
+                attrs={ 'placeholder': ' 실용음악과'}
             )
             
 
@@ -119,32 +119,32 @@ class CreateClass(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(
-                attrs={'style': 'width: 350%', 'placeholder': '제목을 입력하세요.'}
+                attrs={'placeholder': '제목을 입력하세요.'}
             ),
             'tutor': forms.TextInput(
-                attrs={'style': 'width: 170%', 'placeholder': '이름을 입력하세요.'},
+                attrs={'placeholder': '이름을 입력하세요.'},
             ),
             'tutor_insta': forms.TextInput(
-                attrs={'style': 'width: 300%', 'placeholder': '@instagram'},
+                attrs={'placeholder': '@instagram'},
             ),
             'tutor_blog': forms.TextInput(
-                attrs={'style': 'width: 300%', 'placeholder': 'https://blog.naver.com/AnotherClass'},
+                attrs={'placeholder': 'https://blog.naver.com/AnotherClass'},
             ),
             'tutor_youtube': forms.TextInput(
-                attrs={'style': 'width: 300%', 'placeholder': '어나더클래스 , youtube.com/AnotherClass'},
+                attrs={'placeholder': '어나더클래스 , youtube.com/AnotherClass'},
             ),
 
             'price': forms.TextInput(
-                attrs={'style': 'width: 100px'},
+                attrs={},
             ),
             'time': forms.TextInput(
-                attrs={'style': 'width: 100px'},
+                attrs={},
             ),
             'in_min': forms.NumberInput(
-                attrs={'style': 'width: 70px'},
+                attrs={},
             ),
             'in_max': forms.NumberInput(
-                attrs={'style': 'width: 70px'},
+                attrs={},
             ),
             'body': forms.CharField(widget=CKEditorUploadingWidget()),
             'tutor_body': forms.CharField(widget=CKEditorUploadingWidget()),
