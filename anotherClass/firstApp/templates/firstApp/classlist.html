@@ -82,7 +82,7 @@
                     {% endif %}
                 </td>
                 <td class="lighter" id="edit"><a class="abc" href="{% url 'update_class' class.id %}">정보수정</a></td>
-                <td class="lighter" id="add"><a class="abc" href="{% url 'addTime2' class.id %}">일정추가</a></td>
+                <td class="lighter" id="add"><a class="abc" href="{% url 'addTime2' class.id %}">일정관리</a></td>
                   <td class="lighter"><a class="abc" href="{% url 'classSale' class.id %}">할인</a></td>
                   <td class="lighter"><a class="abc" href="{% url 'applicant' class.id %}">신청현황</a></td>
                   <td class="lighter"><a class="abc" style="color:red;" onclick="return confirm('삭제한 클래스는 복구할 수 없습니다.\n정말 삭제하시겠습니까?')" href="{% url 'product_remove' class.id %}">삭제</a></td>
