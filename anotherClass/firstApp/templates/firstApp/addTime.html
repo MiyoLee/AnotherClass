@@ -57,9 +57,19 @@
 
                 </div>
 
-            <br><br>
+            <br>
             <div>
-
+                {% if messages %}
+				{% for message in messages %}
+								<div class="alert alert-success" style="width: 800;">
+										지난 일정은 추가할 수 없습니다.
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+								</div>
+				{% endfor %}
+			    {% endif %}
+                <br>
                  {% for date in class_detail.date_class.all %}
             <div>
                 {{ date.date }}

@@ -382,13 +382,18 @@ def product(request, class_id):
 
 def addTime(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
+    now = timezone.now()
     if request.method == "POST":
         form = AddTime(request.POST)
         if form.is_valid():
             time = form.save(commit=False)
-            time.inClass = class_detail
-            time.save()
-            return HttpResponseRedirect("/createclass/{}/addTime".format(class_id))
+            if time.date > now:
+                time.inClass = class_detail
+                time.save()
+                return HttpResponseRedirect("/createclass/{}/addTime".format(class_id))
+            else:
+                messages.info(request, '정보를 나타냅니다.')
+                return HttpResponseRedirect("/createclass/{}/addTime".format(class_id))
     else:
         form = AddTime()
         class_detail.save()
@@ -397,13 +402,18 @@ def addTime(request, class_id):
 
 def addTime2(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
+    now = timezone.now()
     if request.method == "POST":
         form = AddTime(request.POST)
         if form.is_valid():
             time = form.save(commit=False)
-            time.inClass = class_detail
-            time.save()
-            return HttpResponseRedirect('addTime2'.format(class_id))
+            if time.date > now:
+                time.inClass = class_detail
+                time.save()
+                return HttpResponseRedirect('addTime2'.format(class_id))
+            else:
+                messages.info(request, '정보를 나타냅니다.')
+                return HttpResponseRedirect('addTime2'.format(class_id))
     else:
         form = AddTime()
         class_detail.save()
