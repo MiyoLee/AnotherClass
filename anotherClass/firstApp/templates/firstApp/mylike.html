@@ -5,8 +5,10 @@
 {% if user.is_active %}
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
 <link href="{% static 'css/apply_detail.css' %}" rel="stylesheet">
+<script src="https://kit.fontawesome.com/81816a43c2.js" crossorigin="anonymous"></script>
 
-<div class="sidenav" id="mySidenav">
+
+<div class="sidenav" style="z-index: 3;" id="mySidenav">
     <a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a>
     <a class= "nounderline" href="{% url 'mypage' %}"><h3>MY PAGE</h3></a>
     <a class="nav-link"><strong>{{user.username}}님</strong></a>
@@ -15,7 +17,7 @@
     <a class="font-weight-bold" href="/mypage/myApply">수강 클래스</a>
     <a class="font-weight-bold" href="/mypage/myClass">개설 클래스</a>
 </div>
-<span class="btn_sidebar" onclick="openNav()"><i class="fas fa-bars"></i></span>
+    <span class="btn_sidebar my-nav-button" onclick="openNav()"><i class="fas fa-caret-right"></i></span>
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
