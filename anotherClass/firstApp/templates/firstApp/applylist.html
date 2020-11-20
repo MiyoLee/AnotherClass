@@ -3,6 +3,9 @@
 {% load humanize %}
 {% block content %}
 {% if user.is_active %}
+{% if alert_flag %}
+<script>alert("일정이 지나 취소할 수 없습니다.")</script>
+{% endif %}
 <link href="{% static 'css/community.css' %}" rel="stylesheet">
 <link href="{% static 'css/apply_detail.css' %}" rel="stylesheet">
 <div class="sidenav" id="mySidenav">

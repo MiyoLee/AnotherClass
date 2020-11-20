@@ -81,13 +81,18 @@ def myApply(request):
     return render(request, 'firstApp/applylist.html', {'applys':applys, 'now':now})
 
 def cancelApply(request, pk):
+    applys = Apply.objects.filter(author=request.user)    
     apply = get_object_or_404(Apply, pk=pk)
-    apply.delete()
+    now = timezone.now()
     profile = request.user.profile
-    profile.sybermoney = profile.sybermoney + int(apply.inClass.sale_price)
-    profile.save()
-    messages.success(request, ' ')
-    return redirect('myApply')
+    if apply.date.date < now:
+        return render(request, 'firstApp/applylist.html', {'alert_flag': True, 'applys':applys, 'now':now})
+    else:
+        apply.delete()
+        profile.sybermoney = profile.sybermoney + int(apply.inClass.sale_price)
+        profile.save()
+        messages.success(request, ' ')
+        return redirect('myApply')
 
 @login_required(login_url='/login/')
 def mylike(request):
@@ -157,12 +162,18 @@ def class_search(request):
 
 @login_required(login_url='/login/')
 def apply(request, class_id):
+    profiles = Profile.objects.filter(user=request.user)
+    profile = request.user.profile
     date_id = request.GET.get('date', '')
     date = get_object_or_404(ClassDate, pk=date_id)
     class_detail = get_object_or_404(Class, pk=class_id)
     if request.method == "POST":
         form = ApplyForm(request.POST)
         if form.is_valid():
+            if profile.sybermoney < int(class_detail.sale_price) :
+                messages.error(request, ' ')
+                return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form, 'profiles':profiles})
+            else:
                 apply = form.save(commit=False)
                 apply.author = User.objects.get(username=request.user.get_username())
                 apply.inClass = class_detail
@@ -170,10 +181,10 @@ def apply(request, class_id):
                 apply.save()
                 return HttpResponseRedirect("/product/{}".format(class_id) + '/apply/apply_complete')
         else:
-            return render(request, 'firstApp/apply.html', {'alert_flag': True, 'class_detail': class_detail, 'form': form})
+            return render(request, 'firstApp/apply.html', {'alert_flag': True, 'class_detail': class_detail, 'form': form, 'profiles':profiles})
     else:
         form = ApplyForm()
-        return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form, 'date': date})
+        return render(request, 'firstApp/apply.html', {'class_detail': class_detail, 'form': form, 'date': date, 'profiles':profiles})
 
 def apply_complete(request, class_id):
     profiles = Profile.objects.filter(user=request.user)
