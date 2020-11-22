@@ -147,12 +147,13 @@ def signup(request):
                 profile.birth_date = profile_form.cleaned_data['birth_date']
                 profile.model_categories.set(profile_form.cleaned_data['model_categories'])
                 profile.save()
-
+                messages.success(request, ' ')            
                 return redirect('/login')
             else:
                 return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag1': True, 'profile_form':profile_form})
         else:
             return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag2': True, 'profile_form':profile_form})
+
 def class_align(request):
     classs = Class.objects.filter(on_permission=True)
     areas = Area.objects.all()
@@ -734,8 +735,7 @@ def login(request):
             auth.login(request, user)
             return redirect('/main')
         else:
-            messages.error(request, ' ')
-            return render(request, 'firstApp/login.html')
+            return render(request, 'firstApp/login.html', {'alert_flag1': True})
     else:
         return render(request, 'firstApp/login.html')
 

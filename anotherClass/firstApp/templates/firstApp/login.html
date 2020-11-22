@@ -4,22 +4,23 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
-
 {% if user.is_active %}
 <script type="text/javascript">
     alert('잘못된 접근입니다. \n로그인을 하시려면 로그아웃 하세요.')
     window.location.href = '/main';
   </script>
-
 {% else %}
+{% if alert_flag1 %}
+<script>alert("가입하지 않은 아이디거나, 잘못된 비밀번호 입니다.")</script>
+{% endif %}
 {% if messages %}
 <ul class="messages">
   {% for message in messages %}
   <div class="container">
     <div class="row">
       <div class="col">
-          <div class="alert alert-danger">
-              가입하지 않은 아이디거나, 잘못된 비밀번호 입니다.
+          <div class="alert alert-success">
+              회원가입이 완료되었습니다! 로그인 하세요!
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
