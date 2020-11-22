@@ -19,7 +19,11 @@
                   현재 개설된 클래스 일정</h4>
               <ul>
               {% for date in class_detail.date_class.all %}
-              <li style="padding:5 0;"><a>{{date.date}}</a></li>
+                    {% if date.date > now %}
+                    <li style="padding:5 0;"><a>{{date.date}}</a></li>
+                    {% else %}
+                    <li style="padding:5 0; color: #999;"><a>{{date.date}}</a></li>
+                    {% endif %}
               {% endfor %}
               </ul>
               </div>
