@@ -155,7 +155,7 @@ class Class(models.Model):
 
 class Photo(models.Model):
     post = models.ForeignKey('firstApp.Class', on_delete=models.CASCADE, null=True, related_name='class_photo')
-    image = models.ImageField(upload_to="class", blank=True, null=True)
+    image = ProcessedImageField(upload_to="class", processors=[ResizeToFill(600,450)], blank=True, null=True)
 
 class Apply(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)

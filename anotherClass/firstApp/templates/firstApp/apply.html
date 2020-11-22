@@ -43,12 +43,13 @@
                 <div class="col-sm-9">
                     <div class="blog-post-area">
                         <div class="tab-content">
-                            <form class="tab-pane active" id="one">
+
+                            <div class="tab-pane active" id="one">
                                 <div class="upperbar">
                                     <div class="step-num">1단계</div>
                                     <div class="step-title">신청서 작성</div>
                                 </div>
-                                <form enctype="multipart/form-data" method="POST">
+                                        <form enctype="multipart/form-data" method="POST">
                                         {% csrf_token %}
                                         {{ form.media }}
                                     <p>
@@ -78,8 +79,8 @@
                                         
                                 
                                 <button class="btn btn-primary bottombutton" href="#two" data-toggle="tab">다음 단계</button>
-                            </form>
-                        <div class="tab-pane" id="two">
+                            </div>
+                            <div class="tab-pane" id="two">
                             <div class="upperbar">
                                 <div class="step-num">2단계</div>
                                 <div class="step-title">결제하기</div>
@@ -101,8 +102,8 @@
                                     </p>
                             <br><br>
 
-                            <input type="submit"  class="btn btn-primary bottombutton" value="결제하기" onclick="return confirm('결제하시겠습니까?')">
-                        </form>
+                            <input type="submit" class="btn btn-primary bottombutton" value="결제하기">
+                                </form>
                         </div>
 
                         

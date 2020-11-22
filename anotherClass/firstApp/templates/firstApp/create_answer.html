@@ -21,14 +21,14 @@
             {% if class_detail.on_sale == True %}
             <div class="sale-icon">SALE</div>
             {% endif %}
-            <div style="width:600px;height:450px;" class="for_slick_slider single-item">
-                <div class="items"><img style="width:600px;height:450px;" src="{{ class_detail.photo.url }}"></div>
+            <div style="width:min(80vw,600px);height:min(60vw,450px);" class="for_slick_slider single-item product-single">
+                <div class="items"><img src="{{ class_detail.photo.url }}"></div>
                 {% for image in class_detail.class_photo.all %}
-                <div class="items"><img style="width:600px;height:450px;" src="{{ image.image.url }}"></div>
+                <div class="items"><img src="{{ image.image.url }}"></div>
                 {% endfor %}
             </div>
 
-             <div class="like_block">
+            <div class="like like_block">
 
                     {% if user != class_detail.author %}
                     {% if heart == 1 %}
@@ -46,8 +46,8 @@
              </div>
         </div>
 
-        <div class="product-info">
-            <h2 style="line-height:1.8;">{{ class_detail.title }}</h2>
+        <div class="product-info product-info-o">
+            <div><h2 style="line-height:1.8;">{{ class_detail.title }}</h2></div>
 
 
             <ul class="prolist">
@@ -80,12 +80,15 @@
             </div>
 
             {% if user != class_detail.author %}
-            <form style="margin:0px;" action="{% url 'apply' class_detail.id%}" method="get">
-                <span style="padding-left:70px; margin-top:40px; font-weight:bold; padding-right:10px;
-                              ">수강 날짜 선택</span>
+            <form class="date_select_form" action="{% url 'apply' class_detail.id%}" method="get">
+                <span class="form_span">수강 날짜 선택</span>
             <select name="date" >
                 {% for date in class_detail.date_class.all %}
+                {% if date.date < now %}
+                <option value="{{date.pk}}" disabled>{{ date.date }}</option>
+                {% else %}
                 <option value="{{date.pk}}">{{ date.date }}</option>
+                {% endif %}
                 {% empty %}
                 {% endfor %}
             </select>
@@ -95,18 +98,24 @@
             </form>
 
             {% else %}
-            <b style="padding-left:70px; margin-top:40px; padding-right:10px;">수강 날짜 선택</b>
-            <select name="date">
+            <div class="date_select_form">
+                    <b class="b_title">수강 날짜 선택</b>
+                    <select name="date">
                 {% for date in class_detail.date_class.all %}
+                {% if date.date < now %}
+                <option value="{{date.pk}}" disabled>{{ date.date }}</option>
+                {% else %}
                 <option value="{{date.pk}}">{{ date.date }}</option>
+                {% endif %}
                 {% empty %}
                 {% endfor %}
             </select>
+            </div>
             <a class="btn btn-primary twobutton" href="{% url 'update_class' class_detail.id %}">
                 정보 수정
             </a>
-            <a class="btn btn-primary twobutton" href="{% url 'addTime' class_detail.id %}">
-                일정 추가
+            <a class="btn btn-primary twobutton" href="{% url 'addTime2' class_detail.id %}">
+                일정 관리
             </a>
             {% endif %}
 
@@ -199,7 +208,9 @@
             <div class="product-review-date">
                 {{ qna.created_date }}
             </div>
-            <img class="product-q-img" src="{% static 'image\q.png' %}"><div class="product-question">{{ qna.question }}</div>
+            <div class="product-question">
+                            <img class="product-q-img" src="{% static 'image\q.png' %}">
+                            <span>{{ qna.question }}</span></div>
                         {% if qna.pk == parent_question.pk %}
                         <form method="POST" class="post-form">
                             {% csrf_token %}
