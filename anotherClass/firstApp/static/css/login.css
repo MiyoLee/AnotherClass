@@ -3,6 +3,9 @@
     padding: 0;
     font-family: sans-serif;
 }
+#id_model_categories{
+    list-style: none;
+}
 .input-field {
     width: 23%;
     height:7%;
