@@ -22,14 +22,16 @@
                         <form enctype="multipart/form-data" method="POST">
                                 {% csrf_token %}
                                 {{ form.media }}
-                                <p>
-                                    <b>클래스 :  </b>
-                                    {{ class_detail.title }}
-                                </p>
-                                <p>
-                                    <b>제목 : </b>
-                                    {{ form.title }}
-                                </p>
+                                    <p>
+                                        <div class="form_title class_form">클래스</div>
+                                        <div class="class_form">{{ class_detail.title }}</div>
+                                    </p>
+                                    <hr class="hr_width">
+                                    <p>
+                                        <div class="form_title class_form">제목</div>
+                                        <div class="class_form">{{ form.title }}</div>
+                                    </p>
+
                                 <p>
                                     {{ form.body }}
                                 </p>

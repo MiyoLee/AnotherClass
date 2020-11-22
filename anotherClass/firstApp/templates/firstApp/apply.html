@@ -27,12 +27,14 @@
 {% endif %}
 <link href="{% static 'css/createclass.css' %}" rel="stylesheet">
 <section>
-    <div class="contents">
-        <div class="createclasscont">
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="left-sidebar">
-                        <ul class="steptabs">
+ 	<section>
+		<div id="main">
+                <div class="container">
+                <div class="row">
+				<div class="col-sm-3">
+                    <br><br><br>
+					<div class="left-sidebar">
+                        <ul class="steptabs" style="padding:0px;">
                             <li class="active"><a href="#one" data-toggle="tab">1단계 > 신청서 작성</a></li><br><Br>
                             <li><a href="#two" data-toggle="tab">2단계 > 결제하기</a></li>
                         </ul>
@@ -41,7 +43,7 @@
                 <div class="col-sm-9">
                     <div class="blog-post-area">
                         <div class="tab-content">
-                            <div class="tab-pane active" id="one">
+                            <form class="tab-pane active" id="one">
                                 <div class="upperbar">
                                     <div class="step-num">1단계</div>
                                     <div class="step-title">신청서 작성</div>
@@ -49,52 +51,57 @@
                                 <form enctype="multipart/form-data" method="POST">
                                         {% csrf_token %}
                                         {{ form.media }}
-                                        <p>
-                                            <b>클래스 :  </b>
-                                            {{ class_detail.title }}
-                                        </p>
-                                        <p>
-                                            <b>일정 :  </b>
-                                            {{ date.date }}
-                                        </p>                                
-                                        <p>
-                                            <b>이름 : </b>
-                                            <input type="text" name="name" value={{user.first_name}}>
-                                        </p>
-                                        <p>
-                                            <b>전화번호 : </b>
-                                            <input type="text" name="number" value={{user.profile.number}}>
-                                        </p>
-                                        <p>
-                                            <b>튜터에게 전하는 말 : </b>
-                                            {{ form.text }}
-                                        </p>
+                                    <p>
+                                        <div class="form_title class_form">클래스</div>
+                                        <div class="class_form">{{ class_detail.title }}</div>
+                                    </p>
+                                    <hr class="hr_width">
+                                    <p>
+                                        <div class="form_title class_form">일정</div>
+                                        <div class="class_form">{{ date.date }}</div>
+                                    </p>
+                                    <hr class="hr_width">
+                                    <p>
+                                        <div class="form_title class_form">이름</div>
+                                        <div class="class_form"><input type="text" name="name" value={{user.first_name}}></div>
+                                    </p>
+                                    <hr class="hr_width">
+                                    <p>
+                                        <div class="form_title class_form">전화번호</div>
+                                        <div class="class_form"><input type="text" name="number" value={{user.profile.number}}></div>
+                                    </p>
+                                    <hr class="hr_width">
+
+                                        <p><div class="form_title class_form">강사에게 전하는 말</div></p>
+                                        {{ form.text }}
+
                                         
                                 
                                 <button class="btn btn-primary bottombutton" href="#two" data-toggle="tab">다음 단계</button>
-                        </div>
-
+                            </form>
                         <div class="tab-pane" id="two">
                             <div class="upperbar">
                                 <div class="step-num">2단계</div>
                                 <div class="step-title">결제하기</div>
                             </div>
-                            <h4 style="font-weight:bold; color:#B6B3E5;">신청 클래스 상세 확인</h4><br><br>
-                            <p>
-                                <b>클래스 :  </b>
-                                {{ class_detail.title }}
-                            </p>
-                            <p>
-                                <b>일정 :  </b>
-                                {{ date.date }}
-                            </p> 
-                            <p>
-                                <b>가격 :  </b>
-                                {{ class_detail.sale_price | intcomma }}
-                            </p>
+                            <h4 style="font-weight:bold; color:#B6B3E5; text-align:center;">신청 클래스 상세 확인</h4><br><br>
+                                    <p>
+                                        <div class="form_title class_form">클래스</div>
+                                        <div class="class_form">{{ class_detail.title }}</div>
+                                    </p>
+                            <hr class="hr_width">
+                                    <p>
+                                        <div class="form_title class_form">일정</div>
+                                        <div class="class_form">{{ date.date }}</div>
+                                    </p>
+                            <hr class="hr_width">
+                                    <p>
+                                        <div class="form_title class_form">가격</div>
+                                        <div class="class_form">{{ class_detail.sale_price | intcomma }} 원</div>
+                                    </p>
                             <br><br>
 
-                            <input type="submit" class="btn btn-primary" value="결제하기" onclick="return confirm('결제하시겠습니까?')">
+                            <input type="submit"  class="btn btn-primary bottombutton" value="결제하기" onclick="return confirm('결제하시겠습니까?')">
                         </form>
                         </div>
 

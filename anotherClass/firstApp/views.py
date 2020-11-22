@@ -147,8 +147,8 @@ def signup(request):
                 profile.birth_date = profile_form.cleaned_data['birth_date']
                 profile.model_categories.set(profile_form.cleaned_data['model_categories'])
                 profile.save()
-                messages.success(request, ' ')
-                return redirect('/main')
+
+                return redirect('/login')
             else:
                 return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag1': True, 'profile_form':profile_form})
         else:
