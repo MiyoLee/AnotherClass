@@ -27,6 +27,7 @@ class Profile(models.Model):
     birth_date = models.DateField(max_length=10, null=True, blank=True)
     model_categories = models.ManyToManyField('firstApp.Category', blank = True, related_name='model_categories')
 
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

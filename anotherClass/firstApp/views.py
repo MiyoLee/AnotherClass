@@ -130,6 +130,29 @@ def member(request):
         profile_form = ProfileForm(instance=request.user.profile)
         return render(request, 'firstApp/member_info_management.html', {'user_form': user_form, 'profile_form': profile_form})
 
+def signup(request):
+    if request.method == "GET":
+        return render(request, 'firstApp/signup.html', {'f':SignupForm(), 'profile_form':ProfileForm()} )
+    elif request.method == "POST":
+        form = SignupForm(request.POST)
+        profile_form = ProfileForm(request.POST)
+        if form.is_valid() and profile_form.is_valid():
+            if form.cleaned_data['password']  == form.cleaned_data['password_확인']:
+                new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'])
+                new_user.name = form.cleaned_data['first_name']
+                new_user.save()
+                profile = get_object_or_404(Profile, user=new_user)
+                profile.location = profile_form.cleaned_data['location']
+                profile.number = profile_form.cleaned_data['number']
+                profile.birth_date = profile_form.cleaned_data['birth_date']
+                profile.model_categories.set(profile_form.cleaned_data['model_categories'])
+                profile.save()
+                messages.success(request, ' ')
+                return redirect('/main')
+            else:
+                return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag1': True, 'profile_form':profile_form})
+        else:
+            return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag2': True, 'profile_form':profile_form})
 def class_align(request):
     classs = Class.objects.filter(on_permission=True)
     areas = Area.objects.all()
@@ -716,22 +739,7 @@ def login(request):
     else:
         return render(request, 'firstApp/login.html')
 
-def signup(request):
-    if request.method == "GET":
-        return render(request, 'firstApp/signup.html', {'f':SignupForm()} )
-    elif request.method == "POST":
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            if form.cleaned_data['password']  == form.cleaned_data['password_확인']:
-                new_user = User.objects.create_user(form.cleaned_data['username'],form.cleaned_data['email'],form.cleaned_data['password'])
-                new_user.name = form.cleaned_data['first_name']
-                new_user.save()
-                messages.success(request, ' ')
-                return redirect('/main')
-            else:
-                return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag1': True})
-        else:
-            return render(request, 'firstApp/signup.html',{'f':form, 'alert_flag2': True})
+
 
 def logout(request):
     auth.logout(request)

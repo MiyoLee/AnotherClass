@@ -210,7 +210,6 @@ class SignupForm(forms.ModelForm):
     class Meta:
         model=User
         widgets = {'password':forms.PasswordInput}
-        
         fields = ['username','password','first_name','email']
 
 class CheckPasswordForm(forms.Form):
