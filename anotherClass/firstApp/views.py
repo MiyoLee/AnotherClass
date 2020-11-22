@@ -219,7 +219,8 @@ def review(request, class_id):
 
 def applicant(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
-    return render(request, 'firstApp/applicant.html', {'class_detail': class_detail})
+    now = timezone.now()
+    return render(request, 'firstApp/applicant.html', {'class_detail': class_detail, 'now': now})
 
 @login_required(login_url='/login/')
 def createclass(request):

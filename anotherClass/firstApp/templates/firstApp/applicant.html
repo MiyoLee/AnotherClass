@@ -41,10 +41,17 @@
                     {% for apply in date.apply.all %}
                     <script> num = num + 1 ; if (num == 1) {document.write("<tr><td colspan='5'></td></tr>");}</script>
                     <tr>
+                        {% if apply.date.date < now %}
                         <script>
+                        if(num == 1) {document.write("<td style='color: #999; font-weight: bold;'>{{apply.date.date}}</td>");}
+                        else {document.write("<td colspan='1'></td>");}
+                        </script>
+                        {% else %}
+                         <script>
                         if(num == 1) {document.write("<td style='font-weight: bold;'>{{apply.date.date}}</td>");}
                         else {document.write("<td colspan='1'></td>");}
                         </script>
+                        {% endif %}
                           <td><script> document.write(num)</script></td>
                           <td>{{apply.name}}</td>
                           <td>{{apply.author}}</td>

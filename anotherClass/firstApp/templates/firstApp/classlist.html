@@ -5,6 +5,7 @@
 {% if user.is_active %}
 <link rel="stylesheet" href="{% static 'css/community.css' %}">
 <link href="{% static 'css/apply_detail.css' %}" rel="stylesheet">
+<link href="{% static 'css/my_page_table.css' %}" rel="stylesheet">
 <script src="https://kit.fontawesome.com/81816a43c2.js" crossorigin="anonymous"></script>
 <div class="sidenav" style="z-index: 3;" id="mySidenav">
     <a class="closebtn" href="javascript:void(0)" onclick="closeNav()">&times;</a>
@@ -83,8 +84,8 @@
                 </td>
                 <td class="lighter" id="edit"><a class="abc" href="{% url 'update_class' class.id %}">정보수정</a></td>
                 <td class="lighter" id="add"><a class="abc" href="{% url 'addTime2' class.id %}">일정관리</a></td>
-                  <td class="lighter"><a class="abc" href="{% url 'classSale' class.id %}">할인</a></td>
-                  <td class="lighter"><a class="abc" href="{% url 'applicant' class.id %}">신청현황</a></td>
+                  <td class="lighter" id="sale"><a class="abc" href="{% url 'classSale' class.id %}">할인</a></td>
+                  <td class="lighter" id="appli"><a class="abc" href="{% url 'applicant' class.id %}">신청현황</a></td>
                   <td class="lighter"><a class="abc" style="color:red;" onclick="return confirm('삭제한 클래스는 복구할 수 없습니다.\n정말 삭제하시겠습니까?')" href="{% url 'product_remove' class.id %}">삭제</a></td>
               </tr>
               {% endfor %}

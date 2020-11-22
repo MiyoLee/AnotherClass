@@ -1,0 +1,9 @@
+
+@media (max-width: 600px){
+    .table, .lighter{
+    font-size: 10px;
+    }
+    #sale, #appli{
+    display:none;
+    }
+}
