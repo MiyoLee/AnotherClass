@@ -299,6 +299,28 @@ def addTutor(request, class_id):
         return render(request, 'firstApp/addTutor.html', {
             'class_detail': class_detail, 'form1': form1, 'form2': form2})
 
+def addTutor2(request, class_id):
+    class_detail = get_object_or_404(Class, pk=class_id)
+    if request.method == "POST":
+        form1 = CertificateForm(request.POST)
+        form2 = EducationForm(request.POST)
+        if form1.is_valid():
+            certi = form1.save(commit=False)
+            certi.inClass = class_detail
+            certi.save()
+            return HttpResponseRedirect("/product/{}/addTutor2".format(class_id))
+        if form2.is_valid():
+            edu = form2.save(commit=False)
+            edu.inClass = class_detail
+            edu.save()
+            return HttpResponseRedirect("/product/{}/addTutor2".format(class_id))
+    else:
+        form1 = CertificateForm()
+        form2 = EducationForm()
+        class_detail.save()
+        return render(request, 'firstApp/addTutor2.html', {
+            'class_detail': class_detail, 'form1': form1, 'form2': form2})
+
 def create_complete(request, class_id):
     class_detail = get_object_or_404(Class, pk=class_id)
     return render(request, 'firstApp/create_complete.html', {'class_detail': class_detail})
@@ -448,7 +470,7 @@ def update_class(request, class_id):
             post = form.save(commit=False)
             post.author = User.objects.get(username = request.user.get_username())
             post.save()
-            return redirect('/createclass/'+str(post.id)+'/addTutor/')
+            return redirect('/product/'+str(post.id)+'/addTutor2')
         else:
             return render(request, 'firstApp/update_class.html',{'form': form, 'alert_flag': True})
     else:
