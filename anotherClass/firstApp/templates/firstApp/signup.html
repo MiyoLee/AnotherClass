@@ -26,10 +26,15 @@
   <form method="POST" action="">
   {% csrf_token %}
       <br>
+      <span style="color:red; font-weight:bold;">*</span>
       <input name="username" type="text" class="input-field" placeholder="아이디 (필수)" required><br>
+      <span style="color:red; font-weight:bold;">*</span>
       <input name="password" type="password" class="input-field" placeholder="비밀번호 (필수)" required><br>
+      <span style="color:red; font-weight:bold;">*</span>
       <input name="password_확인" type="password" class="input-field" placeholder="비밀번호 확인 (필수)" required><br>
+      <span style="color:red; font-weight:bold;">*</span>
       <input name="first_name" type="text" class="input-field" placeholder="이름"><br>
+      <span style="color:red; font-weight:bold;">*</span>
       <input name="email" type="text" class="input-field" placeholder="이메일 (ex. another@gmail.com)"><br>
       <input name="location" type="text" class="input-field" placeholder="주소 (ex. 서울시 마포구 신촌로6길 18)"><br>
       <input name="number" type="text" class="input-field" placeholder="전화번호 (ex. 010-1234-5678"><br>
