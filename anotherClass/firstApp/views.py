@@ -33,8 +33,6 @@ class ClassListView(ListView):
         context['filter'] = ClassFilter(self.request.GET, queryset=self.get_queryset())
         return context
 '''
-def index(request):
-    return render(request, 'firstApp/index.html')
 
 def mypage(request):
     return render(request, 'firstApp/mypage.html')
@@ -733,7 +731,7 @@ def login(request):
         user = auth.authenticate(request, username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('/main')
+            return redirect('/')
         else:
             return render(request, 'firstApp/login.html', {'alert_flag1': True})
     else:
@@ -743,7 +741,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/main')
+    return redirect('/')
 
 def change_pw(request):
     if request.method == "POST":
@@ -773,7 +771,7 @@ def delete(request):
         if password_form.is_valid():
             request.user.delete()
             logout(request)
-            return redirect('/main')
+            return redirect('/')
     else:
         password_form = CheckPasswordForm(request.user)
 

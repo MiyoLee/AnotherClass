@@ -8,8 +8,7 @@ from .filters import ClassFilter
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('main/', views.blogMain, name='main'),
+    path('', views.blogMain, name='main'),
     path('class_search/', views.class_search, name='class_search'),
     path('class_align/', views.class_align, name='class_align'),
     path('product/<int:class_id>/', views.product, name='product'),
