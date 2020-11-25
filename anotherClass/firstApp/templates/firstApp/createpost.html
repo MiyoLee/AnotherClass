@@ -8,7 +8,11 @@
 <br>
 <div class="container" id="create_post_container">
     <div class="upperbar">
+        {% if is_update == 0%}
         <div class="step-title">게시글 쓰기</div>
+        {% else %}
+        <div class="step-title">게시글 수정</div>
+        {% endif %}
     </div>
     <br>
     <form enctype="multipart/form-data" method="POST">

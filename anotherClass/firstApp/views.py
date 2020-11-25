@@ -637,7 +637,7 @@ def createpost(request):
         return redirect('community')
     else:
         form = PostForm()
-        return render(request, 'firstApp/createpost.html', {'form': form})
+        return render(request, 'firstApp/createpost.html', {'form': form, 'is_update':0})
 
 def update_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -651,7 +651,7 @@ def update_post(request, pk):
         return redirect('/community/post/'+str(pk)+'/?cateId='+str(cateId)+'&page='+str(page), pk=pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'firstApp/update_post.html', {'form': form})
+    return render(request, 'firstApp/createpost.html', {'form': form, 'is_update': 1})
 
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
