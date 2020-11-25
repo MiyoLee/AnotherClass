@@ -16,15 +16,6 @@ th{
     font-size:10pt;
 }
 
-.cate-select{
-    display:inline-block;
-    padding:2rem;
-    padding-left:8.6rem;
-}
-.post-body{
-    padding:3rem;
-    padding-top:0;
-}
 .community-nav-link,.community_nav-link:visited{
     color:gray !important;
 }
@@ -90,6 +81,8 @@ th{
     float: right;
     padding-right: 20px;
 }
+
+/*create post*/
 .upperbar{
     margin-right: 400px;
     padding-bottom: 60px;
@@ -100,6 +93,27 @@ th{
     position: relative;
     left: 13%;
 }
+
+.select_cate{
+    font-weight: bold;
+    padding-right: 40;
+}
+.select_cb{
+    display:inline-block;
+    padding:2rem;
+    padding-left:8.6rem;
+}
+.post_body{
+    padding:3rem;
+    padding-top:0;
+}
+.title_form{
+    width:835px;
+    position:relative;
+    left:8.9%;
+    margin:0;
+}
+
 @media (max-width: 600px){
 
     h4{
@@ -170,4 +184,44 @@ th{
     }
     .sidenav {padding-top: 50px;}
     .sidenav a {font-size: 17px;}
+
+    /* create post*/
+    .upperbar{
+
+        width:100%;
+        padding:0;
+        position: relative;
+        left: 0;
+    }
+    .step-title{
+        font-size: 20px;
+    }
+    .select_cb{
+        display:inline-block;
+        padding:0;
+        margin:10px 0 10px 5px;
+    }
+    .select_cate{
+        font-weight: bold;
+        padding:0;
+        font-size:13px;
+    }
+    #create_post_container{
+        padding:0;
+    }
+    .post_body{
+        padding:0;
+    }
+    .title_form{
+        width:100%;
+        position:relative;
+        left:0;
+        margin:0;
+    }
+    .text_form{
+        width:100%;
+        position:relative;
+        left:0;
+        margin:0;
+    }
 }

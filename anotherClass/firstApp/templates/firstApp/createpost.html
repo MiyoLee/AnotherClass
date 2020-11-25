@@ -2,38 +2,39 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/community.css' %}">
+<link href="{% static 'css/community.css' %}" rel="stylesheet">
 <br>
 
-    <br>
-    <div class="container">
-        <div class="upperbar">
-                                    <div class="step-title">게시글 쓰기</div>
-                                </div>
-        <br>
-        <form method="POST" enctype="multipart/form-data">
-            <div class="blog-post-area bg-light">
-            {% csrf_token %}
-                <div class="cate-select">
-                    <span class="cate-select-title" style="font-weight: bold;padding-right: 40;">
-                        게시판
-                    </span> {{ form.category }}
-                    <span class="cate-select-title" style="font-weight: bold;padding: 0 40;">
-                        말머리
-                    </span>{{ form.bullet }}
-                </div>
-
-                <div class="text-center post-body">
-                    {{ form.media }}
-                    {{ form.title }}
-                    <br><br>
-                    {{ form.text }}
-                </div>
-            </div>
-            <br><br>
-            <div class="text-center">
-            <input class="save btn btn-primary" type="submit" value="등록">
-            </div>
-        </form>
+<br>
+<div class="container" id="create_post_container">
+    <div class="upperbar">
+        <div class="step-title">게시글 쓰기</div>
     </div>
+    <br>
+    <form enctype="multipart/form-data" method="POST">
+        <div class="blog-post-area bg-light">
+            {% csrf_token %}
+            <div class="select_cb">
+                <span class="select_cate">
+                    게시판 &nbsp;{{ form.category }}
+                </span>
+                &nbsp;
+                <span class="select_cate">
+                    말머리 &nbsp;{{ form.bullet }}
+                </span>
+            </div>
+
+            <div class="text-center post_body">
+                {{ form.media }}
+                <div class="title_form">{{ form.title }}</div>
+                <br><br>
+                <div class="text_form">{{ form.text }}</div>
+            </div>
+        </div>
+        <br><br>
+        <div class="text-center">
+            <input class="save btn btn-primary" type="submit" value="등록">
+        </div>
+    </form>
+</div>
 {% endblock content%}
