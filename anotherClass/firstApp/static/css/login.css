@@ -27,6 +27,20 @@
     outline: none;
 }
 .alert{
-color:red;
-margin-top:16px;
+    color:red;
+    margin-top:16px;
+}
+
+@media (max-width: 600px){
+    h4{
+        margin-top:30%;
+    }
+    .input-field {
+        width: 85%;
+        height:12%;
+    }
+    .submit {
+        width: 70%;
+        height:10%;
+    }
 }
