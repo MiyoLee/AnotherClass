@@ -84,7 +84,7 @@
                                            href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
                                             {{ post.title|truncatechars:40 }}
                                             <span class="lighter"
-                                                  style="color:red;">[{{ post.comments.count }}]</span>
+                                                  style="color:red;">[{{ post.comments.count|add:post.ccomments.count }}]</span>
                                         </a>
                                     </li>
                                     {% endfor %}
@@ -100,7 +100,7 @@
                                            href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
                                             {{ post.title|truncatechars:20 }}
                                             <span class="lighter"
-                                                  style="color:red;">[{{ post.comments.count }}]</span>
+                                                  style="color:red;">[{{ post.comments.count|add:post.ccomments.count }}]</span>
                                         </a>
                                     </li>
                                     {% endfor %}
@@ -134,7 +134,7 @@
                                    href="{% url 'post_detail' post.pk %}?cateId={{cateId}}&page={{page}}">
                                     {{ post.title|truncatechars:30}}
                                 </a>
-                                <span class="lighter" style="color:red;">[{{ post.comments.count }}]</span>
+                                <span class="lighter" style="color:red;">[{{ post.comments.count|add:post.ccomments.count }}]</span>
                             </td>
                             <td class="lighter text-center col3">{{post.author}}</td>
                             <td class="lighter text-center col4">{{post.created_date|date:'y.m.d H:i'}}</td>

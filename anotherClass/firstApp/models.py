@@ -66,8 +66,7 @@ class Post(models.Model):
     title = models.CharField(max_length=60)
     text = RichTextUploadingField()
     created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(
-            blank=True, null=True)
+    published_date = models.DateTimeField(blank=True, null=True)
     views = models.PositiveIntegerField(default=0)
     recommendations = models.PositiveIntegerField(default=0)
     recommend_user = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='recommend_post')
