@@ -224,5 +224,7 @@ th{
         left:0;
         margin:0;
     }
-
+    .cke_1.cke.cke_reset.cke_chrome.cke_editor_id_text.cke_ltr.cke_browser_webkit.cke_browser_quirks.cke_browser_ios.cke_hidpi{
+        width:100%!important;
+    }
 }
