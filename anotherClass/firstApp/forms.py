@@ -159,10 +159,10 @@ class ApplyForm(forms.ModelForm):
 
         widgets = {
             'name': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex)홍길동'}
+                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex) 홍길동'}
             ),
             'number': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex)010-1234-5678'}
+                attrs={'class': 'form-control', 'style': 'width: 30%', 'placeholder': 'ex) 010-1234-5678'}
             ),
             'text': forms.CharField(widget=CKEditorUploadingWidget()),
         }
@@ -174,7 +174,7 @@ class ProfileForm(forms.ModelForm):
 
         widgets = {
             'location': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 200%', 'placeholder': 'ex) 서울시 마포구 신촌로6길 18'}
+                attrs={'class': 'form-control', 'style': 'width: 200%', 'placeholder': 'ex) 서울시 마포구 와우산로 94'}
             ),
             'number': forms.TextInput(
                 attrs={'class': 'form-control', 'style': 'width: 100%', 'placeholder': 'ex) 010-1234-5678'}
@@ -201,9 +201,9 @@ class UserForm(forms.ModelForm):
         }
 
 class SignupForm(forms.ModelForm):
-    password_확인 = forms.CharField(max_length=200, widget=forms.PasswordInput(attrs = {'placeholder': '필수 입력'}))
-    password = forms.CharField(max_length=200, widget=forms.PasswordInput(attrs = {'placeholder': '필수 입력'}))
-    username = forms.CharField(widget=forms.TextInput(attrs = {'placeholder': '필수 입력'}))
+    password_확인 = forms.CharField(max_length=200, widget=forms.PasswordInput)
+    password = forms.CharField(max_length=200, widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput)
 
     field_order=['username','password','password_확인','first_name','email'] 
 

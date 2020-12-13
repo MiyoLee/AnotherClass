@@ -63,7 +63,7 @@
                 비추천 : {{post.no_recommendations}}</button></a>
         </div>
         <div class="post_content_f">
-        댓글 {{ post.comments.count }}
+        댓글 {{ post.comments.count|add:post.ccomments.count }}
 
         </div>
     </div>
